@@ -11,9 +11,10 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
     
-    @IBOutlet private var captureView: UIView!
+    @IBOutlet fileprivate var captureView: UIView!
+    @IBOutlet fileprivate var takePhoto: UIButton!
     
-    private var takePhoto = UIButton()
+    let imageView = UIImageView()
     
     var session = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput?
@@ -55,14 +56,38 @@ class CameraViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoPreviewLayer!.frame = captureView.frame
+        videoPreviewLayer?.frame = captureView.frame
+        view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    @IBAction func didTakePhoto(_ sender: UIButton) {
+        stillImageOutput?.capturePhoto(with: AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG]), delegate: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+}
+
+extension CameraViewController: AVCapturePhotoCaptureDelegate {
+    func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {
+        guard let buffer = photoSampleBuffer else {
+            return assertionFailure("unable to unwrap photo buffer")
+        }
+        let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
+        let image = UIImage(data: imageData!)
+        imageView.frame = captureView.frame
+        imageView.image = image
+        captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
+        
+        // hide take photo button
+        takePhoto.isHidden = true
+        
+        // show keep or delete buttons
+        
     }
 }

@@ -24,7 +24,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guL-EE-maU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXr-Tx-Ure">
+                                        <rect key="frame" x="113" y="559" width="149" height="45"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                        <state key="normal" title="Take Photo"/>
+                                        <connections>
+                                            <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTq-OP-GVu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.050980396570000003" green="0.86274516580000005" blue="0.89411771299999998" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PXr-Tx-Ure" secondAttribute="bottom" constant="63" id="9iP-76-SH1"/>
+                                    <constraint firstItem="PXr-Tx-Ure" firstAttribute="centerX" secondItem="guL-EE-maU" secondAttribute="centerX" id="byC-RJ-Yfa"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,6 +53,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="captureView" destination="guL-EE-maU" id="bjx-oq-UwC"/>
+                        <outlet property="takePhoto" destination="PXr-Tx-Ure" id="tQw-bj-EwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
