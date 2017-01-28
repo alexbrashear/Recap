@@ -14,6 +14,8 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var captureView: UIView!
     @IBOutlet fileprivate var takePhoto: UIButton!
     
+    @IBOutlet fileprivate var deletePhoto: UIButton!
+    @IBOutlet fileprivate var keepPhoto: UIButton!
     let imageView = UIImageView()
     
     var session = AVCaptureSession()
@@ -22,6 +24,10 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        keepPhoto.isHidden = true
+        deletePhoto.isHidden = true
+        
         session.sessionPreset = AVCaptureSessionPresetPhoto
         
         let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -58,6 +64,8 @@ class CameraViewController: UIViewController {
         super.viewDidAppear(animated)
         videoPreviewLayer?.frame = captureView.frame
         view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -66,6 +74,18 @@ class CameraViewController: UIViewController {
     
     @IBAction func didTakePhoto(_ sender: UIButton) {
         stillImageOutput?.capturePhoto(with: AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG]), delegate: self)
+    }
+    
+    @IBAction func didKeepPhoto(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func didDeletePhoto(_ sender: UIButton) {
+        captureView.layer.replaceSublayer(imageView.layer, with: videoPreviewLayer!)
+        imageView.image = nil
+        takePhoto.isHidden = false
+        keepPhoto.isHidden = true
+        deletePhoto.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -88,6 +108,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         takePhoto.isHidden = true
         
         // show keep or delete buttons
-        
+        keepPhoto.isHidden = false
+        deletePhoto.isHidden = false
     }
 }
