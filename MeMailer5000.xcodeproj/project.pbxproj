@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083A1E3D163600E2BD8A /* AppDelegate.swift */; };
+		C353083D1E3D163600E2BD8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083C1E3D163600E2BD8A /* ViewController.swift */; };
+		C35308401E3D163600E2BD8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Main.storyboard */; };
+		C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35308411E3D163600E2BD8A /* Assets.xcassets */; };
+		C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */; };
+		C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C353084C1E3D163700E2BD8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C353082F1E3D163600E2BD8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C35308361E3D163600E2BD8A;
+			remoteInfo = MeMailer5000;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C35308371E3D163600E2BD8A /* MeMailer5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMailer5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C353083A1E3D163600E2BD8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C353083C1E3D163600E2BD8A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C353083F1E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C35308411E3D163600E2BD8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C35308441E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C35308461E3D163600E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C353084B1E3D163700E2BD8A /* MeMailer5000Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeMailer5000Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMailer5000Tests.swift; sourceTree = "<group>"; };
+		C35308511E3D163700E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C35308341E3D163600E2BD8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C35308481E3D163700E2BD8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C353082E1E3D163600E2BD8A = {
+			isa = PBXGroup;
+			children = (
+				C35308391E3D163600E2BD8A /* MeMailer5000 */,
+				C353084E1E3D163700E2BD8A /* MeMailer5000Tests */,
+				C35308381E3D163600E2BD8A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C35308381E3D163600E2BD8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C35308371E3D163600E2BD8A /* MeMailer5000.app */,
+				C353084B1E3D163700E2BD8A /* MeMailer5000Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C35308391E3D163600E2BD8A /* MeMailer5000 */ = {
+			isa = PBXGroup;
+			children = (
+				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
+				C353083C1E3D163600E2BD8A /* ViewController.swift */,
+				C353083E1E3D163600E2BD8A /* Main.storyboard */,
+				C35308411E3D163600E2BD8A /* Assets.xcassets */,
+				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
+				C35308461E3D163600E2BD8A /* Info.plist */,
+			);
+			path = MeMailer5000;
+			sourceTree = "<group>";
+		};
+		C353084E1E3D163700E2BD8A /* MeMailer5000Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */,
+				C35308511E3D163700E2BD8A /* Info.plist */,
+			);
+			path = MeMailer5000Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C35308361E3D163600E2BD8A /* MeMailer5000 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C35308541E3D163700E2BD8A /* Build configuration list for PBXNativeTarget "MeMailer5000" */;
+			buildPhases = (
+				C35308331E3D163600E2BD8A /* Sources */,
+				C35308341E3D163600E2BD8A /* Frameworks */,
+				C35308351E3D163600E2BD8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeMailer5000;
+			productName = MeMailer5000;
+			productReference = C35308371E3D163600E2BD8A /* MeMailer5000.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C353084A1E3D163700E2BD8A /* MeMailer5000Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C35308571E3D163700E2BD8A /* Build configuration list for PBXNativeTarget "MeMailer5000Tests" */;
+			buildPhases = (
+				C35308471E3D163700E2BD8A /* Sources */,
+				C35308481E3D163700E2BD8A /* Frameworks */,
+				C35308491E3D163700E2BD8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C353084D1E3D163700E2BD8A /* PBXTargetDependency */,
+			);
+			name = MeMailer5000Tests;
+			productName = MeMailer5000Tests;
+			productReference = C353084B1E3D163700E2BD8A /* MeMailer5000Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C353082F1E3D163600E2BD8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = memailer;
+				TargetAttributes = {
+					C35308361E3D163600E2BD8A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9GFQY5F3X4;
+						ProvisioningStyle = Automatic;
+					};
+					C353084A1E3D163700E2BD8A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9GFQY5F3X4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C35308361E3D163600E2BD8A;
+					};
+				};
+			};
+			buildConfigurationList = C35308321E3D163600E2BD8A /* Build configuration list for PBXProject "MeMailer5000" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C353082E1E3D163600E2BD8A;
+			productRefGroup = C35308381E3D163600E2BD8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C35308361E3D163600E2BD8A /* MeMailer5000 */,
+				C353084A1E3D163700E2BD8A /* MeMailer5000Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C35308351E3D163600E2BD8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
+				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
+				C35308401E3D163600E2BD8A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C35308491E3D163700E2BD8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C35308331E3D163600E2BD8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C353083D1E3D163600E2BD8A /* ViewController.swift in Sources */,
+				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C35308471E3D163700E2BD8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C353084D1E3D163700E2BD8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C35308361E3D163600E2BD8A /* MeMailer5000 */;
+			targetProxy = C353084C1E3D163700E2BD8A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C353083E1E3D163600E2BD8A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C353083F1E3D163600E2BD8A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C35308441E3D163600E2BD8A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C35308521E3D163700E2BD8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C35308531E3D163700E2BD8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C35308551E3D163700E2BD8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9GFQY5F3X4;
+				INFOPLIST_FILE = MeMailer5000/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memailer.MeMailer5000;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C35308561E3D163700E2BD8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9GFQY5F3X4;
+				INFOPLIST_FILE = MeMailer5000/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memailer.MeMailer5000;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C35308581E3D163700E2BD8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9GFQY5F3X4;
+				INFOPLIST_FILE = MeMailer5000Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memailer.MeMailer5000Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeMailer5000.app/MeMailer5000";
+			};
+			name = Debug;
+		};
+		C35308591E3D163700E2BD8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 9GFQY5F3X4;
+				INFOPLIST_FILE = MeMailer5000Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.memailer.MeMailer5000Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeMailer5000.app/MeMailer5000";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C35308321E3D163600E2BD8A /* Build configuration list for PBXProject "MeMailer5000" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C35308521E3D163700E2BD8A /* Debug */,
+				C35308531E3D163700E2BD8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C35308541E3D163700E2BD8A /* Build configuration list for PBXNativeTarget "MeMailer5000" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C35308551E3D163700E2BD8A /* Debug */,
+				C35308561E3D163700E2BD8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C35308571E3D163700E2BD8A /* Build configuration list for PBXNativeTarget "MeMailer5000Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C35308581E3D163700E2BD8A /* Debug */,
+				C35308591E3D163700E2BD8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C353082F1E3D163600E2BD8A /* Project object */;
+}
