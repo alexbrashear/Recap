@@ -54,7 +54,6 @@ class CameraViewController: UIViewController {
             
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-            videoPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
             captureView.layer.addSublayer(videoPreviewLayer!)
             session.startRunning()
         }
