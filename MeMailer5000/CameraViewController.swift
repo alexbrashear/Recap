@@ -15,10 +15,10 @@ class CameraViewController: UIViewController {
     
     @IBOutlet fileprivate var captureView: UIView!
     @IBOutlet fileprivate var takePhoto: UIButton!
-    
     @IBOutlet fileprivate var deletePhoto: UIButton!
     @IBOutlet fileprivate var keepPhoto: UIButton!
-    let imageView = UIImageView()
+    
+    var imageView = UIImageView()
     
     var session = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput?
@@ -115,6 +115,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
         let image = UIImage(data: imageData!)
         imageView.frame = captureView.frame
+        imageView.contentMode = .scaleAspectFit
         imageView.image = image
         captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
         
