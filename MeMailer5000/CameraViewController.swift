@@ -11,6 +11,8 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
     
+    // MARK: - IBOutlets
+    
     @IBOutlet fileprivate var captureView: UIView!
     @IBOutlet fileprivate var takePhoto: UIButton!
     
@@ -72,7 +74,7 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func didTakePhoto(_ sender: UIButton) {
-        stillImageOutput?.capturePhoto(with: AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG]), delegate: self)
+        stillImageOutput?.capturePhoto(with: capturePhotoSettings, delegate: self)
     }
     
     @IBAction func didKeepPhoto(_ sender: UIButton) {
@@ -90,7 +92,16 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    // MARK: - AVCapturePhotoSettings
+    
+    private var capturePhotoSettings: AVCapturePhotoSettings {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
+        return settings
+    }
 }
+
+// MARK: - AVCapturePhotoCaptureDelegate
 
 extension CameraViewController: AVCapturePhotoCaptureDelegate {
     func capture(_ captureOutput: AVCapturePhotoOutput, didFinishProcessingPhotoSampleBuffer photoSampleBuffer: CMSampleBuffer?, previewPhotoSampleBuffer: CMSampleBuffer?, resolvedSettings: AVCaptureResolvedPhotoSettings, bracketSettings: AVCaptureBracketedStillImageSettings?, error: Error?) {

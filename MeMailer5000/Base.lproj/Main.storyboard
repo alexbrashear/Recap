@@ -33,20 +33,20 @@
                                             <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTq-OP-GVu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zna-Og-sK2" userLabel="Keep Photo">
-                                        <rect key="frame" x="293" y="608" width="56" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Keep"/>
-                                        <connections>
-                                            <action selector="didKeepPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uli-5x-Uva"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ult-CV-i6z" userLabel="Delete Photo">
                                         <rect key="frame" x="26" y="608" width="56" height="34"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Delete"/>
                                         <connections>
                                             <action selector="didDeletePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xO8-iV-wqF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zna-Og-sK2" userLabel="Keep Photo">
+                                        <rect key="frame" x="293" y="608" width="56" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Keep"/>
+                                        <connections>
+                                            <action selector="didKeepPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uli-5x-Uva"/>
                                         </connections>
                                     </button>
                                 </subviews>
