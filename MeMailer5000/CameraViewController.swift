@@ -92,6 +92,10 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 
     // MARK: - AVCapturePhotoSettings
     
