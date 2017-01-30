@@ -115,7 +115,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
         let image = UIImage(data: imageData!)
         imageView.frame = captureView.frame
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.image = image
         captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
         
