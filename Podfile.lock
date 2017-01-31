@@ -1,0 +1,12 @@
+PODS:
+  - ValueCoding (2.1.0)
+
+DEPENDENCIES:
+  - ValueCoding (~> 2.1.0)
+
+SPEC CHECKSUMS:
+  ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
+
+PODFILE CHECKSUM: 22dfd0ccb015d23aea08a7e831adcffe773ceb02
+
+COCOAPODS: 1.2.0
