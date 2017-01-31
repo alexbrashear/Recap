@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		AAA088F767FEF5325B7376AE /* Pods_MeMailer5000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34946F08527E6EFDE941A601 /* Pods_MeMailer5000.framework */; };
+		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083A1E3D163600E2BD8A /* AppDelegate.swift */; };
 		C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083C1E3D163600E2BD8A /* CameraViewController.swift */; };
 		C35308401E3D163600E2BD8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Main.storyboard */; };
 		C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35308411E3D163600E2BD8A /* Assets.xcassets */; };
 		C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */; };
 		C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */; };
+		C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 		45463C1CCAA9E085F0C996F0 /* Pods-MeMailer5000.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.release.xcconfig"; sourceTree = "<group>"; };
 		910C3EBB8C614BCD76D0661B /* Pods-MeMailer5000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.debug.xcconfig"; sourceTree = "<group>"; };
 		B81E9763E941AC282E038598 /* Pods-MeMailer5000Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000Tests/Pods-MeMailer5000Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C35308371E3D163600E2BD8A /* MeMailer5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMailer5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C353083A1E3D163600E2BD8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C353083C1E3D163600E2BD8A /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		C353084B1E3D163700E2BD8A /* MeMailer5000Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeMailer5000Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMailer5000Tests.swift; sourceTree = "<group>"; };
 		C35308511E3D163700E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
+				C3DB8C401E4046C00076B7A3 /* models */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
 				C353083E1E3D163600E2BD8A /* Main.storyboard */,
 				C35308411E3D163600E2BD8A /* Assets.xcassets */,
@@ -126,6 +131,15 @@
 				C35308511E3D163700E2BD8A /* Info.plist */,
 			);
 			path = MeMailer5000Tests;
+			sourceTree = "<group>";
+		};
+		C3DB8C401E4046C00076B7A3 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				C31279C21E3EF09900F52C31 /* Address.swift */,
+				C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,7 +347,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
+				C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
