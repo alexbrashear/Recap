@@ -8,6 +8,22 @@
 
 import Foundation
 
+typealias AddressVerificationCompletion = (_ address: Address?, _ error: AddressVerificationError?) -> Void
+
+enum AddressVerificationError: Error {
+    case unknownFailure
+    case notEnoughInformation
+    
+    var localizedDescription: String {
+        switch self {
+        case .unknownFailure:
+            return "Unable to find address, check that you entered a valid address, city, state and zipcode"
+        case .notEnoughInformation:
+            return "The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
+        }
+    }
+}
+
 class AddressProvider {
     private let parser = AddressParser()
     private let verifyURLString = "https://api.lob.com/v1/verify"
@@ -18,27 +34,29 @@ class AddressProvider {
         return loginData?.base64EncodedString() ?? ""
     }
     
-    func verify(name: String, line1: String, line2: String, city: String, state: String, zip: String) {
+    func verify(name: String, line1: String, line2: String, city: String, state: String, zip: String, completion: @escaping AddressVerificationCompletion) {
         guard let verifyURL = URL(string: verifyURLString) else { return }
         var verifyRequest = URLRequest(url: verifyURL)
         verifyRequest.httpMethod = "POST"
         verifyRequest.addValue("Basic \(testCredentials)", forHTTPHeaderField: "Authorization")
         verifyRequest.httpBody = formatHTTPBody(withLine1: line1, line2: line2, city: city, state: state, zip: zip)
-        URLSession.shared.dataTask(with: verifyRequest) { (data, response, error) in
-            guard let data = data, let response = response else {
-                print("\(error)")
-                return
-            }
+        URLSession.shared.dataTask(with: verifyRequest) { [weak self] (data, response, error) in
+            guard let data = data else { return completion(nil, .unknownFailure) }
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
-                self.parser.parse(json: json)
+                if let json = json {
+                    let (address, error) = self?.parser.parse(json: json, name: name) ?? (nil, .unknownFailure)
+                    completion(address, error)
+                } else {
+                    completion(nil, .unknownFailure)
+                }
             } catch {
-                print(error)
+                completion(nil, .unknownFailure)
             }
         }.resume()
     }
     
     private func formatHTTPBody(withLine1 line1: String, line2: String, city: String, state: String, zip: String) -> Data? {
-        return "address_line1=\(line1)&address_line2=\(line2)&address_city=\(city)&address_state=\(state)&address_zip=\(zip)".data(using: .utf8)
+        return "address_line1=\(line1)&address_line2=\(line2)&address_city=\(city)&address_state=\(state)&address_zip=r\(zip)".data(using: .utf8)
     }
 }
