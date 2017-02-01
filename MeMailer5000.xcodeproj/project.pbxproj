@@ -17,6 +17,9 @@
 		C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */; };
 		C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */; };
 		C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */; };
+		C3DB8C421E4048770076B7A3 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C411E4048770076B7A3 /* PostcardProvider.swift */; };
+		C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C431E4057820076B7A3 /* AddressProvider.swift */; };
+		C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C461E419D550076B7A3 /* AddressParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMailer5000Tests.swift; sourceTree = "<group>"; };
 		C35308511E3D163700E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
+		C3DB8C411E4048770076B7A3 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
+		C3DB8C431E4057820076B7A3 /* AddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
+		C3DB8C461E419D550076B7A3 /* AddressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,8 @@
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
 				C3DB8C401E4046C00076B7A3 /* models */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
+				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
+				C3DB8C451E40578C0076B7A3 /* Providers */,
 				C353083E1E3D163600E2BD8A /* Main.storyboard */,
 				C35308411E3D163600E2BD8A /* Assets.xcassets */,
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
@@ -140,6 +148,15 @@
 				C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */,
 			);
 			name = models;
+			sourceTree = "<group>";
+		};
+		C3DB8C451E40578C0076B7A3 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				C3DB8C411E4048770076B7A3 /* PostcardProvider.swift */,
+				C3DB8C431E4057820076B7A3 /* AddressProvider.swift */,
+			);
+			name = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +366,9 @@
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
 				C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
+				C3DB8C421E4048770076B7A3 /* PostcardProvider.swift in Sources */,
+				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
