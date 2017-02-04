@@ -24,11 +24,19 @@ class AddressListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addAddress = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        title = "Send To..."
+        let addAddress = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAddressTapped))
         navigationItem.rightBarButtonItem = addAddress
         
         let nib = UINib(nibName: String(describing: AddressCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: AddressCell.self))
+    }
+    
+    func addAddressTapped() {
+        let storyBoard = UIStoryboard(name: "AddAddress", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "AddAddressController")
+        let nc = UINavigationController(rootViewController: viewController)
+        navigationController?.present(nc, animated: true, completion: nil)
     }
 }
 

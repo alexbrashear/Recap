@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAddressController" customModule="MeMailer5000" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="AddAddressView" customModule="MeMailer5000" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WQv-oN-GxY">
+                    <rect key="frame" x="50" y="50" width="275" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Jf-Qo-iLQ">
+                    <rect key="frame" x="50" y="94" width="275" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhE-dw-WiW">
+                    <rect key="frame" x="50" y="182" width="275" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" priority="750" constant="150" id="ZIm-ic-ElD"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Nl-Z2-yhQ">
+                    <rect key="frame" x="50" y="226" width="275" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahd-G9-92C">
+                    <rect key="frame" x="50" y="325" width="275" height="36"/>
+                    <color key="backgroundColor" red="0.050980396570000003" green="0.86274516580000005" blue="0.89411771299999998" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapDone:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="VAW-8m-iGJ"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ui-SE-IfE">
+                    <rect key="frame" x="50" y="270" width="275" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apt" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBV-RE-PUA">
+                    <rect key="frame" x="50" y="138" width="275" height="24"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="WQv-oN-GxY" secondAttribute="trailing" constant="50" id="4B7-NQ-whB"/>
+                <constraint firstItem="NhE-dw-WiW" firstAttribute="height" secondItem="WQv-oN-GxY" secondAttribute="height" id="8zk-nN-aNO"/>
+                <constraint firstItem="7ui-SE-IfE" firstAttribute="leading" secondItem="WQv-oN-GxY" secondAttribute="leading" id="Cw1-6P-Td2"/>
+                <constraint firstItem="oBV-RE-PUA" firstAttribute="height" secondItem="WQv-oN-GxY" secondAttribute="height" id="FAh-N0-hlg"/>
+                <constraint firstItem="WQv-oN-GxY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="FyF-OG-1dN"/>
+                <constraint firstItem="0Nl-Z2-yhQ" firstAttribute="leading" secondItem="2Jf-Qo-iLQ" secondAttribute="leading" id="GCO-NV-23C"/>
+                <constraint firstItem="WQv-oN-GxY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="Jpc-zH-26b"/>
+                <constraint firstItem="oBV-RE-PUA" firstAttribute="leading" secondItem="WQv-oN-GxY" secondAttribute="leading" id="MMZ-vi-kaQ"/>
+                <constraint firstItem="2Jf-Qo-iLQ" firstAttribute="leading" secondItem="WQv-oN-GxY" secondAttribute="leading" id="RaM-6q-ZuC"/>
+                <constraint firstItem="NhE-dw-WiW" firstAttribute="leading" secondItem="WQv-oN-GxY" secondAttribute="leading" id="Rby-aI-V5t"/>
+                <constraint firstItem="NhE-dw-WiW" firstAttribute="trailing" secondItem="2Jf-Qo-iLQ" secondAttribute="trailing" id="T9q-x2-yKj"/>
+                <constraint firstItem="2Jf-Qo-iLQ" firstAttribute="height" secondItem="WQv-oN-GxY" secondAttribute="height" id="U6R-I1-TyS"/>
+                <constraint firstItem="0Nl-Z2-yhQ" firstAttribute="height" secondItem="WQv-oN-GxY" secondAttribute="height" id="U7x-pt-rNk"/>
+                <constraint firstItem="oBV-RE-PUA" firstAttribute="top" secondItem="2Jf-Qo-iLQ" secondAttribute="bottom" constant="20" id="Yq7-mz-lar"/>
+                <constraint firstItem="ahd-G9-92C" firstAttribute="top" secondItem="7ui-SE-IfE" secondAttribute="bottom" constant="31" id="Yt8-NO-DqG"/>
+                <constraint firstItem="NhE-dw-WiW" firstAttribute="top" secondItem="oBV-RE-PUA" secondAttribute="bottom" constant="20" id="ZVP-Jb-e8W"/>
+                <constraint firstItem="ahd-G9-92C" firstAttribute="leading" secondItem="WQv-oN-GxY" secondAttribute="leading" id="bW7-4y-QEl"/>
+                <constraint firstItem="2Jf-Qo-iLQ" firstAttribute="top" secondItem="WQv-oN-GxY" secondAttribute="bottom" constant="20" id="dJ4-nW-oqj"/>
+                <constraint firstItem="oBV-RE-PUA" firstAttribute="trailing" secondItem="WQv-oN-GxY" secondAttribute="trailing" id="fCT-M8-sga"/>
+                <constraint firstItem="0Nl-Z2-yhQ" firstAttribute="trailing" secondItem="2Jf-Qo-iLQ" secondAttribute="trailing" id="nqZ-fF-zNT"/>
+                <constraint firstItem="2Jf-Qo-iLQ" firstAttribute="trailing" secondItem="WQv-oN-GxY" secondAttribute="trailing" id="nxZ-M3-UGY"/>
+                <constraint firstItem="7ui-SE-IfE" firstAttribute="top" secondItem="0Nl-Z2-yhQ" secondAttribute="bottom" constant="20" id="p3Q-dQ-bEh"/>
+                <constraint firstItem="7ui-SE-IfE" firstAttribute="height" secondItem="WQv-oN-GxY" secondAttribute="height" id="pyQ-fS-5pU"/>
+                <constraint firstItem="ahd-G9-92C" firstAttribute="width" secondItem="WQv-oN-GxY" secondAttribute="width" id="tNX-Sj-tYU"/>
+                <constraint firstItem="7ui-SE-IfE" firstAttribute="trailing" secondItem="WQv-oN-GxY" secondAttribute="trailing" id="uiR-bg-EHd"/>
+                <constraint firstItem="0Nl-Z2-yhQ" firstAttribute="top" secondItem="NhE-dw-WiW" secondAttribute="bottom" constant="20" id="z3U-LO-9pR"/>
+            </constraints>
+            <connections>
+                <outlet property="address" destination="2Jf-Qo-iLQ" id="e9I-Te-wTr"/>
+                <outlet property="apt" destination="oBV-RE-PUA" id="zQY-A8-etF"/>
+                <outlet property="city" destination="NhE-dw-WiW" id="ZUX-sR-c8M"/>
+                <outlet property="name" destination="WQv-oN-GxY" id="GRV-h8-A8s"/>
+                <outlet property="state" destination="0Nl-Z2-yhQ" id="nn3-b1-7xB"/>
+                <outlet property="zip" destination="7ui-SE-IfE" id="flX-6q-E9G"/>
+            </connections>
+            <point key="canvasLocation" x="38.5" y="63.5"/>
+        </view>
+    </objects>
+</document>

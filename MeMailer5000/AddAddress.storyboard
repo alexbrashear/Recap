@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AX5-Lx-Uii">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Address Controller-->
+        <scene sceneID="WNi-Lr-cC9">
+            <objects>
+                <viewController storyboardIdentifier="AddAddressController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AX5-Lx-Uii" customClass="AddAddressController" customModule="MeMailer5000" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R2f-ID-ZXH"/>
+                        <viewControllerLayoutGuide type="bottom" id="fcp-Jj-03y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pck-5R-70t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kjl-hT-RHf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="kjl-hT-RHf" secondAttribute="trailing" constant="-16" id="1Dq-im-anI"/>
+                            <constraint firstItem="kjl-hT-RHf" firstAttribute="top" secondItem="R2f-ID-ZXH" secondAttribute="bottom" id="IR0-Yr-iz0"/>
+                            <constraint firstItem="fcp-Jj-03y" firstAttribute="top" secondItem="kjl-hT-RHf" secondAttribute="bottom" id="MY3-i5-oh3"/>
+                            <constraint firstItem="kjl-hT-RHf" firstAttribute="leading" secondItem="Pck-5R-70t" secondAttribute="leadingMargin" constant="-16" id="Rka-3J-Tfa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="S8c-du-VkW"/>
+                    <connections>
+                        <outlet property="contentView" destination="kjl-hT-RHf" id="h5L-fv-nR1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGF-FQ-r2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="700" y="119.1904047976012"/>
+        </scene>
+    </scenes>
+</document>
