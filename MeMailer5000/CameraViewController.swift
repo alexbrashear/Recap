@@ -84,7 +84,9 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func didKeepPhoto(_ sender: UIButton) {
-        
+        let storyBoard = UIStoryboard(name: "AddressList", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "AddressListController")
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func didDeletePhoto(_ sender: UIButton) {
