@@ -16,6 +16,6 @@ struct AddressParser {
               let city  = json[AddressCoder.Keys.city.rawValue],
               let state = json[AddressCoder.Keys.state.rawValue],
               let zip   = json[AddressCoder.Keys.zip.rawValue] else { return (nil, .unknownFailure) }
-        return (Address(name: name, line1: line1, line2: line2, city: city, state: state, zip: zip), nil)
+        return (Address(id: "", name: name, line1: line1, line2: line2, city: city, state: state, zip: zip), nil)
     }    
 }
