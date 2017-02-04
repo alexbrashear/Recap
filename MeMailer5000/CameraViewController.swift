@@ -26,7 +26,8 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
         keepPhoto.isHidden = true
         deletePhoto.isHidden = true
         
@@ -69,6 +70,11 @@ class CameraViewController: UIViewController {
         view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        super.viewWillDisappear(animated)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -87,10 +93,6 @@ class CameraViewController: UIViewController {
         takePhoto.isHidden = false
         keepPhoto.isHidden = true
         deletePhoto.isHidden = true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     override var shouldAutorotate: Bool {
