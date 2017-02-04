@@ -7,61 +7,94 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		188030DE674428FC5D3BFE2A16954DF9 /* Pods-MeMailer5000-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5656964ABAF806D2ACAF82EFA4CED09 /* Pods-MeMailer5000-dummy.m */; };
+		03AF37D0E44152603EC1868539E466BF /* StoryboardSceneBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = D188673AD6881290C030B07463A35FA5 /* StoryboardSceneBased.swift */; };
+		049A3FDB6224CD293457F324765BCDDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		0CF3231C313216CE5E716B7914F87970 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0096579802D7B3BD3FAEC2564E41DF /* ValueCoding.swift */; };
 		24EED52D960E3FF3418C548B73A15075 /* Pods-MeMailer5000Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E828D12E7D74ECF7E78DAD9C672CF /* Pods-MeMailer5000Tests-dummy.m */; };
-		2F704E2363176FB310F7151D7C814ACF /* Pods-MeMailer5000-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ACDB02BC71821FAB241DA67B12DB1AA /* Pods-MeMailer5000-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4AFADC1CF453BBB47A60A643A320E9F2 /* ValueCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B844E912FB18ED10847AA53570FF73B9 /* ValueCoding.swift */; };
-		4C4E77987E46E762F3DB2F96189C00DF /* ValueCoding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 11F97D226094DF826D0B3027946CB2C8 /* ValueCoding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2CBE657DAD1F5E963FCF79948C76213D /* Pods-MeMailer5000-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F5656964ABAF806D2ACAF82EFA4CED09 /* Pods-MeMailer5000-dummy.m */; };
+		38C9F839F5933A21952652E4FAAF261A /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941E71593BB5152A5E1FE2DC22E6FA56 /* StoryboardBased.swift */; };
+		44B7C5831FE554284DDEC51D1E40CC60 /* Reusable-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BB4313148E24A1F75741A25B6C075514 /* Reusable-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		491CFC8AE3ECBE61FED9484C729D6675 /* Reusable-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F5BD26BF8F15F567A4F1842659E8CC /* Reusable-dummy.m */; };
+		64ECD8F2A2AC69BC288F63C3960FC789 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867291B529216C28CC3111CD4E6785A7 /* NibOwnerLoadable.swift */; };
+		672908DDC8D45945776698C469EF0866 /* ValueCoding-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C7C1B0BC61DF1AE8B66B833B41191E8 /* ValueCoding-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DCF260E01F97526393994FAF74D0685 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3BA402A4982D4C7BA050549B5A6C68 /* NibLoadable.swift */; };
+		7067DB5A0A1A9BC7D3133BC839214A20 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		81EB9276448FE8107AFE7341DFC6E236 /* ValueCoding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C1271433E6B3736356593713ADD24680 /* ValueCoding-dummy.m */; };
+		82E37D20A58325A039E8957CC78B3273 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF1A489F9EF60D234861CDA926D5DFD /* UITableView+Reusable.swift */; };
 		8A4DAC84A38D07E345E9F45DCD4CA91A /* Pods-MeMailer5000Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82AB29B504B9C07FBC86B9CB01C4F180 /* Pods-MeMailer5000Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8CC2590E5411012F42AB3B188620DB3A /* ValueCoding-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E64ED9704050F008E77B9BE0E24EDC11 /* ValueCoding-dummy.m */; };
-		AA37F903C03EB650503237B2D52108AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		BAE4BDD6438DC74A70A9F6498634C7E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F688D3E98144C8A9C6C8A994EBC6D9A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		BAE4BDD6438DC74A70A9F6498634C7E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		BD1A5CDA5A901084CC9B3913EC9D37E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		C84AFC9ACE0C9655CAE39F0FA590F7E8 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3398883B09FED7784F34747C44144C1A /* Reusable.swift */; };
+		D100CCE7ACC8E63BFF13E83FEDA8D16E /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F71F7DBBC628CD21F0A7D9A30A56248 /* UICollectionView+Reusable.swift */; };
+		D2E296950D711E71F24A5246BC0E0B1D /* Pods-MeMailer5000-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ACDB02BC71821FAB241DA67B12DB1AA /* Pods-MeMailer5000-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F20A3B660E33CF1C1649428A46C47567 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58CAC2E3C081FF02DCDEF8A11BBCB037 /* PBXContainerItemProxy */ = {
+		06F270495F7E1E48882672EA2CFD7668 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6A3E0FD5B0ADEBFD825BDE839C19D9EA;
+			remoteGlobalIDString = 06F6D13B2DB4889D711207BAFF053B04;
+			remoteInfo = Reusable;
+		};
+		957BF94E0BFA226C8F2DFB0B27442B20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6302570EB208A4F7FAFCE52E35EBBEFC;
 			remoteInfo = ValueCoding;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04677A35F5A99F936942E818CB5E3329 /* Pods-MeMailer5000Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MeMailer5000Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		11F97D226094DF826D0B3027946CB2C8 /* ValueCoding-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ValueCoding-umbrella.h"; sourceTree = "<group>"; };
+		0EF1A489F9EF60D234861CDA926D5DFD /* UITableView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UITableView+Reusable.swift"; path = "Sources/View/UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		143776DE096DEB9DFB1BBFC1A19DD1D0 /* Reusable.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Reusable.xcconfig; sourceTree = "<group>"; };
+		15533B997B7294D0ADD5CF035DC8520D /* Pods_MeMailer5000Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MeMailer5000Tests.framework; path = "Pods-MeMailer5000Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C7C1B0BC61DF1AE8B66B833B41191E8 /* ValueCoding-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ValueCoding-umbrella.h"; sourceTree = "<group>"; };
+		2314A8F0AE35FA0915BDDFE8F3777A07 /* Reusable.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Reusable.modulemap; sourceTree = "<group>"; };
+		23221C6EBDCE7AF5D089EE80A0EFE8F9 /* ValueCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ValueCoding.framework; path = ValueCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29E89C2E3BB75AC91F39E33743C074C3 /* Reusable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Reusable.framework; path = Reusable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3398883B09FED7784F34747C44144C1A /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = Sources/View/Reusable.swift; sourceTree = "<group>"; };
+		34A307C9741494FD2264582A024F0A76 /* ValueCoding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ValueCoding.modulemap; sourceTree = "<group>"; };
 		352D24919FD892D5FAB61350C9539871 /* Pods-MeMailer5000Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeMailer5000Tests-resources.sh"; sourceTree = "<group>"; };
-		37C55F23B9A2F57E01B8609E9B370C6D /* Pods_MeMailer5000.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MeMailer5000.framework; path = "Pods-MeMailer5000.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ACDB02BC71821FAB241DA67B12DB1AA /* Pods-MeMailer5000-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeMailer5000-umbrella.h"; sourceTree = "<group>"; };
 		3E0684FE4666B048B768177A6DE04F8F /* Pods-MeMailer5000-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MeMailer5000-acknowledgements.plist"; sourceTree = "<group>"; };
-		3FC21E7653F6C94CDDCF1EBFAE9D384E /* ValueCoding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ValueCoding.xcconfig; sourceTree = "<group>"; };
-		4168E17D552C7FA6B851F2E4756E733C /* Pods_MeMailer5000Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MeMailer5000Tests.framework; path = "Pods-MeMailer5000Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F71F7DBBC628CD21F0A7D9A30A56248 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Reusable.swift"; path = "Sources/View/UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		5529004970B0D26F2B40F80BA3ABD282 /* Pods-MeMailer5000Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeMailer5000Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5AEC949769E9A0A2C7FAC6FCB6EE331C /* Pods-MeMailer5000Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeMailer5000Tests-frameworks.sh"; sourceTree = "<group>"; };
+		5D73452E90910D2D24A881449B92960B /* Reusable-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reusable-prefix.pch"; sourceTree = "<group>"; };
+		5E3BA402A4982D4C7BA050549B5A6C68 /* NibLoadable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NibLoadable.swift; path = Sources/View/NibLoadable.swift; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		61FB0CD8502E1C623BA2F39028EFE8B8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BBD848F085B4466CE4FE2C86C0906DB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E1E828D12E7D74ECF7E78DAD9C672CF /* Pods-MeMailer5000Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeMailer5000Tests-dummy.m"; sourceTree = "<group>"; };
 		6E484AB0001EF2976565E67FC3CB231A /* Pods-MeMailer5000.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeMailer5000.release.xcconfig"; sourceTree = "<group>"; };
+		71E61DCF5436F2B26444D80F04F2D339 /* ValueCoding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ValueCoding-prefix.pch"; sourceTree = "<group>"; };
 		77811EF087AFC8D9416CF373CF3E2F7E /* Pods-MeMailer5000-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MeMailer5000-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		7F53B0C8976EF240DBAD81C5D969CDC4 /* Pods-MeMailer5000-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeMailer5000-resources.sh"; sourceTree = "<group>"; };
-		80AB6F294DE63AA4F9E773A387ECCCF5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82AB29B504B9C07FBC86B9CB01C4F180 /* Pods-MeMailer5000Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MeMailer5000Tests-umbrella.h"; sourceTree = "<group>"; };
+		867291B529216C28CC3111CD4E6785A7 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NibOwnerLoadable.swift; path = Sources/View/NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9C1F89423B6D74727A808C520E9A09F6 /* ValueCoding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ValueCoding.modulemap; sourceTree = "<group>"; };
+		941E71593BB5152A5E1FE2DC22E6FA56 /* StoryboardBased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryboardBased.swift; path = Sources/Storyboard/StoryboardBased.swift; sourceTree = "<group>"; };
+		9498345A4A9B5AC5FB63FF9871B8A183 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A26AB7D7541D063BA1CC6FD6F17EA18 /* Pods_MeMailer5000.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MeMailer5000.framework; path = "Pods-MeMailer5000.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F5BD26BF8F15F567A4F1842659E8CC /* Reusable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reusable-dummy.m"; sourceTree = "<group>"; };
 		AEA67F6000838A689D0194EDE3CF305E /* Pods-MeMailer5000Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MeMailer5000Tests.modulemap"; sourceTree = "<group>"; };
-		B844E912FB18ED10847AA53570FF73B9 /* ValueCoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueCoding.swift; path = Sources/ValueCoding.swift; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		AFE6C9F6620105F984DAAFEAE4FAB95C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB4313148E24A1F75741A25B6C075514 /* Reusable-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Reusable-umbrella.h"; sourceTree = "<group>"; };
+		C1271433E6B3736356593713ADD24680 /* ValueCoding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ValueCoding-dummy.m"; sourceTree = "<group>"; };
+		C81204F5CC1D8BEF30298B35F602FE1B /* ValueCoding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ValueCoding.xcconfig; sourceTree = "<group>"; };
+		CA0096579802D7B3BD3FAEC2564E41DF /* ValueCoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueCoding.swift; path = Sources/ValueCoding.swift; sourceTree = "<group>"; };
 		CCE72418E51B210629E1013D77F2AB31 /* Pods-MeMailer5000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeMailer5000.debug.xcconfig"; sourceTree = "<group>"; };
+		D188673AD6881290C030B07463A35FA5 /* StoryboardSceneBased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryboardSceneBased.swift; path = Sources/Storyboard/StoryboardSceneBased.swift; sourceTree = "<group>"; };
 		D463F54849216FD0D674FEB4855BF5EF /* Pods-MeMailer5000.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MeMailer5000.modulemap"; sourceTree = "<group>"; };
 		DA0954AF1C0ED222289B26750433FA27 /* Pods-MeMailer5000Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MeMailer5000Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E004C3F60E48C0EA064F0C4F052E7A70 /* ValueCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ValueCoding.framework; path = ValueCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DB797A693EE3613076CC2653095E6D /* Pods-MeMailer5000Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MeMailer5000Tests.release.xcconfig"; sourceTree = "<group>"; };
-		E64ED9704050F008E77B9BE0E24EDC11 /* ValueCoding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ValueCoding-dummy.m"; sourceTree = "<group>"; };
 		F089EBF643F68B6F28E5B801F7572160 /* Pods-MeMailer5000-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MeMailer5000-frameworks.sh"; sourceTree = "<group>"; };
 		F5656964ABAF806D2ACAF82EFA4CED09 /* Pods-MeMailer5000-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MeMailer5000-dummy.m"; sourceTree = "<group>"; };
-		FF3A89A32F124F36A66CC0F6C8B0A2F2 /* ValueCoding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ValueCoding-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,41 +106,109 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		172A4457FDA17767F52123E1C0C50716 /* Frameworks */ = {
+		702A0C4F1772A1B04BD4F835673F9953 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA37F903C03EB650503237B2D52108AC /* Foundation.framework in Frameworks */,
+				BD1A5CDA5A901084CC9B3913EC9D37E3 /* Foundation.framework in Frameworks */,
+				F20A3B660E33CF1C1649428A46C47567 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7D4A891CF8E8E7C85BB9A4A29F796132 /* Frameworks */ = {
+		C477C1CE8AB9B01EB552E25685E3D170 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F688D3E98144C8A9C6C8A994EBC6D9A0 /* Foundation.framework in Frameworks */,
+				7067DB5A0A1A9BC7D3133BC839214A20 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9B28EC4F98841BA4122927F5E2221F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				049A3FDB6224CD293457F324765BCDDE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02240C73876A7308A491C8FB29B22C12 /* Products */ = {
+		1DEF43FF3D201D241696B809D02AEFF8 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				37C55F23B9A2F57E01B8609E9B370C6D /* Pods_MeMailer5000.framework */,
-				4168E17D552C7FA6B851F2E4756E733C /* Pods_MeMailer5000Tests.framework */,
-				E004C3F60E48C0EA064F0C4F052E7A70 /* ValueCoding.framework */,
+				941E71593BB5152A5E1FE2DC22E6FA56 /* StoryboardBased.swift */,
+				D188673AD6881290C030B07463A35FA5 /* StoryboardSceneBased.swift */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		1FD848D6EB7C72AE8A052EFAF3FDC765 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9498345A4A9B5AC5FB63FF9871B8A183 /* Info.plist */,
+				34A307C9741494FD2264582A024F0A76 /* ValueCoding.modulemap */,
+				C81204F5CC1D8BEF30298B35F602FE1B /* ValueCoding.xcconfig */,
+				C1271433E6B3736356593713ADD24680 /* ValueCoding-dummy.m */,
+				71E61DCF5436F2B26444D80F04F2D339 /* ValueCoding-prefix.pch */,
+				1C7C1B0BC61DF1AE8B66B833B41191E8 /* ValueCoding-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ValueCoding";
+			sourceTree = "<group>";
+		};
+		3EE46316B87129CAAE5A22A927833C62 /* ValueCoding */ = {
+			isa = PBXGroup;
+			children = (
+				CA0096579802D7B3BD3FAEC2564E41DF /* ValueCoding.swift */,
+				1FD848D6EB7C72AE8A052EFAF3FDC765 /* Support Files */,
+			);
+			name = ValueCoding;
+			path = ValueCoding;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C23BCCEAA231FD67D6446629DC084A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A26AB7D7541D063BA1CC6FD6F17EA18 /* Pods_MeMailer5000.framework */,
+				15533B997B7294D0ADD5CF035DC8520D /* Pods_MeMailer5000Tests.framework */,
+				29E89C2E3BB75AC91F39E33743C074C3 /* Reusable.framework */,
+				23221C6EBDCE7AF5D089EE80A0EFE8F9 /* ValueCoding.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+		66128DF09355BB9922BAA844DE9F7154 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+				AFE6C9F6620105F984DAAFEAE4FAB95C /* Info.plist */,
+				2314A8F0AE35FA0915BDDFE8F3777A07 /* Reusable.modulemap */,
+				143776DE096DEB9DFB1BBFC1A19DD1D0 /* Reusable.xcconfig */,
+				A7F5BD26BF8F15F567A4F1842659E8CC /* Reusable-dummy.m */,
+				5D73452E90910D2D24A881449B92960B /* Reusable-prefix.pch */,
+				BB4313148E24A1F75741A25B6C075514 /* Reusable-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/Reusable";
+			sourceTree = "<group>";
+		};
+		6D23B20DF76D59637C121B10FFB1D39C /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				1DEF43FF3D201D241696B809D02AEFF8 /* Storyboard */,
+				66128DF09355BB9922BAA844DE9F7154 /* Support Files */,
+				8C4A06906EAE1F3A2A5A0479A6138A7C /* View */,
+			);
+			name = Reusable;
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		782874B4452162995CAADF263825B64D /* Targets Support Files */ = {
@@ -141,43 +242,23 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				EC230470351D26B1680E4C1C95EFBC63 /* Pods */,
-				02240C73876A7308A491C8FB29B22C12 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				E87C0D69A5AD21618B91A400A3EFECFA /* Pods */,
+				4C23BCCEAA231FD67D6446629DC084A1 /* Products */,
 				782874B4452162995CAADF263825B64D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BB46DCD1A416FB366D5C97F581A256D5 /* ValueCoding */ = {
+		8C4A06906EAE1F3A2A5A0479A6138A7C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B844E912FB18ED10847AA53570FF73B9 /* ValueCoding.swift */,
-				D0A77B6AD1721BCEF2ACC38387F04D06 /* Support Files */,
+				5E3BA402A4982D4C7BA050549B5A6C68 /* NibLoadable.swift */,
+				867291B529216C28CC3111CD4E6785A7 /* NibOwnerLoadable.swift */,
+				3398883B09FED7784F34747C44144C1A /* Reusable.swift */,
+				4F71F7DBBC628CD21F0A7D9A30A56248 /* UICollectionView+Reusable.swift */,
+				0EF1A489F9EF60D234861CDA926D5DFD /* UITableView+Reusable.swift */,
 			);
-			name = ValueCoding;
-			path = ValueCoding;
-			sourceTree = "<group>";
-		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D0A77B6AD1721BCEF2ACC38387F04D06 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				80AB6F294DE63AA4F9E773A387ECCCF5 /* Info.plist */,
-				9C1F89423B6D74727A808C520E9A09F6 /* ValueCoding.modulemap */,
-				3FC21E7653F6C94CDDCF1EBFAE9D384E /* ValueCoding.xcconfig */,
-				E64ED9704050F008E77B9BE0E24EDC11 /* ValueCoding-dummy.m */,
-				FF3A89A32F124F36A66CC0F6C8B0A2F2 /* ValueCoding-prefix.pch */,
-				11F97D226094DF826D0B3027946CB2C8 /* ValueCoding-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ValueCoding";
+			name = View;
 			sourceTree = "<group>";
 		};
 		E6BDA7B37C84CA6C1C4537131DF76D7C /* Pods-MeMailer5000Tests */ = {
@@ -198,10 +279,20 @@
 			path = "Target Support Files/Pods-MeMailer5000Tests";
 			sourceTree = "<group>";
 		};
-		EC230470351D26B1680E4C1C95EFBC63 /* Pods */ = {
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BB46DCD1A416FB366D5C97F581A256D5 /* ValueCoding */,
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		E87C0D69A5AD21618B91A400A3EFECFA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D23B20DF76D59637C121B10FFB1D39C /* Reusable */,
+				3EE46316B87129CAAE5A22A927833C62 /* ValueCoding */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -209,14 +300,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2B4AFD62FE5130D3A966466A6C5A0150 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2F704E2363176FB310F7151D7C814ACF /* Pods-MeMailer5000-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4BB51909FAAFD5AB2195AE0A3322C293 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,42 +308,76 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53991F13377DF77009FC78024420A3F0 /* Headers */ = {
+		7BA869037C4824CAC7A14D3485F710AE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C4E77987E46E762F3DB2F96189C00DF /* ValueCoding-umbrella.h in Headers */,
+				672908DDC8D45945776698C469EF0866 /* ValueCoding-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		945875CB8E832157BA2DE4132F248A19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B7C5831FE554284DDEC51D1E40CC60 /* Reusable-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA4CBA29CCC7D17705F7CCAAED04590B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2E296950D711E71F24A5246BC0E0B1D /* Pods-MeMailer5000-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3D946B69B6C749705A4A6B846AD2E49A /* Pods-MeMailer5000 */ = {
+		06F6D13B2DB4889D711207BAFF053B04 /* Reusable */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B024E523F484E63E6C387A6AA00C0E92 /* Build configuration list for PBXNativeTarget "Pods-MeMailer5000" */;
+			buildConfigurationList = 9633815D11805A081233E63BDF632536 /* Build configuration list for PBXNativeTarget "Reusable" */;
 			buildPhases = (
-				56E29CA59C66A097EE47A860787BB5BC /* Sources */,
-				7D4A891CF8E8E7C85BB9A4A29F796132 /* Frameworks */,
-				2B4AFD62FE5130D3A966466A6C5A0150 /* Headers */,
+				979C4DFD7CAE5D4FB0DF0B7ABD7C7038 /* Sources */,
+				702A0C4F1772A1B04BD4F835673F9953 /* Frameworks */,
+				945875CB8E832157BA2DE4132F248A19 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6891782463818BF6F4163FE1D626D49F /* PBXTargetDependency */,
+			);
+			name = Reusable;
+			productName = Reusable;
+			productReference = 29E89C2E3BB75AC91F39E33743C074C3 /* Reusable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5C19D21B0EAB285C4FEB68549CACBF8B /* Pods-MeMailer5000 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D315A92F910674E2CF577AA90D6125B0 /* Build configuration list for PBXNativeTarget "Pods-MeMailer5000" */;
+			buildPhases = (
+				F4CB6FD0817CB577EE2CA7D7ABABF90A /* Sources */,
+				C9B28EC4F98841BA4122927F5E2221F5 /* Frameworks */,
+				EA4CBA29CCC7D17705F7CCAAED04590B /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				627607896CD2992D44FF41CF13F7A5B9 /* PBXTargetDependency */,
+				857D74C71BE14E40160AC203F86565E6 /* PBXTargetDependency */,
 			);
 			name = "Pods-MeMailer5000";
 			productName = "Pods-MeMailer5000";
-			productReference = 37C55F23B9A2F57E01B8609E9B370C6D /* Pods_MeMailer5000.framework */;
+			productReference = 9A26AB7D7541D063BA1CC6FD6F17EA18 /* Pods_MeMailer5000.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6A3E0FD5B0ADEBFD825BDE839C19D9EA /* ValueCoding */ = {
+		6302570EB208A4F7FAFCE52E35EBBEFC /* ValueCoding */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 77F6054F9279221B37ED49F06A4277F4 /* Build configuration list for PBXNativeTarget "ValueCoding" */;
+			buildConfigurationList = 0AA19CEFEE6DF13DF47833066AA2749A /* Build configuration list for PBXNativeTarget "ValueCoding" */;
 			buildPhases = (
-				2FD3440F91D59EA53A8DEF250D0072A7 /* Sources */,
-				172A4457FDA17767F52123E1C0C50716 /* Frameworks */,
-				53991F13377DF77009FC78024420A3F0 /* Headers */,
+				AC259DB28C12A637004569EBD22D183C /* Sources */,
+				C477C1CE8AB9B01EB552E25685E3D170 /* Frameworks */,
+				7BA869037C4824CAC7A14D3485F710AE /* Headers */,
 			);
 			buildRules = (
 			);
@@ -268,7 +385,7 @@
 			);
 			name = ValueCoding;
 			productName = ValueCoding;
-			productReference = E004C3F60E48C0EA064F0C4F052E7A70 /* ValueCoding.framework */;
+			productReference = 23221C6EBDCE7AF5D089EE80A0EFE8F9 /* ValueCoding.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		ACB7876CF9E24DA32E48CBCEECD0C8C6 /* Pods-MeMailer5000Tests */ = {
@@ -285,7 +402,7 @@
 			);
 			name = "Pods-MeMailer5000Tests";
 			productName = "Pods-MeMailer5000Tests";
-			productReference = 4168E17D552C7FA6B851F2E4756E733C /* Pods_MeMailer5000Tests.framework */;
+			productReference = 15533B997B7294D0ADD5CF035DC8520D /* Pods_MeMailer5000Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -305,35 +422,19 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 02240C73876A7308A491C8FB29B22C12 /* Products */;
+			productRefGroup = 4C23BCCEAA231FD67D6446629DC084A1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3D946B69B6C749705A4A6B846AD2E49A /* Pods-MeMailer5000 */,
+				5C19D21B0EAB285C4FEB68549CACBF8B /* Pods-MeMailer5000 */,
 				ACB7876CF9E24DA32E48CBCEECD0C8C6 /* Pods-MeMailer5000Tests */,
-				6A3E0FD5B0ADEBFD825BDE839C19D9EA /* ValueCoding */,
+				06F6D13B2DB4889D711207BAFF053B04 /* Reusable */,
+				6302570EB208A4F7FAFCE52E35EBBEFC /* ValueCoding */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2FD3440F91D59EA53A8DEF250D0072A7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8CC2590E5411012F42AB3B188620DB3A /* ValueCoding-dummy.m in Sources */,
-				4AFADC1CF453BBB47A60A643A320E9F2 /* ValueCoding.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		56E29CA59C66A097EE47A860787BB5BC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				188030DE674428FC5D3BFE2A16954DF9 /* Pods-MeMailer5000-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		608B158033DF7E88168FEAAEA9330FD7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,14 +443,52 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		979C4DFD7CAE5D4FB0DF0B7ABD7C7038 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DCF260E01F97526393994FAF74D0685 /* NibLoadable.swift in Sources */,
+				64ECD8F2A2AC69BC288F63C3960FC789 /* NibOwnerLoadable.swift in Sources */,
+				491CFC8AE3ECBE61FED9484C729D6675 /* Reusable-dummy.m in Sources */,
+				C84AFC9ACE0C9655CAE39F0FA590F7E8 /* Reusable.swift in Sources */,
+				38C9F839F5933A21952652E4FAAF261A /* StoryboardBased.swift in Sources */,
+				03AF37D0E44152603EC1868539E466BF /* StoryboardSceneBased.swift in Sources */,
+				D100CCE7ACC8E63BFF13E83FEDA8D16E /* UICollectionView+Reusable.swift in Sources */,
+				82E37D20A58325A039E8957CC78B3273 /* UITableView+Reusable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC259DB28C12A637004569EBD22D183C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81EB9276448FE8107AFE7341DFC6E236 /* ValueCoding-dummy.m in Sources */,
+				0CF3231C313216CE5E716B7914F87970 /* ValueCoding.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4CB6FD0817CB577EE2CA7D7ABABF90A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CBE657DAD1F5E963FCF79948C76213D /* Pods-MeMailer5000-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6891782463818BF6F4163FE1D626D49F /* PBXTargetDependency */ = {
+		627607896CD2992D44FF41CF13F7A5B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Reusable;
+			target = 06F6D13B2DB4889D711207BAFF053B04 /* Reusable */;
+			targetProxy = 06F270495F7E1E48882672EA2CFD7668 /* PBXContainerItemProxy */;
+		};
+		857D74C71BE14E40160AC203F86565E6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ValueCoding;
-			target = 6A3E0FD5B0ADEBFD825BDE839C19D9EA /* ValueCoding */;
-			targetProxy = 58CAC2E3C081FF02DCDEF8A11BBCB037 /* PBXContainerItemProxy */;
+			target = 6302570EB208A4F7FAFCE52E35EBBEFC /* ValueCoding */;
+			targetProxy = 957BF94E0BFA226C8F2DFB0B27442B20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -398,6 +537,39 @@
 			};
 			name = Debug;
 		};
+		23A80AB3F64B693F1B501C14A6B03DCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 143776DE096DEB9DFB1BBFC1A19DD1D0 /* Reusable.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Reusable/Reusable-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Reusable/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Reusable/Reusable.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Reusable;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		2ACDD485CF99B89CA5980FF36773393D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5529004970B0D26F2B40F80BA3ABD282 /* Pods-MeMailer5000Tests.debug.xcconfig */;
@@ -433,9 +605,77 @@
 			};
 			name = Debug;
 		};
-		2B9A4C72DA5319EC8EA3CA0DC86EE27C /* Debug */ = {
+		31A07CF1B642498572418FE0C5FF0011 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FC21E7653F6C94CDDCF1EBFAE9D384E /* ValueCoding.xcconfig */;
+			baseConfigurationReference = CCE72418E51B210629E1013D77F2AB31 /* Pods-MeMailer5000.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MeMailer5000/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MeMailer5000;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		36E6912BC41DB1B14A573C7D46F23A9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C81204F5CC1D8BEF30298B35F602FE1B /* ValueCoding.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ValueCoding/ValueCoding-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ValueCoding/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ValueCoding/ValueCoding.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ValueCoding;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		421EDCF36948BFEEF0CEA4CA95ABAB61 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C81204F5CC1D8BEF30298B35F602FE1B /* ValueCoding.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -465,41 +705,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		94F28A776BA680C8AFD2BE7ED24FCAB2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E484AB0001EF2976565E67FC3CB231A /* Pods-MeMailer5000.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MeMailer5000/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MeMailer5000;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		BA583CBE900A23A06F02CFBD73CDA494 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -536,9 +741,9 @@
 			};
 			name = Release;
 		};
-		BBECCB28CF07E0F2AF45B0711F417EB3 /* Release */ = {
+		C0F64E78730531CAFDD114C7D3A1EDE3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FC21E7653F6C94CDDCF1EBFAE9D384E /* ValueCoding.xcconfig */;
+			baseConfigurationReference = 6E484AB0001EF2976565E67FC3CB231A /* Pods-MeMailer5000.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -551,14 +756,49 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ValueCoding/ValueCoding-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ValueCoding/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-MeMailer5000/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_MeMailer5000;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D0745DB952B7AB87A9BFBE7D6A844491 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 143776DE096DEB9DFB1BBFC1A19DD1D0 /* Reusable.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Reusable/Reusable-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Reusable/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ValueCoding/ValueCoding.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Reusable/Reusable.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ValueCoding;
+				PRODUCT_NAME = Reusable;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -567,42 +807,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		CBB4DD1F84FEEC866F418B929235CAF9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCE72418E51B210629E1013D77F2AB31 /* Pods-MeMailer5000.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-MeMailer5000/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_MeMailer5000;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -656,6 +860,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0AA19CEFEE6DF13DF47833066AA2749A /* Build configuration list for PBXNativeTarget "ValueCoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				421EDCF36948BFEEF0CEA4CA95ABAB61 /* Debug */,
+				36E6912BC41DB1B14A573C7D46F23A9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -665,20 +878,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		77F6054F9279221B37ED49F06A4277F4 /* Build configuration list for PBXNativeTarget "ValueCoding" */ = {
+		9633815D11805A081233E63BDF632536 /* Build configuration list for PBXNativeTarget "Reusable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2B9A4C72DA5319EC8EA3CA0DC86EE27C /* Debug */,
-				BBECCB28CF07E0F2AF45B0711F417EB3 /* Release */,
+				23A80AB3F64B693F1B501C14A6B03DCE /* Debug */,
+				D0745DB952B7AB87A9BFBE7D6A844491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B024E523F484E63E6C387A6AA00C0E92 /* Build configuration list for PBXNativeTarget "Pods-MeMailer5000" */ = {
+		D315A92F910674E2CF577AA90D6125B0 /* Build configuration list for PBXNativeTarget "Pods-MeMailer5000" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CBB4DD1F84FEEC866F418B929235CAF9 /* Debug */,
-				94F28A776BA680C8AFD2BE7ED24FCAB2 /* Release */,
+				31A07CF1B642498572418FE0C5FF0011 /* Debug */,
+				C0F64E78730531CAFDD114C7D3A1EDE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,12 +1,19 @@
 PODS:
+  - Reusable (3.0.1):
+    - Reusable/Storyboard (= 3.0.1)
+    - Reusable/View (= 3.0.1)
+  - Reusable/Storyboard (3.0.1)
+  - Reusable/View (3.0.1)
   - ValueCoding (2.1.0)
 
 DEPENDENCIES:
+  - Reusable
   - ValueCoding (~> 2.1.0)
 
 SPEC CHECKSUMS:
+  Reusable: 5362d10271ca8316b104698a21e90498f47e8339
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
 
-PODFILE CHECKSUM: 22dfd0ccb015d23aea08a7e831adcffe773ceb02
+PODFILE CHECKSUM: 9134af17e442079a22abc97c0ca3038cc61a3712
 
 COCOAPODS: 1.2.0
