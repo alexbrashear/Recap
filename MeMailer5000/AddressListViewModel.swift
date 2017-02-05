@@ -11,15 +11,29 @@ import Foundation
 class AddressListViewModel: AddressListViewModelProtocol {
     var numberOfSections: Int = 0
     
+    private let addresses: [Address]
+    
+    init(addresses: [Address]) {
+        self.addresses = addresses
+    }
+    
     func numberOfRows(in section: Int) -> Int {
-        return 0
+        return addresses.count
     }
     
     func title(for indexPath: IndexPath) -> String {
-        return ""
+        guard indexPath.row >= 0 && indexPath.row < addresses.count else { return "" }
+        return addresses[indexPath.row].name
     }
     
     func subtitle(for indexPath: IndexPath) -> String {
-        return ""
+        guard indexPath.row >= 0 && indexPath.row < addresses.count else { return "" }
+        let address = addresses[indexPath.row]
+        return displayableSubtitle(for: address)
+    }
+    
+    private func displayableSubtitle(for address: Address) -> String {
+        let line2 = address.line2 == "" ? "" : " \(address.line2)"
+        return "\(address.line1)\(line2), \(address.city), \(address.state)."
     }
 }

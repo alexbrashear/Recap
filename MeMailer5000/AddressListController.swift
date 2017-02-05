@@ -20,10 +20,18 @@ protocol AddressListViewModelProtocol {
 
 class AddressListController: UITableViewController {
     
-    var viewModel: AddressListViewModelProtocol = AddressListViewModel()
+    var viewModel: AddressListViewModelProtocol = AddressListViewModel(addresses: [])
+    private let persister = Persister()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let addresses = persister.loadAddresses()
+        if let addresses = addresses, !addresses.isEmpty {
+            viewModel = AddressListViewModel(addresses: addresses)
+        } else {
+            // TODO: Display the empty addresses view
+        }
+        
         title = "Send To..."
         let addAddress = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAddressTapped))
         navigationItem.rightBarButtonItem = addAddress
@@ -34,7 +42,14 @@ class AddressListController: UITableViewController {
     
     func addAddressTapped() {
         let storyBoard = UIStoryboard(name: "AddAddress", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "AddAddressController")
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "AddAddressController") as? AddAddressController else {
+            return
+        }
+        viewController.reloadAddresses = { [weak self] in
+            DispatchQueue.main.sync {
+                self?.tableView.reloadData()
+            }
+        }
         let nc = UINavigationController(rootViewController: viewController)
         navigationController?.present(nc, animated: true, completion: nil)
     }
