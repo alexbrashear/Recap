@@ -8,21 +8,6 @@
 
 import Foundation
 
-typealias AddressVerificationCompletion = (_ address: Address?, _ error: AddressVerificationError?) -> Void
-
-enum AddressVerificationError: Error {
-    case unknownFailure
-    case notEnoughInformation
-    
-    var localizedDescription: String {
-        switch self {
-        case .unknownFailure:
-            return "Unable to find address, check that you entered a valid address, city, state and zipcode"
-        case .notEnoughInformation:
-            return "The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
-        }
-    }
-}
 
 class AddressProvider {
     private let parser = AddressParser()
