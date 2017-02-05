@@ -28,7 +28,7 @@ class AddressProvider {
         URLSession.shared.dataTask(with: verifyRequest) { [weak self] (data, response, error) in
             guard let data = data else { return completion(nil, .unknownFailure) }
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: String]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
                 if let json = json {
                     let (address, error) = self?.parser.parse(json: json, name: name) ?? (nil, .unknownFailure)
                     completion(address, error)
