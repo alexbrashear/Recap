@@ -10,6 +10,7 @@
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		AAA088F767FEF5325B7376AE /* Pods_MeMailer5000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34946F08527E6EFDE941A601 /* Pods_MeMailer5000.framework */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
+		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083A1E3D163600E2BD8A /* AppDelegate.swift */; };
 		C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083C1E3D163600E2BD8A /* CameraViewController.swift */; };
 		C35308401E3D163600E2BD8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		910C3EBB8C614BCD76D0661B /* Pods-MeMailer5000.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000.debug.xcconfig"; sourceTree = "<group>"; };
 		B81E9763E941AC282E038598 /* Pods-MeMailer5000Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000Tests/Pods-MeMailer5000Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C35308371E3D163600E2BD8A /* MeMailer5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMailer5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C353083A1E3D163600E2BD8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C353083C1E3D163600E2BD8A /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
 				C3683DEB1E46630D00650A90 /* Add Address */,
 				C3DB8C4A1E42DFB40076B7A3 /* PostcardParser.swift */,
+				C330B6361E46A17100928284 /* Result.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
 				C353083E1E3D163600E2BD8A /* Main.storyboard */,
 				C35308411E3D163600E2BD8A /* Assets.xcassets */,
@@ -419,6 +422,7 @@
 				C3683DF11E466A2900650A90 /* AddAddressView.swift in Sources */,
 				C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */,
 				C3DB8C491E41AA0F0076B7A3 /* PostcardProvider.swift in Sources */,
+				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C3DB8C4B1E42DFB40076B7A3 /* PostcardParser.swift in Sources */,
