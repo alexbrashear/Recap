@@ -10,7 +10,7 @@ import ValueCoding
 
 struct Address {
     /// the unique identifier of the address
-    let id: String
+    var id: String
     /// the name of the intended recipient at this address
     let name: String
     /// the address line 1
@@ -25,6 +25,10 @@ struct Address {
     let zip: String
     /// the country of the address, defaults to "US"
     let country = "US"
+    
+    var hasID: Bool {
+        return id != ""
+    }
     
     /// Returns a string that can be used in the body of an http request
     ///
