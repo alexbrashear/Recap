@@ -1,0 +1,62 @@
+{
+  "name": "RCSYapDatabaseExtensions",
+  "version": "3.0.0",
+  "summary": "Helpers for using value types with YapDatabase.",
+  "description": "Defines APIs to conveniently read, write and remove objects and values\nto or from YapDatabse. See ValueCoding for value type support.\n\nFork of danthorpe's YapDatabaseExtensions with Swift 3 support and\nmetadata separated from objects.",
+  "homepage": "https://github.com/JimRoepcke/YapDatabaseExtensions",
+  "license": "MIT",
+  "authors": {
+    "Daniel Thorpe": "@danthorpe",
+    "Jim Roepcke": "@JimRoepcke"
+  },
+  "source": {
+    "git": "https://github.com/JimRoepcke/YapDatabaseExtensions.git",
+    "tag": "3.0.0"
+  },
+  "module_name": "RCSYapDatabaseExtensions",
+  "social_media_url": "https://twitter.com/JimRoepcke",
+  "requires_arc": true,
+  "default_subspecs": "Persitable",
+  "platforms": {
+    "ios": "9.0",
+    "osx": "10.11"
+  },
+  "dependencies": {
+    "ValueCoding": [
+      "~> 2.1.0"
+    ],
+    "YapDatabase": [
+      "2.9.2"
+    ]
+  },
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": [
+        "Sources/YapDatabaseExtensions.swift",
+        "Sources/YapDB.swift"
+      ]
+    },
+    {
+      "name": "Functional",
+      "dependencies": {
+        "RCSYapDatabaseExtensions/Core": [
+
+        ]
+      },
+      "source_files": "Sources/Functional_*.swift"
+    },
+    {
+      "name": "Persitable",
+      "dependencies": {
+        "RCSYapDatabaseExtensions/Functional": [
+
+        ]
+      },
+      "source_files": [
+        "Sources/Read.swift",
+        "Sources/Persistable_*.swift"
+      ]
+    }
+  ]
+}

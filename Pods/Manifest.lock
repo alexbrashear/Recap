@@ -7,6 +7,21 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
+  - RCSYapDatabaseExtensions (3.0.0):
+    - RCSYapDatabaseExtensions/Persitable (= 3.0.0)
+    - ValueCoding (~> 2.1.0)
+    - YapDatabase (= 2.9.2)
+  - RCSYapDatabaseExtensions/Core (3.0.0):
+    - ValueCoding (~> 2.1.0)
+    - YapDatabase (= 2.9.2)
+  - RCSYapDatabaseExtensions/Functional (3.0.0):
+    - RCSYapDatabaseExtensions/Core
+    - ValueCoding (~> 2.1.0)
+    - YapDatabase (= 2.9.2)
+  - RCSYapDatabaseExtensions/Persitable (3.0.0):
+    - RCSYapDatabaseExtensions/Functional
+    - ValueCoding (~> 2.1.0)
+    - YapDatabase (= 2.9.2)
   - Reachability (3.2)
   - Reusable (3.0.1):
     - Reusable/Storyboard (= 3.0.1)
@@ -66,17 +81,29 @@ PODS:
     - YapDatabase/Standard/Core
 
 DEPENDENCIES:
+  - RCSYapDatabaseExtensions (from `git@github.com:JimRoepcke/YapDatabaseExtensions.git`, tag `3.0.0`)
   - Reusable
   - ValueCoding (~> 2.1.0)
   - YapDatabase (~> 2.9)
 
+EXTERNAL SOURCES:
+  RCSYapDatabaseExtensions:
+    :git: git@github.com:JimRoepcke/YapDatabaseExtensions.git
+    :tag: 3.0.0
+
+CHECKOUT OPTIONS:
+  RCSYapDatabaseExtensions:
+    :git: git@github.com:JimRoepcke/YapDatabaseExtensions.git
+    :tag: 3.0.0
+
 SPEC CHECKSUMS:
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  RCSYapDatabaseExtensions: 6a3336c71415a652440196cf5e0f1cb14086ef56
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Reusable: 5362d10271ca8316b104698a21e90498f47e8339
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: 4e5e1f9c56b7b84b853feb6829b90ef6e8f3547b
+PODFILE CHECKSUM: 011a5c3ef2cb55af8fd29899cdfa3afc79d699d1
 
 COCOAPODS: 1.2.0

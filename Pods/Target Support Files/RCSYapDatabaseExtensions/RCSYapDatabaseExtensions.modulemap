@@ -1,0 +1,6 @@
+framework module RCSYapDatabaseExtensions {
+  umbrella header "RCSYapDatabaseExtensions-umbrella.h"
+
+  export *
+  module * { export * }
+}
