@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YapDatabase
 
 protocol AddressListViewModelProtocol {
     var numberOfSections: Int { get }
@@ -21,16 +22,19 @@ protocol AddressListViewModelProtocol {
 class AddressListController: UITableViewController {
     
     var viewModel: AddressListViewModelProtocol = AddressListViewModel(addresses: [])
-    private let persister = Persister()
+    
+    let databaseConnection = DatabaseController.sharedInstance.newWritingConnection()
+    
+    deinit {
+        removeObserver(self, forKeyPath:  NSNotification.Name.YapDatabaseModified.rawValue)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addresses = persister.loadAddresses()
-        if let addresses = addresses, !addresses.isEmpty {
-            viewModel = AddressListViewModel(addresses: addresses)
-        } else {
-            // TODO: Display the empty addresses view
-        }
+        
+        readData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(yapDatabaseModified), name: NSNotification.Name.YapDatabaseModified, object: DatabaseController.sharedInstance.yapDatabase)
         
         title = "Send To..."
         let addAddress = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAddressTapped))
@@ -40,15 +44,26 @@ class AddressListController: UITableViewController {
         tableView.register(nib, forCellReuseIdentifier: String(describing: AddressCell.self))
     }
     
+    func yapDatabaseModified(notification: Notification) {
+        readData()
+        tableView.reloadData()
+    }
+    
+    func readData() {
+        databaseConnection.beginLongLivedReadTransaction()
+        var addresses: [Address]?
+        databaseConnection.read { transaction in
+            addresses = transaction.object(forKey: "addresses", inCollection: "addresses") as? [Address]
+        }
+        if let addresses = addresses {
+            viewModel = AddressListViewModel(addresses: addresses)
+        }
+    }
+    
     func addAddressTapped() {
         let storyBoard = UIStoryboard(name: "AddAddress", bundle: nil)
         guard let viewController = storyBoard.instantiateViewController(withIdentifier: "AddAddressController") as? AddAddressController else {
             return
-        }
-        viewController.reloadAddresses = { [weak self] in
-            DispatchQueue.main.sync {
-                self?.tableView.reloadData()
-            }
         }
         let nc = UINavigationController(rootViewController: viewController)
         navigationController?.present(nc, animated: true, completion: nil)
@@ -68,7 +83,7 @@ extension AddressListController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: AddressCell.self)) as? AddressCell else { return UITableViewCell() }
-        
+
         let title = viewModel.title(for: indexPath)
         let subtitle = viewModel.subtitle(for: indexPath)
         cell.viewModel = AddressCell.ViewModel(title: title, subtitle: subtitle)

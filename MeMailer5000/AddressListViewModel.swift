@@ -9,7 +9,7 @@
 import Foundation
 
 class AddressListViewModel: AddressListViewModelProtocol {
-    var numberOfSections: Int = 0
+    var numberOfSections: Int = 1
     
     private let addresses: [Address]
     

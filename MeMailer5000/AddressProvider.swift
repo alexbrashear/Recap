@@ -8,12 +8,14 @@
 
 import Foundation
 
+typealias AddressVerificationCompletion = (_ address: Address?, _ error: AddressError?) -> Void
 
 class AddressProvider {
     private let parser = AddressParser()
     private let verifyURLString = "https://api.lob.com/v1/verify"
     private var testCredentials: String {
         let username = "test_3f5d20f0882cd26b96fbabe1a4161a5285f"
+        let test = "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc"
         let password = ""
         let loginData = "\(username):\(password)".data(using: .utf8)
         return loginData?.base64EncodedString() ?? ""

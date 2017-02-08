@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YapDatabase
 
 class AddAddressController: UIViewController {
     
@@ -20,9 +21,7 @@ class AddAddressController: UIViewController {
     fileprivate var tap: UIGestureRecognizer?
     
     private let addressProvider = AddressProvider()
-    
-    var reloadAddresses: (() -> Void)?
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerKeyboardNotifications()
@@ -60,21 +59,30 @@ class AddAddressController: UIViewController {
         let apt = aptField.text ?? ""
         
         addressProvider.verify(name: name, line1: address, line2: apt, city: city, state: state, zip: zip) { [weak self] address, error in
-            if let error = error {
-                self?.presentAlert(withTitle: error.localizedTitle, message: error.localizedDescription)
-            } else {
-                guard let address = address else {
-                    self?.presentAlert(withTitle: AddressError.unknownFailure.localizedTitle, message: AddressError.unknownFailure.localizedDescription)
-                    return
-                }
-                let persister = Persister()
-                let success = persister.save(address: address)
-                if !success {
-                    self?.presentAlert(withTitle: "Error", message: "Address was found but could not be saved")
+            self?.save(address: address, error: error)
+        }
+    }
+    
+    func save(address: Address?, error: AddressError?) {
+        if let error = error {
+            self.presentAlert(withTitle: error.localizedTitle, message: error.localizedDescription)
+        } else {
+            guard let address = address else {
+                self.presentAlert(withTitle: AddressError.unknownFailure.localizedTitle, message: AddressError.unknownFailure.localizedDescription)
+                return
+            }
+            /// save address and dismiss
+            let connection = DatabaseController.sharedInstance.newWritingConnection()
+            connection.readWrite { transaction in
+                var addresses = transaction.object(forKey: "addresses", inCollection: "addresses") as? [Address] ?? []
+                if addresses.isEmpty {
+                    transaction.setObject([address], forKey: "addresses", inCollection: "addresses")
                 } else {
-                    self?.reloadAddresses?()
+                    addresses.append(address)
+                    transaction.replace(addresses, forKey: "addresses", inCollection: "addresses")
                 }
             }
+            dismiss(animated: true, completion: nil)
         }
     }
     
