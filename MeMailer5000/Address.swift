@@ -8,7 +8,18 @@
 
 import ValueCoding
 
-struct Address {
+enum Keys: String {
+    case id      = "id"
+    case name    = "name"
+    case line1   = "address_line1"
+    case line2   = "address_line2"
+    case city    = "address_city"
+    case state   = "address_state"
+    case zip     = "address_zip"
+    case country = "address_country"
+}
+
+class Address: NSObject, NSCoding {
     /// the unique identifier of the address
     var id: String
     /// the name of the intended recipient at this address
@@ -26,30 +37,22 @@ struct Address {
     /// the country of the address, defaults to "US"
     let country = "US"
     
+    static let defaultAddress = Address(id: "", name: "alex brashear", line1: "132 saint marks place", line2: "7", city: "new york", state: "ny", zip:  "10009")
+    
     var hasID: Bool {
         return id != ""
     }
     
-    /// Returns a string that can be used in the body of an http request
-    ///
-    /// - Parameter name: the parent object (e.g. "to[address_line1]=132 st marks")
-    /// - returns: the encoded string
-    func bodyString(withParent parent: String) -> String {
-        return "\(parent)[\(AddressCoder.Keys.name.rawValue)]=\(name)&" +
-               "\(parent)[\(AddressCoder.Keys.line1.rawValue)]=\(line1)&" +
-               "\(parent)[\(AddressCoder.Keys.line2.rawValue)]=\(line2)&" +
-               "\(parent)[\(AddressCoder.Keys.city.rawValue)]=\(city)&" +
-               "\(parent)[\(AddressCoder.Keys.state.rawValue)]=\(state)&" +
-               "\(parent)[\(AddressCoder.Keys.zip.rawValue)]=\(zip)&" +
-               "\(parent)[\(AddressCoder.Keys.country.rawValue)]=\(country)"
+    init(id: String, name: String, line1: String, line2: String, city: String, state: String, zip: String) {
+        self.id = id
+        self.name = name
+        self.line1 = line1
+        self.line2 = line2
+        self.city = city
+        self.state = state
+        self.zip = zip
     }
-}
-
-extension Address: ValueCoding {
-    typealias Coder = AddressCoder
-}
-
-final class AddressCoder: NSObject, NSCoding, CodingProtocol {
+    
     enum Keys: String {
         case id      = "id"
         case name    = "name"
@@ -61,37 +64,89 @@ final class AddressCoder: NSObject, NSCoding, CodingProtocol {
         case country = "address_country"
     }
     
-    let value: Address
-    
-    required init(_ v: Address) {
-        value = v
-        super.init()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
+    required convenience init?(coder aDecoder: NSCoder) {
         guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
-              let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,
-              let line1 = aDecoder.decodeObject(forKey: Keys.line1.rawValue) as? String,
-              let line2 = aDecoder.decodeObject(forKey: Keys.line2.rawValue) as? String,
-              let city = aDecoder.decodeObject(forKey: Keys.city.rawValue) as? String,
-              let state = aDecoder.decodeObject(forKey: Keys.state.rawValue) as? String,
-              let zip = aDecoder.decodeObject(forKey: Keys.zip.rawValue) as? String
-        else {
-            assertionFailure("unable to decode Address")
-            return nil
+            let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,
+            let line1 = aDecoder.decodeObject(forKey: Keys.line1.rawValue) as? String,
+            let line2 = aDecoder.decodeObject(forKey: Keys.line2.rawValue) as? String,
+            let city = aDecoder.decodeObject(forKey: Keys.city.rawValue) as? String,
+            let state = aDecoder.decodeObject(forKey: Keys.state.rawValue) as? String,
+            let zip = aDecoder.decodeObject(forKey: Keys.zip.rawValue) as? String
+            else {
+                assertionFailure("unable to decode Address")
+                return nil
         }
-        
-        value = Address(id: id, name: name, line1: line1, line2: line2, city: city, state: state, zip: zip)
-        super.init()
+        self.init(id: id, name: name, line1: line1, line2: line2, city: city, state: state, zip: zip)
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(value.id, forKey: Keys.id.rawValue)
-        aCoder.encode(value.name, forKey: Keys.name.rawValue)
-        aCoder.encode(value.line1, forKey: Keys.line1.rawValue)
-        aCoder.encode(value.line2, forKey: Keys.line2.rawValue)
-        aCoder.encode(value.city, forKey: Keys.city.rawValue)
-        aCoder.encode(value.state, forKey: Keys.state.rawValue)
-        aCoder.encode(value.zip, forKey: Keys.zip.rawValue)
+        aCoder.encode(id, forKey: Keys.id.rawValue)
+        aCoder.encode(name, forKey: Keys.name.rawValue)
+        aCoder.encode(line1, forKey: Keys.line1.rawValue)
+        aCoder.encode(line2, forKey: Keys.line2.rawValue)
+        aCoder.encode(city, forKey: Keys.city.rawValue)
+        aCoder.encode(state, forKey: Keys.state.rawValue)
+        aCoder.encode(zip, forKey: Keys.zip.rawValue)
+    }
+    
+    /// Returns a string that can be used in the body of an http request
+    ///
+    /// - Parameter name: the parent object (e.g. "to[address_line1]=132 st marks")
+    /// - returns: the encoded string
+    func bodyString(withParent parent: String) -> String {
+        return "\(parent)[\(Address.Keys.name.rawValue)]=\(name)&" +
+               "\(parent)[\(Address.Keys.line1.rawValue)]=\(line1)&" +
+               "\(parent)[\(Address.Keys.line2.rawValue)]=\(line2)&" +
+               "\(parent)[\(Address.Keys.city.rawValue)]=\(city)&" +
+               "\(parent)[\(Address.Keys.state.rawValue)]=\(state)&" +
+               "\(parent)[\(Address.Keys.zip.rawValue)]=\(zip)&" +
+               "\(parent)[\(Address.Keys.country.rawValue)]=\(country)"
     }
 }
+
+//final class AddressCoder: NSObject, NSCoding, CodingProtocol {
+//    enum Keys: String {
+//        case id      = "id"
+//        case name    = "name"
+//        case line1   = "address_line1"
+//        case line2   = "address_line2"
+//        case city    = "address_city"
+//        case state   = "address_state"
+//        case zip     = "address_zip"
+//        case country = "address_country"
+//    }
+//    
+//    let value: Address
+//    
+//    required init(_ v: Address) {
+//        value = v
+//        super.init()
+//    }
+//    
+//    required init?(coder aDecoder: NSCoder) {
+//        guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
+//              let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,
+//              let line1 = aDecoder.decodeObject(forKey: Keys.line1.rawValue) as? String,
+//              let line2 = aDecoder.decodeObject(forKey: Keys.line2.rawValue) as? String,
+//              let city = aDecoder.decodeObject(forKey: Keys.city.rawValue) as? String,
+//              let state = aDecoder.decodeObject(forKey: Keys.state.rawValue) as? String,
+//              let zip = aDecoder.decodeObject(forKey: Keys.zip.rawValue) as? String
+//        else {
+//            assertionFailure("unable to decode Address")
+//            return nil
+//        }
+//        
+//        value = Address(id: id, name: name, line1: line1, line2: line2, city: city, state: state, zip: zip)
+//        super.init()
+//    }
+//    
+//    func encode(with aCoder: NSCoder) {
+//        aCoder.encode(value.id, forKey: Keys.id.rawValue)
+//        aCoder.encode(value.name, forKey: Keys.name.rawValue)
+//        aCoder.encode(value.line1, forKey: Keys.line1.rawValue)
+//        aCoder.encode(value.line2, forKey: Keys.line2.rawValue)
+//        aCoder.encode(value.city, forKey: Keys.city.rawValue)
+//        aCoder.encode(value.state, forKey: Keys.state.rawValue)
+//        aCoder.encode(value.zip, forKey: Keys.zip.rawValue)
+//    }
+//}
