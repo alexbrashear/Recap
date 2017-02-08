@@ -26,11 +26,8 @@
 		C3683DE81E465D5900650A90 /* AddressList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE71E465D5900650A90 /* AddressList.storyboard */; };
 		C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE91E46630900650A90 /* AddAddress.storyboard */; };
 		C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3683DEC1E4664EE00650A90 /* AddAddressController.swift */; };
-		C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */; };
 		C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C431E4057820076B7A3 /* AddressProvider.swift */; };
 		C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C461E419D550076B7A3 /* AddressParser.swift */; };
-		C3DB8C491E41AA0F0076B7A3 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C481E41AA0F0076B7A3 /* PostcardProvider.swift */; };
-		C3DB8C4B1E42DFB40076B7A3 /* PostcardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C4A1E42DFB40076B7A3 /* PostcardParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,11 +68,8 @@
 		C3683DE71E465D5900650A90 /* AddressList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddressList.storyboard; sourceTree = "<group>"; };
 		C3683DE91E46630900650A90 /* AddAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAddress.storyboard; sourceTree = "<group>"; };
 		C3683DEC1E4664EE00650A90 /* AddAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressController.swift; sourceTree = "<group>"; };
-		C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C3DB8C431E4057820076B7A3 /* AddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		C3DB8C461E419D550076B7A3 /* AddressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser.swift; sourceTree = "<group>"; };
-		C3DB8C481E41AA0F0076B7A3 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
-		C3DB8C4A1E42DFB40076B7A3 /* PostcardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +142,6 @@
 				C3683DE21E46585300650A90 /* Address List */,
 				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
 				C3683DEB1E46630D00650A90 /* Add Address */,
-				C3DB8C4A1E42DFB40076B7A3 /* PostcardParser.swift */,
 				C330B6361E46A17100928284 /* Result.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
 				C353083E1E3D163600E2BD8A /* Main.storyboard */,
@@ -194,7 +187,6 @@
 			children = (
 				C31279C21E3EF09900F52C31 /* Address.swift */,
 				C330B63A1E46B82800928284 /* AddressError.swift */,
-				C3DB8C3C1E402BC30076B7A3 /* Postcard.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -203,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				C3DB8C431E4057820076B7A3 /* AddressProvider.swift */,
-				C3DB8C481E41AA0F0076B7A3 /* PostcardProvider.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -418,13 +409,10 @@
 				C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */,
 				C3683DE51E46594E00650A90 /* AddressCell.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
-				C3DB8C3D1E402BC30076B7A3 /* Postcard.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
-				C3DB8C491E41AA0F0076B7A3 /* PostcardProvider.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
-				C3DB8C4B1E42DFB40076B7A3 /* PostcardParser.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C330B6391E46B51300928284 /* Persister.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
