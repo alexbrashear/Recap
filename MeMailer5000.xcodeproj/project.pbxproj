@@ -11,7 +11,7 @@
 		AAA088F767FEF5325B7376AE /* Pods_MeMailer5000.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34946F08527E6EFDE941A601 /* Pods_MeMailer5000.framework */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
-		C330B6391E46B51300928284 /* Persister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* Persister.swift */; };
+		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
 		C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083A1E3D163600E2BD8A /* AppDelegate.swift */; };
 		C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083C1E3D163600E2BD8A /* CameraViewController.swift */; };
@@ -49,7 +49,7 @@
 		B81E9763E941AC282E038598 /* Pods-MeMailer5000Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeMailer5000Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeMailer5000Tests/Pods-MeMailer5000Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		C330B6381E46B51300928284 /* Persister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persister.swift; sourceTree = "<group>"; };
+		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
 		C35308371E3D163600E2BD8A /* MeMailer5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMailer5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C353083A1E3D163600E2BD8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
-				C330B6381E46B51300928284 /* Persister.swift */,
+				C330B6381E46B51300928284 /* DatabaseController.swift */,
 				C3DB8C401E4046C00076B7A3 /* models */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
 				C3683DE21E46585300650A90 /* Address List */,
@@ -414,7 +414,7 @@
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
-				C330B6391E46B51300928284 /* Persister.swift in Sources */,
+				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 				C3683DDF1E46567100650A90 /* AddressListController.swift in Sources */,
