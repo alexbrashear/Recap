@@ -11,6 +11,23 @@ import AVFoundation
 
 class CameraViewController: UIViewController {
     
+    enum State {
+        case takePicture
+        case viewPicture
+    }
+    
+    fileprivate(set) var state: State = .takePicture {
+        didSet {
+            if oldValue == .viewPicture {
+                captureView.layer.replaceSublayer(imageView.layer, with: videoPreviewLayer!)
+                imageView.image = nil
+            } else {
+                captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
+            }
+            displayButtons(forState: state)
+        }
+    }
+    
     // MARK: - IBOutlets
     
     @IBOutlet fileprivate var captureView: UIView!
@@ -23,13 +40,10 @@ class CameraViewController: UIViewController {
     var session = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
-
-        keepPhoto.isHidden = true
-        deletePhoto.isHidden = true
         
         session.sessionPreset = AVCaptureSessionPresetPhoto
         
@@ -68,6 +82,8 @@ class CameraViewController: UIViewController {
         view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
+        
+        displayButtons(forState: state)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +95,34 @@ class CameraViewController: UIViewController {
         return .lightContent
     }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    // MARK: - AVCapturePhotoSettings
+    
+    fileprivate var capturePhotoSettings: AVCapturePhotoSettings {
+        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
+        return settings
+    }
+    
+    private func displayButtons(forState state: State) {
+        switch state {
+        case .takePicture:
+            takePhoto.isHidden = false
+            keepPhoto.isHidden = true
+            deletePhoto.isHidden = true
+        case .viewPicture:
+            takePhoto.isHidden = true
+            keepPhoto.isHidden = false
+            deletePhoto.isHidden = false
+        }
+    }
+}
+
+// MARK: - IBAction's
+
+extension CameraViewController {
     @IBAction func didTakePhoto(_ sender: UIButton) {
         stillImageOutput?.capturePhoto(with: capturePhotoSettings, delegate: self)
     }
@@ -90,22 +134,7 @@ class CameraViewController: UIViewController {
     }
     
     @IBAction func didDeletePhoto(_ sender: UIButton) {
-        captureView.layer.replaceSublayer(imageView.layer, with: videoPreviewLayer!)
-        imageView.image = nil
-        takePhoto.isHidden = false
-        keepPhoto.isHidden = true
-        deletePhoto.isHidden = true
-    }
-    
-    override var shouldAutorotate: Bool {
-        return false
-    }
-
-    // MARK: - AVCapturePhotoSettings
-    
-    private var capturePhotoSettings: AVCapturePhotoSettings {
-        let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
-        return settings
+        state = .takePicture
     }
 }
 
@@ -122,13 +151,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.image = image
-        captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
         
-        // hide take photo button
-        takePhoto.isHidden = true
-        
-        // show keep or delete buttons
-        keepPhoto.isHidden = false
-        deletePhoto.isHidden = false
+        state = .viewPicture
     }
 }

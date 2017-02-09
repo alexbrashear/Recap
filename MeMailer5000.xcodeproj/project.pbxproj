@@ -15,7 +15,7 @@
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
 		C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083A1E3D163600E2BD8A /* AppDelegate.swift */; };
 		C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353083C1E3D163600E2BD8A /* CameraViewController.swift */; };
-		C35308401E3D163600E2BD8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Main.storyboard */; };
+		C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Camera.storyboard */; };
 		C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35308411E3D163600E2BD8A /* Assets.xcassets */; };
 		C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */; };
 		C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */; };
@@ -54,7 +54,7 @@
 		C35308371E3D163600E2BD8A /* MeMailer5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeMailer5000.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C353083A1E3D163600E2BD8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C353083C1E3D163600E2BD8A /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
-		C353083F1E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C353083F1E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		C35308411E3D163600E2BD8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C35308441E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35308461E3D163600E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,14 +137,13 @@
 			children = (
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
 				C330B6381E46B51300928284 /* DatabaseController.swift */,
-				C3DB8C401E4046C00076B7A3 /* models */,
-				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
-				C3683DE21E46585300650A90 /* Address List */,
-				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
 				C3683DEB1E46630D00650A90 /* Add Address */,
+				C3683DE21E46585300650A90 /* Address List */,
+				C3AD56841E4C37CA00C348F0 /* Camera */,
+				C3DB8C401E4046C00076B7A3 /* models */,
+				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
 				C330B6361E46A17100928284 /* Result.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
-				C353083E1E3D163600E2BD8A /* Main.storyboard */,
 				C35308411E3D163600E2BD8A /* Assets.xcassets */,
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
 				C35308461E3D163600E2BD8A /* Info.plist */,
@@ -180,6 +179,15 @@
 				C3683DEC1E4664EE00650A90 /* AddAddressController.swift */,
 			);
 			name = "Add Address";
+			sourceTree = "<group>";
+		};
+		C3AD56841E4C37CA00C348F0 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				C353083E1E3D163600E2BD8A /* Camera.storyboard */,
+				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
+			);
+			name = Camera;
 			sourceTree = "<group>";
 		};
 		C3DB8C401E4046C00076B7A3 /* models */ = {
@@ -294,7 +302,7 @@
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
 				C3683DE61E46594E00650A90 /* AddressCell.xib in Resources */,
-				C35308401E3D163600E2BD8A /* Main.storyboard in Resources */,
+				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,12 +448,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C353083E1E3D163600E2BD8A /* Main.storyboard */ = {
+		C353083E1E3D163600E2BD8A /* Camera.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C353083F1E3D163600E2BD8A /* Base */,
 			);
-			name = Main.storyboard;
+			name = Camera.storyboard;
 			sourceTree = "<group>";
 		};
 		C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */ = {
