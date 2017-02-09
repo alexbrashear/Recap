@@ -26,7 +26,7 @@ class AddressListController: UITableViewController {
     let databaseConnection = DatabaseController.sharedInstance.newWritingConnection()
     
     deinit {
-        removeObserver(self, forKeyPath:  NSNotification.Name.YapDatabaseModified.rawValue)
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewDidLoad() {
