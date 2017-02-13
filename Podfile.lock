@@ -1,4 +1,7 @@
 PODS:
+  - AWSCore (2.5.0)
+  - AWSS3 (2.5.0):
+    - AWSCore (= 2.5.0)
   - CocoaLumberjack (2.4.0):
     - CocoaLumberjack/Default (= 2.4.0)
     - CocoaLumberjack/Extensions (= 2.4.0)
@@ -81,6 +84,7 @@ PODS:
     - YapDatabase/Standard/Core
 
 DEPENDENCIES:
+  - AWSS3
   - RCSYapDatabaseExtensions (from `git@github.com:JimRoepcke/YapDatabaseExtensions.git`, tag `3.0.0`)
   - Reusable
   - ValueCoding (~> 2.1.0)
@@ -97,6 +101,8 @@ CHECKOUT OPTIONS:
     :tag: 3.0.0
 
 SPEC CHECKSUMS:
+  AWSCore: e9839d27ceaa2db75934a9c418630ce63c23e347
+  AWSS3: 3678dd99006ff77c825fb857fc7cbaca0db848c6
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
   RCSYapDatabaseExtensions: 6a3336c71415a652440196cf5e0f1cb14086ef56
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -104,6 +110,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: 011a5c3ef2cb55af8fd29899cdfa3afc79d699d1
+PODFILE CHECKSUM: 3f259bbdf5772f8b7c5a533321d57852e0b9ece5
 
 COCOAPODS: 1.2.0
