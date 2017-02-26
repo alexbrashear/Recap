@@ -17,12 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let storyBoard = UIStoryboard(name: "Camera", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "CameraViewController")
-        let nc = UINavigationController(rootViewController: viewController)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = nc
-        window?.makeKeyAndVisible()
         return true
     }
 
