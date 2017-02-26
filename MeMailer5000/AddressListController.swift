@@ -8,6 +8,7 @@
 
 import UIKit
 import YapDatabase
+import PKHUD
 
 protocol AddressListViewModelProtocol {
     var numberOfSections: Int { get }
@@ -18,7 +19,7 @@ protocol AddressListViewModelProtocol {
     
     func subtitle(for indexPath: IndexPath) -> String
     
-    func didSelectRow(at indexPath: IndexPath, image: UIImage?)
+    func didSelectRow(at indexPath: IndexPath, image: UIImage?, completion: @escaping (PostcardError?) -> Void)
 }
 
 class AddressListController: UITableViewController {
@@ -100,6 +101,21 @@ extension AddressListController {
 extension AddressListController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.didSelectRow(at: indexPath, image: image)
+        HUD.show(.progress)
+        viewModel.didSelectRow(at: indexPath, image: image) { [weak self] error in
+            HUD.hide()
+            if let error = error {
+                let alertController = UIAlertController(title: error.localizedTitle, message: error.localizedDescription, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self?.present(alertController, animated: true, completion: nil)
+            } else {
+                DispatchQueue.main.sync {
+                    HUD.show(.success)
+                    HUD.hide(afterDelay: 0.5) { finished in
+                        print("success")
+                    }
+                }
+            }
+        }
     }
 }

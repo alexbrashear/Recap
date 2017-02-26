@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class AddressListViewModel: AddressListViewModelProtocol {
     
@@ -35,11 +36,11 @@ class AddressListViewModel: AddressListViewModelProtocol {
         return displayableSubtitle(for: address)
     }
     
-    func didSelectRow(at indexPath: IndexPath, image: UIImage?) {
+    func didSelectRow(at indexPath: IndexPath, image: UIImage?, completion: @escaping (PostcardError?) -> Void) {
         guard indexPath.row >= 0 && indexPath.row < addresses.count else { return }
         let address = addresses[indexPath.row]
         postcardSender.send(image: image!, to: address) { postcard, error in
-            print("turds")
+            completion(error)
         }
     }
     
