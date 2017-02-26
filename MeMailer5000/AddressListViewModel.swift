@@ -6,9 +6,12 @@
 //  Copyright © 2017 memailer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AddressListViewModel: AddressListViewModelProtocol {
+    
+    let postcardSender = PostcardSender()
+    
     var numberOfSections: Int = 1
     
     private let addresses: [Address]
@@ -30,6 +33,14 @@ class AddressListViewModel: AddressListViewModelProtocol {
         guard indexPath.row >= 0 && indexPath.row < addresses.count else { return "" }
         let address = addresses[indexPath.row]
         return displayableSubtitle(for: address)
+    }
+    
+    func didSelectRow(at indexPath: IndexPath, image: UIImage?) {
+        guard indexPath.row >= 0 && indexPath.row < addresses.count else { return }
+        let address = addresses[indexPath.row]
+        postcardSender.send(image: image!, to: address) { postcard, error in
+            print("turds")
+        }
     }
     
     private func displayableSubtitle(for address: Address) -> String {

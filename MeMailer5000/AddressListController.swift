@@ -17,11 +17,15 @@ protocol AddressListViewModelProtocol {
     func title(for indexPath: IndexPath) -> String
     
     func subtitle(for indexPath: IndexPath) -> String
+    
+    func didSelectRow(at indexPath: IndexPath, image: UIImage?)
 }
 
 class AddressListController: UITableViewController {
     
     var viewModel: AddressListViewModelProtocol = AddressListViewModel(addresses: [])
+    
+    var image: UIImage?
     
     let databaseConnection = DatabaseController.sharedInstance.newWritingConnection()
     
@@ -88,5 +92,14 @@ extension AddressListController {
         let subtitle = viewModel.subtitle(for: indexPath)
         cell.viewModel = AddressCell.ViewModel(title: title, subtitle: subtitle)
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension AddressListController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel.didSelectRow(at: indexPath, image: image)
     }
 }

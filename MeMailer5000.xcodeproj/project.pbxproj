@@ -26,7 +26,12 @@
 		C3683DE81E465D5900650A90 /* AddressList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE71E465D5900650A90 /* AddressList.storyboard */; };
 		C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE91E46630900650A90 /* AddAddress.storyboard */; };
 		C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3683DEC1E4664EE00650A90 /* AddAddressController.swift */; };
+		C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PostcardSender.swift */; };
 		C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B91E5109ED009C4696 /* NetworkClient.swift */; };
+		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
+		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
+		C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */; };
+		C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PostcardError.swift */; };
 		C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C431E4057820076B7A3 /* AddressProvider.swift */; };
 		C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C461E419D550076B7A3 /* AddressParser.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +74,12 @@
 		C3683DE71E465D5900650A90 /* AddressList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddressList.storyboard; sourceTree = "<group>"; };
 		C3683DE91E46630900650A90 /* AddAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAddress.storyboard; sourceTree = "<group>"; };
 		C3683DEC1E4664EE00650A90 /* AddAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressController.swift; sourceTree = "<group>"; };
+		C396E7B71E5107B7009C4696 /* PostcardSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardSender.swift; sourceTree = "<group>"; };
 		C396E7B91E5109ED009C4696 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
+		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
+		C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardParser.swift; sourceTree = "<group>"; };
+		C396E7C11E5B93ED009C4696 /* PostcardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardError.swift; sourceTree = "<group>"; };
 		C3DB8C431E4057820076B7A3 /* AddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		C3DB8C461E419D550076B7A3 /* AddressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,11 +149,13 @@
 			children = (
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
 				C330B6381E46B51300928284 /* DatabaseController.swift */,
+				C396E7B71E5107B7009C4696 /* PostcardSender.swift */,
 				C3683DEB1E46630D00650A90 /* Add Address */,
 				C3683DE21E46585300650A90 /* Address List */,
 				C3AD56841E4C37CA00C348F0 /* Camera */,
 				C3DB8C401E4046C00076B7A3 /* models */,
 				C3DB8C461E419D550076B7A3 /* AddressParser.swift */,
+				C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */,
 				C330B6361E46A17100928284 /* Result.swift */,
 				C396E7B91E5109ED009C4696 /* NetworkClient.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
@@ -198,6 +210,8 @@
 			children = (
 				C31279C21E3EF09900F52C31 /* Address.swift */,
 				C330B63A1E46B82800928284 /* AddressError.swift */,
+				C396E7BD1E5B901A009C4696 /* Postcard.swift */,
+				C396E7C11E5B93ED009C4696 /* PostcardError.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				C3DB8C431E4057820076B7A3 /* AddressProvider.swift */,
+				C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -418,6 +433,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */,
+				C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */,
+				C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */,
 				C3683DE51E46594E00650A90 /* AddressCell.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
@@ -426,9 +443,12 @@
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
+				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
+				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
+				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
 				C3683DDF1E46567100650A90 /* AddressListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
