@@ -8,17 +8,6 @@
 
 import ValueCoding
 
-enum Keys: String {
-    case id      = "id"
-    case name    = "name"
-    case line1   = "address_line1"
-    case line2   = "address_line2"
-    case city    = "address_city"
-    case state   = "address_state"
-    case zip     = "address_zip"
-    case country = "address_country"
-}
-
 class Address: NSObject, NSCoding {
     /// the unique identifier of the address
     var id: String
@@ -103,50 +92,3 @@ class Address: NSObject, NSCoding {
                "\(parent)[\(Address.Keys.country.rawValue)]=\(country)"
     }
 }
-
-//final class AddressCoder: NSObject, NSCoding, CodingProtocol {
-//    enum Keys: String {
-//        case id      = "id"
-//        case name    = "name"
-//        case line1   = "address_line1"
-//        case line2   = "address_line2"
-//        case city    = "address_city"
-//        case state   = "address_state"
-//        case zip     = "address_zip"
-//        case country = "address_country"
-//    }
-//    
-//    let value: Address
-//    
-//    required init(_ v: Address) {
-//        value = v
-//        super.init()
-//    }
-//    
-//    required init?(coder aDecoder: NSCoder) {
-//        guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
-//              let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,
-//              let line1 = aDecoder.decodeObject(forKey: Keys.line1.rawValue) as? String,
-//              let line2 = aDecoder.decodeObject(forKey: Keys.line2.rawValue) as? String,
-//              let city = aDecoder.decodeObject(forKey: Keys.city.rawValue) as? String,
-//              let state = aDecoder.decodeObject(forKey: Keys.state.rawValue) as? String,
-//              let zip = aDecoder.decodeObject(forKey: Keys.zip.rawValue) as? String
-//        else {
-//            assertionFailure("unable to decode Address")
-//            return nil
-//        }
-//        
-//        value = Address(id: id, name: name, line1: line1, line2: line2, city: city, state: state, zip: zip)
-//        super.init()
-//    }
-//    
-//    func encode(with aCoder: NSCoder) {
-//        aCoder.encode(value.id, forKey: Keys.id.rawValue)
-//        aCoder.encode(value.name, forKey: Keys.name.rawValue)
-//        aCoder.encode(value.line1, forKey: Keys.line1.rawValue)
-//        aCoder.encode(value.line2, forKey: Keys.line2.rawValue)
-//        aCoder.encode(value.city, forKey: Keys.city.rawValue)
-//        aCoder.encode(value.state, forKey: Keys.state.rawValue)
-//        aCoder.encode(value.zip, forKey: Keys.zip.rawValue)
-//    }
-//}
