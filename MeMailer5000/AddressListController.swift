@@ -103,18 +103,22 @@ extension AddressListController {
         tableView.deselectRow(at: indexPath, animated: true)
         HUD.show(.progress)
         viewModel.didSelectRow(at: indexPath, image: image) { [weak self] error in
-            HUD.hide()
-            if let error = error {
-                let alertController = UIAlertController(title: error.localizedTitle, message: error.localizedDescription, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self?.present(alertController, animated: true, completion: nil)
-            } else {
-                DispatchQueue.main.sync {
-                    HUD.show(.success)
-                    HUD.hide(afterDelay: 0.5) { finished in
-                        print("success")
-                    }
-                }
+            DispatchQueue.main.async {
+                HUD.hide()
+                self?.runCompletion(error: error)
+            }
+        }
+    }
+    
+    private func runCompletion(error: PostcardError?) {
+        if let error = error {
+            let alertController = UIAlertController(title: error.localizedTitle, message: error.localizedDescription, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        } else {
+            HUD.show(.success)
+            HUD.hide(afterDelay: 0.5) { finished in
+                print("success")
             }
         }
     }
