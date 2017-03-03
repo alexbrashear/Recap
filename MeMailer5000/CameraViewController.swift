@@ -129,7 +129,8 @@ extension CameraViewController {
     
     @IBAction func didKeepPhoto(_ sender: UIButton) {
         let storyBoard = UIStoryboard(name: "AddressList", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "AddressListController")
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "AddressListController") as? AddressListController else { return }
+        viewController.image = imageView.image
         navigationController?.pushViewController(viewController, animated: true)
     }
     
