@@ -24,6 +24,9 @@ class PostcardSender {
         imageUploader.uploadImageToS3(fromLocalImageFile: localImageFile, withS3ImageKey: key) { s3ImageURL in
             guard let s3ImageURL = s3ImageURL else { return completion(nil, .uploadToS3Failure) }
             postcardProvider.send(image: s3ImageURL, to: address) { postcard, error in
+                if let postcard = postcard {
+                    postcardProvider.persist(postcard: postcard)
+                }
                 completion(postcard, error)
             }
         }
