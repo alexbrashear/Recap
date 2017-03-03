@@ -49,6 +49,15 @@
                                             <action selector="didKeepPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uli-5x-Uva"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ2-sv-VwM" userLabel="Postcards">
+                                        <rect key="frame" x="26" y="608" width="56" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="didDeletePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBs-Ky-UO3"/>
+                                            <action selector="didRequestPostcards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jMw-l4-AkR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="width" secondItem="Ult-CV-i6z" secondAttribute="width" id="7Tf-zw-lvq"/>
@@ -63,11 +72,13 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="zna-Og-sK2" secondAttribute="trailing" constant="10" id="0bp-gv-vxr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="guL-EE-maU" secondAttribute="trailing" constant="-16" id="0sQ-1F-9DW"/>
+                            <constraint firstItem="MZ2-sv-VwM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="30j-vW-Jsl"/>
                             <constraint firstItem="guL-EE-maU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="4PB-Ab-ruy"/>
                             <constraint firstItem="guL-EE-maU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="7jZ-GK-EnV"/>
                             <constraint firstItem="Ult-CV-i6z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="K2f-YB-Iwk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="guL-EE-maU" secondAttribute="bottom" id="Usp-6V-jdS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ult-CV-i6z" secondAttribute="bottom" constant="25" id="ri9-It-KM5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MZ2-sv-VwM" secondAttribute="bottom" constant="25" id="yCb-rt-Pgn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pcx-v6-27o"/>
@@ -76,6 +87,7 @@
                         <outlet property="captureView" destination="guL-EE-maU" id="bjx-oq-UwC"/>
                         <outlet property="deletePhoto" destination="Ult-CV-i6z" id="KsW-1e-zEL"/>
                         <outlet property="keepPhoto" destination="zna-Og-sK2" id="FIk-En-7hY"/>
+                        <outlet property="postcards" destination="MZ2-sv-VwM" id="ZcC-QR-OkQ"/>
                         <outlet property="takePhoto" destination="PXr-Tx-Ure" id="tQw-bj-EwN"/>
                     </connections>
                 </viewController>

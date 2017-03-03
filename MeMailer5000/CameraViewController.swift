@@ -34,6 +34,7 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var takePhoto: UIButton!
     @IBOutlet fileprivate var deletePhoto: UIButton!
     @IBOutlet fileprivate var keepPhoto: UIButton!
+    @IBOutlet fileprivate var postcards: UIButton!
     
     var imageView = UIImageView()
     
@@ -43,6 +44,7 @@ class CameraViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         session.sessionPreset = AVCaptureSessionPresetPhoto
@@ -112,10 +114,12 @@ class CameraViewController: UIViewController {
             takePhoto.isHidden = false
             keepPhoto.isHidden = true
             deletePhoto.isHidden = true
+            postcards.isHidden = false
         case .viewPicture:
             takePhoto.isHidden = true
             keepPhoto.isHidden = false
             deletePhoto.isHidden = false
+            postcards.isHidden = true
         }
     }
 }
@@ -136,6 +140,10 @@ extension CameraViewController {
     
     @IBAction func didDeletePhoto(_ sender: UIButton) {
         state = .takePicture
+    }
+    
+    @IBAction func didRequestPostcards(_ sender: UIButton) {
+        
     }
 }
 
