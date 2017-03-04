@@ -13,7 +13,7 @@ typealias AddressVerificationCompletion = (_ address: Address?, _ error: Address
 class AddressProvider {
     private let parser = AddressParser()
     private let verifyURLString = "https://api.lob.com/v1/verify"
-    private let networkClient = NetworkClient(  )
+    private let networkClient = NetworkClient()
     
     func verify(name: String, line1: String, line2: String, city: String, state: String, zip: String, completion: @escaping AddressVerificationCompletion) {
         guard let url = URL(string: verifyURLString) else { return completion(nil, .unknownFailure) }

@@ -84,6 +84,7 @@ class CameraViewController: UIViewController {
         view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(postcards.layer, above: captureView.layer)
         
         displayButtons(forState: state)
     }
@@ -143,7 +144,9 @@ extension CameraViewController {
     }
     
     @IBAction func didRequestPostcards(_ sender: UIButton) {
-        
+        let storyBoard = UIStoryboard(name: "Postcards", bundle: nil)
+        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "SentPostcardsViewController") as? SentPostcardsViewController else { return }
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

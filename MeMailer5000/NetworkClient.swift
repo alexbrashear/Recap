@@ -10,6 +10,8 @@ import Foundation
 
 typealias RequestCompletion = (_ json: [String:AnyObject]?) -> Void
 
+typealias DataRequestCompletion = (_ data: Data?) -> Void
+
 enum Environment {
     case test
     case debug
@@ -46,5 +48,13 @@ class NetworkClient {
                 completion(nil)
             }
         }.resume()
+    }
+    
+    func GET(url: URL, completion: @escaping DataRequestCompletion) {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            completion(data)
+        }
     }
 }

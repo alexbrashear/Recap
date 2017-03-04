@@ -50,9 +50,9 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ2-sv-VwM" userLabel="Postcards">
-                                        <rect key="frame" x="26" y="608" width="56" height="34"/>
+                                        <rect key="frame" x="26" y="608" width="132" height="34"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Delete"/>
+                                        <state key="normal" title="Sent Postcards"/>
                                         <connections>
                                             <action selector="didDeletePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBs-Ky-UO3"/>
                                             <action selector="didRequestPostcards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jMw-l4-AkR"/>

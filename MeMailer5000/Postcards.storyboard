@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Postcards View Controller-->
+        <!--Sent Postcards View Controller-->
         <scene sceneID="pSR-uW-TRU">
             <objects>
-                <tableViewController storyboardIdentifier="PostcardsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pC0-Mx-8oQ" customClass="PostcardsViewController" customModule="MeMailer5000" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SentPostcardsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pC0-Mx-8oQ" customClass="SentPostcardsViewController" customModule="MeMailer5000" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TgH-1I-Ojc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
