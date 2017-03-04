@@ -12,7 +12,7 @@ typealias PostcardSendCompletion = (_ postcard: Postcard?, _ error: PostcardErro
 
 class PostcardProvider {
     private let createPostcardURLString = "https://api.lob.com/v1/postcards"
-    private let networkClient = NetworkClient(environment: .production)
+    private let networkClient = NetworkClient()
     
     func send(image imageURL: URL, to address: Address, completion: @escaping PostcardSendCompletion) {
         guard let url = URL(string: createPostcardURLString) else { return }

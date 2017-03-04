@@ -10,7 +10,7 @@ import UIKit
 import AWSS3
 
 class PostcardSender {
-    let networkClient = NetworkClient(environment: .debug)
+    let networkClient = NetworkClient()
     let imageUploader = ImageUploader()
     let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
     func send(image: UIImage, to address: Address, completion: @escaping PostcardSendCompletion) {

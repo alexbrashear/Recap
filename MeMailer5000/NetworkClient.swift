@@ -19,10 +19,10 @@ enum Environment {
 
 class NetworkClient {
     
-    let environment: Environment
+    private let environment: Environment
     
-    init(environment: Environment) {
-        self.environment = environment
+    init() {
+        self.environment = .debug
     }
     
     var authorization: String {
