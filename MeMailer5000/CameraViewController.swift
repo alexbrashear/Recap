@@ -75,6 +75,8 @@ class CameraViewController: UIViewController {
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
             captureView.layer.addSublayer(videoPreviewLayer!)
             session.startRunning()
+        } else if !session.outputs.isEmpty && state == .takePicture {
+            captureView.layer.addSublayer(videoPreviewLayer!)
         }
     }
     
