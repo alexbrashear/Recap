@@ -30,6 +30,6 @@ class SentPostcardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imageView?.contentMode = .scaleAspectFit
     }
 }

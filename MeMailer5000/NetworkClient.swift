@@ -55,6 +55,6 @@ class NetworkClient {
         request.httpMethod = "GET"
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             completion(data)
-        }
+        }.resume()
     }
 }

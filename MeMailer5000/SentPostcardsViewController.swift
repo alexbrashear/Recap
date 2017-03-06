@@ -53,6 +53,9 @@ class SentPostcardsViewController: UITableViewController {
         
         let nib = UINib(nibName: String(describing: SentPostcardCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: String(describing: SentPostcardCell.self))
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 70
     }
     
     func yapDatabaseModified(notification: Notification) {
