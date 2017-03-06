@@ -55,13 +55,13 @@ class Postcard: NSObject, NSCoding {
     }
     
     var id: String
-    var expectedDeliveryDate: String
+    var expectedDeliveryDate: Date
     var imageThumbnails: Thumbnails
     var messageThumbnails: Thumbnails
     var to: Address
-    var dateCreated: String
+    var dateCreated: Date
     
-    init(id: String, expectedDeliveryDate: String, imageThumbnails: Thumbnails, messageThumbnails: Thumbnails, to: Address, dateCreated: String) {
+    init(id: String, expectedDeliveryDate: Date, imageThumbnails: Thumbnails, messageThumbnails: Thumbnails, to: Address, dateCreated: Date) {
         self.id = id
         self.expectedDeliveryDate = expectedDeliveryDate
         self.imageThumbnails = imageThumbnails
@@ -72,11 +72,11 @@ class Postcard: NSObject, NSCoding {
     
     convenience required init?(coder aDecoder: NSCoder) {
         guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
-              let expectedDeliveryDate = aDecoder.decodeObject(forKey: Keys.expectedDeliveryDate.rawValue) as? String,
+              let expectedDeliveryDate = aDecoder.decodeObject(forKey: Keys.expectedDeliveryDate.rawValue) as? Date,
               let imageThumbnails = aDecoder.decodeObject(forKey: Keys.imageThumbnails.rawValue) as? Thumbnails,
               let messageThumbnails = aDecoder.decodeObject(forKey: Keys.messageThumbnails.rawValue) as? Thumbnails,
               let to = aDecoder.decodeObject(forKey: Keys.to.rawValue) as? Address,
-              let dateCreated = aDecoder.decodeObject(forKey: Keys.dateCreated.rawValue) as? String else { return nil }
+              let dateCreated = aDecoder.decodeObject(forKey: Keys.dateCreated.rawValue) as? Date else { return nil }
         self.init(id: id, expectedDeliveryDate: expectedDeliveryDate, imageThumbnails: imageThumbnails, messageThumbnails: messageThumbnails, to: to, dateCreated: dateCreated)
     }
     

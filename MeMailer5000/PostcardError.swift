@@ -13,6 +13,7 @@ enum PostcardError: Error {
     case unableToSaveImageLocally
     case uploadToS3Failure
     case parsingFailure
+    case dateParsingFailure
     
     var localizedTitle: String {
         return "Error"
@@ -28,6 +29,8 @@ enum PostcardError: Error {
             return "There was an issue uploading the image to the server"
         case .parsingFailure:
             return "the postcard was sent but there was an error retrieving metadata about the card"
+        case .dateParsingFailure:
+            return "there was an error acquiring the timestamp for this postcard"
         }
     }
 }

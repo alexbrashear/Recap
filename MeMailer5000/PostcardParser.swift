@@ -13,8 +13,10 @@ struct PostcardParser {
         guard let to = parseAddress(fromJson: json),
               let thumbnails = parseThumbnails(fromJson: json),
               let id = json[Postcard.Keys.id.rawValue] as? String,
-              let expectedDeliveryDate = json[Postcard.Keys.expectedDeliveryDate.rawValue] as? String,
-              let dateCreated = json[Postcard.Keys.dateCreated.rawValue] as? String else { return (nil, .parsingFailure) }
+              let expectedDeliveryString = json[Postcard.Keys.expectedDeliveryDate.rawValue] as? String,
+              let dateCreatedString = json[Postcard.Keys.dateCreated.rawValue] as? String else { return (nil, .parsingFailure) }
+        guard let expectedDeliveryDate = expectedDeliveryString.dateFromStandard,
+              let dateCreated = dateCreatedString.dateFromISO8601 else { return (nil, .dateParsingFailure) }
         return (Postcard(id: id, expectedDeliveryDate: expectedDeliveryDate, imageThumbnails: thumbnails[0], messageThumbnails: thumbnails[1], to: to, dateCreated: dateCreated), nil)
     }
     
@@ -43,6 +45,31 @@ struct PostcardParser {
               let large = URL(string: largeString) else { return nil }
         return Thumbnails(small: small, medium: medium, large: large)
     }
+}
+
+extension Date {
+    static let iso8601Formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter
+    }()
     
+    static let basicFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-mm-dd"
+        return formatter
+    }()
+}
+
+extension String {
+    var dateFromISO8601: Date? {
+        return Date.iso8601Formatter.date(from: self)
+    }
     
+    var dateFromStandard: Date? {
+        return Date.basicFormatter.date(from: self)
+    }
 }
