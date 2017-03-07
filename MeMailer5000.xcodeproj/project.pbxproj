@@ -35,6 +35,8 @@
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */; };
 		C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PostcardError.swift */; };
+		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
+		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
 		C3D6E8E71E6919A700E67874 /* Postcards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D6E8E51E6919A700E67874 /* Postcards.storyboard */; };
 		C3D6E8E81E6919A700E67874 /* SentPostcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6E8E61E6919A700E67874 /* SentPostcardsViewController.swift */; };
 		C3D6E8EB1E691C9400E67874 /* SentPostcardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6E8EA1E691C9400E67874 /* SentPostcardsViewModel.swift */; };
@@ -89,6 +91,8 @@
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardParser.swift; sourceTree = "<group>"; };
 		C396E7C11E5B93ED009C4696 /* PostcardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardError.swift; sourceTree = "<group>"; };
+		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
+		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C3D6E8E51E6919A700E67874 /* Postcards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Postcards.storyboard; sourceTree = "<group>"; };
 		C3D6E8E61E6919A700E67874 /* SentPostcardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardsViewController.swift; sourceTree = "<group>"; };
 		C3D6E8EA1E691C9400E67874 /* SentPostcardsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardsViewModel.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 		C353082E1E3D163600E2BD8A = {
 			isa = PBXGroup;
 			children = (
+				C3CE0E2B1E6E6730008000B1 /* R.generated.swift */,
 				C35308391E3D163600E2BD8A /* MeMailer5000 */,
 				C353084E1E3D163700E2BD8A /* MeMailer5000Tests */,
 				C35308381E3D163600E2BD8A /* Products */,
@@ -159,7 +164,7 @@
 		C35308391E3D163600E2BD8A /* MeMailer5000 */ = {
 			isa = PBXGroup;
 			children = (
-				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
+				C3CE0E271E6E6273008000B1 /* App */,
 				C330B6381E46B51300928284 /* DatabaseController.swift */,
 				C3D6E8E91E6919B700E67874 /* Postcard List */,
 				C396E7B71E5107B7009C4696 /* PostcardSender.swift */,
@@ -218,6 +223,15 @@
 			name = Camera;
 			sourceTree = "<group>";
 		};
+		C3CE0E271E6E6273008000B1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
+				C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		C3D6E8E91E6919B700E67874 /* Postcard List */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +273,7 @@
 			buildConfigurationList = C35308541E3D163700E2BD8A /* Build configuration list for PBXNativeTarget "MeMailer5000" */;
 			buildPhases = (
 				DC8C45A50436D9812C0214C5 /* [CP] Check Pods Manifest.lock */,
+				C3CE0E2A1E6E6605008000B1 /* R.Swift */,
 				C35308331E3D163600E2BD8A /* Sources */,
 				C35308341E3D163600E2BD8A /* Frameworks */,
 				C35308351E3D163600E2BD8A /* Resources */,
@@ -423,7 +438,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C3CE0E2A1E6E6605008000B1 /* R.Swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
+			inputPaths = (
+			);
+			name = R.Swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		CCE6006289710B34B6E1B954 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -472,6 +500,7 @@
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
@@ -480,6 +509,7 @@
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
+				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
 				C3683DDF1E46567100650A90 /* AddressListController.swift in Sources */,
