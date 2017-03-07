@@ -423,6 +423,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeMailer5000/Pods-MeMailer5000-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+			);
 		CCE6006289710B34B6E1B954 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

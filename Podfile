@@ -8,6 +8,7 @@ target 'MeMailer5000' do
     pod 'RCSYapDatabaseExtensions', :git => 'git@github.com:JimRoepcke/YapDatabaseExtensions.git', :tag => '3.0.0'
 	pod 'AWSS3'
     pod 'PKHUD'
+	pod 'R.swift'
 end
 
 target 'MeMailer5000Tests' do
