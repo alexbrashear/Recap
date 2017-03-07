@@ -37,6 +37,7 @@
 		C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PostcardError.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
+		C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */; };
 		C3D6E8E71E6919A700E67874 /* Postcards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D6E8E51E6919A700E67874 /* Postcards.storyboard */; };
 		C3D6E8E81E6919A700E67874 /* SentPostcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6E8E61E6919A700E67874 /* SentPostcardsViewController.swift */; };
 		C3D6E8EB1E691C9400E67874 /* SentPostcardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D6E8EA1E691C9400E67874 /* SentPostcardsViewModel.swift */; };
@@ -93,6 +94,7 @@
 		C396E7C11E5B93ED009C4696 /* PostcardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardError.swift; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		C3D6E8E51E6919A700E67874 /* Postcards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Postcards.storyboard; sourceTree = "<group>"; };
 		C3D6E8E61E6919A700E67874 /* SentPostcardsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardsViewController.swift; sourceTree = "<group>"; };
 		C3D6E8EA1E691C9400E67874 /* SentPostcardsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardsViewModel.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			children = (
 				C353083E1E3D163600E2BD8A /* Camera.storyboard */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
+				C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
+				C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */,
 				C3683DDF1E46567100650A90 /* AddressListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

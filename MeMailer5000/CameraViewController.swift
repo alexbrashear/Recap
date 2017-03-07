@@ -9,6 +9,12 @@
 import UIKit
 import AVFoundation
 
+protocol CameraViewModelProtocol {
+    var keepPhoto: KeepPhotoTapHandler { get }
+    
+    var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
+}
+
 class CameraViewController: UIViewController {
     
     enum State {
@@ -27,6 +33,8 @@ class CameraViewController: UIViewController {
             displayButtons(forState: state)
         }
     }
+    
+    var viewModel: CameraViewModelProtocol?
     
     // MARK: - IBOutlets
     
@@ -135,10 +143,7 @@ extension CameraViewController {
     }
     
     @IBAction func didKeepPhoto(_ sender: UIButton) {
-        let storyBoard = UIStoryboard(name: "AddressList", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "AddressListController") as? AddressListController else { return }
-        viewController.image = imageView.image
-        navigationController?.pushViewController(viewController, animated: true)
+        viewModel?.keepPhoto(imageView.image)
     }
     
     @IBAction func didDeletePhoto(_ sender: UIButton) {
@@ -146,9 +151,7 @@ extension CameraViewController {
     }
     
     @IBAction func didRequestPostcards(_ sender: UIButton) {
-        let storyBoard = UIStoryboard(name: "Postcards", bundle: nil)
-        guard let viewController = storyBoard.instantiateViewController(withIdentifier: "SentPostcardsViewController") as? SentPostcardsViewController else { return }
-        navigationController?.pushViewController(viewController, animated: true)
+        viewModel?.sentPostcardsTapHandler()
     }
 }
 

@@ -27,15 +27,34 @@ class RootFlowCoordinator {
     }
     
     func configure(vc: CameraViewController) {
-        
+        let keepPhoto: KeepPhotoTapHandler = { [weak self] image in
+            self?.pushAddressList(image: image)
+        }
+        let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self] in
+            self?.pushSentPostcards()
+        }
+        let vm = CameraViewModel(keepPhoto: keepPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
+        vc.viewModel = vm
     }
     
-    func configure(vc: AddressListController) {
-        
+    func pushAddressList(image: UIImage?) {
+        guard let addressList = R.storyboard.addressList.addressListController() else { return }
+        configure(vc: addressList, image: image)
+        navigationController.pushViewController(addressList, animated: true)
+    }
+    
+    func configure(vc: AddressListController, image: UIImage?) {
+        vc.image = image
     }
     
     func configure(vc: AddAddressController) {
         
+    }
+    
+    func pushSentPostcards() {
+        guard let sentPostcards = R.storyboard.postcards.sentPostcardsViewController() else { return }
+        configure(vc: sentPostcards)
+        navigationController.pushViewController(sentPostcards, animated: true)
     }
     
     func configure(vc: SentPostcardsViewController) {
