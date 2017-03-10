@@ -9,16 +9,35 @@
 import UIKit
 import PKHUD
 
+protocol AddressListProviderProtocol {
+    func loadAddresses() -> [Address]
+}
+
 class AddressListViewModel: AddressListViewModelProtocol {
     
-    let postcardSender = PostcardSender()
+    private let postcardSender = PostcardSender()
+    
+    private var dataChangedBlock: (() -> Void)?
+    
+    private let addressListProvider: AddressListProviderProtocol
     
     var numberOfSections: Int = 1
     
-    private let addresses: [Address]
+    var selectedAddressCompletionBlock: SelectedAddressCompletionBlock
     
-    init(addresses: [Address]) {
+    private var addresses: [Address]
+    
+    init(addresses: [Address], addressListProvider: AddressListProviderProtocol, selectedAddressCompletionBlock: @escaping SelectedAddressCompletionBlock) {
         self.addresses = addresses
+        self.addressListProvider = addressListProvider
+        self.selectedAddressCompletionBlock = selectedAddressCompletionBlock
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(yapDatabaseModified), name: NSNotification.Name.YapDatabaseModified, object: DatabaseController.sharedInstance.yapDatabase)
+    }
+    
+    @objc private func yapDatabaseModified(notification: Notification) {
+        addresses = addressListProvider.loadAddresses()
+        dataChangedBlock?()
     }
     
     func numberOfRows(in section: Int) -> Int {
@@ -42,6 +61,10 @@ class AddressListViewModel: AddressListViewModelProtocol {
         postcardSender.send(image: image!, to: address) { postcard, error in
             completion(error)
         }
+    }
+    
+    func observeDataChanges(withBlock block: (() -> Void)?) {
+        dataChangedBlock = block
     }
     
     private func displayableSubtitle(for address: Address) -> String {
