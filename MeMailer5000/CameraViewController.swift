@@ -35,14 +35,17 @@ class CameraViewController: UIViewController {
     }
     
     var viewModel: CameraViewModelProtocol?
-    
+
     // MARK: - IBOutlets
-    
+
+    @IBOutlet fileprivate var flash: UIButton!
     @IBOutlet fileprivate var captureView: UIView!
     @IBOutlet fileprivate var takePhoto: UIButton!
     @IBOutlet fileprivate var deletePhoto: UIButton!
     @IBOutlet fileprivate var keepPhoto: UIButton!
     @IBOutlet fileprivate var postcards: UIButton!
+    
+    fileprivate var flashMode: AVCaptureFlashMode = .auto
     
     var imageView = UIImageView()
     
@@ -54,9 +57,7 @@ class CameraViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        session.sessionPreset = AVCaptureSessionPresetPhoto
-        
+                
         let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         var input: AVCaptureDeviceInput!
@@ -95,6 +96,7 @@ class CameraViewController: UIViewController {
         view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
         view.layer.insertSublayer(postcards.layer, above: captureView.layer)
+        view.layer.insertSublayer(flash.layer, above: captureView.layer)
         
         displayButtons(forState: state)
     }
@@ -116,6 +118,7 @@ class CameraViewController: UIViewController {
     
     fileprivate var capturePhotoSettings: AVCapturePhotoSettings {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
+        settings.flashMode = flashMode
         return settings
     }
     
@@ -153,6 +156,16 @@ extension CameraViewController {
     @IBAction func didRequestPostcards(_ sender: UIButton) {
         viewModel?.sentPostcardsTapHandler()
     }
+    
+    @IBAction func didToggleFlash( _ sender: UIButton) {
+        switch flashMode {
+        case .auto, .off:
+            flashMode = .on
+        case .on:
+            flashMode = .off
+        }
+        flash.setTitle(flashMode.buttonText, for: .normal)
+    }
 }
 
 // MARK: - AVCapturePhotoCaptureDelegate
@@ -170,5 +183,18 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         imageView.image = image
         
         state = .viewPicture
+    }
+}
+
+extension AVCaptureFlashMode {
+    var buttonText: String {
+        switch self {
+        case .auto:
+            return "auto"
+        case .off:
+            return "off"
+        case .on:
+            return "on"
+        }
     }
 }

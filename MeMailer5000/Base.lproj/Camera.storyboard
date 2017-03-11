@@ -58,13 +58,23 @@
                                             <action selector="didRequestPostcards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jMw-l4-AkR"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHP-TG-u9I">
+                                        <rect key="frame" x="26" y="24" width="41" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="Auto"/>
+                                        <connections>
+                                            <action selector="didToggleFlash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HaB-zT-dwF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="BHP-TG-u9I" firstAttribute="top" secondItem="guL-EE-maU" secondAttribute="top" constant="24" id="5gt-0p-Tqf"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="width" secondItem="Ult-CV-i6z" secondAttribute="width" id="7Tf-zw-lvq"/>
                                     <constraint firstAttribute="bottom" secondItem="PXr-Tx-Ure" secondAttribute="bottom" constant="63" id="9iP-76-SH1"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="height" secondItem="Ult-CV-i6z" secondAttribute="height" id="Bc4-CS-c0t"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="top" secondItem="Ult-CV-i6z" secondAttribute="top" id="KeL-31-rPS"/>
                                     <constraint firstItem="PXr-Tx-Ure" firstAttribute="centerX" secondItem="guL-EE-maU" secondAttribute="centerX" id="byC-RJ-Yfa"/>
+                                    <constraint firstItem="BHP-TG-u9I" firstAttribute="leading" secondItem="Ult-CV-i6z" secondAttribute="leading" id="rEV-Rh-C01"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -86,6 +96,7 @@
                     <connections>
                         <outlet property="captureView" destination="guL-EE-maU" id="bjx-oq-UwC"/>
                         <outlet property="deletePhoto" destination="Ult-CV-i6z" id="KsW-1e-zEL"/>
+                        <outlet property="flash" destination="BHP-TG-u9I" id="xP2-Sc-E7z"/>
                         <outlet property="keepPhoto" destination="zna-Og-sK2" id="FIk-En-7hY"/>
                         <outlet property="postcards" destination="MZ2-sv-VwM" id="ZcC-QR-OkQ"/>
                         <outlet property="takePhoto" destination="PXr-Tx-Ure" id="tQw-bj-EwN"/>
