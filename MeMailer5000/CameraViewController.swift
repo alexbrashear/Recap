@@ -44,8 +44,10 @@ class CameraViewController: UIViewController {
     @IBOutlet fileprivate var deletePhoto: UIButton!
     @IBOutlet fileprivate var keepPhoto: UIButton!
     @IBOutlet fileprivate var postcards: UIButton!
+    @IBOutlet fileprivate var switchCamera: UIButton!
     
     fileprivate var flashMode: AVCaptureFlashMode = .auto
+    fileprivate var cameraPosition: AVCaptureDevicePosition = .back
     
     var imageView = UIImageView()
     
@@ -58,47 +60,12 @@ class CameraViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
                 
-        let backCamera = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
-        var input: AVCaptureDeviceInput!
-        do {
-            input = try AVCaptureDeviceInput(device: backCamera)
-        } catch let error as NSError {
-            assertionFailure(error.localizedDescription)
-        }
-        
-        if session.canAddInput(input) {
-            session.addInput(input)
-            // ...
-            // The remainder of the session setup will go here...
-            stillImageOutput = AVCapturePhotoOutput()
-//            stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-        }
-        
-        if session.canAddOutput(stillImageOutput) {
-            session.addOutput(stillImageOutput)
-            // ...
-            // Configure the Live Preview here...
-            
-            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
-            videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-            captureView.layer.addSublayer(videoPreviewLayer!)
-            session.startRunning()
-        } else if !session.outputs.isEmpty && state == .takePicture {
-            captureView.layer.addSublayer(videoPreviewLayer!)
-        }
+        loadCamera(atPosition: .back)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        videoPreviewLayer?.frame = captureView.frame
-        view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(postcards.layer, above: captureView.layer)
-        view.layer.insertSublayer(flash.layer, above: captureView.layer)
-        
-        displayButtons(forState: state)
+        configureCameraView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -114,12 +81,22 @@ class CameraViewController: UIViewController {
         return false
     }
     
-    // MARK: - AVCapturePhotoSettings
-    
     fileprivate var capturePhotoSettings: AVCapturePhotoSettings {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
-        settings.flashMode = flashMode
+        settings.flashMode = stillImageOutput?.supportedFlashModes.contains(NSNumber(value: flashMode.rawValue)) ?? false ? flashMode : .off
         return settings
+    }
+    
+    fileprivate func configureCameraView() {
+        videoPreviewLayer?.frame = captureView.frame
+        view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
+        view.layer.insertSublayer(postcards.layer, above: captureView.layer)
+        view.layer.insertSublayer(flash.layer, above: captureView.layer)
+        view.layer.insertSublayer(switchCamera.layer, above: captureView.layer)
+        
+        displayButtons(forState: state)
     }
     
     private func displayButtons(forState state: State) {
@@ -130,13 +107,56 @@ class CameraViewController: UIViewController {
             deletePhoto.isHidden = true
             postcards.isHidden = false
             flash.isHidden = false
+            switchCamera.isHidden = false
         case .viewPicture:
             takePhoto.isHidden = true
             keepPhoto.isHidden = false
             deletePhoto.isHidden = false
             postcards.isHidden = true
             flash.isHidden = true
+            switchCamera.isHidden = true
         }
+    }
+    
+    fileprivate func loadCamera(atPosition position: AVCaptureDevicePosition) {
+        let camera = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: position)
+        
+        if camera == nil {
+            print("turds")
+        }
+        
+        if session.isRunning {
+            session.stopRunning()
+            videoPreviewLayer?.removeFromSuperlayer()
+            session = AVCaptureSession()
+        }
+        
+        var input: AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: camera)
+        } catch let error as NSError {
+            assertionFailure(error.localizedDescription)
+        }
+        
+        if session.canAddInput(input) {
+            session.addInput(input)
+            // ...
+            stillImageOutput = AVCapturePhotoOutput()
+        }
+        
+        if session.canAddOutput(stillImageOutput) {
+            session.addOutput(stillImageOutput)
+            // ...
+            // Configure the Live Preview here...
+            
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+            videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+            captureView.layer.addSublayer(videoPreviewLayer!)
+            session.startRunning()
+        } else if !session.outputs.isEmpty && state == .takePicture {
+            captureView.layer.addSublayer(videoPreviewLayer!)
+        }
+        cameraPosition = position
     }
 }
 
@@ -167,6 +187,12 @@ extension CameraViewController {
             flashMode = .off
         }
         flash.setTitle(flashMode.buttonText, for: .normal)
+    }
+    
+    @IBAction func didSwitchCamera(_ sender: UIButton) {
+        if cameraPosition == .back { loadCamera(atPosition: .front) }
+        else { loadCamera(atPosition: .back) }
+        configureCameraView()
     }
 }
 

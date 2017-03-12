@@ -66,12 +66,22 @@
                                             <action selector="didToggleFlash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HaB-zT-dwF"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-03-DLD">
+                                        <rect key="frame" x="223" y="24" width="126" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="switch camera"/>
+                                        <connections>
+                                            <action selector="didSwitchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JKa-HX-CSW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="BHP-TG-u9I" firstAttribute="top" secondItem="guL-EE-maU" secondAttribute="top" constant="24" id="5gt-0p-Tqf"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="width" secondItem="Ult-CV-i6z" secondAttribute="width" id="7Tf-zw-lvq"/>
+                                    <constraint firstItem="Bya-03-DLD" firstAttribute="top" secondItem="BHP-TG-u9I" secondAttribute="top" id="9bc-Bo-ClA"/>
                                     <constraint firstAttribute="bottom" secondItem="PXr-Tx-Ure" secondAttribute="bottom" constant="63" id="9iP-76-SH1"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="height" secondItem="Ult-CV-i6z" secondAttribute="height" id="Bc4-CS-c0t"/>
+                                    <constraint firstItem="Bya-03-DLD" firstAttribute="trailing" secondItem="zna-Og-sK2" secondAttribute="trailing" id="Fc3-qh-M5n"/>
                                     <constraint firstItem="zna-Og-sK2" firstAttribute="top" secondItem="Ult-CV-i6z" secondAttribute="top" id="KeL-31-rPS"/>
                                     <constraint firstItem="PXr-Tx-Ure" firstAttribute="centerX" secondItem="guL-EE-maU" secondAttribute="centerX" id="byC-RJ-Yfa"/>
                                     <constraint firstItem="BHP-TG-u9I" firstAttribute="leading" secondItem="Ult-CV-i6z" secondAttribute="leading" id="rEV-Rh-C01"/>
@@ -99,6 +109,7 @@
                         <outlet property="flash" destination="BHP-TG-u9I" id="xP2-Sc-E7z"/>
                         <outlet property="keepPhoto" destination="zna-Og-sK2" id="FIk-En-7hY"/>
                         <outlet property="postcards" destination="MZ2-sv-VwM" id="ZcC-QR-OkQ"/>
+                        <outlet property="switchCamera" destination="Bya-03-DLD" id="Fuh-Ec-xp5"/>
                         <outlet property="takePhoto" destination="PXr-Tx-Ure" id="tQw-bj-EwN"/>
                     </connections>
                 </viewController>
