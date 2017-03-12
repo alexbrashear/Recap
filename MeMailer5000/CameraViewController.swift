@@ -129,11 +129,13 @@ class CameraViewController: UIViewController {
             keepPhoto.isHidden = true
             deletePhoto.isHidden = true
             postcards.isHidden = false
+            flash.isHidden = false
         case .viewPicture:
             takePhoto.isHidden = true
             keepPhoto.isHidden = false
             deletePhoto.isHidden = false
             postcards.isHidden = true
+            flash.isHidden = true
         }
     }
 }
