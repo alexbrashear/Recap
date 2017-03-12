@@ -12,13 +12,6 @@ typealias RequestCompletion = (_ json: [String:AnyObject]?) -> Void
 
 typealias DataRequestCompletion = (_ data: Data?) -> Void
 
-enum Environment {
-    case test
-    case debug
-    case production
-    
-}
-
 class NetworkClient {
     
     private let environment: Environment
