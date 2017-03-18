@@ -93,9 +93,15 @@ extension SentPostcardsViewController {
         let configuration = viewModel.cellConfiguration(for: indexPath)
         var image: UIImage?
         if imageProvider.hasItemInCache(itemURL: configuration.thumbnailURL) {
+            if indexPath.row == 0 {
+                print("turds")
+            }
             image = imageProvider.cachedImage(for: configuration.thumbnailURL)
         } else {
             imageProvider.fetchImage(for: configuration.thumbnailURL) { [weak self] image in
+                if indexPath.row == 0 {
+                    print("turds")
+                }
                 DispatchQueue.main.async {
                     self?.tableView.reloadRows(at: [indexPath], with: .automatic)
                 }

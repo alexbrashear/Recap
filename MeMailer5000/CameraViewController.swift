@@ -203,11 +203,15 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         guard let buffer = photoSampleBuffer else {
             return assertionFailure("unable to unwrap photo buffer")
         }
-        let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer)
-        let image = UIImage(data: imageData!)
+        guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer),
+            var image = UIImage(data: imageData) else { return }
+        
         imageView.frame = captureView.frame
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        if let cgImage = image.cgImage, cameraPosition == .front {
+            image = UIImage(cgImage: cgImage, scale: image.scale, orientation:.leftMirrored)
+        }
         imageView.image = image
         
         state = .viewPicture
