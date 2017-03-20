@@ -46,30 +46,3 @@ struct PostcardParser {
         return Thumbnails(small: small, medium: medium, large: large)
     }
 }
-
-extension Date {
-    static let iso8601Formatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        return formatter
-    }()
-    
-    static let basicFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-mm-dd"
-        return formatter
-    }()
-}
-
-extension String {
-    var dateFromISO8601: Date? {
-        return Date.iso8601Formatter.date(from: self)
-    }
-    
-    var dateFromStandard: Date? {
-        return Date.basicFormatter.date(from: self)
-    }
-}

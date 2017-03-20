@@ -1,7 +1,7 @@
 
 use_frameworks!
 
-target 'MeMailer5000' do
+target 'Recap' do
 	pod 'ValueCoding', '~> 2.1.0'
     pod 'Reusable'
 	pod 'YapDatabase', '~> 2.9'
@@ -11,7 +11,7 @@ target 'MeMailer5000' do
 	pod 'R.swift'
 end
 
-target 'MeMailer5000Tests' do
+target 'RecapTests' do
 
 end
 

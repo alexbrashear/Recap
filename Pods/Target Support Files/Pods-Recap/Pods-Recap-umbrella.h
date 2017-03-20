@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_MeMailer5000VersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_MeMailer5000VersionString[];
+FOUNDATION_EXPORT double Pods_RecapVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_RecapVersionString[];
 

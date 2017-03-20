@@ -17,7 +17,7 @@ class NetworkClient {
     private let environment: Environment
     
     init() {
-        self.environment = .debug
+        self.environment = .production
     }
     
     var authorization: String {

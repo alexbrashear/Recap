@@ -1,0 +1,6 @@
+framework module Pods_RecapTests {
+  umbrella header "Pods-RecapTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

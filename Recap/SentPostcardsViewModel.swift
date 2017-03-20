@@ -24,6 +24,8 @@ class SentPostcardsViewModel: SentPostcardsViewModelProtocol {
     func cellConfiguration(for indexPath: IndexPath) -> SentPostcardCellConfiguration {
         guard indexPath.row >= 0 && indexPath.row < sentPostcards.count else { fatalError() }
         let sentPostcard = sentPostcards[indexPath.row]
-        return SentPostcardCellConfiguration(name: sentPostcard.to.name, expectedDelivery: "replace me please", thumbnailURL: sentPostcard.imageThumbnails.small)
+        let expectedDelivery = sentPostcard.expectedDeliveryDate.displayableDate
+        
+        return SentPostcardCellConfiguration(name: sentPostcard.to.name, expectedDelivery: expectedDelivery, thumbnailURL: sentPostcard.imageThumbnails.small)
     }
 }
