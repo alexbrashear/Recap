@@ -1,4 +1,4 @@
-# Trinket
+# Recap
 An iOS app that lets you send physical photos to your friends
 
 ## Setup
