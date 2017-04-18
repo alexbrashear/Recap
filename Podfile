@@ -9,6 +9,7 @@ target 'Recap' do
 	pod 'AWSS3'
     pod 'PKHUD'
 	pod 'R.swift'
+    pod 'OpenSans'
 end
 
 target 'RecapTests' do

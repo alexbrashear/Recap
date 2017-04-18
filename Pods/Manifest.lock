@@ -10,6 +10,7 @@ PODS:
     - CocoaLumberjack/Core
   - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
+  - OpenSans (1.0.3)
   - PKHUD (4.2.0)
   - R.swift (3.2.0):
     - R.swift.Library (~> 3.0.2)
@@ -89,6 +90,7 @@ PODS:
 
 DEPENDENCIES:
   - AWSS3
+  - OpenSans
   - PKHUD
   - R.swift
   - RCSYapDatabaseExtensions (from `git@github.com:JimRoepcke/YapDatabaseExtensions.git`, tag `3.0.0`)
@@ -110,6 +112,7 @@ SPEC CHECKSUMS:
   AWSCore: e9839d27ceaa2db75934a9c418630ce63c23e347
   AWSS3: 3678dd99006ff77c825fb857fc7cbaca0db848c6
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  OpenSans: 33078846463eae780aa5f82986b51cce085f970d
   PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
@@ -119,6 +122,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: b38c3e6c9f08eb585dd7da60c724b8eb643d2d5b
+PODFILE CHECKSUM: 1dec2803e608bbf3eb0d758d26ba3d61b0bbbbb0
 
 COCOAPODS: 1.2.0
