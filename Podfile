@@ -9,7 +9,7 @@ target 'Recap' do
 	pod 'AWSS3'
     pod 'PKHUD'
 	pod 'R.swift'
-    pod 'OpenSans'
+    pod 'OpenSans', :git => 'https://github.com/CocoaPods-Fonts/OpenSans.git', :commit => '0be3f18'
 end
 
 target 'RecapTests' do

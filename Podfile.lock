@@ -90,7 +90,7 @@ PODS:
 
 DEPENDENCIES:
   - AWSS3
-  - OpenSans
+  - OpenSans (from `https://github.com/CocoaPods-Fonts/OpenSans.git`, commit `0be3f18`)
   - PKHUD
   - R.swift
   - RCSYapDatabaseExtensions (from `git@github.com:JimRoepcke/YapDatabaseExtensions.git`, tag `3.0.0`)
@@ -99,11 +99,17 @@ DEPENDENCIES:
   - YapDatabase (~> 2.9)
 
 EXTERNAL SOURCES:
+  OpenSans:
+    :commit: 0be3f18
+    :git: https://github.com/CocoaPods-Fonts/OpenSans.git
   RCSYapDatabaseExtensions:
     :git: git@github.com:JimRoepcke/YapDatabaseExtensions.git
     :tag: 3.0.0
 
 CHECKOUT OPTIONS:
+  OpenSans:
+    :commit: 0be3f18
+    :git: https://github.com/CocoaPods-Fonts/OpenSans.git
   RCSYapDatabaseExtensions:
     :git: git@github.com:JimRoepcke/YapDatabaseExtensions.git
     :tag: 3.0.0
@@ -122,6 +128,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: 1dec2803e608bbf3eb0d758d26ba3d61b0bbbbb0
+PODFILE CHECKSUM: 6f15fdbdd4fd986161cdbb4254fd3e921f28e998
 
 COCOAPODS: 1.2.0
