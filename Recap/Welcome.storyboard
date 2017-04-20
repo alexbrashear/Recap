@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="77O-fh-654">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y2M-s3-5WT" customClass="WelcomeViewController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="f5a-yn-cFZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wez-IU-H3h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b3O-yi-T1m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Jvq-3Y-xNF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recap" translatesAutoresizingMaskIntoConstraints="NO" id="zOF-Vp-GOY">
+                                <rect key="frame" x="137.5" y="92" width="99" height="28"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories in your mailbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="occ-xl-KSC">
+                                <rect key="frame" x="66" y="130" width="244" height="27.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2Ux-jV-spG">
+                                <rect key="frame" x="48" y="187.5" width="278" height="252"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-5a-rRO" userLabel="item">
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="085-0n-ce6"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECi-cP-eqw" userLabel="item">
+                                        <rect key="frame" x="0.0" y="94" width="278" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="Umn-zi-9AF"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73Y-38-Ie6" userLabel="item">
+                                        <rect key="frame" x="0.0" y="188" width="278" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="7yQ-NO-FuN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="278" id="KLg-WN-f69"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-Vy-o4J">
+                                <rect key="frame" x="48" y="469.5" width="278" height="50"/>
+                                <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9XV-O1-XRS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="wez-IU-H3h" firstAttribute="top" secondItem="Jvq-3Y-xNF" secondAttribute="bottom" id="AaP-1c-KZV"/>
+                            <constraint firstItem="zOF-Vp-GOY" firstAttribute="centerX" secondItem="b3O-yi-T1m" secondAttribute="centerX" id="Dn8-aF-4U1"/>
+                            <constraint firstItem="Ta6-Vy-o4J" firstAttribute="top" secondItem="2Ux-jV-spG" secondAttribute="bottom" constant="30" id="G24-hd-Mlo"/>
+                            <constraint firstItem="Ta6-Vy-o4J" firstAttribute="width" secondItem="2Ux-jV-spG" secondAttribute="width" id="IFw-GK-q0s"/>
+                            <constraint firstItem="2Ux-jV-spG" firstAttribute="top" secondItem="occ-xl-KSC" secondAttribute="bottom" constant="30" id="JXX-9o-CKG"/>
+                            <constraint firstItem="occ-xl-KSC" firstAttribute="top" secondItem="zOF-Vp-GOY" secondAttribute="bottom" constant="10" id="Nrg-dM-Hj2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jvq-3Y-xNF" secondAttribute="trailing" constant="-16" id="T8d-uf-xXy"/>
+                            <constraint firstItem="Jvq-3Y-xNF" firstAttribute="leading" secondItem="b3O-yi-T1m" secondAttribute="leadingMargin" constant="-16" id="ZXI-jK-etr"/>
+                            <constraint firstItem="zOF-Vp-GOY" firstAttribute="bottom" secondItem="wez-IU-H3h" secondAttribute="top" multiplier="0.18" id="g6p-YC-xKz"/>
+                            <constraint firstItem="Jvq-3Y-xNF" firstAttribute="top" secondItem="f5a-yn-cFZ" secondAttribute="bottom" constant="-20" id="kM1-1q-E0x"/>
+                            <constraint firstItem="occ-xl-KSC" firstAttribute="centerX" secondItem="b3O-yi-T1m" secondAttribute="centerX" id="tEx-zR-v8U"/>
+                            <constraint firstItem="Ta6-Vy-o4J" firstAttribute="centerX" secondItem="b3O-yi-T1m" secondAttribute="centerX" id="tqN-sH-6Py"/>
+                            <constraint firstItem="2Ux-jV-spG" firstAttribute="centerX" secondItem="b3O-yi-T1m" secondAttribute="centerX" id="tvC-aw-dDV"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="continueButton" destination="Ta6-Vy-o4J" id="zUh-tC-H0E"/>
+                        <outlet property="item1" destination="lBe-5a-rRO" id="UJo-hk-nuH"/>
+                        <outlet property="item2" destination="ECi-cP-eqw" id="Nuj-93-7HJ"/>
+                        <outlet property="item3" destination="73Y-38-Ie6" id="dl9-Xo-5UM"/>
+                        <outlet property="tagline" destination="occ-xl-KSC" id="2IA-ZL-vLe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RtX-Dc-bbN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-399.19999999999999" y="160.56971514242881"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="recap" width="99" height="28"/>
+        <image name="splashBackground" width="375" height="667"/>
+    </resources>
+</document>
