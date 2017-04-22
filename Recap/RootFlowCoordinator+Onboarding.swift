@@ -10,6 +10,7 @@ import UIKit
 
 extension RootFlowCoordinator {
     func configureWelcomeController(_ vc: WelcomeViewController, nc: UINavigationController) {
+        nc.setNavigationBarHidden(true, animated: true)
         vc.viewModel = WelcomeViewModel(continueButtonAction: { [weak nc, weak self] in
             guard let nc = nc else { return }
             self?.pushEnterAddressController(onto: nc)
