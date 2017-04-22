@@ -12,7 +12,8 @@ class RootFlowCoordinator {
     
     /// The root navigation controller
     var navigationController: UINavigationController
-    
+    /// the address provider
+    let addressProvider = AddressProvider()
     /// the address list provider
     let addressListProvider: AddressListProviderProtocol
     
