@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InputAddressView" customModule="Recap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="364"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1TQ-4S-gpi">
+                    <rect key="frame" x="25" y="15" width="275" height="314"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dqd-bY-WeS" userLabel="name">
+                            <rect key="frame" x="0.0" y="0.0" width="275" height="47"/>
+                            <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcy-bn-176" userLabel="address">
+                            <rect key="frame" x="0.0" y="67" width="275" height="46.5"/>
+                            <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rPI-Of-1i3" userLabel="apartment">
+                            <rect key="frame" x="0.0" y="133.5" width="127.5" height="46.5"/>
+                            <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqa-zW-4hl" userLabel="city">
+                            <rect key="frame" x="0.0" y="200" width="275" height="47"/>
+                            <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hdK-Lw-fRH" userLabel="horizontal stack">
+                            <rect key="frame" x="0.0" y="267" width="275" height="47"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w0d-fQ-sPS" userLabel="state">
+                                    <rect key="frame" x="0.0" y="0.0" width="127.5" height="47"/>
+                                    <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EJ-6w-bNg" userLabel="zipcode">
+                                    <rect key="frame" x="147.5" y="0.0" width="127.5" height="47"/>
+                                    <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="w0d-fQ-sPS" firstAttribute="width" secondItem="3EJ-6w-bNg" secondAttribute="width" id="66f-Ah-Ngz"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Dqd-bY-WeS" firstAttribute="height" secondItem="hdK-Lw-fRH" secondAttribute="height" id="G2I-1g-wYn"/>
+                        <constraint firstItem="Dqd-bY-WeS" firstAttribute="height" secondItem="bcy-bn-176" secondAttribute="height" id="JOO-qO-CTg"/>
+                        <constraint firstItem="Dqd-bY-WeS" firstAttribute="height" secondItem="Sqa-zW-4hl" secondAttribute="height" id="KhE-qa-B5B"/>
+                        <constraint firstItem="Dqd-bY-WeS" firstAttribute="height" secondItem="rPI-Of-1i3" secondAttribute="height" id="Ufz-qF-Qgh"/>
+                        <constraint firstItem="w0d-fQ-sPS" firstAttribute="width" secondItem="rPI-Of-1i3" secondAttribute="width" id="cCM-FW-5U8"/>
+                        <constraint firstItem="bcy-bn-176" firstAttribute="width" secondItem="1TQ-4S-gpi" secondAttribute="width" id="ctu-1P-3E1"/>
+                        <constraint firstItem="hdK-Lw-fRH" firstAttribute="width" secondItem="1TQ-4S-gpi" secondAttribute="width" id="jzm-sg-RKj"/>
+                        <constraint firstItem="Sqa-zW-4hl" firstAttribute="width" secondItem="1TQ-4S-gpi" secondAttribute="width" id="p1f-8S-sJe"/>
+                        <constraint firstItem="Dqd-bY-WeS" firstAttribute="width" secondItem="1TQ-4S-gpi" secondAttribute="width" id="uD3-HR-jxQ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="1TQ-4S-gpi" secondAttribute="trailing" constant="25" id="BMp-et-5Gj"/>
+                <constraint firstItem="1TQ-4S-gpi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="IXD-Ab-MI6"/>
+                <constraint firstAttribute="bottom" secondItem="1TQ-4S-gpi" secondAttribute="bottom" constant="35" id="OdV-sj-ICV"/>
+                <constraint firstItem="1TQ-4S-gpi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="Wsl-Rj-jJJ"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressContainer" destination="bcy-bn-176" id="wPh-JD-vYx"/>
+                <outlet property="aptContainer" destination="rPI-Of-1i3" id="RR8-Oo-ohG"/>
+                <outlet property="cityContainer" destination="Sqa-zW-4hl" id="BNa-lf-Nw7"/>
+                <outlet property="nameContainer" destination="Dqd-bY-WeS" id="hLw-uP-AgB"/>
+                <outlet property="stateContainer" destination="w0d-fQ-sPS" id="08w-zo-3TH"/>
+                <outlet property="zipContainer" destination="3EJ-6w-bNg" id="6vE-N5-pFO"/>
+            </connections>
+            <point key="canvasLocation" x="18.5" y="175"/>
+        </view>
+    </objects>
+</document>

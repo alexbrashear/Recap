@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TextInputItem" customModule="Recap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="333" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-EO-i5v" userLabel="input">
+                    <rect key="frame" x="0.0" y="0.0" width="333" height="28"/>
+                    <color key="textColor" red="0.16078431372549018" green="0.1803921568627451" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02B-at-z6F" userLabel="divider">
+                    <rect key="frame" x="0.0" y="31" width="333" height="2"/>
+                    <color key="backgroundColor" red="0.41960784313725491" green="0.4823529411764706" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="Pcc-yK-ydZ"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USL-VV-kwh">
+                    <rect key="frame" x="0.0" y="38" width="333" height="16.5"/>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TjU-EO-i5v" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="7Ue-P6-73A"/>
+                <constraint firstItem="TjU-EO-i5v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="V4E-yc-MnA"/>
+                <constraint firstItem="USL-VV-kwh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bEx-M0-ibA"/>
+                <constraint firstItem="USL-VV-kwh" firstAttribute="top" secondItem="02B-at-z6F" secondAttribute="bottom" constant="5" id="dCU-1w-2OT"/>
+                <constraint firstItem="02B-at-z6F" firstAttribute="top" secondItem="TjU-EO-i5v" secondAttribute="bottom" constant="3" id="gmu-2h-y8U"/>
+                <constraint firstItem="02B-at-z6F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iq9-7C-DhB"/>
+                <constraint firstItem="02B-at-z6F" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="lyk-8q-wih"/>
+                <constraint firstItem="USL-VV-kwh" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="oTm-uX-hhs"/>
+                <constraint firstItem="TjU-EO-i5v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vOD-5a-psE"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="input" destination="TjU-EO-i5v" id="FBT-nA-oGp"/>
+                <outlet property="item" destination="USL-VV-kwh" id="fcw-Cl-OTK"/>
+            </connections>
+            <point key="canvasLocation" x="4.5" y="283"/>
+        </view>
+    </objects>
+</document>

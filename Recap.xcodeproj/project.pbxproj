@@ -45,6 +45,13 @@
 		C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347531EA83BD10008E62E /* WelcomeViewModel.swift */; };
 		C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347551EA83D800008E62E /* WelcomeItem.swift */; };
 		C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C347571EA83D930008E62E /* WelcomeItem.xib */; };
+		C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C3475D1EA861190008E62E /* EnterAddress.storyboard */; };
+		C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3475F1EA865490008E62E /* EnterAddressController.swift */; };
+		C3C347621EA9A5660008E62E /* TextInputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347611EA9A5660008E62E /* TextInputItem.swift */; };
+		C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C347631EA9A5770008E62E /* TextInputItem.xib */; };
+		C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347651EA9A99D0008E62E /* InputAddressView.swift */; };
+		C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C347671EA9A9B10008E62E /* InputAddressView.xib */; };
+		C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
 		C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */; };
@@ -114,6 +121,13 @@
 		C3C347531EA83BD10008E62E /* WelcomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		C3C347551EA83D800008E62E /* WelcomeItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeItem.swift; sourceTree = "<group>"; };
 		C3C347571EA83D930008E62E /* WelcomeItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeItem.xib; sourceTree = "<group>"; };
+		C3C3475D1EA861190008E62E /* EnterAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EnterAddress.storyboard; sourceTree = "<group>"; };
+		C3C3475F1EA865490008E62E /* EnterAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterAddressController.swift; sourceTree = "<group>"; };
+		C3C347611EA9A5660008E62E /* TextInputItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputItem.swift; sourceTree = "<group>"; };
+		C3C347631EA9A5770008E62E /* TextInputItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextInputItem.xib; sourceTree = "<group>"; };
+		C3C347651EA9A99D0008E62E /* InputAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAddressView.swift; sourceTree = "<group>"; };
+		C3C347671EA9A9B10008E62E /* InputAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputAddressView.xib; sourceTree = "<group>"; };
+		C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -264,13 +278,35 @@
 		C3C347481EA710ED0008E62E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C3C3475C1EA860950008E62E /* Enter Address */,
+				C3C3475B1EA85B420008E62E /* Welcome */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		C3C3475B1EA85B420008E62E /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
 				C3C347491EA711280008E62E /* WelcomeViewController.swift */,
 				C3C347531EA83BD10008E62E /* WelcomeViewModel.swift */,
 				C3C347551EA83D800008E62E /* WelcomeItem.swift */,
 				C3C347571EA83D930008E62E /* WelcomeItem.xib */,
 				C3C3474D1EA7119E0008E62E /* Welcome.storyboard */,
 			);
-			name = Onboarding;
+			name = Welcome;
+			sourceTree = "<group>";
+		};
+		C3C3475C1EA860950008E62E /* Enter Address */ = {
+			isa = PBXGroup;
+			children = (
+				C3C3475D1EA861190008E62E /* EnterAddress.storyboard */,
+				C3C3475F1EA865490008E62E /* EnterAddressController.swift */,
+				C3C347651EA9A99D0008E62E /* InputAddressView.swift */,
+				C3C347671EA9A9B10008E62E /* InputAddressView.xib */,
+				C3C347611EA9A5660008E62E /* TextInputItem.swift */,
+				C3C347631EA9A5770008E62E /* TextInputItem.xib */,
+			);
+			name = "Enter Address";
 			sourceTree = "<group>";
 		};
 		C3CE0E271E6E6273008000B1 /* App */ = {
@@ -288,6 +324,7 @@
 			children = (
 				C3CE0E321E726EE7008000B1 /* UIBarButtonItem+Closures.swift */,
 				C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */,
+				C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */,
 				C3346F091E7ED50100A136B5 /* String+DateFormatting.swift */,
 				C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */,
 			);
@@ -421,9 +458,12 @@
 			files = (
 				C3D6E8E71E6919A700E67874 /* Postcards.storyboard in Resources */,
 				C3683DE81E465D5900650A90 /* AddressList.storyboard in Resources */,
+				C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
+				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
+				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3683DE61E46594E00650A90 /* AddressCell.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
@@ -557,6 +597,8 @@
 				C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */,
 				C3CE0E351E7592E2008000B1 /* Configuration.swift in Sources */,
 				C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */,
+				C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */,
+				C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */,
 				C3C347521EA83AD50008E62E /* RootFlowCoordinator+Onboarding.swift in Sources */,
 				C3CE0E331E726EE7008000B1 /* UIBarButtonItem+Closures.swift in Sources */,
 				C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */,
@@ -568,6 +610,7 @@
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
+				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
@@ -587,6 +630,7 @@
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
 				C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */,
 				C3683DDF1E46567100650A90 /* AddressListController.swift in Sources */,
+				C3C347621EA9A5660008E62E /* TextInputItem.swift in Sources */,
 				C3CE0E301E6E7364008000B1 /* AddressListProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
