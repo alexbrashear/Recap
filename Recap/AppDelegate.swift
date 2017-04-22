@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSS3
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootFlowCoordinator?.load()
         window?.makeKeyAndVisible()
         
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 75
         return true
     }
 

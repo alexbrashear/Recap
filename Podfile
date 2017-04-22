@@ -10,6 +10,7 @@ target 'Recap' do
     pod 'PKHUD'
 	pod 'R.swift'
     pod 'OpenSans', :git => 'https://github.com/CocoaPods-Fonts/OpenSans.git', :commit => '0be3f18'
+    pod 'IQKeyboardManagerSwift'
 end
 
 target 'RecapTests' do
