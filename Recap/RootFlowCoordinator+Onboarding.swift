@@ -10,6 +10,9 @@ import UIKit
 import PKHUD
 
 extension RootFlowCoordinator {
+    
+    // MARK: - Welcome Controller
+    
     func configureWelcomeController(_ vc: WelcomeViewController, nc: UINavigationController) {
         nc.setNavigationBarHidden(true, animated: true)
         vc.viewModel = WelcomeViewModel(continueButtonAction: { [weak nc, weak self] in
@@ -18,18 +21,20 @@ extension RootFlowCoordinator {
         })
     }
     
-    func configureEnterAddressController(_ vc: EnterAddressController) {
-        let vm = EnterAddressViewModel { [weak self, weak vc] address in
+    // MARK: - Enter Address Controller
+    
+    func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
+        let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] address in
             HUD.show(.progress)
             self?.addressProvider.verify(address: address) { [weak self] (address, error) in
                 DispatchQueue.main.async {
                     HUD.hide()
-                    guard let vc = vc else { return }
+                    guard let vc = vc, let nc = nc else { return }
                     if let error = error {
                         let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
                         vc.present(alert, animated: true, completion: nil)
                     } else {
-                        self?.pushCameraViewController()
+                        self?.pushDisclaimerController(onto: nc)
                     }
                 }
             }
@@ -39,7 +44,19 @@ extension RootFlowCoordinator {
     
     private func pushEnterAddressController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.enterAddress.enterAddressController() else { return }
-        configureEnterAddressController(vc)
+        configureEnterAddressController(vc, nc: nc)
+        nc.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Disclaimer Controller
+    
+    private func configureDisclaimerController(_ vc: DisclaimerController) {
+        
+    }
+    
+    private func pushDisclaimerController(onto nc: UINavigationController) {
+        guard let vc = R.storyboard.disclaimer.disclaimerController() else { return }
+        configureDisclaimerController(vc)
         nc.pushViewController(vc, animated: true)
     }
 }

@@ -11,6 +11,8 @@
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		7EC37E0C7861A5BD4E105569 /* Pods_Recap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5DDE820945FAE41102A623 /* Pods_Recap.framework */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
+		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
+		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
@@ -52,6 +54,8 @@
 		C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347651EA9A99D0008E62E /* InputAddressView.swift */; };
 		C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C347671EA9A9B10008E62E /* InputAddressView.xib */; };
 		C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */; };
+		C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */; };
+		C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
 		C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */; };
@@ -83,6 +87,8 @@
 		7E8D7D0C1E4A334099968D53 /* Pods_RecapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86480A54151BC1AE48383D52 /* Pods-Recap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recap/Pods-Recap.debug.xcconfig"; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
+		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 		C3C347651EA9A99D0008E62E /* InputAddressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAddressView.swift; sourceTree = "<group>"; };
 		C3C347671EA9A9B10008E62E /* InputAddressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputAddressView.xib; sourceTree = "<group>"; };
 		C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
+		C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterAddressViewModel.swift; sourceTree = "<group>"; };
+		C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -184,6 +192,15 @@
 				EDCD6FD234A482CFF7BC8C6F /* Pods-RecapTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C313397C1EABAA530080A168 /* Disclaimer */ = {
+			isa = PBXGroup;
+			children = (
+				C313397D1EABAA780080A168 /* Disclaimer.storyboard */,
+				C313397F1EABAAED0080A168 /* DisclaimerController.swift */,
+			);
+			name = Disclaimer;
 			sourceTree = "<group>";
 		};
 		C353082E1E3D163600E2BD8A = {
@@ -278,6 +295,7 @@
 		C3C347481EA710ED0008E62E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				C313397C1EABAA530080A168 /* Disclaimer */,
 				C3C3475C1EA860950008E62E /* Enter Address */,
 				C3C3475B1EA85B420008E62E /* Welcome */,
 			);
@@ -301,6 +319,7 @@
 			children = (
 				C3C3475D1EA861190008E62E /* EnterAddress.storyboard */,
 				C3C3475F1EA865490008E62E /* EnterAddressController.swift */,
+				C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */,
 				C3C347651EA9A99D0008E62E /* InputAddressView.swift */,
 				C3C347671EA9A9B10008E62E /* InputAddressView.xib */,
 				C3C347611EA9A5660008E62E /* TextInputItem.swift */,
@@ -327,6 +346,7 @@
 				C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */,
 				C3346F091E7ED50100A136B5 /* String+DateFormatting.swift */,
 				C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */,
+				C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -469,6 +489,7 @@
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */,
 				C3909B6D1E6AFC9200ED01F4 /* SentPostcardCell.xib in Resources */,
+				C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,6 +621,7 @@
 				C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */,
 				C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */,
 				C3C347521EA83AD50008E62E /* RootFlowCoordinator+Onboarding.swift in Sources */,
+				C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */,
 				C3CE0E331E726EE7008000B1 /* UIBarButtonItem+Closures.swift in Sources */,
 				C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */,
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
@@ -612,9 +634,11 @@
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
 				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+				C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */,
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
 				C3346F0A1E7ED50100A136B5 /* String+DateFormatting.swift in Sources */,
+				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
