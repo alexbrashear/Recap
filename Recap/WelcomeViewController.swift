@@ -50,6 +50,10 @@ class WelcomeViewController: UIViewController {
         continueButton.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20.0)
         
         tagline.font = UIFont.openSansBoldFont(ofSize: 20.0)
+        
+        continueButton.on(.touchUpInside) { [weak self] _ in
+            self?.viewModel?.continueButtonAction()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
