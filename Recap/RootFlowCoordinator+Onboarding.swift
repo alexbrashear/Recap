@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 extension RootFlowCoordinator {
     func configureWelcomeController(_ vc: WelcomeViewController, nc: UINavigationController) {
@@ -18,7 +19,22 @@ extension RootFlowCoordinator {
     }
     
     func configureEnterAddressController(_ vc: EnterAddressController) {
-        
+        let vm = EnterAddressViewModel { [weak self, weak vc] address in
+            HUD.show(.progress)
+            self?.addressProvider.verify(address: address) { [weak self] (address, error) in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    guard let vc = vc else { return }
+                    if let error = error {
+                        let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
+                        vc.present(alert, animated: true, completion: nil)
+                    } else {
+                        self?.pushCameraViewController()
+                    }
+                }
+            }
+        }
+        vc.viewModel = vm
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController) {

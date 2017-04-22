@@ -15,6 +15,10 @@ class AddressProvider {
     private let verifyURLString = "https://api.lob.com/v1/verify"
     private let networkClient = NetworkClient()
     
+    func verify(address: Address, completion: @escaping AddressVerificationCompletion) {
+        verify(name: address.name, line1: address.line1, line2: address.line2, city: address.city, state: address.state, zip: address.zip, completion: completion)
+    }
+    
     func verify(name: String, line1: String, line2: String, city: String, state: String, zip: String, completion: @escaping AddressVerificationCompletion) {
         guard let url = URL(string: verifyURLString) else { return completion(nil, .unknownFailure) }
         let data = formatHTTPBody(withLine1: line1, line2: line2, city: city, state: state, zip: zip)

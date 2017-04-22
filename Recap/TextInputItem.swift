@@ -30,4 +30,8 @@ class TextInputItem: UIView, NibLoadable {
             item.text = viewModel?.item
         }
     }
+    
+    var value: String {
+        return input.text ?? ""
+    }
 }

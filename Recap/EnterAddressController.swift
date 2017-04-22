@@ -8,6 +8,12 @@
 
 import UIKit
 
+typealias NextAction = (_ address: Address) -> Void
+
+protocol EnterAddressViewModelProtocol: class {
+    var nextAction: NextAction { get }
+}
+
 class EnterAddressController: UIViewController {
 
     @IBOutlet var heading: UILabel!
@@ -16,6 +22,8 @@ class EnterAddressController: UIViewController {
     @IBOutlet var nextButton: UIButton!
     
     private let inputAddressView = InputAddressView.loadFromNib()
+    
+    var viewModel: EnterAddressViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +35,11 @@ class EnterAddressController: UIViewController {
         
         nextButton.layer.cornerRadius = 5.0
         nextButton.clipsToBounds = true
+        
+        nextButton.on(.touchUpInside) { [weak self] _ in
+            guard let address = self?.inputAddressView.getAddress() else { return }
+            self?.viewModel?.nextAction(address)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
