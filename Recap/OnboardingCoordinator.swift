@@ -29,9 +29,10 @@ class OnboardingCoordinator {
     
     func shouldShow(onboarding: OnboardingKind) -> Bool {
         let hasShownOnboarding = defaults.bool(forKey: onboarding.key)
-        if !hasShownOnboarding {
-            defaults.set(true, forKey: onboarding.key)
-        }
         return !hasShownOnboarding
+    }
+    
+    func complete(onboarding: OnboardingKind) {
+        defaults.set(true, forKey: onboarding.key)
     }
 }

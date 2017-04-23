@@ -40,6 +40,8 @@ extension RootFlowCoordinator {
                         let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
                         vc.present(alert, animated: true, completion: nil)
                     } else {
+                        guard let address = address else { return }
+                        self?.userController.setNewUser(address: address)
                         self?.pushDisclaimerController(onto: nc)
                     }
                 }
@@ -59,6 +61,7 @@ extension RootFlowCoordinator {
     private func configureDisclaimerController(_ vc: DisclaimerController, nc: UINavigationController) {
         let vm = DisclaimerViewModel(disclaimerAction: { [weak self, weak nc] in
             guard let nc = nc else { return }
+            self?.onboardingCoordinator.complete(onboarding: .welcomeFlow)
             self?.pushCameraViewController(onto: nc)
             }, termsAndConditionsAction: {})
         vc.viewModel = vm
