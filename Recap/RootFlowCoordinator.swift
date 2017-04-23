@@ -16,6 +16,8 @@ class RootFlowCoordinator {
     let addressProvider = AddressProvider()
     /// the address list provider
     let addressListProvider: AddressListProviderProtocol
+    /// the coordinator to handle onboarding
+    let onboardingCoordinator = OnboardingCoordinator()
     
     init(addressListProvider: AddressListProviderProtocol) {
         navigationController = UINavigationController()
@@ -29,9 +31,11 @@ class RootFlowCoordinator {
     
     /// loads the initial view controller
     func load() {
-        guard let cameraViewController = R.storyboard.camera.cameraViewController() else { fatalError() }
-        configure(vc: cameraViewController)
-        navigationController.pushViewController(cameraViewController, animated: true)
+        if onboardingCoordinator.shouldShow(onboarding: .welcomeFlow) {
+            pushWelomeController(onto: navigationController)
+        } else {
+            pushCameraViewController(onto: navigationController)
+        }
     }
     
     /// Configures a `CameraViewController`
@@ -46,6 +50,12 @@ class RootFlowCoordinator {
         }
         let vm = CameraViewModel(keepPhoto: keepPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
         vc.viewModel = vm
+    }
+    
+    func pushCameraViewController(onto nc: UINavigationController) {
+        guard let cameraViewController = R.storyboard.camera.cameraViewController() else { fatalError() }
+        configure(vc: cameraViewController)
+        nc.pushViewController(cameraViewController, animated: true)
     }
     
     /// Pushes the addressListController on to the stack
