@@ -13,6 +13,7 @@
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
+		C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
@@ -89,6 +90,7 @@
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
+		C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				C313397C1EABAA530080A168 /* Disclaimer */,
 				C3C3475C1EA860950008E62E /* Enter Address */,
 				C3C3475B1EA85B420008E62E /* Welcome */,
+				C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
 				C3346F0A1E7ED50100A136B5 /* String+DateFormatting.swift in Sources */,
+				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */,

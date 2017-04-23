@@ -21,6 +21,12 @@ extension RootFlowCoordinator {
         })
     }
     
+    func pushWelomeController(onto nc: UINavigationController) {
+        guard let welcomeViewController = R.storyboard.welcome.welcomeViewController() else { fatalError() }
+        configureWelcomeController(welcomeViewController, nc: nc)
+        nc.pushViewController(welcomeViewController, animated: true)
+    }
+    
     // MARK: - Enter Address Controller
     
     func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
