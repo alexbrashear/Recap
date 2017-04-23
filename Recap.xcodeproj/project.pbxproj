@@ -14,6 +14,8 @@
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
 		C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */; };
+		C31339841EAC53B20080A168 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339831EAC53B20080A168 /* User.swift */; };
+		C31339861EAC56720080A168 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339851EAC56720080A168 /* UserController.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
@@ -91,6 +93,8 @@
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
 		C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		C31339831EAC53B20080A168 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C31339851EAC56720080A168 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
@@ -205,6 +209,15 @@
 			name = Disclaimer;
 			sourceTree = "<group>";
 		};
+		C31339871EAC58D60080A168 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C31339831EAC53B20080A168 /* User.swift */,
+				C31339851EAC56720080A168 /* UserController.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
 		C353082E1E3D163600E2BD8A = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +260,7 @@
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
 				C35308461E3D163600E2BD8A /* Info.plist */,
 				C3CE0E341E7592E2008000B1 /* Configuration.swift */,
+				C31339871EAC58D60080A168 /* User */,
 				C3C347481EA710ED0008E62E /* Onboarding */,
 			);
 			path = Recap;
@@ -644,11 +658,13 @@
 				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
+				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C3909B6C1E6AFC9200ED01F4 /* SentPostcardCell.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
+				C31339841EAC53B20080A168 /* User.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,

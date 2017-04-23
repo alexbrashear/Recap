@@ -19,9 +19,12 @@ class RootFlowCoordinator {
     /// the coordinator to handle onboarding
     let onboardingCoordinator = OnboardingCoordinator()
     
-    init(addressListProvider: AddressListProviderProtocol) {
+    let userController: UserController
+    
+    init(addressListProvider: AddressListProviderProtocol, userController: UserController) {
         navigationController = UINavigationController()
         self.addressListProvider = addressListProvider
+        self.userController = userController
     }
     
     /// the root view controller to be used only by the app delegate
@@ -34,6 +37,7 @@ class RootFlowCoordinator {
         if onboardingCoordinator.shouldShow(onboarding: .welcomeFlow) {
             pushWelomeController(onto: navigationController)
         } else {
+            guard userController.user != nil else { fatalError() }
             pushCameraViewController(onto: navigationController)
         }
     }

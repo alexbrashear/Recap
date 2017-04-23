@@ -12,14 +12,14 @@ import RCSYapDatabaseExtensions
 typealias SaveAddressResult = Result<Void, AddressError>
 typealias SaveAddressCompletion = (SaveAddressResult) -> Void
 
-class  DatabaseController {
+class DatabaseController {
     
-    static let sharedInstance = DatabaseController(path: DatabaseController.pathForDatabase(named: Database.addressDatabase.rawValue))
-    
-    enum Database: String {
-        case addressDatabase
+    enum Collection: String {
+        case user
     }
     
+    static let sharedInstance = DatabaseController(path: DatabaseController.pathForDatabase(named: "Database"))
+
     var yapDatabase: YapDatabase
     
     init(path: String) {
