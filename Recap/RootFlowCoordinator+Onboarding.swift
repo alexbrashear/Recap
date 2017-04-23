@@ -50,13 +50,17 @@ extension RootFlowCoordinator {
     
     // MARK: - Disclaimer Controller
     
-    private func configureDisclaimerController(_ vc: DisclaimerController) {
-        
+    private func configureDisclaimerController(_ vc: DisclaimerController, nc: UINavigationController) {
+        let vm = DisclaimerViewModel(disclaimerAction: { [weak self, weak nc] in
+            guard let nc = nc else { return }
+            self?.pushCameraViewController(onto: nc)
+            }, termsAndConditionsAction: {})
+        vc.viewModel = vm
     }
     
     private func pushDisclaimerController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.disclaimer.disclaimerController() else { return }
-        configureDisclaimerController(vc)
+        configureDisclaimerController(vc, nc: nc)
         nc.pushViewController(vc, animated: true)
     }
 }
