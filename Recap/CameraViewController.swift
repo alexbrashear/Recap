@@ -9,44 +9,21 @@
 import UIKit
 import AVFoundation
 
-protocol CameraViewModelProtocol {
-    var keepPhoto: KeepPhotoTapHandler { get }
-    
+protocol CameraViewModelProtocol {    
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
+    
+    var showSettings: () -> Void { get }
 }
 
 class CameraViewController: UIViewController {
     
-    enum State {
-        case takePicture
-        case viewPicture
-    }
-    
-    fileprivate(set) var state: State = .takePicture {
-        didSet {
-            if oldValue == .viewPicture {
-                captureView.layer.replaceSublayer(imageView.layer, with: videoPreviewLayer!)
-                imageView.image = nil
-            } else {
-                captureView.layer.replaceSublayer(videoPreviewLayer!, with: imageView.layer)
-            }
-            displayButtons(forState: state)
-        }
-    }
-    
     var viewModel: CameraViewModelProtocol?
+    let overlay = CameraOverlayView.loadFromNib()
 
     // MARK: - IBOutlets
 
-    @IBOutlet fileprivate var flash: UIButton!
     @IBOutlet fileprivate var captureView: UIView!
-    @IBOutlet fileprivate var takePhoto: UIButton!
-    @IBOutlet fileprivate var deletePhoto: UIButton!
-    @IBOutlet fileprivate var keepPhoto: UIButton!
-    @IBOutlet fileprivate var postcards: UIButton!
-    @IBOutlet fileprivate var switchCamera: UIButton!
     
-    fileprivate var flashMode: AVCaptureFlashMode = .auto
     fileprivate var cameraPosition: AVCaptureDevicePosition = .back
     
     var imageView = UIImageView()
@@ -57,9 +34,6 @@ class CameraViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(true, animated: true)
-                
         loadCamera(atPosition: .back)
     }
     
@@ -68,20 +42,21 @@ class CameraViewController: UIViewController {
         configureCameraView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        super.viewWillDisappear(animated)
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    override var shouldAutorotate: Bool {
-        return false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let viewModel = viewModel else { fatalError() }
+        let rotateCamera: RotateCamera = { [weak self] in self?.switchCamera() }
+        let takePhoto: TakePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
+        let vm = CameraOverlayViewModel(takePhoto: takePhoto, showSettings: viewModel.showSettings, sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler, rotateCamera: rotateCamera)
+        view.addSubview(overlay)
+        overlay.viewModel = vm
     }
     
-    fileprivate var capturePhotoSettings: AVCapturePhotoSettings {
+    fileprivate func capturePhotoSettings(flashMode: AVCaptureFlashMode) -> AVCapturePhotoSettings {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
         settings.flashMode = stillImageOutput?.supportedFlashModes.contains(NSNumber(value: flashMode.rawValue)) ?? false ? flashMode : .off
         return settings
@@ -89,33 +64,6 @@ class CameraViewController: UIViewController {
     
     fileprivate func configureCameraView() {
         videoPreviewLayer?.frame = captureView.frame
-        view.layer.insertSublayer(takePhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(keepPhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(deletePhoto.layer, above: captureView.layer)
-        view.layer.insertSublayer(postcards.layer, above: captureView.layer)
-        view.layer.insertSublayer(flash.layer, above: captureView.layer)
-        view.layer.insertSublayer(switchCamera.layer, above: captureView.layer)
-        
-        displayButtons(forState: state)
-    }
-    
-    private func displayButtons(forState state: State) {
-        switch state {
-        case .takePicture:
-            takePhoto.isHidden = false
-            keepPhoto.isHidden = true
-            deletePhoto.isHidden = true
-            postcards.isHidden = false
-            flash.isHidden = false
-            switchCamera.isHidden = false
-        case .viewPicture:
-            takePhoto.isHidden = true
-            keepPhoto.isHidden = false
-            deletePhoto.isHidden = false
-            postcards.isHidden = true
-            flash.isHidden = true
-            switchCamera.isHidden = true
-        }
     }
     
     fileprivate func loadCamera(atPosition position: AVCaptureDevicePosition) {
@@ -148,48 +96,19 @@ class CameraViewController: UIViewController {
             session.addOutput(stillImageOutput)
             // ...
             // Configure the Live Preview here...
-            
+            cameraPosition = position
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
             videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
             captureView.layer.addSublayer(videoPreviewLayer!)
             session.startRunning()
-        } else if !session.outputs.isEmpty && state == .takePicture {
-            captureView.layer.addSublayer(videoPreviewLayer!)
         }
-        cameraPosition = position
     }
-}
+    
+    func takePhoto(withFlashMode flashMode: AVCaptureFlashMode) {
+        stillImageOutput?.capturePhoto(with: capturePhotoSettings(flashMode: flashMode), delegate: self)
+    }
 
-// MARK: - IBAction's
-
-extension CameraViewController {
-    @IBAction func didTakePhoto(_ sender: UIButton) {
-        stillImageOutput?.capturePhoto(with: capturePhotoSettings, delegate: self)
-    }
-    
-    @IBAction func didKeepPhoto(_ sender: UIButton) {
-        viewModel?.keepPhoto(imageView.image)
-    }
-    
-    @IBAction func didDeletePhoto(_ sender: UIButton) {
-        state = .takePicture
-    }
-    
-    @IBAction func didRequestPostcards(_ sender: UIButton) {
-        viewModel?.sentPostcardsTapHandler()
-    }
-    
-    @IBAction func didToggleFlash( _ sender: UIButton) {
-        switch flashMode {
-        case .auto, .off:
-            flashMode = .on
-        case .on:
-            flashMode = .off
-        }
-        flash.setTitle(flashMode.buttonText, for: .normal)
-    }
-    
-    @IBAction func didSwitchCamera(_ sender: UIButton) {
+    func switchCamera() {
         if cameraPosition == .back { loadCamera(atPosition: .front) }
         else { loadCamera(atPosition: .back) }
         configureCameraView()
@@ -213,20 +132,5 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             image = UIImage(cgImage: cgImage, scale: image.scale, orientation:.leftMirrored)
         }
         imageView.image = image
-        
-        state = .viewPicture
-    }
-}
-
-extension AVCaptureFlashMode {
-    var buttonText: String {
-        switch self {
-        case .auto:
-            return "auto"
-        case .off:
-            return "off"
-        case .on:
-            return "on"
-        }
     }
 }

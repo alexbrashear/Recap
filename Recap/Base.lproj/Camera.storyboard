@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="18L-Sn-6kR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="18L-Sn-6kR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Camera View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="CameraViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CameraViewController" customModule="MeMailer5000" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CameraViewController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,93 +24,20 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="guL-EE-maU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXr-Tx-Ure">
-                                        <rect key="frame" x="126.5" y="564" width="122" height="40"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
-                                        <state key="normal" title="Take Photo"/>
-                                        <connections>
-                                            <action selector="didTakePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uTq-OP-GVu"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ult-CV-i6z" userLabel="Delete Photo">
-                                        <rect key="frame" x="26" y="608" width="56" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Delete"/>
-                                        <connections>
-                                            <action selector="didDeletePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xO8-iV-wqF"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zna-Og-sK2" userLabel="Keep Photo">
-                                        <rect key="frame" x="293" y="608" width="56" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Keep"/>
-                                        <connections>
-                                            <action selector="didKeepPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uli-5x-Uva"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ2-sv-VwM" userLabel="Postcards">
-                                        <rect key="frame" x="26" y="608" width="132" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Sent Postcards"/>
-                                        <connections>
-                                            <action selector="didDeletePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LBs-Ky-UO3"/>
-                                            <action selector="didRequestPostcards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jMw-l4-AkR"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHP-TG-u9I">
-                                        <rect key="frame" x="26" y="24" width="41" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="Auto"/>
-                                        <connections>
-                                            <action selector="didToggleFlash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HaB-zT-dwF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bya-03-DLD">
-                                        <rect key="frame" x="223" y="24" width="126" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                        <state key="normal" title="switch camera"/>
-                                        <connections>
-                                            <action selector="didSwitchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JKa-HX-CSW"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="BHP-TG-u9I" firstAttribute="top" secondItem="guL-EE-maU" secondAttribute="top" constant="24" id="5gt-0p-Tqf"/>
-                                    <constraint firstItem="zna-Og-sK2" firstAttribute="width" secondItem="Ult-CV-i6z" secondAttribute="width" id="7Tf-zw-lvq"/>
-                                    <constraint firstItem="Bya-03-DLD" firstAttribute="top" secondItem="BHP-TG-u9I" secondAttribute="top" id="9bc-Bo-ClA"/>
-                                    <constraint firstAttribute="bottom" secondItem="PXr-Tx-Ure" secondAttribute="bottom" constant="63" id="9iP-76-SH1"/>
-                                    <constraint firstItem="zna-Og-sK2" firstAttribute="height" secondItem="Ult-CV-i6z" secondAttribute="height" id="Bc4-CS-c0t"/>
-                                    <constraint firstItem="Bya-03-DLD" firstAttribute="trailing" secondItem="zna-Og-sK2" secondAttribute="trailing" id="Fc3-qh-M5n"/>
-                                    <constraint firstItem="zna-Og-sK2" firstAttribute="top" secondItem="Ult-CV-i6z" secondAttribute="top" id="KeL-31-rPS"/>
-                                    <constraint firstItem="PXr-Tx-Ure" firstAttribute="centerX" secondItem="guL-EE-maU" secondAttribute="centerX" id="byC-RJ-Yfa"/>
-                                    <constraint firstItem="BHP-TG-u9I" firstAttribute="leading" secondItem="Ult-CV-i6z" secondAttribute="leading" id="rEV-Rh-C01"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="zna-Og-sK2" secondAttribute="trailing" constant="10" id="0bp-gv-vxr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="guL-EE-maU" secondAttribute="trailing" constant="-16" id="0sQ-1F-9DW"/>
-                            <constraint firstItem="MZ2-sv-VwM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="30j-vW-Jsl"/>
                             <constraint firstItem="guL-EE-maU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="4PB-Ab-ruy"/>
                             <constraint firstItem="guL-EE-maU" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="7jZ-GK-EnV"/>
-                            <constraint firstItem="Ult-CV-i6z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="K2f-YB-Iwk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="guL-EE-maU" secondAttribute="bottom" id="Usp-6V-jdS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ult-CV-i6z" secondAttribute="bottom" constant="25" id="ri9-It-KM5"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MZ2-sv-VwM" secondAttribute="bottom" constant="25" id="yCb-rt-Pgn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pcx-v6-27o"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="captureView" destination="guL-EE-maU" id="bjx-oq-UwC"/>
-                        <outlet property="deletePhoto" destination="Ult-CV-i6z" id="KsW-1e-zEL"/>
-                        <outlet property="flash" destination="BHP-TG-u9I" id="xP2-Sc-E7z"/>
-                        <outlet property="keepPhoto" destination="zna-Og-sK2" id="FIk-En-7hY"/>
-                        <outlet property="postcards" destination="MZ2-sv-VwM" id="ZcC-QR-OkQ"/>
-                        <outlet property="switchCamera" destination="Bya-03-DLD" id="Fuh-Ec-xp5"/>
-                        <outlet property="takePhoto" destination="PXr-Tx-Ure" id="tQw-bj-EwN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

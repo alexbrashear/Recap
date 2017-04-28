@@ -45,20 +45,22 @@ class RootFlowCoordinator {
     /// Configures a `CameraViewController`
     ///
     /// - Parameter vc: the view controller to configure
-    func configure(vc: CameraViewController) {
+    func configure(vc: CameraViewController, nc: UINavigationController) {
         let keepPhoto: KeepPhotoTapHandler = { [weak self] image in
             self?.pushAddressList(image: image)
         }
         let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self] in
             self?.pushSentPostcards()
         }
+        
+        nc.setNavigationBarHidden(true, animated: true)
         let vm = CameraViewModel(keepPhoto: keepPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
         vc.viewModel = vm
     }
     
     func pushCameraViewController(onto nc: UINavigationController) {
         guard let cameraViewController = R.storyboard.camera.cameraViewController() else { fatalError() }
-        configure(vc: cameraViewController)
+        configure(vc: cameraViewController, nc: nc)
         nc.pushViewController(cameraViewController, animated: true)
     }
     

@@ -12,6 +12,8 @@ typealias KeepPhotoTapHandler = (_ image: UIImage?) -> Void
 typealias SentPostcardsTapHandler = () -> Void
 
 class CameraViewModel: CameraViewModelProtocol {
+    var showSettings: () -> Void
+
     var keepPhoto: KeepPhotoTapHandler
     
     var sentPostcardsTapHandler: SentPostcardsTapHandler
@@ -19,6 +21,6 @@ class CameraViewModel: CameraViewModelProtocol {
     init(keepPhoto: @escaping KeepPhotoTapHandler, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler) {
         self.keepPhoto = keepPhoto
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
-        
+        self.showSettings = {}
     }
 }
