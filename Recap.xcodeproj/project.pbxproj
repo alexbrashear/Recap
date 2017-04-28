@@ -16,6 +16,8 @@
 		C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */; };
 		C31339841EAC53B20080A168 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339831EAC53B20080A168 /* User.swift */; };
 		C31339861EAC56720080A168 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339851EAC56720080A168 /* UserController.swift */; };
+		C31339891EAD9CE10080A168 /* CameraOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31339881EAD9CE10080A168 /* CameraOverlayView.swift */; };
+		C313398B1EAD9E960080A168 /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C313398A1EAD9E960080A168 /* CameraOverlayView.xib */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
@@ -34,6 +36,7 @@
 		C3683DE81E465D5900650A90 /* AddressList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE71E465D5900650A90 /* AddressList.storyboard */; };
 		C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE91E46630900650A90 /* AddAddress.storyboard */; };
 		C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3683DEC1E4664EE00650A90 /* AddAddressController.swift */; };
+		C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */; };
 		C3909B6C1E6AFC9200ED01F4 /* SentPostcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3909B6A1E6AFC9200ED01F4 /* SentPostcardCell.swift */; };
 		C3909B6D1E6AFC9200ED01F4 /* SentPostcardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3909B6B1E6AFC9200ED01F4 /* SentPostcardCell.xib */; };
 		C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3909B6E1E6B0C9D00ED01F4 /* ImageProvider.swift */; };
@@ -95,6 +98,8 @@
 		C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		C31339831EAC53B20080A168 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C31339851EAC56720080A168 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		C31339881EAD9CE10080A168 /* CameraOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOverlayView.swift; sourceTree = "<group>"; };
+		C313398A1EAD9E960080A168 /* CameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraOverlayView.xib; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		C3683DE71E465D5900650A90 /* AddressList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddressList.storyboard; sourceTree = "<group>"; };
 		C3683DE91E46630900650A90 /* AddAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAddress.storyboard; sourceTree = "<group>"; };
 		C3683DEC1E4664EE00650A90 /* AddAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressController.swift; sourceTree = "<group>"; };
+		C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOverlayViewModel.swift; sourceTree = "<group>"; };
 		C3909B6A1E6AFC9200ED01F4 /* SentPostcardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardCell.swift; sourceTree = "<group>"; };
 		C3909B6B1E6AFC9200ED01F4 /* SentPostcardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentPostcardCell.xib; sourceTree = "<group>"; };
 		C3909B6E1E6B0C9D00ED01F4 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
@@ -304,6 +310,9 @@
 				C353083E1E3D163600E2BD8A /* Camera.storyboard */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
 				C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */,
+				C31339881EAD9CE10080A168 /* CameraOverlayView.swift */,
+				C313398A1EAD9E960080A168 /* CameraOverlayView.xib */,
+				C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -503,6 +512,7 @@
 				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3683DE61E46594E00650A90 /* AddressCell.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
+				C313398B1EAD9E960080A168 /* CameraOverlayView.xib in Resources */,
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */,
 				C3909B6D1E6AFC9200ED01F4 /* SentPostcardCell.xib in Resources */,
@@ -646,6 +656,7 @@
 				C3683DE51E46594E00650A90 /* AddressCell.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
+				C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3683DE11E4657ED00650A90 /* AddressListViewModel.swift in Sources */,
@@ -655,6 +666,7 @@
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
 				C3346F0A1E7ED50100A136B5 /* String+DateFormatting.swift in Sources */,
+				C31339891EAD9CE10080A168 /* CameraOverlayView.swift in Sources */,
 				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,

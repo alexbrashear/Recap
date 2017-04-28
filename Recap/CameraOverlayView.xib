@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraOverlayView" customModule="Recap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byU-vs-wwB" userLabel="settings">
+                    <rect key="frame" x="332" y="25" width="23" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="byU-vs-wwB" secondAttribute="height" multiplier="1:1" id="AnC-pO-NOy"/>
+                    </constraints>
+                    <state key="normal" image="iconSettings"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-5S-Mu1" userLabel="flash">
+                    <rect key="frame" x="26.5" y="24" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="CsD-N6-YEc"/>
+                    </constraints>
+                    <state key="normal" image="iconFlash"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uG-Gb-KPp" userLabel="rotate camera">
+                    <rect key="frame" x="71.5" y="25" width="30" height="23"/>
+                    <state key="normal" image="iconRotate"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyk-1E-uuC">
+                    <rect key="frame" x="153" y="509" width="68" height="68"/>
+                    <state key="normal" image="pictureButton"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsy-Dg-XX6">
+                    <rect key="frame" x="30" y="601" width="28" height="23"/>
+                    <state key="normal" image="iconSentImages"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ded-Fc-5yf">
+                    <rect key="frame" x="172.5" y="597" width="30" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="NQh-uj-aJV"/>
+                        <constraint firstAttribute="width" constant="30" id="paf-sT-QQ2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="byU-vs-wwB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Ft6-no-hyS"/>
+                <constraint firstItem="gyk-1E-uuC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.865" id="NBy-Pi-YXo"/>
+                <constraint firstAttribute="trailing" secondItem="byU-vs-wwB" secondAttribute="trailing" constant="20" id="QYz-td-eoc"/>
+                <constraint firstItem="wsy-Dg-XX6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.08" id="S6u-Nx-gnh"/>
+                <constraint firstItem="ded-Fc-5yf" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.94" id="SIL-sj-6Zh"/>
+                <constraint firstItem="2uG-Gb-KPp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.19" id="Sic-QI-BVS"/>
+                <constraint firstItem="2uG-Gb-KPp" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="Sie-1Y-Y6M"/>
+                <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="ded-Fc-5yf" secondAttribute="centerY" id="ao3-jz-RS6"/>
+                <constraint firstItem="gyk-1E-uuC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gyW-G9-LuF"/>
+                <constraint firstItem="lYz-5S-Mu1" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="sbl-De-iKr"/>
+                <constraint firstItem="ded-Fc-5yf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vZl-dd-wrO"/>
+                <constraint firstItem="lYz-5S-Mu1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.07" id="w4i-F0-KQ7"/>
+            </constraints>
+            <connections>
+                <outlet property="count" destination="ded-Fc-5yf" id="7rn-BC-BBw"/>
+                <outlet property="flash" destination="lYz-5S-Mu1" id="4Zm-GU-ajD"/>
+                <outlet property="rotateCamera" destination="2uG-Gb-KPp" id="8kE-0E-MJH"/>
+                <outlet property="sentPostcards" destination="wsy-Dg-XX6" id="4XG-Lo-FlT"/>
+                <outlet property="settings" destination="byU-vs-wwB" id="eoL-ud-S1F"/>
+                <outlet property="takePhoto" destination="gyk-1E-uuC" id="PpC-x1-dEC"/>
+            </connections>
+            <point key="canvasLocation" x="18.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconFlash" width="14" height="25"/>
+        <image name="iconRotate" width="30" height="23"/>
+        <image name="iconSentImages" width="28" height="23"/>
+        <image name="iconSettings" width="23" height="23"/>
+        <image name="pictureButton" width="68" height="68"/>
+    </resources>
+</document>
