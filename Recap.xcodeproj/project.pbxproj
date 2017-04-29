@@ -37,6 +37,8 @@
 		C3683DEA1E46630900650A90 /* AddAddress.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3683DE91E46630900650A90 /* AddAddress.storyboard */; };
 		C3683DEE1E4664EE00650A90 /* AddAddressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3683DEC1E4664EE00650A90 /* AddAddressController.swift */; };
 		C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */; };
+		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
+		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C3909B6C1E6AFC9200ED01F4 /* SentPostcardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3909B6A1E6AFC9200ED01F4 /* SentPostcardCell.swift */; };
 		C3909B6D1E6AFC9200ED01F4 /* SentPostcardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3909B6B1E6AFC9200ED01F4 /* SentPostcardCell.xib */; };
 		C3909B6F1E6B0C9D00ED01F4 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3909B6E1E6B0C9D00ED01F4 /* ImageProvider.swift */; };
@@ -123,6 +125,8 @@
 		C3683DE91E46630900650A90 /* AddAddress.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddAddress.storyboard; sourceTree = "<group>"; };
 		C3683DEC1E4664EE00650A90 /* AddAddressController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAddressController.swift; sourceTree = "<group>"; };
 		C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOverlayViewModel.swift; sourceTree = "<group>"; };
+		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
+		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C3909B6A1E6AFC9200ED01F4 /* SentPostcardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPostcardCell.swift; sourceTree = "<group>"; };
 		C3909B6B1E6AFC9200ED01F4 /* SentPostcardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SentPostcardCell.xib; sourceTree = "<group>"; };
 		C3909B6E1E6B0C9D00ED01F4 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				C31339881EAD9CE10080A168 /* CameraOverlayView.swift */,
 				C313398A1EAD9E960080A168 /* CameraOverlayView.xib */,
 				C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */,
+				C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */,
+				C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */,
 			);
 			name = Camera;
 			sourceTree = "<group>";
@@ -680,6 +686,8 @@
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
+				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
+				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
