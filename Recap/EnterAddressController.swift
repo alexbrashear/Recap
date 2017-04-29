@@ -40,6 +40,9 @@ class EnterAddressController: UIViewController {
             guard let address = self?.inputAddressView.getAddress() else { return }
             self?.viewModel?.nextAction(address)
         }
+        
+        heading.font = UIFont.openSansSemiBoldFont(ofSize: 28)
+        subHeading.font = UIFont.openSansSemiBoldFont(ofSize: 16)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
