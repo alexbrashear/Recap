@@ -13,12 +13,15 @@ protocol CameraViewModelProtocol {
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
     
     var showSettings: () -> Void { get }
+    
+    var sendPhoto: SendPhoto { get }
 }
 
 class CameraViewController: UIViewController {
     
     var viewModel: CameraViewModelProtocol?
     let overlay = CameraOverlayView.loadFromNib()
+    var photoTakenView: PhotoTakenView?
 
     // MARK: - IBOutlets
 
@@ -51,7 +54,13 @@ class CameraViewController: UIViewController {
         guard let viewModel = viewModel else { fatalError() }
         let rotateCamera: RotateCamera = { [weak self] in self?.switchCamera() }
         let takePhoto: TakePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
-        let vm = CameraOverlayViewModel(takePhoto: takePhoto, showSettings: viewModel.showSettings, sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler, rotateCamera: rotateCamera)
+        let vm = CameraOverlayViewModel(takePhoto: takePhoto,
+                                        showSettings: viewModel.showSettings,
+                                        sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler,
+                                        rotateCamera: rotateCamera,
+                                        sendPhoto: { image in
+                                            viewModel.sendPhoto(image)
+                                        })
         view.addSubview(overlay)
         overlay.viewModel = vm
     }
@@ -113,6 +122,10 @@ class CameraViewController: UIViewController {
         else { loadCamera(atPosition: .back) }
         configureCameraView()
     }
+    
+    func deletePhoto() {
+        photoTakenView?.removeFromSuperview()
+    }
 }
 
 // MARK: - AVCapturePhotoCaptureDelegate
@@ -125,12 +138,18 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer),
             var image = UIImage(data: imageData) else { return }
         
-        imageView.frame = captureView.frame
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
         if let cgImage = image.cgImage, cameraPosition == .front {
             image = UIImage(cgImage: cgImage, scale: image.scale, orientation:.leftMirrored)
         }
-        imageView.image = image
+        
+        let photoTakenView = PhotoTakenView(frame: .zero, image: image)
+        view.addSubview(photoTakenView)
+        photoTakenView.constrainToSuperview()
+        photoTakenView.viewModel = PhotoTakenViewModel(sendPhoto: { [weak self] image in
+                                                            self?.viewModel?.sendPhoto(image)
+                                                        },
+                                                       deletePhotoAction: { [weak self] in self?.deletePhoto() },
+                                                       savePhotoAction: {})
+        self.photoTakenView = photoTakenView
     }
 }

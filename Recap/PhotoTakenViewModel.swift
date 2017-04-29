@@ -9,12 +9,12 @@
 import Foundation
 
 class PhotoTakenViewModel: PhotoTakeViewModelProtocol {
-    var sendPhotoAction: SendPhotoAction
+    var sendPhoto: SendPhoto
     var deletePhotoAction: DeletePhotoAction
     var savePhotoAction: SavePhotoAction
     
-    init(sendPhotoAction: @escaping SendPhotoAction, deletePhotoAction: @escaping DeletePhotoAction, savePhotoAction: @escaping SavePhotoAction) {
-        self.sendPhotoAction = sendPhotoAction
+    init(sendPhoto: @escaping SendPhoto, deletePhotoAction: @escaping DeletePhotoAction, savePhotoAction: @escaping SavePhotoAction) {
+        self.sendPhoto = sendPhoto
         self.deletePhotoAction = deletePhotoAction
         self.savePhotoAction = savePhotoAction
     }

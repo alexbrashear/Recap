@@ -13,11 +13,13 @@ class CameraOverlayViewModel: CameraOverlayViewModelProtocol {
     var showSettings: () -> Void
     var sentPostcardsTapHandler: SentPostcardsTapHandler
     var rotateCamera: RotateCamera
+    var sendPhoto: SendPhoto
     
-    init(takePhoto: @escaping TakePhoto, showSettings: @escaping () -> Void, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, rotateCamera: @escaping RotateCamera) {
+    init(takePhoto: @escaping TakePhoto, showSettings: @escaping () -> Void, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, rotateCamera: @escaping RotateCamera, sendPhoto: @escaping SendPhoto) {
         self.takePhoto = takePhoto
         self.rotateCamera = rotateCamera
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
         self.showSettings = showSettings
+        self.sendPhoto = sendPhoto
     }
 }

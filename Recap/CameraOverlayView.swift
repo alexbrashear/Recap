@@ -14,10 +14,14 @@ typealias RotateCamera = () -> Void
 
 typealias TakePhoto = (_ flashMode: AVCaptureFlashMode) -> Void
 
-protocol CameraOverlayViewModelProtocol: CameraViewModelProtocol {
+protocol CameraOverlayViewModelProtocol: class {
     var rotateCamera: RotateCamera { get }
     
     var takePhoto: TakePhoto { get }
+    
+    var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
+    
+    var showSettings: () -> Void { get }
 }
 
 class CameraOverlayView: UIView, NibLoadable {

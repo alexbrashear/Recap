@@ -18,6 +18,8 @@ class RootFlowCoordinator {
     let addressListProvider: AddressListProviderProtocol
     /// the coordinator to handle onboarding
     let onboardingCoordinator = OnboardingCoordinator()
+    /// helper type for sending photos
+    let postcardSender = PostcardSender()
     
     let userController: UserController
     
@@ -46,15 +48,16 @@ class RootFlowCoordinator {
     ///
     /// - Parameter vc: the view controller to configure
     func configure(vc: CameraViewController, nc: UINavigationController) {
-        let keepPhoto: KeepPhotoTapHandler = { [weak self] image in
-            self?.pushAddressList(image: image)
+        let sendPhoto: SendPhoto = { [weak self] image in
+            guard let address = self?.userController.user?.address else { return }
+            self?.postcardSender.send(image: image, to: address, completion: {_ in})
         }
         let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self] in
             self?.pushSentPostcards()
         }
         
         nc.setNavigationBarHidden(true, animated: true)
-        let vm = CameraViewModel(keepPhoto: keepPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
+        let vm = CameraViewModel(sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
         vc.viewModel = vm
     }
     
