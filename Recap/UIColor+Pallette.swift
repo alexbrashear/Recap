@@ -24,4 +24,16 @@ extension UIColor {
     class var butterscotch: UIColor {
         return UIColor(red: 251.0 / 255.0, green: 196.0 / 255.0, blue: 76.0 / 255.0, alpha: 1.0)
     }
+    
+    class var gray51: UIColor {
+        return UIColor(red: 51.0 / 255.0, green: 51.0 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var rcpClearBlueTwo: UIColor {
+        return UIColor(red: 29.0 / 255.0, green: 117.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var rcpGoldenYellow: UIColor {
+        return UIColor(red: 255.0 / 255.0, green: 192.0 / 255.0, blue: 24.0 / 255.0, alpha: 1.0)
+    }
 }
