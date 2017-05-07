@@ -48,9 +48,19 @@ class RootFlowCoordinator {
     ///
     /// - Parameter vc: the view controller to configure
     func configure(vc: CameraViewController, nc: UINavigationController) {
-        let sendPhoto: SendPhoto = { [weak self] image in
+        let sendPhoto: SendPhoto = { [weak self, weak vc] image in
             guard let address = self?.userController.user?.address else { return }
-            self?.postcardSender.send(image: image, to: address, completion: {_ in})
+            vc?.presentAlert(vm: UploadingRecapViewModel())
+            self?.postcardSender.send(image: image, to: address) { result in
+                let (photo, error) = result
+                DispatchQueue.main.async {
+                    guard photo != nil, error == nil else {
+                        vc?.returnToCamera(withAlertVM: ErrorAlertViewModel())
+                        return
+                    }
+                    vc?.returnToCamera(withAlertVM: RecapSentViewModel())
+                }
+            }
         }
         let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self] in
             self?.pushSentPostcards()

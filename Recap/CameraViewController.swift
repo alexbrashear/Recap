@@ -126,6 +126,39 @@ class CameraViewController: UIViewController {
     func deletePhoto() {
         photoTakenView?.removeFromSuperview()
     }
+    
+    var alert: SimpleImageLabelAlert?
+    
+    func presentAlert(vm: SimpleImageLabelAlertViewModelProtocol) {
+        let alert = SimpleImageLabelAlert(frame: .zero, viewModel: vm)
+        alert.alpha = 0
+        view.addSubview(alert)
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        alert.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        view.addConstraint(NSLayoutConstraint(item: alert, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 0.46, constant: 0.0))
+        self.alert = alert
+        
+        UIView.animate(withDuration: 0.2) { 
+            alert.alpha = 1.0
+        }
+    }
+    
+    func returnToCamera(withAlertVM vm: SimpleImageLabelAlertViewModelProtocol) {
+        dismissPresentedAlert {
+            self.photoTakenView?.removeFromSuperview()
+            self.presentAlert(vm: vm)
+            self.dismissPresentedAlert(delay: 2.0)
+        }
+    }
+    
+    func dismissPresentedAlert(delay: TimeInterval = 0, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.2, delay: delay, animations: {
+            self.alert?.alpha = 0.0
+        }) { _ in
+            self.alert?.removeFromSuperview()
+            completion?()
+        }
+    }
 }
 
 // MARK: - AVCapturePhotoCaptureDelegate
