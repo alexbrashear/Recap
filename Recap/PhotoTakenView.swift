@@ -55,18 +55,24 @@ class PhotoTakenView: UIView {
         
         send.translatesAutoresizingMaskIntoConstraints = false
         send.setImage(UIImage(named: "iconSend"), for: .normal)
-        addConstraint(NSLayoutConstraint(item: send, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.92, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: send, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -30.0))
+        addConstraint(NSLayoutConstraint(item: send, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.96, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: send, attribute: .width, relatedBy: .equal, toItem: send, attribute: .height, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: send, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 0.9625, constant: 0.0))
+        send.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         save.translatesAutoresizingMaskIntoConstraints = false
         save.setImage(UIImage(named: "iconSave"), for: .normal)
-        addConstraint(NSLayoutConstraint(item: save, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.08, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: save, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -30.0))
+        addConstraint(NSLayoutConstraint(item: save, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.04, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: save, attribute: .width, relatedBy: .equal, toItem: save, attribute: .height, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: save, attribute: .centerY, relatedBy: .equal, toItem: send, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+        save.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         back.translatesAutoresizingMaskIntoConstraints = false
         back.setImage(UIImage(named: "iconBack"), for: .normal)
-        addConstraint(NSLayoutConstraint(item: back, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 0.04, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: back, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 30.0))
+        addConstraint(NSLayoutConstraint(item: back, attribute: .width, relatedBy: .equal, toItem: back, attribute: .height, multiplier: 1.0, constant: 0.0))
+        back.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        addConstraint(NSLayoutConstraint(item: back, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: back, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0))
     }
     
     required init?(coder aDecoder: NSCoder) {

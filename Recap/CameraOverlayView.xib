@@ -23,29 +23,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byU-vs-wwB" userLabel="settings">
-                    <rect key="frame" x="332" y="25" width="23" height="23"/>
+                    <rect key="frame" x="315" y="0.0" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="byU-vs-wwB" secondAttribute="height" multiplier="1:1" id="AnC-pO-NOy"/>
+                        <constraint firstAttribute="width" constant="60" id="Bxj-TY-J1W"/>
                     </constraints>
                     <state key="normal" image="iconSettings"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYz-5S-Mu1" userLabel="flash">
-                    <rect key="frame" x="26.5" y="24" width="25" height="25"/>
+                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="CsD-N6-YEc"/>
+                        <constraint firstAttribute="width" constant="60" id="CsD-N6-YEc"/>
+                        <constraint firstAttribute="width" secondItem="lYz-5S-Mu1" secondAttribute="height" multiplier="1:1" id="i5G-Tq-Zq0"/>
                     </constraints>
                     <state key="normal" image="iconFlash"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uG-Gb-KPp" userLabel="rotate camera">
-                    <rect key="frame" x="71.5" y="25" width="30" height="23"/>
-                    <state key="normal" image="iconRotate"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyk-1E-uuC">
                     <rect key="frame" x="153" y="509" width="68" height="68"/>
                     <state key="normal" image="pictureButton"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsy-Dg-XX6">
-                    <rect key="frame" x="30" y="601" width="28" height="23"/>
+                    <rect key="frame" x="15" y="582" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="efc-jA-tVB"/>
+                        <constraint firstAttribute="width" secondItem="wsy-Dg-XX6" secondAttribute="height" multiplier="1:1" id="wkI-ln-ybS"/>
+                    </constraints>
                     <state key="normal" image="iconSentImages"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ded-Fc-5yf">
@@ -59,21 +61,30 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uG-Gb-KPp" userLabel="rotate camera">
+                    <rect key="frame" x="60" y="7.5" width="60" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2uG-Gb-KPp" secondAttribute="height" multiplier="30:23" id="UzB-lO-lsF"/>
+                        <constraint firstAttribute="width" constant="60" id="za0-33-5tW"/>
+                    </constraints>
+                    <state key="normal" image="iconRotate"/>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="byU-vs-wwB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="25" id="Ft6-no-hyS"/>
+                <constraint firstItem="byU-vs-wwB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ft6-no-hyS"/>
+                <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="ded-Fc-5yf" secondAttribute="centerY" id="HZy-dm-1rv"/>
                 <constraint firstItem="gyk-1E-uuC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.865" id="NBy-Pi-YXo"/>
-                <constraint firstAttribute="trailing" secondItem="byU-vs-wwB" secondAttribute="trailing" constant="20" id="QYz-td-eoc"/>
-                <constraint firstItem="wsy-Dg-XX6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.08" id="S6u-Nx-gnh"/>
+                <constraint firstItem="wsy-Dg-XX6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.04" id="NVG-ym-AdY"/>
+                <constraint firstAttribute="trailing" secondItem="byU-vs-wwB" secondAttribute="trailing" id="QYz-td-eoc"/>
                 <constraint firstItem="ded-Fc-5yf" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.94" id="SIL-sj-6Zh"/>
-                <constraint firstItem="2uG-Gb-KPp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.19" id="Sic-QI-BVS"/>
                 <constraint firstItem="2uG-Gb-KPp" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="Sie-1Y-Y6M"/>
-                <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="ded-Fc-5yf" secondAttribute="centerY" id="ao3-jz-RS6"/>
                 <constraint firstItem="gyk-1E-uuC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gyW-G9-LuF"/>
+                <constraint firstItem="2uG-Gb-KPp" firstAttribute="leading" secondItem="lYz-5S-Mu1" secondAttribute="trailing" id="hlG-dE-zsw"/>
                 <constraint firstItem="lYz-5S-Mu1" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="sbl-De-iKr"/>
                 <constraint firstItem="ded-Fc-5yf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vZl-dd-wrO"/>
-                <constraint firstItem="lYz-5S-Mu1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.07" id="w4i-F0-KQ7"/>
+                <constraint firstItem="lYz-5S-Mu1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w4i-F0-KQ7"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="count" destination="ded-Fc-5yf" id="7rn-BC-BBw"/>
                 <outlet property="flash" destination="lYz-5S-Mu1" id="4Zm-GU-ajD"/>
@@ -82,7 +93,7 @@
                 <outlet property="settings" destination="byU-vs-wwB" id="eoL-ud-S1F"/>
                 <outlet property="takePhoto" destination="gyk-1E-uuC" id="PpC-x1-dEC"/>
             </connections>
-            <point key="canvasLocation" x="18.5" y="59.5"/>
+            <point key="canvasLocation" x="-82" y="21"/>
         </view>
     </objects>
     <resources>
