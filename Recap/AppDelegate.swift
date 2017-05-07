@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private let addressListProvider = AddressListProvider()
     private let databaseController = DatabaseController.sharedInstance
     
     private var rootFlowCoordinator: RootFlowCoordinator?
@@ -26,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        rootFlowCoordinator = RootFlowCoordinator(addressListProvider: addressListProvider, userController: UserController())
+        rootFlowCoordinator = RootFlowCoordinator(userController: UserController())
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
