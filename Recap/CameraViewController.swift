@@ -49,6 +49,10 @@ class CameraViewController: UIViewController {
         return .lightContent
     }
     
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let viewModel = viewModel else { fatalError() }
