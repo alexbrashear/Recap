@@ -47,15 +47,15 @@ class RootFlowCoordinator {
     func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc] image in
             guard let address = self?.userController.user?.address else { return }
-            vc?.presentAlert(vm: UploadingRecapViewModel())
+            vc?.presentAlert(.uploadingRecap)
             self?.postcardSender.send(image: image, to: address) { result in
-                let (photo, error) = result
+                let (_, error) = result
                 DispatchQueue.main.async {
-                    guard photo != nil, error == nil else {
-                        vc?.returnToCamera(withAlertVM: ErrorAlertViewModel())
-                        return
+                    if let error = error {
+                        vc?.returnToCamera(with: .errorSending(error))
+                    } else {
+                        vc?.returnToCamera(with: .successfulSend)
                     }
-                    vc?.returnToCamera(withAlertVM: RecapSentViewModel())
                 }
             }
         }

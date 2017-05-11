@@ -8,6 +8,53 @@
 
 import UIKit
 
+enum AlertKind {
+    case successfulSend
+    case errorSending(Error)
+    case savedToLibrary
+    case errorSavingToLibrary(Error)
+    case uploadingRecap
+    
+    var title: String {
+        switch self {
+        case .successfulSend:
+            return "Recap sent"
+        case .uploadingRecap:
+            return "Uploading your Recap"
+        case .savedToLibrary:
+            return "Saved to library"
+        case .errorSavingToLibrary:
+            return "Sorry, we couldn't save your photo"
+        case .errorSending:
+            return "Sorry, we couldn’t send your Recap"
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .successfulSend:
+            return UIImage(named: "success")
+        case .uploadingRecap:
+            return UIImage(named: "loading")
+        case .savedToLibrary:
+            return UIImage(named: "success")
+        case .errorSavingToLibrary, .errorSending:
+            return nil
+        }
+    }
+    
+    var viewModel: SimpleImageLabelAlertViewModelProtocol {
+        switch self {
+        case .successfulSend, .savedToLibrary, .uploadingRecap:
+            return PositiveAlertViewModel(title: title, image: image)
+        case .errorSending:
+            return ErrorAlertViewModel()
+        case .errorSavingToLibrary:
+            return ErrorAlertViewModel()
+        }
+    }
+}
+
 protocol SimpleImageLabelAlertViewModelProtocol: class {
     var title: NSAttributedString { get }
     var subtitle: NSAttributedString? { get }

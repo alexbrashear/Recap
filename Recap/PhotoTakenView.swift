@@ -9,7 +9,7 @@
 import UIKit
 
 typealias DeletePhotoAction = () -> Void
-typealias SavePhotoAction = () -> Void
+typealias SavePhotoAction = (UIImage) -> Void
 
 protocol PhotoTakeViewModelProtocol: class  {
     var sendPhoto: SendPhoto { get }
@@ -33,8 +33,9 @@ class PhotoTakenView: UIView {
                 guard let image = self.imageView.image else { return }
                 self.viewModel?.sendPhoto(image)
             }
-            save.on(.touchUpInside) { [weak self] _ in
-                self?.viewModel?.savePhotoAction()
+            save.on(.touchUpInside) { [unowned self] _ in
+                guard let image = self.imageView.image else { return }
+                self.viewModel?.savePhotoAction(image)
             }
         }
     }

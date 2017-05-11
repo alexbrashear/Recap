@@ -55,8 +55,7 @@
 		C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */; };
 		C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */; };
 		C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */; };
-		C3CAC4781EBE1F63007CECF3 /* UploadingRecapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4771EBE1F63007CECF3 /* UploadingRecapViewModel.swift */; };
-		C3CAC47A1EBE1FAB007CECF3 /* RecapSentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4791EBE1FAB007CECF3 /* RecapSentViewModel.swift */; };
+		C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */; };
 		C3CAC47C1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
@@ -133,8 +132,7 @@
 		C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Closures.swift"; sourceTree = "<group>"; };
 		C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterAddressViewModel.swift; sourceTree = "<group>"; };
 		C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
-		C3CAC4771EBE1F63007CECF3 /* UploadingRecapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingRecapViewModel.swift; sourceTree = "<group>"; };
-		C3CAC4791EBE1FAB007CECF3 /* RecapSentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecapSentViewModel.swift; sourceTree = "<group>"; };
+		C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveAlertViewModel.swift; sourceTree = "<group>"; };
 		C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertViewModel.swift; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -251,6 +249,7 @@
 		C35308391E3D163600E2BD8A /* Recap */ = {
 			isa = PBXGroup;
 			children = (
+				C39028541EC4178700D8E257 /* HUD */,
 				C3CE0E271E6E6273008000B1 /* App */,
 				C3AD56841E4C37CA00C348F0 /* Camera */,
 				C330B6381E46B51300928284 /* DatabaseController.swift */,
@@ -277,16 +276,22 @@
 			path = MeMailer5000Tests;
 			sourceTree = "<group>";
 		};
+		C39028541EC4178700D8E257 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */,
+				C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */,
+				C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
 		C3AD56841E4C37CA00C348F0 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
 				C353083E1E3D163600E2BD8A /* Camera.storyboard */,
 				C353083C1E3D163600E2BD8A /* CameraViewController.swift */,
 				C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */,
-				C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */,
-				C3CAC4771EBE1F63007CECF3 /* UploadingRecapViewModel.swift */,
-				C3CAC4791EBE1FAB007CECF3 /* RecapSentViewModel.swift */,
-				C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */,
 				C3456FBE1EB559DC00876528 /* Overlay */,
 				C3456FBF1EB55A0B00876528 /* Photo taken */,
 			);
@@ -643,7 +648,7 @@
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
-				C3CAC47A1EBE1FAB007CECF3 /* RecapSentViewModel.swift in Sources */,
+				C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */,
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
@@ -656,7 +661,6 @@
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,
-				C3CAC4781EBE1F63007CECF3 /* UploadingRecapViewModel.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,

@@ -131,10 +131,23 @@ class CameraViewController: UIViewController {
         photoTakenView?.removeFromSuperview()
     }
     
+    func savePhoto(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            presentAlert(.errorSavingToLibrary(error))
+        } else {
+            presentAlert(.savedToLibrary)
+        }
+        self.dismissPresentedAlert(delay: 2.0)
+    }
+    
     var alert: SimpleImageLabelAlert?
     
-    func presentAlert(vm: SimpleImageLabelAlertViewModelProtocol) {
-        let alert = SimpleImageLabelAlert(frame: .zero, viewModel: vm)
+    func presentAlert(_ kind: AlertKind) {
+        let alert = SimpleImageLabelAlert(frame: .zero, viewModel: kind.viewModel)
         alert.alpha = 0
         view.addSubview(alert)
         alert.translatesAutoresizingMaskIntoConstraints = false
@@ -147,10 +160,10 @@ class CameraViewController: UIViewController {
         }
     }
     
-    func returnToCamera(withAlertVM vm: SimpleImageLabelAlertViewModelProtocol) {
+    func returnToCamera(with kind: AlertKind) {
         dismissPresentedAlert {
             self.photoTakenView?.removeFromSuperview()
-            self.presentAlert(vm: vm)
+            self.presentAlert(kind)
             self.dismissPresentedAlert(delay: 2.0)
         }
     }
@@ -182,11 +195,11 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         let photoTakenView = PhotoTakenView(frame: .zero, image: image)
         view.addSubview(photoTakenView)
         photoTakenView.constrainToSuperview()
-        photoTakenView.viewModel = PhotoTakenViewModel(sendPhoto: { [weak self] image in
-                                                            self?.viewModel?.sendPhoto(image)
-                                                        },
-                                                       deletePhotoAction: { [weak self] in self?.deletePhoto() },
-                                                       savePhotoAction: {})
+        photoTakenView.viewModel = PhotoTakenViewModel(
+            sendPhoto: { [weak self] image in self?.viewModel?.sendPhoto(image)},
+            deletePhotoAction: { [weak self] in self?.deletePhoto() },
+            savePhotoAction: { [weak self] image in self?.savePhoto(image: image)}
+        )
         self.photoTakenView = photoTakenView
     }
 }
