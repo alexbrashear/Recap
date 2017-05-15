@@ -63,8 +63,13 @@ class RootFlowCoordinator {
             
         }
         
+        let showSettings: () -> Void = { [weak self, weak vc] in
+            guard let vc = vc else  { return }
+            self?.presentSettingsViewController(from: vc)
+        }
+        
         nc.setNavigationBarHidden(true, animated: true)
-        let vm = CameraViewModel(sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler)
+        let vm = CameraViewModel(sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings)
         vc.viewModel = vm
     }
     

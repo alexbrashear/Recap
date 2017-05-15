@@ -18,9 +18,9 @@ class CameraViewModel: CameraViewModelProtocol {
     
     var sendPhoto: SendPhoto
     
-    init(sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler) {
+    init(sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, showSettings: @escaping () -> Void) {
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
-        self.showSettings = {}
+        self.showSettings = showSettings
         self.sendPhoto = sendPhoto
     }
 }

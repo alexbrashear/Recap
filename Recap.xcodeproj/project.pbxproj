@@ -33,6 +33,8 @@
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
+		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
+		C39028581EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028571EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift */; };
 		C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PostcardSender.swift */; };
 		C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B91E5109ED009C4696 /* NetworkClient.swift */; };
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
@@ -57,6 +59,8 @@
 		C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */; };
 		C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */; };
 		C3CAC47C1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */; };
+		C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3CAC4811EBFA592007CECF3 /* Settings.storyboard */; };
+		C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
 		C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */; };
@@ -110,6 +114,8 @@
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
+		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		C39028571EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootFlowCoordinator+Settings.swift"; sourceTree = "<group>"; };
 		C396E7B71E5107B7009C4696 /* PostcardSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardSender.swift; sourceTree = "<group>"; };
 		C396E7B91E5109ED009C4696 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
@@ -134,6 +140,8 @@
 		C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
 		C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveAlertViewModel.swift; sourceTree = "<group>"; };
 		C3CAC47B1EBE9F8B007CECF3 /* ErrorAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorAlertViewModel.swift; sourceTree = "<group>"; };
+		C3CAC4811EBFA592007CECF3 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		C3CE0E2D1E6E6B00008000B1 /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
@@ -260,6 +268,7 @@
 				C396E7B71E5107B7009C4696 /* PostcardSender.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
 				C3CAC47E1EBEAA26007CECF3 /* Resources */,
+				C3CAC4801EBFA571007CECF3 /* Settings */,
 				C31339871EAC58D60080A168 /* User */,
 				C3CAC47D1EBEA9EC007CECF3 /* Utilities */,
 			);
@@ -364,12 +373,23 @@
 			name = Parsers;
 			sourceTree = "<group>";
 		};
+		C3CAC4801EBFA571007CECF3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C3CAC4811EBFA592007CECF3 /* Settings.storyboard */,
+				C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */,
+				C39028551EC9570900D8E257 /* SettingsViewModel.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		C3CE0E271E6E6273008000B1 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				C353083A1E3D163600E2BD8A /* AppDelegate.swift */,
 				C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */,
 				C3C347511EA83AD50008E62E /* RootFlowCoordinator+Onboarding.swift */,
+				C39028571EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -501,6 +521,7 @@
 			files = (
 				C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
+				C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
@@ -641,6 +662,7 @@
 				C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */,
 				C3CE0E331E726EE7008000B1 /* UIBarButtonItem+Closures.swift in Sources */,
 				C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */,
+				C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */,
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
@@ -661,12 +683,14 @@
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,
+				C39028581EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C31339841EAC53B20080A168 /* User.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,
+				C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,

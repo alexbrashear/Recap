@@ -9,6 +9,10 @@
 import UIKit
 
 extension UIColor {
+    class var rcpAzure: UIColor {
+        return UIColor(red: 32.0 / 255.0, green: 170.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
+    }
+    
     class var clearBlue: UIColor {
         return UIColor(red: 27.0 / 255.0, green: 147.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
     }
