@@ -44,6 +44,10 @@
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */; };
 		C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PostcardError.swift */; };
+		C3ADF1691ED2662F00BB8EFD /* PreviewContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */; };
+		C3ADF16B1ED2684800BB8EFD /* PreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */; };
+		C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */; };
+		C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */; };
 		C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347491EA711280008E62E /* WelcomeViewController.swift */; };
 		C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C3474D1EA7119E0008E62E /* Welcome.storyboard */; };
 		C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */; };
@@ -128,6 +132,10 @@
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardParser.swift; sourceTree = "<group>"; };
 		C396E7C11E5B93ED009C4696 /* PostcardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardError.swift; sourceTree = "<group>"; };
+		C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewContainerView.xib; sourceTree = "<group>"; };
+		C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContainerView.swift; sourceTree = "<group>"; };
+		C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
+		C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmRollCell.xib; sourceTree = "<group>"; };
 		C3C347491EA711280008E62E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C3C3474D1EA7119E0008E62E /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Pallette.swift"; sourceTree = "<group>"; };
@@ -225,6 +233,10 @@
 			children = (
 				C33BD1041ECE977C00132B7D /* UsedFilmList.storyboard */,
 				C33BD1061ECE982F00132B7D /* UsedFilmListController.swift */,
+				C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */,
+				C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */,
+				C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */,
+				C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */,
 			);
 			name = "Sent Photos";
 			sourceTree = "<group>";
@@ -538,10 +550,12 @@
 			files = (
 				C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
+				C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */,
 				C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
+				C3ADF1691ED2662F00BB8EFD /* PreviewContainerView.xib in Resources */,
 				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
 				C313398B1EAD9E960080A168 /* CameraOverlayView.xib in Resources */,
@@ -688,6 +702,7 @@
 				C33BD1021ECE96B300132B7D /* RootFlowCoordinator+SentPhotos.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
+				C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */,
 				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
 				C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
@@ -705,6 +720,7 @@
 				C39028581EC95B0700D8E257 /* RootFlowCoordinator+Settings.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C33BD1071ECE982F00132B7D /* UsedFilmListController.swift in Sources */,
+				C3ADF16B1ED2684800BB8EFD /* PreviewContainerView.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C31339841EAC53B20080A168 /* User.swift in Sources */,

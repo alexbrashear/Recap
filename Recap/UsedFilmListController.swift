@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reusable
 
 protocol UsedFilmListViewModelProtocol: class {
     
@@ -16,6 +17,14 @@ class UsedFilmListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(cellType: FilmRollCell.self)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
+        
+        // Removes the cell separators for empty cells
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
@@ -25,6 +34,11 @@ class UsedFilmListController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: FilmRollCell = tableView.dequeueReusableCell(for: indexPath)
+        return cell
     }
 }

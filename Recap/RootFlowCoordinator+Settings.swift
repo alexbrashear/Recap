@@ -14,7 +14,7 @@ extension RootFlowCoordinator {
     }
     
     private func configureSettingsNavigationController(nc: UINavigationController, vc: UIViewController) {
-        nc.navigationBar.barTintColor = .rcpClearBlueTwo
+        nc.navigationBar.barTintColor = .rcpAzure
         nc.navigationBar.tintColor = .white
         nc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
                                                 NSFontAttributeName: UIFont.openSansLightFont(ofSize: 16)]
