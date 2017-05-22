@@ -8,4 +8,24 @@
 
 import Foundation
 
+enum SettingsSection: Int {
+    case address
+    case support
+    case legal
+    
+    var title: String {
+        switch self {
+        case .address: return "Address"
+        case .support: return "Support"
+        case .legal:   return "Legal"
+        }
+    }
+}
+
+enum SettingsRow {
+    case address
+    case feedback
+    case termsAndConditions
+}
+
 
