@@ -59,16 +59,15 @@ class RootFlowCoordinator {
                 }
             }
         }
-        let sentPostcardsTapHandler: SentPostcardsTapHandler = { _ in
-            
+        let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self, weak nc] _ in
+            guard let nc = nc else { return }
+            self?.pushSentPhotosController(onto: nc)
         }
         
         let showSettings: () -> Void = { [weak self, weak vc] in
             guard let vc = vc else  { return }
             self?.presentSettingsViewController(from: vc)
         }
-        
-        nc.setNavigationBarHidden(true, animated: true)
         let vm = CameraViewModel(sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings)
         vc.viewModel = vm
     }

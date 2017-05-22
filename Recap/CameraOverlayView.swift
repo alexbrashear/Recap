@@ -52,6 +52,10 @@ class CameraOverlayView: UIView, NibLoadable {
             flash.on(.touchUpInside) { [unowned self] _ in
                 self.toggleFlash()
             }
+            
+            sentPostcards.on(.touchUpInside) { [unowned self] _ in
+                self.viewModel?.sentPostcardsTapHandler()
+            }
         }
     }
     
