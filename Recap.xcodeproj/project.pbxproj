@@ -53,6 +53,8 @@
 		C3ADF1761ED3CBB800BB8EFD /* FilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1751ED3CBB800BB8EFD /* FilmViewController.swift */; };
 		C3ADF1781ED3CFEA00BB8EFD /* Film.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1771ED3CFEA00BB8EFD /* Film.storyboard */; };
 		C3ADF17B1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF17A1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift */; };
+		C3ADF17D1ED540AE00BB8EFD /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF17C1ED540AE00BB8EFD /* Photo.swift */; };
+		C3B390081ED66CCE00FF0333 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B390071ED66CCE00FF0333 /* Film.swift */; };
 		C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347491EA711280008E62E /* WelcomeViewController.swift */; };
 		C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C3474D1EA7119E0008E62E /* Welcome.storyboard */; };
 		C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */; };
@@ -146,6 +148,8 @@
 		C3ADF1751ED3CBB800BB8EFD /* FilmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmViewController.swift; sourceTree = "<group>"; };
 		C3ADF1771ED3CFEA00BB8EFD /* Film.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Film.storyboard; sourceTree = "<group>"; };
 		C3ADF17A1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsedFilmListViewModel.swift; sourceTree = "<group>"; };
+		C3ADF17C1ED540AE00BB8EFD /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		C3B390071ED66CCE00FF0333 /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		C3C347491EA711280008E62E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C3C3474D1EA7119E0008E62E /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		C3C3474F1EA7124B0008E62E /* UIColor+Pallette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Pallette.swift"; sourceTree = "<group>"; };
@@ -474,6 +478,8 @@
 				C330B63A1E46B82800928284 /* AddressError.swift */,
 				C396E7BD1E5B901A009C4696 /* Postcard.swift */,
 				C396E7C11E5B93ED009C4696 /* PostcardError.swift */,
+				C3ADF17C1ED540AE00BB8EFD /* Photo.swift */,
+				C3B390071ED66CCE00FF0333 /* Film.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -762,12 +768,14 @@
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,
 				C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
+				C3ADF17D1ED540AE00BB8EFD /* Photo.swift in Sources */,
 				C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
+				C3B390081ED66CCE00FF0333 /* Film.swift in Sources */,
 				C3ADF17B1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift in Sources */,
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
 				C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */,
