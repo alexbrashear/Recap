@@ -10,10 +10,12 @@ import UIKit
 import Reusable
 
 protocol UsedFilmListViewModelProtocol: class {
-    
+    var rowTapHandler: () -> Void { get }
 }
 
 class UsedFilmListController: UITableViewController {
+    
+    var viewModel: UsedFilmListViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,5 +42,10 @@ class UsedFilmListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: FilmRollCell = tableView.dequeueReusableCell(for: indexPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        viewModel?.rowTapHandler()
     }
 }
