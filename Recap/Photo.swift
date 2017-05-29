@@ -9,24 +9,24 @@
 import UIKit
 
 class Photo: NSObject, NSCoding {
-    var image: UIImage
+    var imageURL: URL
     var dateTaken: Date
     var expectedDeliveryDate: Date?
     
-    init(image: UIImage, dateTaken: Date, expectedDeliveryDate: Date?) {
-        self.image = image
+    init(imageURL: URL, dateTaken: Date, expectedDeliveryDate: Date?) {
+        self.imageURL = imageURL
         self.dateTaken = dateTaken
         self.expectedDeliveryDate = expectedDeliveryDate
     }
     
     enum Keys: String {
-        case image = "image"
+        case imageURL = "imageURL"
         case dateTaken = "dateTaken"
         case expectedDeliveryDate = "expectedDeliveryDate"
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let image = aDecoder.decodeObject(forKey: Keys.image.rawValue) as? UIImage,
+        guard let imageURL = aDecoder.decodeObject(forKey: Keys.imageURL.rawValue) as? URL,
             let dateTaken = aDecoder.decodeObject(forKey: Keys.dateTaken.rawValue) as? Date else {
             assertionFailure("unable to decode Photo")
             return nil
@@ -34,11 +34,11 @@ class Photo: NSObject, NSCoding {
         
         let expectedDeliveryDate = aDecoder.decodeObject(forKey: Keys.expectedDeliveryDate.rawValue) as? Date
         
-        self.init(image: image, dateTaken: dateTaken, expectedDeliveryDate: expectedDeliveryDate)
+        self.init(imageURL: imageURL, dateTaken: dateTaken, expectedDeliveryDate: expectedDeliveryDate)
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(image, forKey: Keys.image.rawValue)
+        aCoder.encode(imageURL, forKey: Keys.imageURL.rawValue)
         aCoder.encode(dateTaken, forKey: Keys.dateTaken.rawValue)
         aCoder.encode(expectedDeliveryDate, forKey: Keys.expectedDeliveryDate.rawValue)
     }
