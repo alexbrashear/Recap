@@ -43,7 +43,7 @@
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C01E5B93A8009C4696 /* PostcardParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */; };
-		C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PostcardError.swift */; };
+		C396E7C21E5B93ED009C4696 /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PhotoError.swift */; };
 		C3ADF1691ED2662F00BB8EFD /* PreviewContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */; };
 		C3ADF16B1ED2684800BB8EFD /* PreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */; };
 		C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */; };
@@ -138,7 +138,7 @@
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7BF1E5B93A8009C4696 /* PostcardParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardParser.swift; sourceTree = "<group>"; };
-		C396E7C11E5B93ED009C4696 /* PostcardError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardError.swift; sourceTree = "<group>"; };
+		C396E7C11E5B93ED009C4696 /* PhotoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
 		C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewContainerView.xib; sourceTree = "<group>"; };
 		C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContainerView.swift; sourceTree = "<group>"; };
 		C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
@@ -477,7 +477,7 @@
 				C31279C21E3EF09900F52C31 /* Address.swift */,
 				C330B63A1E46B82800928284 /* AddressError.swift */,
 				C396E7BD1E5B901A009C4696 /* Postcard.swift */,
-				C396E7C11E5B93ED009C4696 /* PostcardError.swift */,
+				C396E7C11E5B93ED009C4696 /* PhotoError.swift */,
 				C3ADF17C1ED540AE00BB8EFD /* Photo.swift */,
 				C3B390071ED66CCE00FF0333 /* Film.swift */,
 			);
@@ -732,7 +732,7 @@
 				C3C347521EA83AD50008E62E /* RootFlowCoordinator+Onboarding.swift in Sources */,
 				C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */,
 				C3CE0E331E726EE7008000B1 /* UIBarButtonItem+Closures.swift in Sources */,
-				C396E7C21E5B93ED009C4696 /* PostcardError.swift in Sources */,
+				C396E7C21E5B93ED009C4696 /* PhotoError.swift in Sources */,
 				C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */,
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,

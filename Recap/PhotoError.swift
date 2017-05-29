@@ -1,5 +1,5 @@
 //
-//  PostcardError.swift
+//  PhotoError.swift
 //  MeMailer5000
 //
 //  Created by Alex Brashear on 2/20/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PostcardError: Error {
+enum PhotoError: Error {
     case unknownFailure
     case unableToSaveImageLocally
     case uploadToS3Failure
