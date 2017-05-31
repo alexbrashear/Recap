@@ -8,20 +8,20 @@
 
 import Foundation
 
-typealias PostcardSendCompletion = (_ postcard: Postcard?, _ error: PostcardError?) -> Void
+typealias PhotoSendCompletion = (_ photo: Photo?, _ error: PhotoError?) -> Void
 
 class PostcardProvider {
     private let createPostcardURLString = "https://api.lob.com/v1/postcards"
     private let networkClient = NetworkClient()
     
-    func send(image imageURL: URL, to address: Address, completion: @escaping PostcardSendCompletion) {
+    func send(image imageURL: URL, to address: Address, completion: @escaping (Date?, PhotoError?) -> Void) {
         guard let url = URL(string: createPostcardURLString) else { return }
         let data = metadata(forAddress: address, imageUrlString: imageURL.absoluteString)
-        let parser = PostcardParser()
         networkClient.POST(url: url, data: data) { json in
-            guard let json = json else { return completion(nil, .unknownFailure) }
-            let (postcard, error) = parser.parse(json: json)
-            completion(postcard, error)
+            guard let json = json  else { return completion(nil, .unknownFailure) }
+            let expectedDeliveryString = json["expected_delivery_date"] as? String
+            let expectedDeliveryDate = expectedDeliveryString?.dateFromStandard
+            completion(expectedDeliveryDate, nil)
         }
     }
     

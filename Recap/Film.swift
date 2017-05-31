@@ -28,6 +28,10 @@ class Film: NSObject, NSCoding {
         return capacity - photos.count
     }
     
+    var canAddPhoto: Bool {
+        return photos.count < 5
+    }
+    
     func addPhoto(_ photo: Photo) {
         if remainingPhotos > 0 {
             photos.append(photo)

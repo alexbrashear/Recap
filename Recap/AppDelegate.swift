@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        rootFlowCoordinator = RootFlowCoordinator(userController: UserController())
+        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(), filmController: FilmController())
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white

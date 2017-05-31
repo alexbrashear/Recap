@@ -16,6 +16,7 @@ class DatabaseController {
     
     enum Collection: String {
         case user
+        case film
     }
     
     static let sharedInstance = DatabaseController(path: DatabaseController.pathForDatabase(named: "Database"))

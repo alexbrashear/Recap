@@ -20,10 +20,12 @@ class RootFlowCoordinator {
     let postcardSender = PostcardSender()
     
     let userController: UserController
+    let filmController: FilmController
     
-    init(userController: UserController) {
+    init(userController: UserController, filmController: FilmController) {
         navigationController = UINavigationController()
         self.userController = userController
+        self.filmController = filmController
     }
     
     /// the root view controller to be used only by the app delegate
@@ -46,14 +48,22 @@ class RootFlowCoordinator {
     /// - Parameter vc: the view controller to configure
     func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc] image in
+            guard self?.filmController.canTakePhoto() ?? false else {
+                vc?.presentAlert(.errorSending(PhotoError.noFilmError))
+                return
+            }
             guard let address = self?.userController.user?.address else { return }
             vc?.presentAlert(.uploadingRecap)
             self?.postcardSender.send(image: image, to: address) { result in
-                let (_, error) = result
+                let (photo, error) = result
                 DispatchQueue.main.async {
-                    if let error = error {
+                    switch (photo, error) {
+                    case let (_, .some(error)):
                         vc?.returnToCamera(with: .errorSending(error))
-                    } else {
+                    case (.none, .none):
+                        vc?.returnToCamera(with: .errorSending(PhotoError.unknownFailure))
+                    case let (.some(photo), .none):
+                        self?.filmController.useFilmSlot(photo)
                         vc?.returnToCamera(with: .successfulSend)
                     }
                 }

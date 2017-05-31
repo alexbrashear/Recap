@@ -13,7 +13,8 @@ class PostcardSender {
     let networkClient = NetworkClient()
     let imageUploader = ImageUploader()
     let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-    func send(image: UIImage, to address: Address, completion: @escaping PostcardSendCompletion) {
+    
+    func send(image: UIImage, to address: Address, completion: @escaping PhotoSendCompletion) {
         let key = ProcessInfo.processInfo.globallyUniqueString + ".jpeg"
         let localImageFile = temporaryDirectoryURL.appendingPathComponent(key)
         /// save image to temp directory
@@ -22,12 +23,14 @@ class PostcardSender {
         /// upload image to s3
         let postcardProvider = PostcardProvider()
         imageUploader.uploadImageToS3(fromLocalImageFile: localImageFile, withS3ImageKey: key) { s3ImageURL in
-            guard let s3ImageURL = s3ImageURL else { return completion(nil, .uploadToS3Failure) }
-            postcardProvider.send(image: s3ImageURL, to: address) { postcard, error in
-                if let postcard = postcard {
-                    postcardProvider.persist(postcard: postcard)
-                }
-                completion(postcard, error)
+            let photo = Photo(imageURL: localImageFile, dateTaken: Date(), expectedDeliveryDate: nil)
+            guard let s3ImageURL = s3ImageURL else {
+                return completion(photo, .uploadToS3Failure)
+            }
+            photo.imageURL = s3ImageURL
+            postcardProvider.send(image: s3ImageURL, to: address) { deliveryDate, error in
+                photo.expectedDeliveryDate = deliveryDate
+                completion(photo, error)
             }
         }
     }

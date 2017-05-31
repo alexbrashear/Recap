@@ -10,6 +10,7 @@ import Foundation
 
 enum PhotoError: Error {
     case unknownFailure
+    case noFilmError
     case unableToSaveImageLocally
     case uploadToS3Failure
     case parsingFailure
@@ -23,6 +24,8 @@ enum PhotoError: Error {
         switch self {
         case .unknownFailure:
             return "Unknown failure"
+        case .noFilmError:
+            return "You're out of film! Tap the number at the bottom of your screen to get more"
         case .unableToSaveImageLocally:
             return "Unable to save image locally"
         case .uploadToS3Failure:
