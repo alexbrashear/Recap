@@ -50,17 +50,6 @@
                     </constraints>
                     <state key="normal" image="iconSentImages"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ded-Fc-5yf">
-                    <rect key="frame" x="172.5" y="597" width="30" height="30"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="NQh-uj-aJV"/>
-                        <constraint firstAttribute="width" constant="30" id="paf-sT-QQ2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uG-Gb-KPp" userLabel="rotate camera">
                     <rect key="frame" x="60" y="7.5" width="60" height="46"/>
                     <constraints>
@@ -69,24 +58,36 @@
                     </constraints>
                     <state key="normal" image="iconRotate"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHY-mF-hk8">
+                    <rect key="frame" x="172.5" y="597" width="30" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="2aA-Yt-lFF"/>
+                        <constraint firstAttribute="height" constant="30" id="PrG-Fn-VCw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                    <state key="normal" title="10">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="byU-vs-wwB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ft6-no-hyS"/>
-                <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="ded-Fc-5yf" secondAttribute="centerY" id="HZy-dm-1rv"/>
                 <constraint firstItem="gyk-1E-uuC" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.865" id="NBy-Pi-YXo"/>
                 <constraint firstItem="wsy-Dg-XX6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="trailing" multiplier="0.04" id="NVG-ym-AdY"/>
                 <constraint firstAttribute="trailing" secondItem="byU-vs-wwB" secondAttribute="trailing" id="QYz-td-eoc"/>
-                <constraint firstItem="ded-Fc-5yf" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.94" id="SIL-sj-6Zh"/>
                 <constraint firstItem="2uG-Gb-KPp" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="Sie-1Y-Y6M"/>
+                <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="lHY-mF-hk8" secondAttribute="centerY" id="Xf3-nc-TgX"/>
+                <constraint firstItem="lHY-mF-hk8" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.94" id="cAq-J4-evE"/>
                 <constraint firstItem="gyk-1E-uuC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gyW-G9-LuF"/>
                 <constraint firstItem="2uG-Gb-KPp" firstAttribute="leading" secondItem="lYz-5S-Mu1" secondAttribute="trailing" id="hlG-dE-zsw"/>
                 <constraint firstItem="lYz-5S-Mu1" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="sbl-De-iKr"/>
-                <constraint firstItem="ded-Fc-5yf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vZl-dd-wrO"/>
                 <constraint firstItem="lYz-5S-Mu1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w4i-F0-KQ7"/>
+                <constraint firstItem="lHY-mF-hk8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wX0-L7-tYe"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
-                <outlet property="count" destination="ded-Fc-5yf" id="7rn-BC-BBw"/>
+                <outlet property="count" destination="lHY-mF-hk8" id="rbV-cK-RKZ"/>
                 <outlet property="flash" destination="lYz-5S-Mu1" id="4Zm-GU-ajD"/>
                 <outlet property="rotateCamera" destination="2uG-Gb-KPp" id="8kE-0E-MJH"/>
                 <outlet property="sentPostcards" destination="wsy-Dg-XX6" id="4XG-Lo-FlT"/>

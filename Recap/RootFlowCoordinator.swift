@@ -63,8 +63,9 @@ class RootFlowCoordinator {
                     case (.none, .none):
                         vc?.returnToCamera(with: .errorSending(PhotoError.unknownFailure))
                     case let (.some(photo), .none):
-                        self?.filmController.useFilmSlot(photo)
+                        let remainingPhotos = self?.filmController.useFilmSlot(photo) ?? 0
                         vc?.returnToCamera(with: .successfulSend)
+                        vc?.overlay.updateCount(to: remainingPhotos)
                     }
                 }
             }
@@ -78,7 +79,7 @@ class RootFlowCoordinator {
             guard let vc = vc else  { return }
             self?.presentSettingsViewController(from: vc)
         }
-        let vm = CameraViewModel(sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings)
+        let vm = CameraViewModel(initialCount: filmController.currentFilm?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings)
         vc.viewModel = vm
     }
     

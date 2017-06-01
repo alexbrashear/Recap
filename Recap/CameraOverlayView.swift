@@ -22,6 +22,8 @@ protocol CameraOverlayViewModelProtocol: class {
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
     
     var showSettings: () -> Void { get }
+    
+    var initialCount: Int { get }
 }
 
 class CameraOverlayView: UIView, NibLoadable {
@@ -31,7 +33,7 @@ class CameraOverlayView: UIView, NibLoadable {
     @IBOutlet private var rotateCamera: UIButton!
     @IBOutlet private var takePhoto: UIButton!
     @IBOutlet private var sentPostcards: UIButton!
-    @IBOutlet private var count: UILabel!
+    @IBOutlet private var count: UIButton!
     
     var flashMode: AVCaptureFlashMode = .auto
     
@@ -56,7 +58,15 @@ class CameraOverlayView: UIView, NibLoadable {
             sentPostcards.on(.touchUpInside) { [unowned self] _ in
                 self.viewModel?.sentPostcardsTapHandler()
             }
+            
+            count.on(.touchUpInside) { _ in
+                print("test")
+            }
         }
+    }
+    
+    func updateCount(to newCount: Int) {
+        count.setTitle("\(newCount)", for: .normal)
     }
     
     func toggleFlash() {
@@ -71,9 +81,10 @@ class CameraOverlayView: UIView, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        count.font = UIFont.openSansBoldFont(ofSize: 20)
+        count.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
         count.layer.cornerRadius = 15.0
         count.clipsToBounds = true
+        updateCount(to: viewModel?.initialCount ?? 0)
     }
 }
 

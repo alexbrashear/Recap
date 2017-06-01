@@ -15,6 +15,8 @@ protocol CameraViewModelProtocol {
     var showSettings: () -> Void { get }
     
     var sendPhoto: SendPhoto { get }
+    
+    var initialCount: Int { get }
 }
 
 class CameraViewController: UIViewController {
@@ -55,7 +57,8 @@ class CameraViewController: UIViewController {
         guard let viewModel = viewModel else { fatalError() }
         let rotateCamera: RotateCamera = { [weak self] in self?.switchCamera() }
         let takePhoto: TakePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
-        let vm = CameraOverlayViewModel(takePhoto: takePhoto,
+        let vm = CameraOverlayViewModel(initialCount: 5,
+                                        takePhoto: takePhoto,
                                         showSettings: viewModel.showSettings,
                                         sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler,
                                         rotateCamera: rotateCamera,

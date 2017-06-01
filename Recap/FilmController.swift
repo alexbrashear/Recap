@@ -25,7 +25,7 @@ class FilmController {
         return currentFilm?.canAddPhoto ?? false
     }
     
-    func useFilmSlot(_ photo: Photo) {
+    func useFilmSlot(_ photo: Photo) -> Int {
         currentFilm?.addPhoto(photo)
         
         if !canTakePhoto() {
@@ -34,6 +34,7 @@ class FilmController {
         }
         
         updateCurrentFilmInStore()
+        return currentFilm?.remainingPhotos ?? 0
     }
     
     private func loadCurrentFilm() -> Film? {

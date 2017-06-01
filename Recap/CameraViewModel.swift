@@ -13,12 +13,12 @@ typealias SentPostcardsTapHandler = () -> Void
 
 class CameraViewModel: CameraViewModelProtocol {
     var showSettings: () -> Void
-    
     var sentPostcardsTapHandler: SentPostcardsTapHandler
-    
     var sendPhoto: SendPhoto
+    var initialCount: Int
     
-    init(sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, showSettings: @escaping () -> Void) {
+    init(initialCount: Int, sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, showSettings: @escaping () -> Void) {
+        self.initialCount = initialCount
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
         self.showSettings = showSettings
         self.sendPhoto = sendPhoto
