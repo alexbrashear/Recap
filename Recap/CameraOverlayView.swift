@@ -14,6 +14,8 @@ typealias RotateCamera = () -> Void
 
 typealias TakePhoto = (_ flashMode: AVCaptureFlashMode) -> Void
 
+typealias CountAction = () -> Void
+
 protocol CameraOverlayViewModelProtocol: class {
     var rotateCamera: RotateCamera { get }
     
@@ -24,6 +26,8 @@ protocol CameraOverlayViewModelProtocol: class {
     var showSettings: () -> Void { get }
     
     var initialCount: Int { get }
+    
+    var countAction: CountAction { get }
 }
 
 class CameraOverlayView: UIView, NibLoadable {
@@ -59,8 +63,8 @@ class CameraOverlayView: UIView, NibLoadable {
                 self.viewModel?.sentPostcardsTapHandler()
             }
             
-            count.on(.touchUpInside) { _ in
-                print("test")
+            count.on(.touchUpInside) { [unowned self] _ in
+                self.viewModel?.countAction()
             }
         }
     }

@@ -15,13 +15,15 @@ class CameraOverlayViewModel: CameraOverlayViewModelProtocol {
     var rotateCamera: RotateCamera
     var sendPhoto: SendPhoto
     var initialCount: Int
+    var countAction: CountAction
     
-    init(initialCount: Int, takePhoto: @escaping TakePhoto, showSettings: @escaping () -> Void, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, rotateCamera: @escaping RotateCamera, sendPhoto: @escaping SendPhoto) {
+    init(initialCount: Int, takePhoto: @escaping TakePhoto, showSettings: @escaping () -> Void, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, rotateCamera: @escaping RotateCamera, sendPhoto: @escaping SendPhoto, countAction: @escaping CountAction) {
         self.initialCount = initialCount
         self.takePhoto = takePhoto
         self.rotateCamera = rotateCamera
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
         self.showSettings = showSettings
         self.sendPhoto = sendPhoto
+        self.countAction = countAction
     }
 }

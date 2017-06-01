@@ -17,6 +17,8 @@ protocol CameraViewModelProtocol {
     var sendPhoto: SendPhoto { get }
     
     var initialCount: Int { get }
+    
+    var countAction: CountAction { get }
 }
 
 class CameraViewController: UIViewController {
@@ -64,7 +66,8 @@ class CameraViewController: UIViewController {
                                         rotateCamera: rotateCamera,
                                         sendPhoto: { image in
                                             viewModel.sendPhoto(image)
-                                        })
+                                        },
+                                        countAction: viewModel.countAction)
         view.addSubview(overlay)
         overlay.viewModel = vm
     }

@@ -79,7 +79,13 @@ class RootFlowCoordinator {
             guard let vc = vc else  { return }
             self?.presentSettingsViewController(from: vc)
         }
-        let vm = CameraViewModel(initialCount: filmController.currentFilm?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings)
+        
+        let countAction: CountAction = { [weak self, weak vc] in
+            guard let vc = vc else { return }
+            self?.presentPurchaseController(from: vc)
+        }
+        
+        let vm = CameraViewModel(initialCount: filmController.currentFilm?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
         vc.viewModel = vm
     }
     
@@ -87,5 +93,12 @@ class RootFlowCoordinator {
         guard let cameraViewController = R.storyboard.camera.cameraViewController() else { fatalError() }
         configure(vc: cameraViewController, nc: nc)
         nc.pushViewController(cameraViewController, animated: true)
+    }
+    
+    func configureNavigationController(nc: UINavigationController) {
+        nc.navigationBar.barTintColor = .rcpAzure
+        nc.navigationBar.tintColor = .white
+        nc.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white,
+                                                NSFontAttributeName: UIFont.openSansSemiBoldFont(ofSize: 20)]
     }
 }
