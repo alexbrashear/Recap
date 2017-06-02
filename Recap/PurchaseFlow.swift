@@ -22,7 +22,7 @@ extension RootFlowCoordinator {
             vc?.dismiss(animated: true, completion: nil)
         }
         
-        vc.title = "Add More Recaps"
+        vc.title = "Add Film"
         
         let buyFilm: BuyFilmAction = { [weak self] film in
             self?.filmController.buyFilm(film)

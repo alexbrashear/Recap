@@ -10,6 +10,17 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Purchase View Controller-->
         <scene sceneID="Kob-w2-aK3">
@@ -23,19 +34,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJf-MW-y50">
-                                <rect key="frame" x="46.5" y="567" width="282" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fun / witty message about how you don’t have any more Recaps to send, restock and getting back to sending Recaps\" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbT-cF-YkD" userLabel="message">
+                                <rect key="frame" x="18" y="80" width="339" height="65.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recaps are free for Beta Testers, no credit card required." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25G-C3-pAL" userLabel="disclaimer">
+                                <rect key="frame" x="18" y="155.5" width="339" height="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1st-wA-0Fa">
+                                <rect key="frame" x="0.0" y="198.5" width="375" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pack of 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5oQ-h6-X5r">
+                                        <rect key="frame" x="37.5" y="20" width="78.5" height="22"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgD-sU-7Oa" userLabel="minus">
+                                        <rect key="frame" x="22.5" y="51.5" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="2IZ-pS-Pj4"/>
+                                            <constraint firstAttribute="height" constant="42" id="lA5-ax-shD"/>
+                                        </constraints>
+                                        <state key="normal" image="iconMinus"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCp-dI-2Sn" userLabel="plus">
+                                        <rect key="frame" x="87.5" y="51" width="42" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="42" id="Fdr-g3-3EU"/>
+                                            <constraint firstAttribute="height" constant="42" id="bQ9-Kk-h2u"/>
+                                        </constraints>
+                                        <state key="normal" image="iconPlus"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qc-Oj-R31" userLabel="total">
+                                        <rect key="frame" x="291.5" y="58" width="46" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-De-Z5y">
+                                        <rect key="frame" x="309.5" y="23.5" width="28" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                        <color key="textColor" red="0.086274509803921567" green="0.49019607843137253" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H70-Jp-f9S" userLabel="film count">
+                                        <rect key="frame" x="64.5" y="58" width="23" height="28"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.94745277033911812" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="hgD-sU-7Oa" firstAttribute="centerY" secondItem="H70-Jp-f9S" secondAttribute="centerY" id="1kn-Jg-qxd"/>
+                                    <constraint firstItem="KCp-dI-2Sn" firstAttribute="centerY" secondItem="H70-Jp-f9S" secondAttribute="centerY" id="5HM-M0-uuh"/>
+                                    <constraint firstItem="1qc-Oj-R31" firstAttribute="centerY" secondItem="H70-Jp-f9S" secondAttribute="centerY" id="Gxs-rs-WN2"/>
+                                    <constraint firstAttribute="height" constant="110" id="Li1-mT-I5H"/>
+                                    <constraint firstItem="H70-Jp-f9S" firstAttribute="leading" secondItem="hgD-sU-7Oa" secondAttribute="trailing" id="P7M-pS-CFJ"/>
+                                    <constraint firstItem="H70-Jp-f9S" firstAttribute="top" secondItem="5oQ-h6-X5r" secondAttribute="bottom" constant="16" id="Vd8-mH-Ndj"/>
+                                    <constraint firstItem="5oQ-h6-X5r" firstAttribute="top" secondItem="1st-wA-0Fa" secondAttribute="top" constant="20" id="XJU-Ax-QYO"/>
+                                    <constraint firstItem="1qc-Oj-R31" firstAttribute="trailing" secondItem="ZQy-De-Z5y" secondAttribute="trailing" id="cLc-3P-PmD"/>
+                                    <constraint firstItem="KCp-dI-2Sn" firstAttribute="leading" secondItem="H70-Jp-f9S" secondAttribute="trailing" id="dCZ-ca-x38"/>
+                                    <constraint firstItem="5oQ-h6-X5r" firstAttribute="leading" secondItem="1st-wA-0Fa" secondAttribute="trailing" multiplier="0.1" id="e2r-a5-WhR"/>
+                                    <constraint firstItem="ZQy-De-Z5y" firstAttribute="centerY" secondItem="5oQ-h6-X5r" secondAttribute="centerY" id="qew-2P-kCD"/>
+                                    <constraint firstItem="hgD-sU-7Oa" firstAttribute="leading" secondItem="5oQ-h6-X5r" secondAttribute="leading" constant="-15" id="sJ4-5l-7oS"/>
+                                    <constraint firstItem="ZQy-De-Z5y" firstAttribute="trailing" secondItem="1st-wA-0Fa" secondAttribute="trailing" multiplier="0.9" id="wfK-Jr-zt0"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FJf-MW-y50">
+                                <rect key="frame" x="46" y="358.5" width="282" height="40"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4xW-az-FO0"/>
+                                </constraints>
                                 <state key="normal" title="Buy FIlm">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.94745277029999997" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="FJf-MW-y50" firstAttribute="centerX" secondItem="keZ-yI-61K" secondAttribute="centerX" id="8hN-oT-9md"/>
+                            <constraint firstItem="FJf-MW-y50" firstAttribute="top" secondItem="1st-wA-0Fa" secondAttribute="bottom" constant="50" id="9z3-hG-3V4"/>
+                            <constraint firstItem="25G-C3-pAL" firstAttribute="top" secondItem="UbT-cF-YkD" secondAttribute="bottom" constant="10" id="NIX-Q0-dHF"/>
+                            <constraint firstItem="25G-C3-pAL" firstAttribute="centerX" secondItem="keZ-yI-61K" secondAttribute="centerX" id="RT4-I9-W5e"/>
+                            <constraint firstItem="1st-wA-0Fa" firstAttribute="top" secondItem="25G-C3-pAL" secondAttribute="bottom" constant="29" id="VAA-kJ-xQf"/>
+                            <constraint firstItem="UbT-cF-YkD" firstAttribute="top" secondItem="nI4-z2-Lug" secondAttribute="top" multiplier="0.12" id="XuX-dS-Wwc"/>
+                            <constraint firstItem="UbT-cF-YkD" firstAttribute="centerX" secondItem="keZ-yI-61K" secondAttribute="centerX" id="YkW-jq-ISq"/>
+                            <constraint firstItem="1st-wA-0Fa" firstAttribute="width" secondItem="keZ-yI-61K" secondAttribute="width" id="Zbl-yc-RFn"/>
                             <constraint firstItem="FJf-MW-y50" firstAttribute="leading" secondItem="keZ-yI-61K" secondAttribute="trailingMargin" multiplier="0.13" id="aNT-ZB-dyb"/>
-                            <constraint firstItem="FJf-MW-y50" firstAttribute="top" secondItem="nI4-z2-Lug" secondAttribute="top" multiplier="0.85" id="wIj-3p-k8I"/>
+                            <constraint firstItem="25G-C3-pAL" firstAttribute="leading" secondItem="UbT-cF-YkD" secondAttribute="leading" id="dl0-sp-PpL"/>
+                            <constraint firstItem="1st-wA-0Fa" firstAttribute="centerX" secondItem="keZ-yI-61K" secondAttribute="centerX" id="tLq-DC-klI"/>
+                            <constraint firstItem="UbT-cF-YkD" firstAttribute="leading" secondItem="keZ-yI-61K" secondAttribute="trailingMargin" multiplier="0.05" id="vA9-RF-2fJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -44,7 +140,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xI1-ZY-gZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-217" y="116"/>
+            <point key="canvasLocation" x="-218.40000000000001" y="115.59220389805098"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconMinus" width="11" height="4"/>
+        <image name="iconPlus" width="11" height="11"/>
+    </resources>
 </document>
