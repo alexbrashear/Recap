@@ -59,7 +59,7 @@ class CameraViewController: UIViewController {
         guard let viewModel = viewModel else { fatalError() }
         let rotateCamera: RotateCamera = { [weak self] in self?.switchCamera() }
         let takePhoto: TakePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
-        let vm = CameraOverlayViewModel(initialCount: 5,
+        let vm = CameraOverlayViewModel(initialCount: viewModel.initialCount,
                                         takePhoto: takePhoto,
                                         showSettings: viewModel.showSettings,
                                         sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler,

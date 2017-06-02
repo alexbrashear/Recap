@@ -37,6 +37,11 @@ class FilmController {
         return currentFilm?.remainingPhotos ?? 0
     }
     
+    func buyFilm(_ film: Film) {
+        self.currentFilm = film
+        updateCurrentFilmInStore()
+    }
+    
     private func loadCurrentFilm() -> Film? {
         var film: Film?
         
@@ -51,10 +56,11 @@ class FilmController {
     }
     
     private func updateCurrentFilmInStore() {
+        guard let film = self.currentFilm else { return }
         let collection = DatabaseController.Collection.film.rawValue
         let connection = DatabaseController.sharedInstance.newWritingConnection()
         connection.readWrite { transaction in
-            transaction.replace(self.currentFilm, forKey: Keys.current.rawValue, inCollection: collection)
+            transaction.setObject([film], forKey: Keys.current.rawValue, inCollection: collection)
         }
     }
 }

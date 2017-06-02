@@ -58,6 +58,7 @@
 		C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */; };
 		C3AE4C2C1EDFC22D0019ED8C /* PurchaseFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C2B1EDFC22D0019ED8C /* PurchaseFlow.swift */; };
 		C3AE4C2E1EDFC5EC0019ED8C /* CameraFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C2D1EDFC5EC0019ED8C /* CameraFlow.swift */; };
+		C3AE4C301EE1166F0019ED8C /* PurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C2F1EE1166F0019ED8C /* PurchaseViewModel.swift */; };
 		C3B390081ED66CCE00FF0333 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B390071ED66CCE00FF0333 /* Film.swift */; };
 		C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C347491EA711280008E62E /* WelcomeViewController.swift */; };
 		C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C3474D1EA7119E0008E62E /* Welcome.storyboard */; };
@@ -157,6 +158,7 @@
 		C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		C3AE4C2B1EDFC22D0019ED8C /* PurchaseFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseFlow.swift; sourceTree = "<group>"; };
 		C3AE4C2D1EDFC5EC0019ED8C /* CameraFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFlow.swift; sourceTree = "<group>"; };
+		C3AE4C2F1EE1166F0019ED8C /* PurchaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewModel.swift; sourceTree = "<group>"; };
 		C3B390071ED66CCE00FF0333 /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		C3C347491EA711280008E62E /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C3C3474D1EA7119E0008E62E /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			children = (
 				C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */,
 				C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */,
+				C3AE4C2F1EE1166F0019ED8C /* PurchaseViewModel.swift */,
 			);
 			name = Purchase;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3AE4C301EE1166F0019ED8C /* PurchaseViewModel.swift in Sources */,
 				C3CE0E351E7592E2008000B1 /* Configuration.swift in Sources */,
 				C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */,
 				C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */,

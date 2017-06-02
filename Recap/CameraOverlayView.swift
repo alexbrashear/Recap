@@ -66,6 +66,8 @@ class CameraOverlayView: UIView, NibLoadable {
             count.on(.touchUpInside) { [unowned self] _ in
                 self.viewModel?.countAction()
             }
+            
+            updateCount(to: viewModel?.initialCount ?? 0)
         }
     }
     
@@ -88,7 +90,6 @@ class CameraOverlayView: UIView, NibLoadable {
         count.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
         count.layer.cornerRadius = 15.0
         count.clipsToBounds = true
-        updateCount(to: viewModel?.initialCount ?? 0)
     }
 }
 

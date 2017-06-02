@@ -21,5 +21,14 @@ extension RootFlowCoordinator {
         vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop) { [weak vc] _ in
             vc?.dismiss(animated: true, completion: nil)
         }
+        
+        vc.title = "Add More Recaps"
+        
+        let buyFilm: BuyFilmAction = { [weak self] film in
+            self?.filmController.buyFilm(film)
+        }
+        
+        let vm = PurchaseViewModel(buyFilm: buyFilm)
+        vc.viewModel = vm
     }
 }
