@@ -56,7 +56,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgD-sU-7Oa" userLabel="minus">
-                                        <rect key="frame" x="22.5" y="51.5" width="42" height="42"/>
+                                        <rect key="frame" x="27.5" y="51.5" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="2IZ-pS-Pj4"/>
                                             <constraint firstAttribute="height" constant="42" id="lA5-ax-shD"/>
@@ -64,7 +64,7 @@
                                         <state key="normal" image="iconMinus"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCp-dI-2Sn" userLabel="plus">
-                                        <rect key="frame" x="87.5" y="51" width="42" height="42"/>
+                                        <rect key="frame" x="92.5" y="51" width="42" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="42" id="Fdr-g3-3EU"/>
                                             <constraint firstAttribute="height" constant="42" id="bQ9-Kk-h2u"/>
@@ -84,7 +84,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H70-Jp-f9S" userLabel="film count">
-                                        <rect key="frame" x="64.5" y="58" width="23" height="28"/>
+                                        <rect key="frame" x="69.5" y="58" width="23" height="28"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,7 +103,7 @@
                                     <constraint firstItem="KCp-dI-2Sn" firstAttribute="leading" secondItem="H70-Jp-f9S" secondAttribute="trailing" id="dCZ-ca-x38"/>
                                     <constraint firstItem="5oQ-h6-X5r" firstAttribute="leading" secondItem="1st-wA-0Fa" secondAttribute="trailing" multiplier="0.1" id="e2r-a5-WhR"/>
                                     <constraint firstItem="ZQy-De-Z5y" firstAttribute="centerY" secondItem="5oQ-h6-X5r" secondAttribute="centerY" id="qew-2P-kCD"/>
-                                    <constraint firstItem="hgD-sU-7Oa" firstAttribute="leading" secondItem="5oQ-h6-X5r" secondAttribute="leading" constant="-15" id="sJ4-5l-7oS"/>
+                                    <constraint firstItem="hgD-sU-7Oa" firstAttribute="leading" secondItem="5oQ-h6-X5r" secondAttribute="leading" constant="-10" id="sJ4-5l-7oS"/>
                                     <constraint firstItem="ZQy-De-Z5y" firstAttribute="trailing" secondItem="1st-wA-0Fa" secondAttribute="trailing" multiplier="0.9" id="wfK-Jr-zt0"/>
                                 </constraints>
                             </view>
@@ -136,6 +136,14 @@
                     </view>
                     <connections>
                         <outlet property="buyFilm" destination="FJf-MW-y50" id="gEd-WI-Hcf"/>
+                        <outlet property="decrement" destination="hgD-sU-7Oa" id="0fi-NE-6OT"/>
+                        <outlet property="disclaimer" destination="25G-C3-pAL" id="AVV-3Y-JUd"/>
+                        <outlet property="filmCount" destination="H70-Jp-f9S" id="ibl-hL-QC8"/>
+                        <outlet property="increment" destination="KCp-dI-2Sn" id="4AV-y1-vEw"/>
+                        <outlet property="individualPrice" destination="ZQy-De-Z5y" id="Pui-hd-nNF"/>
+                        <outlet property="message" destination="UbT-cF-YkD" id="evx-Kj-b51"/>
+                        <outlet property="productDescription" destination="5oQ-h6-X5r" id="Yr3-hF-2Xq"/>
+                        <outlet property="totalPrice" destination="1qc-Oj-R31" id="IcF-ID-NhZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xI1-ZY-gZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
