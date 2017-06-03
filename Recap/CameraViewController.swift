@@ -69,6 +69,7 @@ class CameraViewController: UIViewController {
                                         },
                                         countAction: viewModel.countAction)
         view.addSubview(overlay)
+        overlay.constrainToSuperview()
         overlay.viewModel = vm
     }
     
