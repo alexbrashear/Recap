@@ -9,11 +9,6 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -27,27 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="ray-D4-7YJ">
+                            <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="ray-D4-7YJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memories in your mailbox" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpd-IE-5LO">
-                                <rect key="frame" x="61" y="315" width="252.5" height="27.5"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
-                                <color key="textColor" red="0.98431372549019602" green="0.76862745098039209" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recap" translatesAutoresizingMaskIntoConstraints="NO" id="WLb-C8-Fxf">
-                                <rect key="frame" x="137.5" y="279" width="99" height="28"/>
                             </imageView>
                         </subviews>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Zpd-IE-5LO" firstAttribute="top" secondItem="WLb-C8-Fxf" secondAttribute="bottom" constant="8" id="0hW-l5-Pf9"/>
-                            <constraint firstItem="Zpd-IE-5LO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GGr-bI-8TW"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ray-D4-7YJ" secondAttribute="bottom" id="Rc6-Zr-75Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ray-D4-7YJ" secondAttribute="trailing" constant="-16" id="VgN-48-hG8"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="WLb-C8-Fxf" secondAttribute="bottom" constant="360" id="h2l-T2-jsW"/>
-                            <constraint firstItem="WLb-C8-Fxf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="haf-hC-JN0"/>
                             <constraint firstItem="ray-D4-7YJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="k1u-gc-lWv"/>
                             <constraint firstItem="ray-D4-7YJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="k8i-RR-cFi"/>
                         </constraints>
@@ -62,7 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="recap" width="99" height="28"/>
-        <image name="splashBackground" width="375" height="667"/>
+        <image name="splash" width="375" height="667"/>
     </resources>
 </document>
