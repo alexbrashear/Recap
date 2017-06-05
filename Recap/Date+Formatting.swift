@@ -24,6 +24,16 @@ extension Date {
         return formatter
     }()
     
+    static let displayableFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd/yy"
+        return formatter
+    }()
+    
+    var filmPurchaseDateString: String {
+        return Date.displayableFormatter.string(from: self)
+    }
+    
     var displayableDate: String {
         let dateString = Date.basicFormatter.string(from: self)
         let dateComponents = dateString.components(separatedBy: "-")
