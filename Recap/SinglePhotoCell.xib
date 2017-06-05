@@ -67,6 +67,12 @@
                     <constraint firstAttribute="trailingMargin" secondItem="pXY-8F-PxE" secondAttribute="trailing" constant="-1" id="wEL-wS-nvO"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="deliveryDate" destination="i5d-cL-ldV" id="OKh-0e-GCf"/>
+                <outlet property="photo" destination="xlo-8Q-jvo" id="PUV-7F-s6B"/>
+                <outlet property="status" destination="dlG-Vx-CmE" id="Dbz-dm-ztn"/>
+                <outlet property="statusAccessory" destination="jYp-MK-HWa" id="2xs-yd-Gas"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="197.5"/>
         </tableViewCell>
     </objects>

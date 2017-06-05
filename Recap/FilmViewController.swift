@@ -10,7 +10,13 @@ import UIKit
 import Reusable
 
 class FilmViewController: UITableViewController {
-
+    
+    var photos: [Photo]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,11 +35,13 @@ class FilmViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return photos?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let photo = photos?[indexPath.row] else { return UITableViewCell() }
         let cell: SinglePhotoCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.viewModel = SinglePhotoCell.ViewModel(photoURL: photo.imageURL, statusAccessory: UIImage(named: "RCPDarkCheck")!, status: "DELIVERED", deliveryDate: "4/21/23")
         return cell
     }
 }

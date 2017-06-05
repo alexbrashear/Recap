@@ -16,15 +16,21 @@ final class FilmRollCell: UITableViewCell, NibReusable {
     @IBOutlet var purchaseDate: UILabel!
     @IBOutlet var scrollablePics: UIScrollView!
     
+    var film: Film? {
+        didSet {
+            guard let film = film else { return }
+            nextDelivery.text = "Next Delivery in TURDS Days"
+            deliveredCount.text = "\(film.photosSent) RECAPS SENT"
+            purchaseDate.text = film.dateOfPurchase.filmPurchaseDateString
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        nextDelivery.text = "Next Delivery in 2 Days"
         nextDelivery.font = UIFont.openSansFont(ofSize: 16)
         nextDelivery.textColor = .rcpDarkGrey
-        deliveredCount.text = "3 RECAPS SENT"
         deliveredCount.font = UIFont.openSansBoldFont(ofSize: 12)
         deliveredCount.textColor = .rcpBlueyGrey
-        purchaseDate.text = "4/23/23"
         purchaseDate.font = UIFont.openSansFont(ofSize: 10)
         purchaseDate.textColor = .rcpBlueyGrey
         

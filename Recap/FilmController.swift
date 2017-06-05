@@ -30,7 +30,9 @@ class FilmController {
         
         if !canTakePhoto() {
             // add film to past film
+            addFilmToHistory()
             // nil out the current film
+            currentFilm = nil
         }
         
         updateCurrentFilmInStore()
@@ -40,6 +42,22 @@ class FilmController {
     func buyFilm(_ film: Film) {
         self.currentFilm = film
         updateCurrentFilmInStore()
+    }
+    
+    func loadFilmHistory() -> [Film] {
+        var film = [Film]()
+        
+        let collection = DatabaseController.Collection.film.rawValue
+        let connection = DatabaseController.sharedInstance.newReadingConnection()
+        connection.read { transaction in
+            film = transaction.object(forKey: Keys.past.rawValue, inCollection: collection) as? [Film] ?? []
+        }
+        
+        if let currentFilm = currentFilm {
+            film.insert(currentFilm, at: 0)
+        }
+        
+        return film
     }
     
     private func loadCurrentFilm() -> Film? {
@@ -61,6 +79,21 @@ class FilmController {
         let connection = DatabaseController.sharedInstance.newWritingConnection()
         connection.readWrite { transaction in
             transaction.setObject([film], forKey: Keys.current.rawValue, inCollection: collection)
+        }
+    }
+    
+    private func addFilmToHistory() {
+        guard let currentFilm = self.currentFilm else { return }
+        let collection = DatabaseController.Collection.film.rawValue
+        let connection = DatabaseController.sharedInstance.newWritingConnection()
+        connection.readWrite { transaction in
+            var film = transaction.object(forKey: Keys.past.rawValue, inCollection: collection) as? [Film] ?? []
+            if film.isEmpty {
+                transaction.setObject([currentFilm], forKey: Keys.past.rawValue, inCollection: collection)
+            } else {
+                film.insert(currentFilm, at: 0)
+                transaction.replace(film, forKey: Keys.past.rawValue, inCollection: collection)
+            }
         }
     }
 }

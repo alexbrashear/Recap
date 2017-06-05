@@ -9,9 +9,9 @@
 import Foundation
 
 class UsedFilmListViewModel: UsedFilmListViewModelProtocol {
-    var rowTapHandler: () -> Void
+    var rowTapHandler: FilmRowTapHandler
     
-    init(rowTapHandler: @escaping () -> Void) {
+    init(rowTapHandler: @escaping FilmRowTapHandler) {
         self.rowTapHandler = rowTapHandler
     }
 }

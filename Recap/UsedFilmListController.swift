@@ -9,13 +9,20 @@
 import UIKit
 import Reusable
 
+typealias FilmRowTapHandler = (Film) -> Void
+
 protocol UsedFilmListViewModelProtocol: class {
-    var rowTapHandler: () -> Void { get }
+    var rowTapHandler: FilmRowTapHandler { get }
 }
 
 class UsedFilmListController: UITableViewController {
     
     var viewModel: UsedFilmListViewModelProtocol?
+    var filmSnapshot: [Film]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +43,19 @@ class UsedFilmListController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return filmSnapshot?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let film = filmSnapshot?[indexPath.row] else { return UITableViewCell() }
         let cell: FilmRollCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.film = film
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel?.rowTapHandler()
+        guard let film = filmSnapshot?[indexPath.row] else { return }
+        viewModel?.rowTapHandler(film)
     }
 }
