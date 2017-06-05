@@ -35,7 +35,7 @@
                     <state key="normal" image="pictureButton"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsy-Dg-XX6">
-                    <rect key="frame" x="15" y="582" width="60" height="60"/>
+                    <rect key="frame" x="15" y="586" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="efc-jA-tVB"/>
                         <constraint firstAttribute="width" secondItem="wsy-Dg-XX6" secondAttribute="height" multiplier="1:1" id="wkI-ln-ybS"/>
@@ -51,11 +51,11 @@
                     <state key="normal" image="iconRotate"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHY-mF-hk8">
-                    <rect key="frame" x="172.5" y="597" width="30" height="30"/>
+                    <rect key="frame" x="170" y="598.5" width="35" height="35"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="2aA-Yt-lFF"/>
-                        <constraint firstAttribute="height" constant="30" id="PrG-Fn-VCw"/>
+                        <constraint firstAttribute="width" constant="35" id="2aA-Yt-lFF"/>
+                        <constraint firstAttribute="height" constant="35" id="PrG-Fn-VCw"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                     <state key="normal" title="10">
@@ -78,7 +78,7 @@
                 <constraint firstAttribute="trailing" secondItem="byU-vs-wwB" secondAttribute="trailing" id="QYz-td-eoc"/>
                 <constraint firstItem="2uG-Gb-KPp" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="Sie-1Y-Y6M"/>
                 <constraint firstItem="wsy-Dg-XX6" firstAttribute="centerY" secondItem="lHY-mF-hk8" secondAttribute="centerY" id="Xf3-nc-TgX"/>
-                <constraint firstItem="lHY-mF-hk8" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.94" id="cAq-J4-evE"/>
+                <constraint firstItem="lHY-mF-hk8" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" multiplier="0.95" id="cAq-J4-evE"/>
                 <constraint firstItem="gyk-1E-uuC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gyW-G9-LuF"/>
                 <constraint firstItem="2uG-Gb-KPp" firstAttribute="leading" secondItem="lYz-5S-Mu1" secondAttribute="trailing" id="hlG-dE-zsw"/>
                 <constraint firstItem="lYz-5S-Mu1" firstAttribute="centerY" secondItem="byU-vs-wwB" secondAttribute="centerY" id="sbl-De-iKr"/>

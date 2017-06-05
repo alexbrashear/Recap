@@ -16,7 +16,7 @@ protocol PurchaseViewModelProtocol: class {
 
 class PurchaseViewController: UIViewController {
     
-    let film = Film(capacity: 5)
+    let film = Film(capacity: 10)
 
     @IBOutlet private var message: UILabel!
     @IBOutlet private var disclaimer: UILabel!

@@ -88,7 +88,7 @@ class CameraOverlayView: UIView, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         count.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
-        count.layer.cornerRadius = 15.0
+        count.layer.cornerRadius = 17.5
         count.clipsToBounds = true
     }
 }
