@@ -17,8 +17,8 @@ class WelcomeViewModel: WelcomeViewModelProtocol {
     
     init(continueButtonAction: @escaping ContinueButtonAction) {
         self.continueButtonAction = continueButtonAction
-        items = [WelcomeItem.ViewModel(image: UIImage(), message: "SNAP A PHOTO"),
-                 WelcomeItem.ViewModel(image: UIImage(), message: "PRESS SEND"),
-                 WelcomeItem.ViewModel(image: UIImage(), message: "PHOTO ARRIVES IN THE MAIL")]
+        items = [WelcomeItem.ViewModel(image: UIImage(named: "phone")!, message: "SNAP A PHOTO"),
+                 WelcomeItem.ViewModel(image: UIImage(named: "iconSend")!, message: "PRESS SEND"),
+                 WelcomeItem.ViewModel(image: UIImage(named: "mailbox")!, message: "PHOTO ARRIVES IN THE MAIL")]
     }
 }
