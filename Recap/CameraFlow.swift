@@ -54,7 +54,9 @@ extension RootFlowCoordinator {
         
         let countAction: CountAction = { [weak self, weak vc] in
             guard let vc = vc else { return }
-            self?.presentPurchaseController(from: vc)
+            self?.presentPurchaseController(from: vc) { [weak vc] newCount in
+                vc?.overlay.updateCount(to: newCount)
+            }
         }
         
         let vm = CameraViewModel(initialCount: filmController.currentFilm?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
