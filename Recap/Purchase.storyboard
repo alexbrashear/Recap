@@ -113,7 +113,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4xW-az-FO0"/>
                                 </constraints>
-                                <state key="normal" title="Buy FIlm">
+                                <state key="normal" title="Buy Film">
                                     <color key="titleColor" white="0.94745277029999997" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
