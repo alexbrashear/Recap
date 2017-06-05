@@ -10,7 +10,7 @@ import UIKit
 
 extension RootFlowCoordinator {
     private func configureSettingsViewController(vc: SettingsViewController) {
-        
+        vc.address = userController.user?.address
     }
     
     private func configureSettingsNavigationController(nc: UINavigationController, vc: UIViewController) {
