@@ -35,7 +35,7 @@ class Film: NSObject, NSCoding {
     }
     
     var canAddPhoto: Bool {
-        return photos.count < 5
+        return photos.count < capacity
     }
     
     var photosSent: Int {
