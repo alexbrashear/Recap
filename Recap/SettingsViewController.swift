@@ -72,7 +72,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     }
     
     func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", preferredStyle: .alert)
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Access Mail", message: "Unfortunately we could not access your mail client - please send any feedback you have to help@recap-app.com. Thanks!", preferredStyle: .alert)
         sendMailErrorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(sendMailErrorAlert, animated: true, completion: nil)
     }
