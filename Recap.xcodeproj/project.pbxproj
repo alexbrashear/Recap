@@ -45,8 +45,6 @@
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C21E5B93ED009C4696 /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PhotoError.swift */; };
-		C3ADF1691ED2662F00BB8EFD /* PreviewContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */; };
-		C3ADF16B1ED2684800BB8EFD /* PreviewContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */; };
 		C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */; };
 		C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */; };
 		C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */; };
@@ -146,8 +144,6 @@
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7C11E5B93ED009C4696 /* PhotoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
-		C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviewContainerView.xib; sourceTree = "<group>"; };
-		C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewContainerView.swift; sourceTree = "<group>"; };
 		C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
 		C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmRollCell.xib; sourceTree = "<group>"; };
 		C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCell.swift; sourceTree = "<group>"; };
@@ -367,8 +363,6 @@
 				C3ADF17A1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift */,
 				C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */,
 				C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */,
-				C3ADF1681ED2662F00BB8EFD /* PreviewContainerView.xib */,
-				C3ADF16A1ED2684800BB8EFD /* PreviewContainerView.swift */,
 			);
 			name = "Used Film List";
 			sourceTree = "<group>";
@@ -618,7 +612,6 @@
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
-				C3ADF1691ED2662F00BB8EFD /* PreviewContainerView.xib in Resources */,
 				C3ADF1741ED3C5FF00BB8EFD /* SinglePhotoCell.xib in Resources */,
 				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
@@ -791,7 +784,6 @@
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C33BD1071ECE982F00132B7D /* UsedFilmListController.swift in Sources */,
 				C3527DC71EE6607800029C81 /* Thumbnails.swift in Sources */,
-				C3ADF16B1ED2684800BB8EFD /* PreviewContainerView.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C31339841EAC53B20080A168 /* User.swift in Sources */,

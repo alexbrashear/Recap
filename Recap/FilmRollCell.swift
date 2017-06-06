@@ -14,7 +14,6 @@ final class FilmRollCell: UITableViewCell, NibReusable {
     @IBOutlet var nextDelivery: UILabel!
     @IBOutlet var deliveredCount: UILabel!
     @IBOutlet var purchaseDate: UILabel!
-    @IBOutlet var scrollablePics: UIScrollView!
     
     var film: Film? {
         didSet {
@@ -33,19 +32,5 @@ final class FilmRollCell: UITableViewCell, NibReusable {
         deliveredCount.textColor = .rcpBlueyGrey
         purchaseDate.font = UIFont.openSansFont(ofSize: 10)
         purchaseDate.textColor = .rcpBlueyGrey
-        
-        let stack = UIStackView()
-        stack.addArrangedSubview(PreviewContainerView.loadFromNib())
-        stack.addArrangedSubview(PreviewContainerView.loadFromNib())
-        stack.addArrangedSubview(PreviewContainerView.loadFromNib())
-        stack.addArrangedSubview(PreviewContainerView.loadFromNib())
-        stack.addArrangedSubview(PreviewContainerView.loadFromNib())
-        stack.axis = .horizontal
-        stack.distribution = .fillEqually
-        stack.alignment = .fill
-        stack.spacing = 10
-        
-        scrollablePics.addSubview(stack)
-        stack.constrainToSuperview()
     }
 }
