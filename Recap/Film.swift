@@ -42,6 +42,21 @@ class Film: NSObject, NSCoding {
         return photos.count
     }
     
+    var daysTillNextDelivery: Int {
+        var date: Date? = nil
+        _ = photos.map { photo in
+            if let temp = date {
+                if photo.expectedDeliveryDate < temp {
+                    date = photo.expectedDeliveryDate
+                }
+            } else {
+                date = photo.expectedDeliveryDate
+            }
+        }
+        
+        return date?.interval(ofComponent: .day, fromDate: Date()) ?? -1
+    }
+    
     func addPhoto(_ photo: Photo) {
         if remainingPhotos > 0 {
             photos.append(photo)

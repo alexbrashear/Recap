@@ -20,7 +20,7 @@ extension Date {
     
     static let basicFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-mm-dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
     
@@ -42,6 +42,16 @@ extension Date {
         let month = Month.month(forNumber: monthInt)
         guard month != .none else { return "" }
         return "Expected to arrive \(month.rawValue.capitalized) \(day)"
+    }
+    
+    func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
+        
+        let currentCalendar = Calendar.current
+        
+        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
+        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
+        
+        return end - start
     }
 }
 
