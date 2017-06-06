@@ -15,24 +15,19 @@ class SinglePhotoCell: UITableViewCell, NibReusable {
     @IBOutlet private var status: UILabel!
     @IBOutlet private var deliveryDate: UILabel!
     
-    struct ViewModel {
-        let photoURL: URL
-        let statusAccessory: UIImage
-        let status: String
-        let deliveryDate: String
-    }
-    
-    var viewModel: ViewModel? {
+    var storedPhoto: Photo? {
         didSet {
-            statusAccessory.image = viewModel?.statusAccessory
-            status.text = viewModel?.status
-            deliveryDate.text = viewModel?.deliveryDate
+            guard let storedPhoto = storedPhoto else { return }
+            statusAccessory.image = UIImage(named: "RCPDarkCheck")
+            status.text = "DELIVERED"
+            deliveryDate.text = "4/21/23"
+            photo.imageFromUrl(url: storedPhoto.thumbnails.medium)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView?.image = UIColor.rcpBlueyGrey.singlePixelImage()
+        selectionStyle = .none
     }
 }
 
@@ -41,7 +36,10 @@ extension UIImageView {
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
-            self.image = UIImage(data: data)
+            let test = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.image = test
+            }
         }.resume()
     }
 }

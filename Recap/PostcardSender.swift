@@ -23,13 +23,10 @@ class PostcardSender {
         /// upload image to s3
         let postcardProvider = PostcardProvider()
         imageUploader.uploadImageToS3(fromLocalImageFile: localImageFile, withS3ImageKey: key) { s3ImageURL in
-            let photo = Photo(imageURL: localImageFile, dateTaken: Date(), expectedDeliveryDate: nil)
             guard let s3ImageURL = s3ImageURL else {
-                return completion(photo, .uploadToS3Failure)
+                return completion(nil, .uploadToS3Failure)
             }
-            photo.imageURL = s3ImageURL
-            postcardProvider.send(image: s3ImageURL, to: address) { deliveryDate, error in
-                photo.expectedDeliveryDate = deliveryDate
+            postcardProvider.send(image: s3ImageURL, to: address) { photo, error in
                 completion(photo, error)
             }
         }
