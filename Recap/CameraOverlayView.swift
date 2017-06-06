@@ -38,6 +38,7 @@ class CameraOverlayView: UIView, NibLoadable {
     @IBOutlet private var takePhoto: UIButton!
     @IBOutlet private var sentPostcards: UIButton!
     @IBOutlet private var count: UIButton!
+    @IBOutlet private var refill: UIButton!
     
     var flashMode: AVCaptureFlashMode = .auto
     
@@ -63,7 +64,7 @@ class CameraOverlayView: UIView, NibLoadable {
                 self.viewModel?.sentPostcardsTapHandler()
             }
             
-            count.on(.touchUpInside) { [unowned self] _ in
+            refill.on(.touchUpInside) { [unowned self] _ in
                 self.viewModel?.countAction()
             }
             
@@ -73,6 +74,8 @@ class CameraOverlayView: UIView, NibLoadable {
     
     func updateCount(to newCount: Int) {
         count.setTitle("\(newCount)", for: .normal)
+        refill.isHidden = newCount > 0
+        count.backgroundColor = newCount > 0 ? .white : .rcpGoldenYellow
     }
     
     func toggleFlash() {
@@ -90,6 +93,9 @@ class CameraOverlayView: UIView, NibLoadable {
         count.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
         count.layer.cornerRadius = 17.5
         count.clipsToBounds = true
+        
+        refill.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 12)
+        refill.setTitleColor(.rcpGoldenYellow, for: .normal)
     }
 }
 
