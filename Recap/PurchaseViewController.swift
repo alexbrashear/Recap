@@ -57,6 +57,9 @@ class PurchaseViewController: UIViewController {
         decrement.on(.touchUpInside) { [unowned self] _ in
             self.syncSetCurrentFilmCount(increment: false)
         }
+        
+        increment.isHidden = true
+        decrement.isHidden = true
     }
     
     func syncSetCurrentFilmCount(increment: Bool) {
