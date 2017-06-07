@@ -18,9 +18,10 @@ class SinglePhotoCell: UITableViewCell, NibReusable {
     var storedPhoto: Photo? {
         didSet {
             guard let storedPhoto = storedPhoto else { return }
-            statusAccessory.image = UIImage(named: "RCPDarkCheck")
-            status.text = "DELIVERED"
-            deliveryDate.text = "4/21/23"
+            //statusAccessory.image = UIImage(named: "RCPDarkCheck")
+            statusAccessory.image = nil
+            status.text = "EXPECTED"
+            deliveryDate.text = storedPhoto.expectedDeliveryDate.filmPurchaseDateString
             photo.imageFromUrl(url: storedPhoto.thumbnails.medium)
         }
     }
