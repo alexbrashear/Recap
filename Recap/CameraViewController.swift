@@ -146,7 +146,7 @@ class CameraViewController: UIViewController {
         if let error = error {
             PKHUD.sharedHUD.hide()
             let alert = UIAlertController.okAlert(title: "Sorry we couldn't save your photo", message: "Check your settings to make sure you've given Recap access to your photo library.")
-            vc?.present(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
         } else {
             PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSave
             PKHUD.sharedHUD.show()
