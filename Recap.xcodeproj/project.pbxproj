@@ -38,6 +38,8 @@
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
+		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
+		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
 		C39028581EC95B0700D8E257 /* SettingsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028571EC95B0700D8E257 /* SettingsFlow.swift */; };
 		C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PostcardSender.swift */; };
@@ -136,6 +138,8 @@
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
+		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
+		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C39028571EC95B0700D8E257 /* SettingsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlow.swift; sourceTree = "<group>"; };
 		C396E7B71E5107B7009C4696 /* PostcardSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardSender.swift; sourceTree = "<group>"; };
@@ -360,6 +364,8 @@
 				C3ADF17A1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift */,
 				C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */,
 				C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */,
+				C38A88F61EE7C73600445692 /* EmptyFilmList.xib */,
+				C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */,
 			);
 			name = "Used Film List";
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
+				C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */,
 				C3ADF1741ED3C5FF00BB8EFD /* SinglePhotoCell.xib in Resources */,
 				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
@@ -753,6 +760,7 @@
 				C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */,
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,
+				C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
 				C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */,
 				C33BD1021ECE96B300132B7D /* SentPhotosFlow.swift in Sources */,

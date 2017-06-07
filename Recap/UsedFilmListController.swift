@@ -18,8 +18,15 @@ protocol UsedFilmListViewModelProtocol: class {
 class UsedFilmListController: UITableViewController {
     
     var viewModel: UsedFilmListViewModelProtocol?
+    let emptyView = EmptyFilmList.loadFromNib()
+    
     var filmSnapshot: [Film]? {
         didSet {
+            if filmSnapshot == nil || filmSnapshot?.count == 0 {
+                tableView.backgroundView = emptyView
+            } else {
+                tableView.backgroundView = nil
+            }
             tableView.reloadData()
         }
     }
