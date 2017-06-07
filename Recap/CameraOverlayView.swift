@@ -75,6 +75,7 @@ class CameraOverlayView: UIView, NibLoadable {
     func updateCount(to newCount: Int) {
         count.setTitle("\(newCount)", for: .normal)
         refill.isHidden = newCount > 0
+        takePhoto.isEnabled = newCount > 0
         count.backgroundColor = newCount > 0 ? .white : .rcpGoldenYellow
     }
     
