@@ -74,11 +74,11 @@ class FilmController {
     }
     
     private func updateCurrentFilmInStore() {
-        guard let film = self.currentFilm else { return }
+        let filmArr = currentFilm != nil ? [currentFilm] : []
         let collection = DatabaseController.Collection.film.rawValue
         let connection = DatabaseController.sharedInstance.newWritingConnection()
         connection.readWrite { transaction in
-            transaction.setObject([film], forKey: Keys.current.rawValue, inCollection: collection)
+            transaction.setObject(filmArr, forKey: Keys.current.rawValue, inCollection: collection)
         }
     }
     
