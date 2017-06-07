@@ -16,7 +16,6 @@ protocol WelcomeViewModelProtocol {
 
 class WelcomeViewController: UIViewController {
     
-    @IBOutlet var tagline: UILabel!
     @IBOutlet var item1: UIView!
     @IBOutlet var item2: UIView!
     @IBOutlet var item3: UIView!
@@ -48,8 +47,6 @@ class WelcomeViewController: UIViewController {
         continueButton.layer.cornerRadius = 5
         continueButton.clipsToBounds = true
         continueButton.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20.0)
-        
-        tagline.font = UIFont.openSansBoldFont(ofSize: 20.0)
         
         continueButton.on(.touchUpInside) { [weak self] _ in
             self?.viewModel?.continueButtonAction()
