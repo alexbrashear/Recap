@@ -63,7 +63,7 @@ extension RootFlowCoordinator {
             guard let nc = nc else { return }
             self?.onboardingCoordinator.complete(onboarding: .welcomeFlow)
             self?.pushCameraViewController(onto: nc)
-            }, termsAndConditionsAction: {})
+        })
         vc.viewModel = vm
     }
     

@@ -14,18 +14,13 @@ typealias TermsAndConditionsAction = () -> Void
 
 protocol DisclaimerViewModelProtocol: class {
     var disclaimerAction: DisclaimerAction { get }
-    
-    var termsAndConditionsAction: TermsAndConditionsAction { get }
 }
 
 class DisclaimerViewModel: DisclaimerViewModelProtocol {
     var disclaimerAction: DisclaimerAction
     
-    var termsAndConditionsAction: TermsAndConditionsAction
-    
-    init(disclaimerAction: @escaping DisclaimerAction, termsAndConditionsAction: @escaping TermsAndConditionsAction) {
+    init(disclaimerAction: @escaping DisclaimerAction) {
         self.disclaimerAction = disclaimerAction
-        self.termsAndConditionsAction = termsAndConditionsAction
     }
 }
 
@@ -34,7 +29,6 @@ class DisclaimerController: UIViewController {
     @IBOutlet var heading: UILabel!
     @IBOutlet var body: UILabel!
     @IBOutlet var nextButton: UIButton!
-    @IBOutlet var termsAndConditions: UIButton!
     
     var viewModel: DisclaimerViewModelProtocol?
     
@@ -60,11 +54,6 @@ class DisclaimerController: UIViewController {
         nextButton.clipsToBounds = true
         nextButton.on(.touchUpInside) { [weak self] _ in
             self?.viewModel?.disclaimerAction()
-        }
-        
-        termsAndConditions.titleLabel?.font = UIFont.openSansFont(ofSize: 12)
-        termsAndConditions.on(.touchUpInside) { [weak self] _ in
-            self?.viewModel?.termsAndConditionsAction()
         }
     }
     
