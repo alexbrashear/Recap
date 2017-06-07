@@ -12,7 +12,6 @@ class PositiveAlertViewModel: SimpleImageLabelAlertViewModelProtocol {
     var title: NSAttributedString
     var subtitle: NSAttributedString?
     var accessory: UIImage?
-    var kind: SimpleImageLabelAlert.Kind = .oneLineImage
     var background: UIColor = .rcpClearBlueTwo
     
     init(title: String, image: UIImage?) {

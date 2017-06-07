@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 extension RootFlowCoordinator {
     func pushCameraViewController(onto nc: UINavigationController) {
@@ -21,23 +22,29 @@ extension RootFlowCoordinator {
     private func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc] image in
             guard self?.filmController.canTakePhoto() ?? false else {
-                vc?.presentAlert(.errorSending(PhotoError.noFilmError))
                 return
             }
             guard let address = self?.userController.user?.address else { return }
-            vc?.presentAlert(.uploadingRecap)
+            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
+            PKHUD.sharedHUD.show()
             self?.postcardSender.send(image: image, to: address) { result in
                 let (photo, error) = result
                 DispatchQueue.main.async {
+                    PKHUD.sharedHUD.hide()
                     switch (photo, error) {
                     case let (_, .some(error)):
-                        vc?.returnToCamera(with: .errorSending(error))
+                        let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
+                        vc?.present(alert, animated: true, completion: nil)
                     case (.none, .none):
-                        vc?.returnToCamera(with: .errorSending(PhotoError.unknownFailure))
+                        let alert = UIAlertController.okAlert(title: "Sorry we couldn't send your recap", message: "Please try again or save the pic with the button in the bottom left.")
+                        vc?.present(alert, animated: true, completion: nil)
                     case let (.some(photo), .none):
                         let remainingPhotos = self?.filmController.useFilmSlot(photo) ?? 0
-                        vc?.returnToCamera(with: .successfulSend)
+                        vc?.returnToCamera()
                         vc?.overlay.updateCount(to: remainingPhotos)
+                        PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
+                        PKHUD.sharedHUD.show()
+                        PKHUD.sharedHUD.hide(afterDelay: 3.0)
                     }
                 }
             }

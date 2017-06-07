@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import PKHUD
 
 protocol CameraViewModelProtocol {    
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
@@ -137,48 +138,25 @@ class CameraViewController: UIViewController {
     
     func savePhoto(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        PKHUD.sharedHUD.contentView = UIView()
+        PKHUD.sharedHUD.show()
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-            presentAlert(.errorSavingToLibrary(error))
+            PKHUD.sharedHUD.hide()
+            let alert = UIAlertController.okAlert(title: "Sorry we couldn't save your photo", message: "Check your settings to make sure you've given Recap access to your photo library.")
+            vc?.present(alert, animated: true, completion: nil)
         } else {
-            presentAlert(.savedToLibrary)
-        }
-        self.dismissPresentedAlert(delay: 2.0)
-    }
-    
-    var alert: SimpleImageLabelAlert?
-    
-    func presentAlert(_ kind: AlertKind) {
-        let alert = SimpleImageLabelAlert(frame: .zero, viewModel: kind.viewModel)
-        alert.alpha = 0
-        view.addSubview(alert)
-        alert.translatesAutoresizingMaskIntoConstraints = false
-        alert.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        view.addConstraint(NSLayoutConstraint(item: alert, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 0.46, constant: 0.0))
-        self.alert = alert
-        
-        UIView.animate(withDuration: 0.2) { 
-            alert.alpha = 1.0
+            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSave
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 3.0)
         }
     }
     
-    func returnToCamera(with kind: AlertKind) {
-        dismissPresentedAlert {
-            self.photoTakenView?.removeFromSuperview()
-            self.presentAlert(kind)
-            self.dismissPresentedAlert(delay: 2.0)
-        }
-    }
     
-    func dismissPresentedAlert(delay: TimeInterval = 0, completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.2, delay: delay, animations: {
-            self.alert?.alpha = 0.0
-        }) { _ in
-            self.alert?.removeFromSuperview()
-            completion?()
-        }
+    func returnToCamera() {
+        self.photoTakenView?.removeFromSuperview()
     }
 }
 

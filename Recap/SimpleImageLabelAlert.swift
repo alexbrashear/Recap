@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import PKHUD
 
 enum AlertKind {
     case successfulSend
-    case errorSending(Error)
     case savedToLibrary
-    case errorSavingToLibrary(Error)
     case uploadingRecap
     
     var title: String {
@@ -23,23 +22,15 @@ enum AlertKind {
             return "Uploading your Recap"
         case .savedToLibrary:
             return "Saved to library"
-        case .errorSavingToLibrary:
-            return "Sorry, we couldn't save your photo"
-        case .errorSending:
-            return "Sorry, we couldn’t send your Recap"
         }
     }
     
     var image: UIImage? {
         switch self {
-        case .successfulSend:
+        case .successfulSend, .savedToLibrary:
             return UIImage(named: "success")
         case .uploadingRecap:
             return UIImage(named: "loading")
-        case .savedToLibrary:
-            return UIImage(named: "success")
-        case .errorSavingToLibrary, .errorSending:
-            return nil
         }
     }
     
@@ -47,10 +38,15 @@ enum AlertKind {
         switch self {
         case .successfulSend, .savedToLibrary, .uploadingRecap:
             return PositiveAlertViewModel(title: title, image: image)
-        case .errorSending:
-            return ErrorAlertViewModel()
-        case .errorSavingToLibrary:
-            return ErrorAlertViewModel()
+        }
+    }
+    
+    var loading: Bool {
+        switch self {
+        case .uploadingRecap:
+            return true
+        default:
+            return false
         }
     }
 }
@@ -60,21 +56,30 @@ protocol SimpleImageLabelAlertViewModelProtocol: class {
     var subtitle: NSAttributedString? { get }
     var accessory: UIImage? { get }
     var background: UIColor { get }
-    var kind: SimpleImageLabelAlert.Kind { get }
 }
 
 class SimpleImageLabelAlert: UIView {
     
-    enum Kind {
-        case oneLineImage
-        case twoLine
+    static var uploading: SimpleImageLabelAlert {
+        let rect = CGRect(x: 0, y: 0, width: 230, height: 50)
+        return SimpleImageLabelAlert(frame: rect, viewModel: AlertKind.uploadingRecap.viewModel, animate: true)
+    }
+    
+    static var successfulSend: SimpleImageLabelAlert {
+        let rect = CGRect(x: 0, y: 0, width: 150, height: 40)
+        return SimpleImageLabelAlert(frame: rect, viewModel: AlertKind.successfulSend.viewModel)
+    }
+    
+    static var successfulSave: SimpleImageLabelAlert {
+        let rect = CGRect(x: 0, y: 0, width: 200, height: 40)
+        return SimpleImageLabelAlert(frame: rect, viewModel: AlertKind.savedToLibrary.viewModel)
     }
     
     let title = UILabel()
     let subtitle = UILabel()
     let loading = UIImageView()
     
-    init(frame: CGRect, viewModel: SimpleImageLabelAlertViewModelProtocol) {
+    init(frame: CGRect, viewModel: SimpleImageLabelAlertViewModelProtocol, animate: Bool = false) {
         super.init(frame: frame)
         
         backgroundColor = viewModel.background
@@ -87,8 +92,16 @@ class SimpleImageLabelAlert: UIView {
         
         loading.image = viewModel.accessory
         loading.contentMode = .scaleAspectFit
-        
-        let stack = stackView(for: viewModel.kind)
+        if animate {
+            loading.layer.add(PKHUDAnimation.discreteRotation, forKey: "progressAnimation")
+        }
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillProportionally
+        stack.alignment = .fill
+        stack.addArrangedSubview(loading)
+        stack.addArrangedSubview(title)
+        stack.spacing = 10
         
         addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -96,27 +109,6 @@ class SimpleImageLabelAlert: UIView {
         addConstraint(NSLayoutConstraint(item: stack, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: -15))
         addConstraint(NSLayoutConstraint(item: stack, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 10))
         addConstraint(NSLayoutConstraint(item: stack, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
-    }
-    
-    private func stackView(for kind: Kind) -> UIStackView {
-        let stack = UIStackView()
-        switch kind {
-        case .oneLineImage:
-            stack.axis = .horizontal
-            stack.distribution = .fillProportionally
-            stack.alignment = .fill
-            stack.addArrangedSubview(loading)
-            stack.addArrangedSubview(title)
-            stack.spacing = 10
-        case .twoLine:
-            stack.axis = .vertical
-            stack.distribution = .fill
-            stack.alignment = .fill
-            stack.addArrangedSubview(title)
-            stack.addArrangedSubview(subtitle)
-            stack.spacing = 10
-        }
-        return stack
     }
     
     required init?(coder aDecoder: NSCoder) {
