@@ -137,7 +137,7 @@ class CameraViewController: UIViewController {
     }
     
     func savePhoto(image: UIImage) {
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        UIImageWriteToSavedPhotosAlbum(image.fixOrientation(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         PKHUD.sharedHUD.contentView = UIView()
         PKHUD.sharedHUD.show()
     }
@@ -183,5 +183,21 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             savePhotoAction: { [weak self] image in self?.savePhoto(image: image)}
         )
         self.photoTakenView = photoTakenView
+    }
+}
+
+extension UIImage {
+    func fixOrientation() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+        if let normalizedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext() {
+            UIGraphicsEndImageContext()
+            return normalizedImage
+        } else {
+            return self
+        }
     }
 }
