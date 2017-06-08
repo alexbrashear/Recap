@@ -38,6 +38,7 @@ class PurchaseViewController: UIViewController {
         
         filmCount.text = "\(1)"
         totalPrice.text = "$\(filmPrice)"
+        message.text = "Get photos of your everyday adventures - all for less than a burrito 🌯."
         
         message.font = UIFont.openSansFont(ofSize: 16)
         disclaimer.font = UIFont.openSansFont(ofSize: 10)
