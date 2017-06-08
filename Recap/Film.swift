@@ -42,7 +42,7 @@ class Film: NSObject, NSCoding {
         return photos.count
     }
     
-    var daysTillNextDelivery: Int {
+    var daysTillNextDelivery: Int? {
         var date: Date? = nil
         _ = photos.map { photo in
             if let temp = date {
@@ -54,7 +54,7 @@ class Film: NSObject, NSCoding {
             }
         }
         
-        return date?.interval(ofComponent: .day, fromDate: Date()) ?? -1
+        return date?.interval(ofComponent: .day, fromDate: Date())
     }
     
     func addPhoto(_ photo: Photo) {

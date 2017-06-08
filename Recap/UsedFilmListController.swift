@@ -22,13 +22,21 @@ class UsedFilmListController: UITableViewController {
     
     var filmSnapshot: [Film]? {
         didSet {
-            if filmSnapshot == nil || filmSnapshot?.count == 0 {
+            if filmSnapshot == nil || filmSnapshot?.count == 0 || !hasPhotos(forSnapshot: filmSnapshot ?? []) {
                 tableView.backgroundView = emptyView
+                filmSnapshot = nil
             } else {
                 tableView.backgroundView = nil
             }
             tableView.reloadData()
         }
+    }
+    
+    func hasPhotos(forSnapshot snap: [Film]) -> Bool {
+        for film in snap {
+            if !film.isEmpty { return true }
+        }
+        return false
     }
 
     override func viewDidLoad() {

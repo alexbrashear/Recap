@@ -18,7 +18,11 @@ final class FilmRollCell: UITableViewCell, NibReusable {
     var film: Film? {
         didSet {
             guard let film = film else { return }
-            nextDelivery.text = "Next Delivery in \(film.daysTillNextDelivery) Days"
+            if let days = film.daysTillNextDelivery {
+                nextDelivery.text = "Next Delivery in \(days) Days"
+            } else {
+                nextDelivery.text = "No deliveries yet"
+            }
             deliveredCount.text = "\(film.photosSent) RECAPS SENT"
             purchaseDate.text = film.dateOfPurchase.filmPurchaseDateString
         }
