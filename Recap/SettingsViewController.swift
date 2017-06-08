@@ -17,6 +17,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         }
     }
     
+    var changeAddress: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
@@ -56,7 +58,7 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         guard let section = SettingsSection(rawValue: indexPath.section) else { return }
         switch section {
         case .address:
-            return
+            changeAddress?()
         case .support:
             let vc = MFMailComposeViewController()
             vc.mailComposeDelegate = self

@@ -29,7 +29,7 @@ extension RootFlowCoordinator {
     
     // MARK: - Enter Address Controller
     
-    func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
+    private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
         let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] address in
             HUD.show(.progress)
             self?.addressProvider.verify(address: address) { [weak self] (address, error) in
