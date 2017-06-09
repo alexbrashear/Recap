@@ -33,7 +33,6 @@
 		C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C353083E1E3D163600E2BD8A /* Camera.storyboard */; };
 		C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C35308411E3D163600E2BD8A /* Assets.xcassets */; };
 		C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */; };
-		C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */; };
 		C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */; };
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
@@ -132,8 +131,7 @@
 		C35308441E3D163600E2BD8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C35308461E3D163600E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C353084B1E3D163700E2BD8A /* RecapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RecapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeMailer5000Tests.swift; sourceTree = "<group>"; };
-		C35308511E3D163700E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C35308511E3D163700E2BD8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = RecapTests/Info.plist; sourceTree = "<group>"; };
 		C36A27ED1EB2E7E0008AA900 /* CameraOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraOverlayViewModel.swift; sourceTree = "<group>"; };
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 		C353084E1E3D163700E2BD8A /* RecapTests */ = {
 			isa = PBXGroup;
 			children = (
-				C353084F1E3D163700E2BD8A /* MeMailer5000Tests.swift */,
 				C35308511E3D163700E2BD8A /* Info.plist */,
 			);
 			name = RecapTests;
@@ -815,7 +812,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C35308501E3D163700E2BD8A /* MeMailer5000Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,7 +97,6 @@ DEPENDENCIES:
   - R.swift
   - RCSYapDatabaseExtensions (from `git@github.com:JimRoepcke/YapDatabaseExtensions.git`, tag `3.0.0`)
   - Reusable
-  - ValueCoding (~> 2.1.0)
   - YapDatabase (~> 2.9)
 
 EXTERNAL SOURCES:
@@ -131,6 +130,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: e22bc21d49f615f6861820ee729a4c85fda6ac0f
+PODFILE CHECKSUM: 5c61105648a36b483fc5b2d75424652055ebab94
 
 COCOAPODS: 1.2.0

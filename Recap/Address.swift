@@ -6,7 +6,7 @@
 //  Copyright © 2017 memailer. All rights reserved.
 //
 
-import ValueCoding
+import Foundation
 
 class Address: NSObject, NSCoding {
     /// the unique identifier of the address
