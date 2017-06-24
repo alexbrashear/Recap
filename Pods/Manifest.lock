@@ -1,4 +1,5 @@
 PODS:
+  - Apollo (0.5.6)
   - AWSCore (2.5.0)
   - AWSS3 (2.5.0):
     - AWSCore (= 2.5.0)
@@ -90,6 +91,7 @@ PODS:
     - YapDatabase/Standard/Core
 
 DEPENDENCIES:
+  - Apollo
   - AWSS3
   - IQKeyboardManagerSwift
   - OpenSans (from `https://github.com/CocoaPods-Fonts/OpenSans.git`, commit `0be3f18`)
@@ -116,6 +118,7 @@ CHECKOUT OPTIONS:
     :tag: 3.0.0
 
 SPEC CHECKSUMS:
+  Apollo: 124ddbbca48acca75fd5f9ec5045454cb410bb31
   AWSCore: e9839d27ceaa2db75934a9c418630ce63c23e347
   AWSS3: 3678dd99006ff77c825fb857fc7cbaca0db848c6
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
@@ -130,6 +133,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: 5c61105648a36b483fc5b2d75424652055ebab94
+PODFILE CHECKSUM: 5225ed8a7d0b7f9d8e6d68caca78ac67b60b3e01
 
 COCOAPODS: 1.2.0

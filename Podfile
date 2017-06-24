@@ -2,7 +2,8 @@
 use_frameworks!
 
 target 'Recap' do
-    pod 'Reusable'
+    pod 'Apollo'
+	pod 'Reusable'
 	pod 'YapDatabase', '~> 2.9'
     pod 'RCSYapDatabaseExtensions', :git => 'git@github.com:JimRoepcke/YapDatabaseExtensions.git', :tag => '3.0.0'
 	pod 'AWSS3'
