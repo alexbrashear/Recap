@@ -27,6 +27,8 @@ class CameraViewController: UIViewController {
     var viewModel: CameraViewModelProtocol?
     let overlay = CameraOverlayView.loadFromNib()
     var photoTakenView: PhotoTakenView?
+    let filterProvider = FilterProvider()
+    let context = CIContext(options: nil)
 
     // MARK: - IBOutlets
 
@@ -168,13 +170,20 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             return assertionFailure("unable to unwrap photo buffer")
         }
         guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer),
-            var image = UIImage(data: imageData) else { return }
+            let base = UIImage(data: imageData),
+            let ciImage = CIImage(image: base) else { return }
         
-        if let cgImage = image.cgImage, cameraPosition == .front {
-            image = UIImage(cgImage: cgImage, scale: image.scale, orientation:.leftMirrored)
-        }
+        // need to preserve original scale and orientation to initialize with later
+        let orientation = base.imageOrientation
+        let scale = base.scale
         
-        let photoTakenView = PhotoTakenView(frame: .zero, image: image)
+        // apply filter and create CGImage
+        let filteredCIImage = filterProvider.applyFilter(toImage: ciImage)
+        let cgImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent)
+        let filteredImage = UIImage(cgImage: cgImage!, scale: scale, orientation: cameraPosition == .front ? .leftMirrored : orientation)
+        
+        // create and overlay photo taken view
+        let photoTakenView = PhotoTakenView(frame: .zero, image: filteredImage)
         view.addSubview(photoTakenView)
         photoTakenView.constrainToSuperview()
         photoTakenView.viewModel = PhotoTakenViewModel(
@@ -187,6 +196,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
 }
 
 extension UIImage {
+    /// Used for saving a photo to your library - adjusts the image to the appropriate orientation
     func fixOrientation() -> UIImage {
         if self.imageOrientation == UIImageOrientation.up {
             return self

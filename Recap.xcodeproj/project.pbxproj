@@ -37,6 +37,7 @@
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
+		C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A01F0AC247005FF8EC /* FilterProvider.swift */; };
 		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
@@ -136,6 +137,7 @@
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
+		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
 		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			children = (
 				C330B6361E46A17100928284 /* Result.swift */,
 				C396E7B91E5109ED009C4696 /* NetworkClient.swift */,
+				C37F67A01F0AC247005FF8EC /* FilterProvider.swift */,
 				C3CE0E311E726EB7008000B1 /* Extensions */,
 			);
 			name = Utilities;
@@ -794,6 +797,7 @@
 				C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C3ADF17D1ED540AE00BB8EFD /* Photo.swift in Sources */,
+				C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */,
 				C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
