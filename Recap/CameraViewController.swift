@@ -29,11 +29,8 @@ class CameraViewController: UIViewController {
     var photoTakenView: PhotoTakenView?
     let filterProvider = FilterProvider()
     let context = CIContext(options: nil)
-
-    // MARK: - IBOutlets
-
+    var pinchGesture = UIPinchGestureRecognizer()
     @IBOutlet fileprivate var captureView: UIView!
-    
     fileprivate var cameraPosition: AVCaptureDevicePosition = .back
     
     var imageView = UIImageView()
@@ -41,6 +38,8 @@ class CameraViewController: UIViewController {
     var session = AVCaptureSession()
     var stillImageOutput: AVCapturePhotoOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    var currentDevice: AVCaptureDevice?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,6 +73,9 @@ class CameraViewController: UIViewController {
         view.addSubview(overlay)
         overlay.constrainToSuperview()
         overlay.viewModel = vm
+        
+        self.pinchGesture = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
+        overlay.addGestureRecognizer(self.pinchGesture)
     }
     
     fileprivate func capturePhotoSettings(flashMode: AVCaptureFlashMode) -> AVCapturePhotoSettings {
@@ -88,6 +90,7 @@ class CameraViewController: UIViewController {
     
     fileprivate func loadCamera(atPosition position: AVCaptureDevicePosition) {
         let camera = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: position)
+        currentDevice = camera
         
         if camera == nil {
             print("turds")
@@ -192,6 +195,47 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             savePhotoAction: { [weak self] image in self?.savePhoto(image: image)}
         )
         self.photoTakenView = photoTakenView
+    }
+}
+
+// MARK: - Pinch to zoom
+
+extension CameraViewController {
+    func pinch(_ pinch: UIPinchGestureRecognizer) {
+        guard let device = currentDevice else { return }
+        
+        let minimumZoom: CGFloat = 1.0
+        let maximumZoom: CGFloat = 3.0
+        var lastZoomFactor: CGFloat = 1.0
+        
+        // Return zoom value between the minimum and maximum zoom values
+        func minMaxZoom(_ factor: CGFloat) -> CGFloat {
+            return min(min(max(factor, minimumZoom), maximumZoom), device.activeFormat.videoMaxZoomFactor)
+        }
+        
+        func update(scale factor: CGFloat) {
+            do {
+                try device.lockForConfiguration()
+                defer { device.unlockForConfiguration() }
+                device.videoZoomFactor = factor
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
+        
+        let newScaleFactor = minMaxZoom(pinch.scale * lastZoomFactor)
+        
+        switch pinch.state {
+        case .began:
+            fallthrough
+        case .changed:
+            update(scale: newScaleFactor)
+        case .ended:
+            lastZoomFactor = minMaxZoom(newScaleFactor)
+            update(scale: lastZoomFactor)
+        default:
+            break
+        }
     }
 }
 
