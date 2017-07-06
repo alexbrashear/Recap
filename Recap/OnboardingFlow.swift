@@ -72,4 +72,12 @@ extension RootFlowCoordinator {
         configureDisclaimerController(vc, nc: nc)
         nc.pushViewController(vc, animated: true)
     }
+    
+    // MARK: - Login Controller
+    
+    func pushLoginController(onto nc: UINavigationController) {
+        guard let vc = R.storyboard.login.loginViewController() else { return }
+        nc.setNavigationBarHidden(true, animated: false)
+        nc.pushViewController(vc, animated: true)
+    }
 }

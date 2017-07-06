@@ -38,6 +38,8 @@
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
 		C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A01F0AC247005FF8EC /* FilterProvider.swift */; };
+		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
+		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
 		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
@@ -138,6 +140,8 @@
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
 		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
+		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -311,7 +315,7 @@
 				C39028541EC4178700D8E257 /* HUD */,
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
 				C3DB8C401E4046C00076B7A3 /* models */,
-				C3C347481EA710ED0008E62E /* Onboarding */,
+				C3C347481EA710ED0008E62E /* Welcome */,
 				C3CAC47F1EBEAA50007CECF3 /* Parsers */,
 				C396E7B71E5107B7009C4696 /* PostcardSender.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
@@ -332,6 +336,15 @@
 			);
 			name = RecapTests;
 			path = MeMailer5000Tests;
+			sourceTree = "<group>";
+		};
+		C37F67A21F0DE9AC005FF8EC /* sign up / login */ = {
+			isa = PBXGroup;
+			children = (
+				C37F67A31F0DE9D3005FF8EC /* Login.storyboard */,
+				C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */,
+			);
+			name = "sign up / login";
 			sourceTree = "<group>";
 		};
 		C39028541EC4178700D8E257 /* HUD */ = {
@@ -390,15 +403,16 @@
 			name = Purchase;
 			sourceTree = "<group>";
 		};
-		C3C347481EA710ED0008E62E /* Onboarding */ = {
+		C3C347481EA710ED0008E62E /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				C37F67A21F0DE9AC005FF8EC /* sign up / login */,
 				C313397C1EABAA530080A168 /* Disclaimer */,
 				C3C3475C1EA860950008E62E /* Enter Address */,
 				C3C3475B1EA85B420008E62E /* Welcome */,
 				C31339811EAC47AD0080A168 /* OnboardingCoordinator.swift */,
 			);
-			name = Onboarding;
+			name = Welcome;
 			sourceTree = "<group>";
 		};
 		C3C3475B1EA85B420008E62E /* Welcome */ = {
@@ -609,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */,
+				C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */,
 				C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */,
@@ -773,6 +788,7 @@
 				C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */,
 				C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
+				C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */,
 				C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */,
 				C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */,
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
