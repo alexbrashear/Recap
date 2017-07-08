@@ -80,4 +80,11 @@ extension RootFlowCoordinator {
         nc.setNavigationBarHidden(true, animated: false)
         nc.pushViewController(vc, animated: true)
     }
+    
+    // MARK: - Signup Controller
+    
+    func pushSignupController(onto nc: UINavigationController) {
+        guard let vc = R.storyboard.signup.signUpViewController() else { return }
+        nc.pushViewController(vc, animated: true)
+    }
 }

@@ -37,6 +37,8 @@
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
+		C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37C2E381F116D66002DFE7D /* Signup.storyboard */; };
+		C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */; };
 		C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A01F0AC247005FF8EC /* FilterProvider.swift */; };
 		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
 		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
@@ -139,6 +141,8 @@
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
+		C37C2E381F116D66002DFE7D /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 			children = (
 				C37F67A31F0DE9D3005FF8EC /* Login.storyboard */,
 				C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */,
+				C37C2E381F116D66002DFE7D /* Signup.storyboard */,
+				C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */,
 			);
 			name = "sign up / login";
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */,
 				C3ADF1781ED3CFEA00BB8EFD /* Film.storyboard in Resources */,
+				C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */,
 				C33BD1051ECE977C00132B7D /* UsedFilmList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -780,6 +787,7 @@
 				C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */,
 				C33BD1021ECE96B300132B7D /* SentPhotosFlow.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
+				C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */,
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */,
 				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
