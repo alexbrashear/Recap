@@ -34,11 +34,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Slr-Z9-NGh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recap" translatesAutoresizingMaskIntoConstraints="NO" id="rQV-AY-ceE">
-                                <rect key="frame" x="137.5" y="126.5" width="99" height="28"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoPlusRecap" translatesAutoresizingMaskIntoConstraints="NO" id="rQV-AY-ceE">
+                                <rect key="frame" x="116.5" y="126.5" width="141" height="31"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="uZi-PO-VTq" userLabel="email stack">
-                                <rect key="frame" x="46.5" y="174.5" width="282" height="51.5"/>
+                                <rect key="frame" x="46.5" y="177.5" width="282" height="51.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHJ-Gk-nDC" userLabel="email">
                                         <rect key="frame" x="0.0" y="0.0" width="282" height="28"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="E03-1F-Lgx" userLabel="password stack">
-                                <rect key="frame" x="46" y="246" width="282" height="51.5"/>
+                                <rect key="frame" x="46" y="249" width="282" height="51.5"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cpe-B9-Eg7" userLabel="password">
                                         <rect key="frame" x="0.0" y="0.0" width="282" height="28"/>
@@ -94,7 +94,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WQf-1q-6Ya" userLabel="button stack">
-                                <rect key="frame" x="46" y="337.5" width="282" height="95.5"/>
+                                <rect key="frame" x="46" y="340.5" width="282" height="95.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvC-aU-o57">
                                         <rect key="frame" x="0.0" y="0.0" width="282" height="46.5"/>
@@ -157,7 +157,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="recap" width="99" height="28"/>
+        <image name="logoPlusRecap" width="141" height="31"/>
         <image name="splashBackground" width="375" height="667"/>
     </resources>
 </document>
