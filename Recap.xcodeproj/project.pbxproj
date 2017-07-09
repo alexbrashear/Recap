@@ -39,6 +39,7 @@
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
 		C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37C2E381F116D66002DFE7D /* Signup.storyboard */; };
 		C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */; };
+		C37C2E3F1F117F74002DFE7D /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C37C2E3E1F117F74002DFE7D /* User.graphql */; };
 		C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A01F0AC247005FF8EC /* FilterProvider.swift */; };
 		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
 		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
@@ -91,6 +92,8 @@
 		C3CE0E351E7592E2008000B1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E341E7592E2008000B1 /* Configuration.swift */; };
 		C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C431E4057820076B7A3 /* AddressProvider.swift */; };
 		C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C461E419D550076B7A3 /* AddressParser.swift */; };
+		C3E60EF61F11B45B0068A28E /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E60EF51F11B45B0068A28E /* schema.json */; };
+		C3E60EF81F11B4FD0068A28E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E60EF71F11B4FD0068A28E /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +146,7 @@
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
 		C37C2E381F116D66002DFE7D /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C37C2E3E1F117F74002DFE7D /* User.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		C3CE0E341E7592E2008000B1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C3DB8C431E4057820076B7A3 /* AddressProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressProvider.swift; sourceTree = "<group>"; };
 		C3DB8C461E419D550076B7A3 /* AddressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser.swift; sourceTree = "<group>"; };
+		C3E60EF51F11B45B0068A28E /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		C3E60EF71F11B4FD0068A28E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		EC5DDE820945FAE41102A623 /* Pods_Recap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCD6FD234A482CFF7BC8C6F /* Pods-RecapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecapTests/Pods-RecapTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,6 +322,7 @@
 				C3CE0E271E6E6273008000B1 /* App */,
 				C3AD56841E4C37CA00C348F0 /* Camera */,
 				C330B6381E46B51300928284 /* DatabaseController.swift */,
+				C3E7C2681EFF31E8001E45FC /* GraphQL */,
 				C39028541EC4178700D8E257 /* HUD */,
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
 				C3DB8C401E4046C00076B7A3 /* models */,
@@ -536,6 +543,16 @@
 			name = Providers;
 			sourceTree = "<group>";
 		};
+		C3E7C2681EFF31E8001E45FC /* GraphQL */ = {
+			isa = PBXGroup;
+			children = (
+				C37C2E3E1F117F74002DFE7D /* User.graphql */,
+				C3E60EF51F11B45B0068A28E /* schema.json */,
+				C3E60EF71F11B4FD0068A28E /* API.swift */,
+			);
+			name = GraphQL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -545,6 +562,7 @@
 			buildPhases = (
 				DC8C45A50436D9812C0214C5 /* [CP] Check Pods Manifest.lock */,
 				C3CE0E2A1E6E6605008000B1 /* R.Swift */,
+				C3E60EF41F11A8110068A28E /* Generate Apollo GraphQL API */,
 				C35308331E3D163600E2BD8A /* Sources */,
 				C35308341E3D163600E2BD8A /* Frameworks */,
 				C35308351E3D163600E2BD8A /* Resources */,
@@ -629,11 +647,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3C347681EA9A9B10008E62E /* InputAddressView.xib in Resources */,
+				C37C2E3F1F117F74002DFE7D /* User.graphql in Resources */,
 				C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */,
 				C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
+				C3E60EF61F11B45B0068A28E /* schema.json in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
 				C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */,
@@ -734,6 +754,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
 		};
+		C3E60EF41F11A8110068A28E /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
+		};
 		CCE6006289710B34B6E1B954 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -805,6 +839,7 @@
 				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
+				C3E60EF81F11B4FD0068A28E /* API.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C3ADF1761ED3CBB800BB8EFD /* FilmViewController.swift in Sources */,
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,

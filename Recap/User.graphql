@@ -1,0 +1,15 @@
+mutation CreateUserMut($user: CreateUserInput!) {
+    createUser(input: $user) {
+        changedUser {
+            id
+            username
+            address {
+                name
+                primaryLine
+                secondaryLine
+                state
+                zipCode
+            }
+        }
+    }
+}
