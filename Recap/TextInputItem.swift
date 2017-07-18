@@ -17,6 +17,8 @@ class TextInputItem: UIView, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         input.font = UIFont.openSansFont(ofSize: 20.0)
+        input.autocapitalizationType = .words
+        input.autocorrectionType = .no
         item.font = UIFont.openSansBoldFont(ofSize: 12.0)
         item.textColor = .clearBlue
     }
@@ -35,3 +37,4 @@ class TextInputItem: UIView, NibLoadable {
         return input.text ?? ""
     }
 }
+	
