@@ -1,15 +1,31 @@
-mutation CreateUserMut($user: CreateUserInput!) {
+mutation SignupUser($user: CreateUserInput!) {
     createUser(input: $user) {
         changedUser {
-            id
-            username
-            address {
-                name
-                primaryLine
-                secondaryLine
-                state
-                zipCode
-            }
+            ...completeUser
         }
     }
+}
+
+mutation LoginUser($input: LoginUserInput!) {
+    loginUser(input: $input) {
+        user {
+            ...completeUser
+        }
+    }
+}
+
+fragment completeUser on User {
+    username
+    address {
+        ...completeAddress
+    }
+}
+
+fragment completeAddress on Address {
+    primaryLine
+    secondaryLine
+    zipCode
+    name
+    state
+    city
 }

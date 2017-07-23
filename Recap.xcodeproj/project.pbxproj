@@ -52,6 +52,7 @@
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C21E5B93ED009C4696 /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PhotoError.swift */; };
+		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
 		C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */; };
 		C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */; };
 		C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */; };
@@ -159,6 +160,7 @@
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7C11E5B93ED009C4696 /* PhotoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
+		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
 		C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
 		C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmRollCell.xib; sourceTree = "<group>"; };
 		C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCell.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				C37C2E3E1F117F74002DFE7D /* User.graphql */,
 				C3E60EF51F11B45B0068A28E /* schema.json */,
 				C3E60EF71F11B4FD0068A28E /* API.swift */,
+				C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */,
 			);
 			name = GraphQL;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
+				C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */,
 				C3B390081ED66CCE00FF0333 /* Film.swift in Sources */,
 				C3ADF17B1ED3D9D700BB8EFD /* UsedFilmListViewModel.swift in Sources */,
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
