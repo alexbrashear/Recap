@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import Apollo
 
 extension RootFlowCoordinator {
     
@@ -17,7 +18,7 @@ extension RootFlowCoordinator {
         nc.setNavigationBarHidden(true, animated: true)
         vc.viewModel = WelcomeViewModel(continueButtonAction: { [weak nc, weak self] in
             guard let nc = nc else { return }
-            self?.pushEnterAddressController(onto: nc)
+            self?.pushSignupController(onto: nc)
         })
     }
     
@@ -29,30 +30,33 @@ extension RootFlowCoordinator {
     
     // MARK: - Enter Address Controller
     
-    private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
+    private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController, email: String, password: String) {
         let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] address in
             HUD.show(.progress)
             self?.addressProvider.verify(address: address) { [weak self] (address, error) in
-                DispatchQueue.main.async {
+                guard let address = address, error == nil else {
                     HUD.hide()
-                    guard let vc = vc, let nc = nc else { return }
-                    if let error = error {
-                        let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
-                        vc.present(alert, animated: true, completion: nil)
-                    } else {
-                        guard let address = address else { return }
-                        self?.userController.setNewUser(address: address)
+                    vc?.present(error?.alert ?? AddressError.unknownFailure.alert, animated: true, completion: nil); return;
+                }
+                self?.userController.signupUser(address: address, email: email, password: password) { result in
+                    HUD.hide()
+                    switch result {
+                    case .success:
+                        guard let nc = nc else { return }
                         self?.pushDisclaimerController(onto: nc)
+                    case let .error(userError):
+                        vc?.present(userError.alert, animated: true, completion: nil)
                     }
                 }
+                
             }
         }
         vc.viewModel = vm
     }
     
-    private func pushEnterAddressController(onto nc: UINavigationController) {
+    private func pushEnterAddressController(onto nc: UINavigationController, email: String, password: String) {
         guard let vc = R.storyboard.enterAddress.enterAddressController() else { return }
-        configureEnterAddressController(vc, nc: nc)
+        configureEnterAddressController(vc, nc: nc, email: email, password: password)
         nc.pushViewController(vc, animated: true)
     }
     
@@ -78,6 +82,23 @@ extension RootFlowCoordinator {
     func pushLoginController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.login.loginViewController() else { return }
         nc.setNavigationBarHidden(true, animated: false)
+        vc.goToSignUpAction = { [weak self, weak nc] in
+            guard let nc = nc else { return }
+            self?.pushSignupController(onto: nc)
+        }
+        vc.loginAction = { [weak self, weak nc, weak vc] email, password in
+            HUD.show(.progress)
+            self?.userController.loginUser(email: email, password: password) { result in
+                HUD.hide()
+                switch result {
+                case .success:
+                    guard let nc = nc else { return }
+                    self?.pushCameraViewController(onto: nc)
+                case let .error(userError):
+                    vc?.present(userError.alert, animated: true, completion: nil)
+                }
+            }
+        }
         nc.pushViewController(vc, animated: true)
     }
     
@@ -85,6 +106,10 @@ extension RootFlowCoordinator {
     
     func pushSignupController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.signup.signUpViewController() else { return }
+        vc.submitHandler = { [weak self, weak nc] email, password in
+            guard let nc = nc else { return }
+            self?.pushEnterAddressController(onto: nc, email: email, password: password)
+        }
         nc.pushViewController(vc, animated: true)
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2017 memailer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum AddressError: Error {
     case unknownFailure
@@ -28,5 +28,9 @@ enum AddressError: Error {
         case .notEnoughInformation:
             return "The address you entered was found but more information is needed (such as an apartment, suite, or box number) to match to a specific address."
         }
+    }
+    
+    var alert: UIAlertController {
+        return UIAlertController.okAlert(title: localizedTitle, message: localizedDescription)
     }
 }

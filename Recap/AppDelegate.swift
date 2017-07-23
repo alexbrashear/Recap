@@ -9,6 +9,7 @@
 import UIKit
 import AWSS3
 import IQKeyboardManagerSwift
+import Apollo
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(), filmController: FilmController())
+        let graphql = ApolloClient(url: URL(string: "https://us-west-2.api.scaphold.io/graphql/recap")!)
+        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(graphql: graphql),
+                                                  filmController: FilmController())
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white

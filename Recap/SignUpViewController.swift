@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var submit: UIButton!
     
+    var submitHandler: ((_ email: String, _ password: String) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,9 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func submitTapped(_ sender: Any) {
+        guard let email = emailField.text,
+            let password = passwordField.text else { return }
+        submitHandler?(email, password)
     }
     
 }

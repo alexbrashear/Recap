@@ -38,8 +38,7 @@ class RootFlowCoordinator {
         if onboardingCoordinator.shouldShow(onboarding: .welcomeFlow) {
             pushWelomeController(onto: navigationController)
         } else {
-            guard userController.user != nil else { fatalError() }
-            pushCameraViewController(onto: navigationController)
+            pushLoginController(onto: navigationController)
         }
     }
     

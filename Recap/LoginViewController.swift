@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var loginAction: (() -> Void)?
+    var loginAction: ((_ email: String, _ password: String) -> Void)?
     var goToSignUpAction: (() -> Void)?
     
     @IBOutlet private var emailField: UITextField!
@@ -37,10 +37,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didAttemptToLogin(_ sender: UIButton) {
-        
+        guard let email = emailField.text, let password = passwordField.text else { return }
+        loginAction?(email, password)
     }
     
     @IBAction func didSwitchToSignUp(_ sender: UIButton) {
-        
+        goToSignUpAction?()
     }
 }

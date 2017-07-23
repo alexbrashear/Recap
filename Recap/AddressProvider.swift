@@ -25,7 +25,9 @@ class AddressProvider {
         networkClient.POST(url: url, data: data) { [weak self] json in
             guard let json = json else { return completion(nil, .unknownFailure) }
             let (address, error) = self?.parser.parse(json: json, name: name) ?? (nil, .unknownFailure)
-            completion(address, error)
+            DispatchQueue.main.async {
+                completion(address, error)
+            }
         }
     }
     
