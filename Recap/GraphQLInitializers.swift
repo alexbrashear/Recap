@@ -10,6 +10,6 @@ import Foundation
 
 extension Address {
     convenience init(completeAddress: CompleteAddress) {
-        self.init(id: "", name: completeAddress.name, line1: completeAddress.primaryLine, line2: completeAddress.secondaryLine ?? "", city: completeAddress.city, state: completeAddress.state, zip: completeAddress.zipCode)
+        self.init(id: completeAddress.id, name: completeAddress.name, line1: completeAddress.primaryLine, line2: completeAddress.secondaryLine ?? "", city: completeAddress.city, state: completeAddress.state, zip: completeAddress.zipCode)
     }
 }

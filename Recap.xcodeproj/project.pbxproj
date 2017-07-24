@@ -53,6 +53,7 @@
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C396E7C21E5B93ED009C4696 /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7C11E5B93ED009C4696 /* PhotoError.swift */; };
 		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
+		C3A841CB1F25593D009E43BE /* ApolloClient+Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841CA1F25593D009E43BE /* ApolloClient+Token.swift */; };
 		C3ADF16E1ED269F100BB8EFD /* FilmRollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */; };
 		C3ADF16F1ED269F100BB8EFD /* FilmRollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */; };
 		C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */; };
@@ -161,6 +162,7 @@
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C396E7C11E5B93ED009C4696 /* PhotoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
 		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
+		C3A841CA1F25593D009E43BE /* ApolloClient+Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApolloClient+Token.swift"; sourceTree = "<group>"; };
 		C3ADF16C1ED269F100BB8EFD /* FilmRollCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmRollCell.swift; sourceTree = "<group>"; };
 		C3ADF16D1ED269F100BB8EFD /* FilmRollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilmRollCell.xib; sourceTree = "<group>"; };
 		C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCell.swift; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 				C3E60EF51F11B45B0068A28E /* schema.json */,
 				C3E60EF71F11B4FD0068A28E /* API.swift */,
 				C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */,
+				C3A841CA1F25593D009E43BE /* ApolloClient+Token.swift */,
 			);
 			name = GraphQL;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,
 				C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */,
+				C3A841CB1F25593D009E43BE /* ApolloClient+Token.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C3ADF17D1ED540AE00BB8EFD /* Photo.swift in Sources */,
 				C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */,

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         let graphql = ApolloClient(url: URL(string: "https://us-west-2.api.scaphold.io/graphql/recap")!)
-        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(graphql: graphql),
+        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(graphql: ApolloWrapper(client: graphql)),
                                                   filmController: FilmController())
         
         window = UIWindow(frame: UIScreen.main.bounds)

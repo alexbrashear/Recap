@@ -1,5 +1,6 @@
 mutation SignupUser($user: CreateUserInput!) {
     createUser(input: $user) {
+        token
         changedUser {
             ...completeUser
         }
@@ -8,13 +9,26 @@ mutation SignupUser($user: CreateUserInput!) {
 
 mutation LoginUser($input: LoginUserInput!) {
     loginUser(input: $input) {
+        token
         user {
             ...completeUser
         }
     }
 }
 
+mutation UpdateAddress($input: UpdateAddressInput!) {
+    updateAddress(input: $input) {
+        changedAddress {
+            ...completeAddress
+            user {
+                ...completeUser
+            }
+        }
+    }
+}
+
 fragment completeUser on User {
+    id
     username
     address {
         ...completeAddress
@@ -22,6 +36,7 @@ fragment completeUser on User {
 }
 
 fragment completeAddress on Address {
+    id
     primaryLine
     secondaryLine
     zipCode

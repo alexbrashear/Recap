@@ -42,21 +42,18 @@ extension RootFlowCoordinator {
     // MARK: - Enter Address Controller
     
     private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController, onSuccess: (() -> Void)?) {
-        let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] address in
+        let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] newAddress in
             HUD.show(.progress)
-            self?.addressProvider.verify(address: address) { [weak self] (address, error) in
-                DispatchQueue.main.async {
+            self?.addressProvider.verify(address: newAddress) { [weak self] (verifiedAddress, error) in
+                guard let verifiedAddress = verifiedAddress, error == nil else {
                     HUD.hide()
-                    guard let vc = vc, let nc = nc else { return }
-                    if let error = error {
-                        let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
-                        vc.present(alert, animated: true, completion: nil)
-                    } else {
-                        guard let address = address else { return }
-                        self?.userController.setNewUser(address: address)
-                        onSuccess?()
-                        nc.popViewController(animated: true)
-                    }
+                    vc?.present(error?.alert ?? UserError.updateAddressFailed.alert, animated: true, completion: nil); return
+                }
+                self?.userController.updateAddress(newAddress: verifiedAddress) { result in
+                    HUD.hide()
+                    guard let nc = nc else { return }
+                    onSuccess?()
+                    nc.popViewController(animated: true)
                 }
             }
         }

@@ -13,7 +13,7 @@ typealias UserCallback = (Result<CompleteUser, UserError>) -> ()
 
 class UserController {
     
-    let graphql: ApolloClient
+    var graphql: ApolloWrapper
     
     var user: User? {
         guard let completeAddress = completeUser?.address?.fragments.completeAddress else { return nil }
@@ -22,29 +22,33 @@ class UserController {
     
     var completeUser: CompleteUser?
    
-    init(graphql: ApolloClient) {
+    init(graphql: ApolloWrapper) {
         self.graphql = graphql
     }
     
-    func setNewUser(address: Address) {
-        let user = User(address: address)
-        
-        let collection = DatabaseController.Collection.user.rawValue
-        let connection = DatabaseController.sharedInstance.newWritingConnection()
-        connection.readWrite { transaction in
-            transaction.setObject([user], forKey: "user", inCollection: collection)
+    func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
+        guard let id = user?.address.id, let userId = completeUser?.id else { return }
+        let input = UpdateAddressInput(id: id, userId: userId, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state, clientMutationId: nil)
+        let mut = UpdateAddressMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let updatedUser = result?.data?.updateAddress?.changedAddress?.user?.fragments.completeUser, error == nil else {
+                callback(.error(UserError.updateAddressFailed)); return;
+            }
+            self?.completeUser = updatedUser
+            callback(.success(updatedUser))
         }
-        
-//        self.user = user
     }
     
     func loginUser(email: String, password: String, callback: @escaping UserCallback) {
         let loginUserMutation = LoginUserMutation(input: LoginUserInput(username: email, password: password))
-        graphql.perform(mutation: loginUserMutation, queue: .main) { [weak self] result, error in
-            guard let user = result?.data?.loginUser?.user?.fragments.completeUser, error == nil else {
+        graphql.client.perform(mutation: loginUserMutation, queue: .main) { [weak self] result, error in
+            guard let user = result?.data?.loginUser?.user?.fragments.completeUser,
+                let token = result?.data?.loginUser?.token,
+                error == nil else {
                 callback(.error(.loginFailed))
                 return
             }
+            self?.graphql.setToken(token)
             self?.completeUser = user
             callback(.success(user))
         }
@@ -59,11 +63,14 @@ class UserController {
         let createUserInput = CreateUserInput(username: email, address: createAddressInput, password: password)
         let mut = SignupUserMutation(user: createUserInput)
         
-        graphql.perform(mutation: mut, queue: .main) { [weak self] result, error in
-            guard let user = result?.data?.createUser?.changedUser?.fragments.completeUser, error == nil else {
+        graphql.client.perform(mutation: mut, queue: .main) { [weak self] result, error in
+            guard let user = result?.data?.createUser?.changedUser?.fragments.completeUser,
+                let token = result?.data?.createUser?.token,
+                error == nil else {
                 callback(.error(.signupFailed))
                 return
             }
+            self?.graphql.setToken(token)
             self?.completeUser = user
             callback(.success(user))
         }
@@ -74,6 +81,7 @@ class UserController {
 enum UserError: Error {
     case loginFailed
     case signupFailed
+    case updateAddressFailed
     
     var localizedTitle: String {
         return "test"
