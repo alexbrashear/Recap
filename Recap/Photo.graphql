@@ -1,0 +1,18 @@
+
+mutation CreatePhoto($input: CreatePhotoInput!) {
+    createPhoto(input: $input) {
+        changedPhoto {
+            ...completePhoto
+        }
+    }
+}
+
+fragment completePhoto on Photo {
+    id
+    smallThumbnailURL
+    mediumThumbnailURL
+    largeThumbnailURL
+    imageURL
+    createdAt
+    expectedDeliveryDate
+}

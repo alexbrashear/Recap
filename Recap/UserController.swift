@@ -60,7 +60,7 @@ class UserController {
         ///
         
         let createAddressInput = CreateAddressInput(city: address.city, secondaryLine: address.line2, name: address.name, primaryLine: address.line1, zipCode: address.zip, state: address.state)
-        let createUserInput = CreateUserInput(username: email, address: createAddressInput, password: password)
+        let createUserInput = CreateUserInput(remainingPhotos: 2, username: email, address: createAddressInput, password: password)
         let mut = SignupUserMutation(user: createUserInput)
         
         graphql.client.perform(mutation: mut, queue: .main) { [weak self] result, error in

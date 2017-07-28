@@ -20,9 +20,9 @@ class PostcardProvider {
         networkClient.POST(url: url, data: data) { json in
             guard let json = json  else { return completion(nil, .unknownFailure) }
             let expectedDeliveryString = json["expected_delivery_date"] as? String
-            guard let expectedDeliveryDate = expectedDeliveryString?.dateFromStandard,
+            guard let expectedDeliveryDate = expectedDeliveryString,
                 let thumbnails = self.parseThumbnails(fromJson: json) else { return completion(nil, .parsingFailure) }
-            let photo = Photo(imageURL: imageURL, dateTaken: Date(), expectedDeliveryDate: expectedDeliveryDate, thumbnails: thumbnails)
+            let photo = Photo(imageURL: imageURL, expectedDeliveryDate: expectedDeliveryDate, thumbnails: thumbnails)
             completion(photo, nil)
         }
     }
@@ -42,9 +42,9 @@ class PostcardProvider {
     }
     
     private func parseThumbnailObject(thumbnail: [String: AnyObject]) -> Thumbnails? {
-        guard let smallString = thumbnail[Thumbnails.Keys.small.rawValue] as? String,
-            let mediumString = thumbnail[Thumbnails.Keys.medium.rawValue] as? String,
-            let largeString = thumbnail[Thumbnails.Keys.large.rawValue] as? String else { return nil }
+        guard let smallString = thumbnail["small"] as? String,
+            let mediumString = thumbnail["medium"] as? String,
+            let largeString = thumbnail["large"] as? String else { return nil }
         guard let small = URL(string: smallString),
             let medium = URL(string: mediumString),
             let large = URL(string: largeString) else { return nil }

@@ -1,12 +1,12 @@
 //
-//  PhotoError.swift
-//  MeMailer5000
+//  FilmError.swift
+//  Recap
 //
-//  Created by Alex Brashear on 2/20/17.
+//  Created by Alex Brashear on 7/26/17.
 //  Copyright © 2017 memailer. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum PhotoError: Error {
     case unknownFailure
@@ -35,5 +35,9 @@ enum PhotoError: Error {
         case .dateParsingFailure:
             return "there was an error acquiring the timestamp for this postcard"
         }
+    }
+    
+    var alert: UIAlertController {
+        return UIAlertController.okAlert(title: localizedTitle, message: localizedDescription)
     }
 }

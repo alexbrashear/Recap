@@ -33,6 +33,14 @@ fragment completeUser on User {
     address {
         ...completeAddress
     }
+    remainingPhotos
+    photos {
+        edges {
+            node {
+                ...completePhoto
+            }
+        }
+    }
 }
 
 fragment completeAddress on Address {
