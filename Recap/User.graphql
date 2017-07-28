@@ -27,6 +27,14 @@ mutation UpdateAddress($input: UpdateAddressInput!) {
     }
 }
 
+mutation UpdateUser($input: UpdateUserInput!) {
+    updateUser(input: $input) {
+        changedUser {
+            ...completeUser
+        }
+    }
+}
+
 fragment completeUser on User {
     id
     username

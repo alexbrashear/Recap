@@ -76,12 +76,27 @@ class UserController {
         }
         
     }
+    
+    func buyFilm(capacity: Int, callback: @escaping UserCallback) {
+        guard let user = completeUser else { return }
+        let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
+        let mut = UpdateUserMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let user = result?.data?.updateUser?.changedUser?.fragments.completeUser, error == nil else {
+                callback(.error(.buyFilmFailed)); return
+            }
+            
+            self?.completeUser = user
+            callback(.success(user))
+        }
+    }
 }
 
 enum UserError: Error {
     case loginFailed
     case signupFailed
     case updateAddressFailed
+    case buyFilmFailed
     
     var localizedTitle: String {
         return "test"

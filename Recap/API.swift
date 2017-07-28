@@ -42,6 +42,14 @@ public struct UpdateAddressInput: GraphQLMapConvertible {
   }
 }
 
+public struct UpdateUserInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID, remainingPhotos: Int? = nil, username: String? = nil, addressId: GraphQLID? = nil, password: String? = nil, clientMutationId: String? = nil) {
+    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "username": username, "addressId": addressId, "password": password, "clientMutationId": clientMutationId]
+  }
+}
+
 public final class CreatePhotoMutation: GraphQLMutation {
   public static let operationDefinition =
     "mutation CreatePhoto($input: CreatePhotoInput!) {" +
@@ -316,6 +324,67 @@ public final class UpdateAddressMutation: GraphQLMutation {
           public struct Fragments {
             public let completeUser: CompleteUser
           }
+        }
+      }
+    }
+  }
+}
+
+public final class UpdateUserMutation: GraphQLMutation {
+  public static let operationDefinition =
+    "mutation UpdateUser($input: UpdateUserInput!) {" +
+    "  updateUser(input: $input) {" +
+    "    __typename" +
+    "    changedUser {" +
+    "      __typename" +
+    "      ...completeUser" +
+    "    }" +
+    "  }" +
+    "}"
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+
+  public let input: UpdateUserInput
+
+  public init(input: UpdateUserInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    /// Update objects of type User.
+    public let updateUser: UpdateUser?
+
+    public init(reader: GraphQLResultReader) throws {
+      updateUser = try reader.optionalValue(for: Field(responseName: "updateUser", arguments: ["input": reader.variables["input"]]))
+    }
+
+    public struct UpdateUser: GraphQLMappable {
+      public let __typename: String
+      /// The mutated User.
+      public let changedUser: ChangedUser?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        changedUser = try reader.optionalValue(for: Field(responseName: "changedUser"))
+      }
+
+      public struct ChangedUser: GraphQLMappable {
+        public let __typename: String
+
+        public let fragments: Fragments
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+
+          let completeUser = try CompleteUser(reader: reader)
+          fragments = Fragments(completeUser: completeUser)
+        }
+
+        public struct Fragments {
+          public let completeUser: CompleteUser
         }
       }
     }
