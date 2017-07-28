@@ -27,12 +27,19 @@ extension RootFlowCoordinator {
         
         vc.title = "Add Film"
         
-        let buyFilm: BuyFilmAction = { [weak self, weak vc] film in
+        let buyFilm: BuyFilmAction = { [weak self, weak vc] capacity in
             HUD.show(.progress)
-            self?.filmController.buyFilm(film)
-            updateFilmCount(self?.filmController.currentFilm?.remainingPhotos ?? 0)
-            HUD.hide()
-            vc?.dismiss(animated: true, completion: nil)
+            guard let userId = self?.userController.completeUser?.id else { return }
+//            self?.filmController.buyFilm(capacity: capacity, forUserId: userId) { result in
+//                HUD.hide()
+//                switch result {
+//                case let .success(film):
+//                    updateFilmCount(film.capacity)
+//                    vc?.dismiss(animated: true, completion: nil)
+//                case let .error(filmError):
+//                    vc?.present(filmError.alert, animated: true, completion: nil)
+//                }
+//            }
         }
         
         let vm = PurchaseViewModel(buyFilm: buyFilm)

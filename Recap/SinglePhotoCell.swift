@@ -21,7 +21,6 @@ class SinglePhotoCell: UITableViewCell, NibReusable {
             //statusAccessory.image = UIImage(named: "RCPDarkCheck")
             statusAccessory.image = nil
             status.text = "EXPECTED"
-            deliveryDate.text = storedPhoto.expectedDeliveryDate.filmPurchaseDateString
             photo.imageFromUrl(url: storedPhoto.thumbnails.medium)
         }
     }

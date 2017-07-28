@@ -20,12 +20,10 @@ class RootFlowCoordinator {
     let postcardSender = PostcardSender()
     
     let userController: UserController
-    let filmController: FilmController
     
-    init(userController: UserController, filmController: FilmController) {
+    init(userController: UserController) {
         navigationController = UINavigationController()
         self.userController = userController
-        self.filmController = filmController
     }
     
     /// the root view controller to be used only by the app delegate

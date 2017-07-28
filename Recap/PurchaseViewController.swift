@@ -8,15 +8,13 @@
 
 import UIKit
 
-typealias BuyFilmAction = (Film) -> Void
+typealias BuyFilmAction = (_ capacity: Int) -> Void
 
 protocol PurchaseViewModelProtocol: class {
     var buyFilm: BuyFilmAction { get }
 }
 
 class PurchaseViewController: UIViewController {
-    
-    let film = Film(capacity: 10)
 
     @IBOutlet private var message: UILabel!
     @IBOutlet private var disclaimer: UILabel!
@@ -32,6 +30,7 @@ class PurchaseViewController: UIViewController {
     
     private var currentFilmCount: Int = 1
     private var filmPrice: Int = 0
+    private let capacity = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +48,7 @@ class PurchaseViewController: UIViewController {
         
         buyFilm.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
         buyFilm.on(.touchUpInside) { [unowned self] _ in
-            self.viewModel?.buyFilm(self.film)
+            self.viewModel?.buyFilm(self.capacity)
         }
         
         increment.on(.touchUpInside) { [unowned self] _ in
