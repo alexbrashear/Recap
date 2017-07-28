@@ -26,12 +26,6 @@ class Address: NSObject, NSCoding {
     /// the country of the address, defaults to "US"
     let country = "US"
     
-    static let defaultAddress = Address(id: "", name: "alex brashear", line1: "132 saint marks place", line2: "7", city: "new york", state: "ny", zip:  "10009")
-    
-    var hasID: Bool {
-        return id != ""
-    }
-    
     init(id: String, name: String, line1: String, line2: String, city: String, state: String, zip: String) {
         self.id = id
         self.name = name
