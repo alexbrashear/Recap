@@ -12,6 +12,7 @@ PODS:
   - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
   - IQKeyboardManagerSwift (4.0.8)
+  - KeychainAccess (3.0.2)
   - OpenSans (1.0.3)
   - PKHUD (4.2.0)
   - R.swift (3.2.0):
@@ -94,6 +95,7 @@ DEPENDENCIES:
   - Apollo
   - AWSS3
   - IQKeyboardManagerSwift
+  - KeychainAccess
   - OpenSans (from `https://github.com/CocoaPods-Fonts/OpenSans.git`, commit `0be3f18`)
   - PKHUD
   - R.swift
@@ -123,6 +125,7 @@ SPEC CHECKSUMS:
   AWSS3: 3678dd99006ff77c825fb857fc7cbaca0db848c6
   CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   OpenSans: 33078846463eae780aa5f82986b51cce085f970d
   PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   R.swift: 207a372a2b5977caef440c696a368009460641d1
@@ -133,6 +136,6 @@ SPEC CHECKSUMS:
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
   YapDatabase: b1e43555a34a5298e23a045be96817a5ef0da58f
 
-PODFILE CHECKSUM: 5225ed8a7d0b7f9d8e6d68caca78ac67b60b3e01
+PODFILE CHECKSUM: ea17e3b1f8faa2d7870c0430e693d8ef5ccb70ab
 
 COCOAPODS: 1.2.0
