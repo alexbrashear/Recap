@@ -21,9 +21,9 @@ extension RootFlowCoordinator {
     /// - Parameter vc: the view controller to configure
     private func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc] image in
-            guard self?.filmController.canTakePhoto() ?? false else {
-                return
-            }
+//            guard self?.filmController.canTakePhoto() ?? false else {
+//                return
+//            }
             guard let address = self?.userController.user?.address else { return }
             PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
             PKHUD.sharedHUD.show()
@@ -39,9 +39,10 @@ extension RootFlowCoordinator {
                         let alert = UIAlertController.okAlert(title: "Sorry we couldn't send your recap", message: "Please try again or save the pic with the button in the bottom left.")
                         vc?.present(alert, animated: true, completion: nil)
                     case let (.some(photo), .none):
-                        let remainingPhotos = self?.filmController.useFilmSlot(photo) ?? 0
-                        vc?.returnToCamera()
-                        vc?.overlay.updateCount(to: remainingPhotos)
+//                        let input = CreatePhotoInput
+//                        let remainingPhotos = self?.filmController.useFilmSlot(photo) ?? 0
+//                        vc?.returnToCamera()
+//                        vc?.overlay.updateCount(to: )
                         PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
                         PKHUD.sharedHUD.show()
                         PKHUD.sharedHUD.hide(afterDelay: 3.0)
@@ -66,7 +67,7 @@ extension RootFlowCoordinator {
             }
         }
         
-        let vm = CameraViewModel(initialCount: filmController.currentFilm?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
+        let vm = CameraViewModel(initialCount: userController.completeUser?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
         vc.viewModel = vm
     }
 }

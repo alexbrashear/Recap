@@ -27,8 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         let apolloWrapper = ApolloWrapper()
-        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(graphql: apolloWrapper),
-                                                  filmController: FilmController(graphql: apolloWrapper))
+        rootFlowCoordinator = RootFlowCoordinator(userController: UserController(graphql: apolloWrapper))
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white
