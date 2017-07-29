@@ -8,48 +8,58 @@
 
 import UIKit
 import Apollo
+import KeychainAccess
 
-typealias UserCallback = (Result<CompleteUser, UserError>) -> ()
+typealias UserCallback = (Result<User, UserError>) -> ()
+typealias UsePhotoCallback = (Result<CompletePhoto, PhotoError>) -> ()
 
 class UserController {
     
-    var graphql: ApolloWrapper
+    fileprivate var graphql: ApolloWrapper
+    private var store: PersistanceManager
     
     var user: User? {
-        guard let completeAddress = completeUser?.address?.fragments.completeAddress else { return nil }
-        return User(address: Address(completeAddress: completeAddress))
-    }
-    
-    var completeUser: CompleteUser?
-   
-    init(graphql: ApolloWrapper) {
-        self.graphql = graphql
-    }
-    
-    func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
-        guard let id = user?.address.id, let userId = completeUser?.id else { return }
-        let input = UpdateAddressInput(id: id, userId: userId, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state, clientMutationId: nil)
-        let mut = UpdateAddressMutation(input: input)
-        graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let updatedUser = result?.data?.updateAddress?.changedAddress?.user?.fragments.completeUser, error == nil else {
-                callback(.error(UserError.updateAddressFailed)); return;
-            }
-            self?.completeUser = updatedUser
-            callback(.success(updatedUser))
+        didSet {
+            store.user = user
         }
+    }
+    
+    init(graphql: ApolloWrapper, persistanceManager: PersistanceManager) {
+        self.graphql = graphql
+        self.store = persistanceManager
+    }
+    
+    func loadUser() {
+        user = store.user
+    }
+    
+    private func setPassword(newPassword: String) {
+        store.password = newPassword
+    }
+    
+    private func setToken(newToken: String) {
+        graphql.setToken(newToken)
+        store.token = newToken
+    }
+    
+    private func userChangedHandler(user: User, password: String, token: String) {
+        self.user = user
+        setToken(newToken: token)
+        setPassword(newPassword: password)
     }
     
     func loginUser(email: String, password: String, callback: @escaping UserCallback) {
         let loginUserMutation = LoginUserMutation(input: LoginUserInput(username: email, password: password))
         graphql.client.perform(mutation: loginUserMutation, queue: .main) { [weak self] result, error in
-            guard let user = result?.data?.loginUser?.user?.fragments.completeUser,
+            guard let completeUser = result?.data?.loginUser?.user?.fragments.completeUser,
                 let token = result?.data?.loginUser?.token,
-                error == nil else {
+                let user = User(completeUser: completeUser),
+                error == nil
+            else {
                 callback(.error(.loginFailed))
                 return
             }
-            self?.graphql.setToken(token)
-            self?.completeUser = user
+            self?.userChangedHandler(user: user, password: password, token: token)
             callback(.success(user))
         }
     }
@@ -64,29 +74,62 @@ class UserController {
         let mut = SignupUserMutation(user: createUserInput)
         
         graphql.client.perform(mutation: mut, queue: .main) { [weak self] result, error in
-            guard let user = result?.data?.createUser?.changedUser?.fragments.completeUser,
+            guard let completeUser = result?.data?.createUser?.changedUser?.fragments.completeUser,
                 let token = result?.data?.createUser?.token,
-                error == nil else {
+                let user = User(completeUser: completeUser),
+                error == nil
+            else {
                 callback(.error(.signupFailed))
                 return
             }
-            self?.graphql.setToken(token)
-            self?.completeUser = user
+            self?.userChangedHandler(user: user, password: password, token: token)
             callback(.success(user))
         }
         
     }
+}
+
+// MARK: - Mutations
+
+extension UserController {
+    func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
+        guard let user = self.user else { return }
+        let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state, clientMutationId: nil)
+        let mut = UpdateAddressMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let updatedUser = result?.data?.updateAddress?.changedAddress?.user?.fragments.completeUser,
+                let user = User(completeUser: updatedUser),
+                error == nil
+            else {
+                callback(.error(UserError.updateAddressFailed)); return;
+            }
+            self?.user = user
+            callback(.success(user))
+        }
+    }
+    
+    func usePhoto(photo: CreatePhotoInput, callback: @escaping UsePhotoCallback) {
+        graphql.client.perform(mutation: CreatePhotoMutation(input: photo)) { result, error in
+            guard let photo = result?.data?.createPhoto?.changedPhoto?.fragments.completePhoto, error == nil else {
+                callback(.error(.unknownFailure))
+                return
+            }
+            callback(.success(photo))
+        }
+    }
     
     func buyFilm(capacity: Int, callback: @escaping UserCallback) {
-        guard let user = completeUser else { return }
+        guard let user = self.user else { return }
         let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
         let mut = UpdateUserMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let user = result?.data?.updateUser?.changedUser?.fragments.completeUser, error == nil else {
+            guard let completeUser = result?.data?.updateUser?.changedUser?.fragments.completeUser,
+                let user = User(completeUser: completeUser),
+                error == nil
+            else {
                 callback(.error(.buyFilmFailed)); return
             }
-            
-            self?.completeUser = user
+            self?.user = user
             callback(.success(user))
         }
     }

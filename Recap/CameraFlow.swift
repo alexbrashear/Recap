@@ -67,7 +67,8 @@ extension RootFlowCoordinator {
             }
         }
         
-        let vm = CameraViewModel(initialCount: userController.completeUser?.remainingPhotos ?? 0, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
+        guard let user = userController.user else { fatalError() }
+        let vm = CameraViewModel(initialCount: user.remainingPhotos, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
         vc.viewModel = vm
     }
 }
