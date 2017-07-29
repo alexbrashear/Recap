@@ -10,6 +10,7 @@
 		0C722E149F7A262C791376F1 /* Pods_RecapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E8D7D0C1E4A334099968D53 /* Pods_RecapTests.framework */; };
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		7EC37E0C7861A5BD4E105569 /* Pods_Recap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5DDE820945FAE41102A623 /* Pods_Recap.framework */; };
+		C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
@@ -109,6 +110,7 @@
 		5D60C425F5CD1944B9CF4367 /* Pods-RecapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecapTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RecapTests/Pods-RecapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E8D7D0C1E4A334099968D53 /* Pods_RecapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86480A54151BC1AE48383D52 /* Pods-Recap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recap/Pods-Recap.debug.xcconfig"; sourceTree = "<group>"; };
+		C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				C31339831EAC53B20080A168 /* User.swift */,
 				C31339851EAC56720080A168 /* UserController.swift */,
+				C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */,
 				C31E62AF1F286A260084443A /* PhotoError.swift */,
 			);
 			name = User;
@@ -821,6 +824,7 @@
 				C3E60EF81F11B4FD0068A28E /* API.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C3ADF1761ED3CBB800BB8EFD /* FilmViewController.swift in Sources */,
+				C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */,
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,
 				C39028581EC95B0700D8E257 /* SettingsFlow.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
