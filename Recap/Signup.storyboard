@@ -124,39 +124,57 @@
                                     <constraint firstItem="B6p-EI-2Te" firstAttribute="top" secondItem="xrv-db-SJs" secondAttribute="top" constant="18" id="ruo-d2-Lyt"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-69-1Y9">
-                                <rect key="frame" x="25" y="376.5" width="324" height="50"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="submitTapped:" destination="ngl-hY-26Q" eventType="touchUpInside" id="t8z-05-IDh"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uYJ-TM-b0W">
+                                <rect key="frame" x="25" y="376.5" width="324" height="94"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5C-69-1Y9">
+                                        <rect key="frame" x="0.0" y="0.0" width="324" height="45"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                        <state key="normal" title="Next">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitTapped:" destination="ngl-hY-26Q" eventType="touchUpInside" id="t8z-05-IDh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCb-y7-M2R">
+                                        <rect key="frame" x="0.0" y="65" width="324" height="29"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
+                                        <state key="normal" title="Alredy have an account? Log In">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToLoginTapped:" destination="ngl-hY-26Q" eventType="touchUpInside" id="ZBA-wn-xp4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Z5C-69-1Y9" firstAttribute="height" secondItem="uYJ-TM-b0W" secondAttribute="height" multiplier="0.075" constant="38.5625" id="x1g-y7-lq6"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="trailingMargin" multiplier="0.07" id="0NK-5a-c1L"/>
                             <constraint firstItem="Fvt-L8-mek" firstAttribute="top" secondItem="Wnm-C9-hSZ" secondAttribute="bottom" constant="-20" id="6zz-Yr-YDl"/>
-                            <constraint firstItem="Z5C-69-1Y9" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="CgY-be-35J"/>
-                            <constraint firstItem="Z5C-69-1Y9" firstAttribute="top" secondItem="xrv-db-SJs" secondAttribute="bottom" constant="40" id="Gvt-Xv-nDw"/>
                             <constraint firstItem="feo-5U-hkF" firstAttribute="top" secondItem="OHC-qb-ws8" secondAttribute="bottom" constant="12" id="HBw-ws-f2w"/>
-                            <constraint firstItem="Z5C-69-1Y9" firstAttribute="leading" secondItem="xrv-db-SJs" secondAttribute="leading" id="KJB-hR-UPs"/>
+                            <constraint firstItem="uYJ-TM-b0W" firstAttribute="top" secondItem="xrv-db-SJs" secondAttribute="bottom" constant="40" id="P5u-L9-JLG"/>
+                            <constraint firstItem="uYJ-TM-b0W" firstAttribute="leading" secondItem="xrv-db-SJs" secondAttribute="leading" id="TBe-x1-9w2"/>
                             <constraint firstItem="OHC-qb-ws8" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="UcG-Y8-CP3"/>
                             <constraint firstItem="OHC-qb-ws8" firstAttribute="top" secondItem="Wnm-C9-hSZ" secondAttribute="bottom" constant="53" id="XJH-jn-vjN"/>
                             <constraint firstItem="feo-5U-hkF" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="ZNu-Wu-lYy"/>
                             <constraint firstItem="Fvt-L8-mek" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="leadingMargin" constant="-16" id="ZlM-ky-IAY"/>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="aha-Ma-vI7"/>
-                            <constraint firstItem="Z5C-69-1Y9" firstAttribute="height" secondItem="Krc-5k-N3O" secondAttribute="height" multiplier="0.075" id="ews-zI-o8M"/>
                             <constraint firstItem="igA-5l-mgf" firstAttribute="top" secondItem="Fvt-L8-mek" secondAttribute="bottom" id="f6T-En-0mW"/>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="top" secondItem="feo-5U-hkF" secondAttribute="bottom" constant="40" id="gOm-TG-dOA"/>
+                            <constraint firstItem="uYJ-TM-b0W" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="osW-Fd-iSQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fvt-L8-mek" secondAttribute="trailing" constant="-16" id="xWz-8c-jjQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="I9X-IL-iol" id="blA-IZ-9S9"/>
                         <outlet property="emailLabel" destination="M9n-uA-Kqo" id="TLc-eh-Eue"/>
+                        <outlet property="goToLogin" destination="lCb-y7-M2R" id="lu3-LF-OlC"/>
                         <outlet property="header" destination="OHC-qb-ws8" id="pv7-sG-jKs"/>
                         <outlet property="passwordField" destination="gBH-I6-s2U" id="wCF-od-vQL"/>
                         <outlet property="passwordLabel" destination="6OU-3c-4at" id="oSq-Dx-lnF"/>

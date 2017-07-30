@@ -18,8 +18,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordField: UITextField!
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var submit: UIButton!
+    @IBOutlet var goToLogin: UIButton!
     
     var submitHandler: ((_ email: String, _ password: String) -> Void)?
+    var goToLoginHandler: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,9 @@ class SignUpViewController: UIViewController {
         
         signupContainer.clipsToBounds = true
         signupContainer.layer.cornerRadius = 3
+        
+        goToLogin.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 12)
+        goToLogin.titleLabel?.textColor = .white
     }
     
     @IBAction func submitTapped(_ sender: Any) {
@@ -55,4 +60,7 @@ class SignUpViewController: UIViewController {
         submitHandler?(email, password)
     }
     
+    @IBAction func goToLoginTapped(_ sender: UIButton) {
+        goToLoginHandler?()
+    }
 }

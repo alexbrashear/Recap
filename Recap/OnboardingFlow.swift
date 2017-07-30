@@ -82,10 +82,17 @@ extension RootFlowCoordinator {
     func pushLoginController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.login.loginViewController() else { return }
         nc.setNavigationBarHidden(true, animated: false)
-        vc.goToSignUpAction = { [weak self, weak nc] in
+        
+        vc.goToSignUpAction = { [weak nc, weak self] in
             guard let nc = nc else { return }
-            self?.pushSignupController(onto: nc)
+            let previousIndex = nc.viewControllers.count - 2
+            if previousIndex >= 0, nc.viewControllers[previousIndex] is SignUpViewController {
+                nc.popViewController(animated: true)
+            } else {
+                self?.pushSignupController(onto: nc)
+            }
         }
+        
         vc.loginAction = { [weak self, weak nc, weak vc] email, password in
             HUD.show(.progress)
             self?.userController.loginUser(email: email, password: password) { result in
@@ -93,6 +100,7 @@ extension RootFlowCoordinator {
                 switch result {
                 case .success:
                     guard let nc = nc else { return }
+                    self?.onboardingCoordinator.complete(onboarding: .welcomeFlow)
                     self?.pushCameraViewController(onto: nc)
                 case let .error(userError):
                     vc?.present(userError.alert, animated: true, completion: nil)
@@ -109,6 +117,16 @@ extension RootFlowCoordinator {
         vc.submitHandler = { [weak self, weak nc] email, password in
             guard let nc = nc else { return }
             self?.pushEnterAddressController(onto: nc, email: email, password: password)
+        }
+        
+        vc.goToLoginHandler = { [weak nc, weak self] in
+            guard let nc = nc else { return }
+            let previousIndex = nc.viewControllers.count - 2
+            if previousIndex >= 0, nc.viewControllers[previousIndex] is LoginViewController {
+                nc.popViewController(animated: true)
+            } else {
+                self?.pushLoginController(onto: nc)
+            }
         }
         nc.pushViewController(vc, animated: true)
     }
