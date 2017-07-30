@@ -11,7 +11,6 @@ import Apollo
 import KeychainAccess
 
 typealias UserCallback = (Result<User, UserError>) -> ()
-typealias UsePhotoCallback = (Result<CompletePhoto, PhotoError>) -> ()
 
 class UserController {
     
@@ -109,13 +108,25 @@ extension UserController {
         }
     }
     
-    func usePhoto(photo: CreatePhotoInput, callback: @escaping UsePhotoCallback) {
-        graphql.client.perform(mutation: CreatePhotoMutation(input: photo)) { result, error in
-            guard let photo = result?.data?.createPhoto?.changedPhoto?.fragments.completePhoto, error == nil else {
-                callback(.error(.unknownFailure))
-                return
+    func usePhoto(photo: Photo, callback: @escaping UserCallback) {
+        guard let user = self.user else { callback(.error(.unknownFailure)); return }
+        let input = CreatePhotoInput(largeThumbnailUrl: photo.thumbnails.large.absoluteString,
+                                     expectedDeliveryDate: photo.expectedDeliveryDate,
+                                     imageUrl: photo.imageURL.absoluteString,
+                                     mediumThumbnailUrl: photo.thumbnails.medium.absoluteString,
+                                     filmId: user.filmId,
+                                     smallThumbnailUrl: photo.thumbnails.small.absoluteString,
+                                     userId: user.id)
+        let mut = CreatePhotoMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let completeUser = result?.data?.createPhoto?.changedPhoto?.user?.fragments.completeUser,
+                let user = User(completeUser: completeUser),
+                error == nil
+                else {
+                    callback(.error(.unknownFailure)); return
             }
-            callback(.success(photo))
+            self?.user = user
+            callback(.success(user))
         }
     }
     
@@ -141,6 +152,7 @@ enum UserError: Error {
     case signupFailed
     case updateAddressFailed
     case buyFilmFailed
+    case unknownFailure
     
     var localizedTitle: String {
         return "test"

@@ -24,28 +24,36 @@ extension RootFlowCoordinator {
 //            guard self?.filmController.canTakePhoto() ?? false else {
 //                return
 //            }
-            guard let address = self?.userController.user?.address else { return }
+            guard let address = self?.userController.user?.address,
+                let userId = self?.userController.user?.id else { return }
             PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
             PKHUD.sharedHUD.show()
             self?.postcardSender.send(image: image, to: address) { result in
                 let (photo, error) = result
                 DispatchQueue.main.async {
-                    PKHUD.sharedHUD.hide()
                     switch (photo, error) {
                     case let (_, .some(error)):
+                        PKHUD.sharedHUD.hide()
                         let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
                         vc?.present(alert, animated: true, completion: nil)
                     case (.none, .none):
+                        PKHUD.sharedHUD.hide()
                         let alert = UIAlertController.okAlert(title: "Sorry we couldn't send your recap", message: "Please try again or save the pic with the button in the bottom left.")
                         vc?.present(alert, animated: true, completion: nil)
                     case let (.some(photo), .none):
-//                        let input = CreatePhotoInput
-//                        let remainingPhotos = self?.filmController.useFilmSlot(photo) ?? 0
-//                        vc?.returnToCamera()
-//                        vc?.overlay.updateCount(to: )
-                        PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
-                        PKHUD.sharedHUD.show()
-                        PKHUD.sharedHUD.hide(afterDelay: 3.0)
+                        self?.userController.usePhoto(photo: photo) { result in
+                            PKHUD.sharedHUD.hide()
+                            switch result {
+                            case let .success(user):
+                                vc?.returnToCamera()
+                                vc?.overlay.updateCount(to: user.remainingPhotos)
+                                PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
+                                PKHUD.sharedHUD.show()
+                                PKHUD.sharedHUD.hide(afterDelay: 3.0)
+                            case let .error(userError):
+                                vc?.present(userError.alert, animated: true, completion: nil)
+                            }
+                        }
                     }
                 }
             }

@@ -16,8 +16,11 @@ extension Address {
 
 extension User {
     convenience init?(completeUser: CompleteUser) {
-        guard let completeAddress = completeUser.address?.fragments.completeAddress else { return nil }
+        guard let completeAddress = completeUser.address?.fragments.completeAddress,
+              let film = completeUser.film?.fragments.photosCount,
+              let usedPhotos = film.photos?.aggregations?.count else { return nil }
+        let remainingPhotos = film.capacity - usedPhotos
         let address = Address(completeAddress: completeAddress)
-        self.init(id: completeUser.id, username: completeUser.username, address: address, remainingPhotos: completeUser.remainingPhotos)
+        self.init(id: completeUser.id, filmId: film.id, username: completeUser.username, address: address, remainingPhotos: remainingPhotos)
     }
 }
