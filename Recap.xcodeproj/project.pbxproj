@@ -11,6 +11,7 @@
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		7EC37E0C7861A5BD4E105569 /* Pods_Recap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5DDE820945FAE41102A623 /* Pods_Recap.framework */; };
 		C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */; };
+		C30972501F2D26AC0040A72E /* Film.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C309724F1F2D26AC0040A72E /* Film.graphql */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
@@ -111,6 +112,7 @@
 		7E8D7D0C1E4A334099968D53 /* Pods_RecapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86480A54151BC1AE48383D52 /* Pods-Recap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recap/Pods-Recap.debug.xcconfig"; sourceTree = "<group>"; };
 		C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		C309724F1F2D26AC0040A72E /* Film.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Film.graphql; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 			isa = PBXGroup;
 			children = (
 				C37C2E3E1F117F74002DFE7D /* User.graphql */,
+				C309724F1F2D26AC0040A72E /* Film.graphql */,
 				C31E62AD1F26D5EC0084443A /* Photo.graphql */,
 				C3E60EF51F11B45B0068A28E /* schema.json */,
 				C3E60EF71F11B4FD0068A28E /* API.swift */,
@@ -638,6 +641,7 @@
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3E60EF61F11B45B0068A28E /* schema.json in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
+				C30972501F2D26AC0040A72E /* Film.graphql in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
 				C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */,
 				C3ADF1741ED3C5FF00BB8EFD /* SinglePhotoCell.xib in Resources */,

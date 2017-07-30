@@ -70,6 +70,33 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "getFilm",
+                        "description": "Get objects of type Film by id.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "id",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "SCALAR",
+                                        "name": "ID",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "getAddress",
                         "description": "Get objects of type Address by id.",
                         "type": {
@@ -241,6 +268,11 @@
                     {
                         "kind": "OBJECT",
                         "name": "Photo",
+                        "ofType": null
+                    },
+                    {
+                        "kind": "OBJECT",
+                        "name": "Film",
                         "ofType": null
                     },
                     {
@@ -502,6 +534,11 @@
                     },
                     {
                         "kind": "OBJECT",
+                        "name": "Film",
+                        "ofType": null
+                    },
+                    {
+                        "kind": "OBJECT",
                         "name": "Address",
                         "ofType": null
                     },
@@ -559,16 +596,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "remainingPhotos",
-                        "description": "Filter results for on the remainingPhotos field.",
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "UserRemainingPhotosWhereArgs",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "username",
                         "description": "Filter results for on the username field.",
                         "type": {
@@ -609,6 +636,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "film",
+                        "description": "Filter results based on a related object via the film connection",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "password",
                         "description": "Filter results for on the password field.",
                         "type": {
@@ -644,6 +681,16 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "UserAddressIdWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": "Filter results for on the filmId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "UserFilmIdWhereArgs",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -748,6 +795,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "film",
+                        "description": "Filter results based on a related object via the film connection",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "smallThumbnailURL",
                         "description": "Filter results for on the smallThumbnailURL field.",
                         "type": {
@@ -773,6 +830,16 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "UserWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": "Filter results for on the filmId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "PhotoFilmIdWhereArgs",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -1686,6 +1753,734 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "FilmWhereArgs",
+                "description": "Where filter arguments for the Film type",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "user",
+                        "description": "Filter results based on a related object via the user connection",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "UserWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "photos",
+                        "description": "Filter results based on a related object via the photos connection",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "PhotoWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "createdAt",
+                        "description": "Filter results for on the createdAt field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmCreatedAtWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": "Filter results for on the modifiedAt field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmModifiedAtWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": "Filter results for on the capacity field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmCapacityWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "id",
+                        "description": "Filter results for on the id field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmIdWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "userId",
+                        "description": "Filter results for on the userId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmUserIdWhereArgs",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "OR",
+                        "description": "Combine mutiple where expressions using the OR operator.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "FilmWhereArgs",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "AND",
+                        "description": "Combine mutiple where expressions using the AND operator.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "INPUT_OBJECT",
+                                "name": "FilmWhereArgs",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmCreatedAtWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmModifiedAtWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmCapacityWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "Int",
+                "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmIdWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmUserIdWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "PhotoSmallThumbnailUrlWhereArgs",
                 "description": null,
                 "fields": null,
@@ -2000,6 +2795,75 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "PhotoFilmIdWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "PhotoUserIdWhereArgs",
                 "description": null,
                 "fields": null,
@@ -2132,173 +2996,6 @@
                         "defaultValue": null
                     }
                 ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "UserRemainingPhotosWhereArgs",
-                "description": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "eq",
-                        "description": "Equal to. This takes a higher precedence than the other operators.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "ne",
-                        "description": "Not equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "gt",
-                        "description": "Greater than.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "gte",
-                        "description": "Greater than or equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lt",
-                        "description": "Less than.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lte",
-                        "description": "Less than or equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "between",
-                        "description": "A two element tuple describing a range of values.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notBetween",
-                        "description": "A two element tuple describing an excluded range of values.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "in",
-                        "description": "A list of values to include.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notIn",
-                        "description": "A list of values to exclude.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "like",
-                        "description": "A pattern to match for likeness.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notLike",
-                        "description": "A pattern to match for likeness and exclude.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "isNull",
-                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Boolean",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "Int",
-                "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
-                "fields": null,
-                "inputFields": null,
                 "interfaces": null,
                 "enumValues": null,
                 "possibleTypes": null
@@ -5944,6 +6641,75 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "UserFilmIdWhereArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "UserOrderByArgs",
                 "description": null,
                 "fields": null,
@@ -5983,12 +6749,6 @@
                 "enumValues": [
                     {
                         "name": "id",
-                        "description": null,
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "remainingPhotos",
                         "description": null,
                         "isDeprecated": false,
                         "deprecationReason": null
@@ -6294,22 +7054,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "remainingPhotos",
-                        "description": "The number of photos the User has left.",
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "username",
                         "description": "The user's username.",
                         "type": {
@@ -6364,6 +7108,18 @@
                                 "name": "DateTime",
                                 "ofType": null
                             }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "film",
+                        "description": "The reverse field of 'user' in M:1 connection\n            with type 'undefined'.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
                         },
                         "args": [],
                         "isDeprecated": false,
@@ -6769,6 +7525,18 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "film",
+                        "description": "The reverse field of 'photos' in M:1 connection\n            with type 'Photo'.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "smallThumbnailURL",
                         "description": null,
                         "type": {
@@ -6803,6 +7571,181 @@
                             "kind": "OBJECT",
                             "name": "User",
                             "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [
+                    {
+                        "kind": "INTERFACE",
+                        "name": "Node",
+                        "ofType": null
+                    },
+                    {
+                        "kind": "INTERFACE",
+                        "name": "Timestamped",
+                        "ofType": null
+                    }
+                ],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "Film",
+                "description": "The Film type",
+                "fields": [
+                    {
+                        "name": "user",
+                        "description": null,
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "User",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "photos",
+                        "description": null,
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "PhotoConnection",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "where",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "PhotoWhereArgs",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "orderBy",
+                                "description": null,
+                                "type": {
+                                    "kind": "LIST",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "PhotoOrderByArgs",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "first",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "after",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "last",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "before",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "createdAt",
+                        "description": "When paired with the Node interface, this is an automatically managed\n          timestamp that is set when an object is first created.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": "When paired with the Node interface, this is an automatically managed\n          timestamp that is set whenever an object is mutated.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": "the amount of photos allowed to take",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "id",
+                        "description": "A globally unique ID.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
                         },
                         "args": [],
                         "isDeprecated": false,
@@ -7650,30 +8593,6 @@
                         "deprecationReason": null
                     },
                     {
-                        "name": "avg",
-                        "description": "Returns the average value for fields in the connection",
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "UserAggregationsAvg",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
-                        "name": "sum",
-                        "description": "The sum of the values in a field",
-                        "type": {
-                            "kind": "OBJECT",
-                            "name": "UserAggregationsSum",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
-                    {
                         "name": "min",
                         "description": "The minimum value for the field",
                         "type": {
@@ -7705,77 +8624,9 @@
             },
             {
                 "kind": "OBJECT",
-                "name": "UserAggregationsAvg",
-                "description": null,
-                "fields": [
-                    {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Float",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "inputFields": null,
-                "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "SCALAR",
-                "name": "Float",
-                "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
-                "fields": null,
-                "inputFields": null,
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "OBJECT",
-                "name": "UserAggregationsSum",
-                "description": null,
-                "fields": [
-                    {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    }
-                ],
-                "inputFields": null,
-                "interfaces": [],
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "OBJECT",
                 "name": "UserAggregationsMin",
                 "description": null,
                 "fields": [
-                    {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
                     {
                         "name": "username",
                         "description": null,
@@ -7835,18 +8686,6 @@
                 "name": "UserAggregationsMax",
                 "description": null,
                 "fields": [
-                    {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "args": [],
-                        "isDeprecated": false,
-                        "deprecationReason": null
-                    },
                     {
                         "name": "username",
                         "description": null,
@@ -7950,6 +8789,83 @@
                                     "ofType": {
                                         "kind": "INPUT_OBJECT",
                                         "name": "RoleOrderByArgs",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "first",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "after",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "last",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "Int",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "before",
+                                "description": null,
+                                "type": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "allFilms",
+                        "description": "Sift through all objects of type 'Film'.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmConnection",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "where",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "FilmWhereArgs",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "orderBy",
+                                "description": null,
+                                "type": {
+                                    "kind": "LIST",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "FilmOrderByArgs",
                                         "ofType": null
                                     }
                                 },
@@ -8341,6 +9257,391 @@
                                 "name": "String",
                                 "ofType": null
                             }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmOrderByArgs",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "field",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "FilmOrderByField",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "direction",
+                        "description": null,
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "OrderByDirection",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "FilmOrderByField",
+                "description": "Values for the FilmOrderByField enum",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "id",
+                        "description": null,
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmConnection",
+                "description": "An edge wraps a node and a cursor. Edges are returned by\n      Connection types as a standard way to paginate through connection values.",
+                "fields": [
+                    {
+                        "name": "edges",
+                        "description": "The set of edges in this page.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "FilmEdge",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "pageInfo",
+                        "description": "Metadata on the current page of data.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "PageInfo",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "aggregations",
+                        "description": "Aggregation operators for the Film type.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmAggregations",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmEdge",
+                "description": "An edge wraps a node and a cursor. Edges are returned by\n      Connection types as a standard way to paginate through connection values.",
+                "fields": [
+                    {
+                        "name": "node",
+                        "description": "The node value for the edge.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "OBJECT",
+                                "name": "Film",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "cursor",
+                        "description": "An opaque cursor pointing to an object in a connection.\n          Used by the 'after' and 'before' pagination arguments.",
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmAggregations",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "count",
+                        "description": "Returns the number of objects in the connection.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "avg",
+                        "description": "Returns the average value for fields in the connection",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmAggregationsAvg",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "sum",
+                        "description": "The sum of the values in a field",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmAggregationsSum",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "min",
+                        "description": "The minimum value for the field",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmAggregationsMin",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "max",
+                        "description": "The maximum value for the field",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmAggregationsMax",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmAggregationsAvg",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Float",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "SCALAR",
+                "name": "Float",
+                "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). ",
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmAggregationsSum",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmAggregationsMin",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmAggregationsMax",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "createdAt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
                         },
                         "args": [],
                         "isDeprecated": false,
@@ -11493,6 +12794,87 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "createFilm",
+                        "description": "Create objects of type Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "CreateFilmPayload",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "CreateFilmInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updateFilm",
+                        "description": "Update objects of type Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "UpdateFilmPayload",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "UpdateFilmInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "deleteFilm",
+                        "description": "Delete objects of type Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "DeleteFilmPayload",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "input",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "INPUT_OBJECT",
+                                        "name": "DeleteFilmInput",
+                                        "ofType": null
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "createAddress",
                         "description": "Create objects of type Address.",
                         "type": {
@@ -13742,6 +15124,150 @@
             },
             {
                 "kind": "INPUT_OBJECT",
+                "name": "CreateFilmInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "user",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "CreateUserInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "userId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "CreateUserInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "username",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "address",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "CreateAddressInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "addressId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "film",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "CreateFilmInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "password",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Secret",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
                 "name": "CreateAddressInput",
                 "description": null,
                 "fields": null,
@@ -13862,51 +15388,72 @@
                 "possibleTypes": null
             },
             {
+                "kind": "OBJECT",
+                "name": "CreateFilmPayload",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "changedFilm",
+                        "description": "The mutated Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "changedEdge",
+                        "description": "An edge containing the mutated Film. Use this to update your client side cache.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmEdge",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "viewer",
+                        "description": "A view port into your application.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Viewer",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": "An opaque string used by frontend frameworks like relay to track requests and responses.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateUserInput",
+                "name": "UpdateFilmInput",
                 "description": null,
                 "fields": null,
                 "inputFields": [
                     {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "username",
-                        "description": null,
-                        "type": {
-                            "kind": "NON_NULL",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "address",
-                        "description": null,
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "CreateAddressInput",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "addressId",
+                        "name": "userId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -13916,14 +15463,24 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "password",
+                        "name": "capacity",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "id",
                         "description": null,
                         "type": {
                             "kind": "NON_NULL",
                             "name": null,
                             "ofType": {
                                 "kind": "SCALAR",
-                                "name": "Secret",
+                                "name": "ID",
                                 "ofType": null
                             }
                         },
@@ -13931,16 +15488,169 @@
                     },
                     {
                         "name": "clientMutationId",
-                        "description": null,
+                        "description": "An opaque string used by frontend frameworks like relay to track requests and responses.",
                         "type": {
                             "kind": "SCALAR",
-                            "name": "ID",
+                            "name": "String",
                             "ofType": null
                         },
                         "defaultValue": null
                     }
                 ],
                 "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "UpdateFilmPayload",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "changedFilm",
+                        "description": "The mutated Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "changedEdge",
+                        "description": "An edge containing the mutated Film. Use this to update your client side cache.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmEdge",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "viewer",
+                        "description": "A view port into your application.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Viewer",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": "An opaque string used by frontend frameworks like relay to track requests and responses.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "DeleteFilmInput",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "id",
+                        "description": null,
+                        "type": {
+                            "kind": "NON_NULL",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": "An opaque string used by frontend frameworks like relay to track requests and responses.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "DeleteFilmPayload",
+                "description": null,
+                "fields": [
+                    {
+                        "name": "changedFilm",
+                        "description": "The mutated Film.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "changedEdge",
+                        "description": "An edge containing the mutated Film. Use this to update your client side cache.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmEdge",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "viewer",
+                        "description": "A view port into your application.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Viewer",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "clientMutationId",
+                        "description": "An opaque string used by frontend frameworks like relay to track requests and responses.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
                 "enumValues": null,
                 "possibleTypes": null
             },
@@ -14353,16 +16063,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "remainingPhotos",
-                        "description": null,
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "username",
                         "description": null,
                         "type": {
@@ -14374,6 +16074,16 @@
                     },
                     {
                         "name": "addressId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",
@@ -14623,6 +16333,26 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "film",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "CreateFilmInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "smallThumbnailURL",
                         "description": null,
                         "type": {
@@ -14782,6 +16512,16 @@
                         "type": {
                             "kind": "SCALAR",
                             "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -15451,6 +17191,47 @@
                                         "ofType": {
                                             "kind": "ENUM",
                                             "name": "RoleMutationEvent",
+                                            "ofType": null
+                                        }
+                                    }
+                                },
+                                "defaultValue": null
+                            }
+                        ],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "subscribeToFilm",
+                        "description": null,
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmSubscriptionPayload",
+                            "ofType": null
+                        },
+                        "args": [
+                            {
+                                "name": "filter",
+                                "description": null,
+                                "type": {
+                                    "kind": "INPUT_OBJECT",
+                                    "name": "FilmSubscriptionFilter",
+                                    "ofType": null
+                                },
+                                "defaultValue": null
+                            },
+                            {
+                                "name": "mutations",
+                                "description": null,
+                                "type": {
+                                    "kind": "NON_NULL",
+                                    "name": null,
+                                    "ofType": {
+                                        "kind": "LIST",
+                                        "name": null,
+                                        "ofType": {
+                                            "kind": "ENUM",
+                                            "name": "FilmMutationEvent",
                                             "ofType": null
                                         }
                                     }
@@ -16285,6 +18066,772 @@
                         "type": {
                             "kind": "OBJECT",
                             "name": "RoleEdge",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "inputFields": null,
+                "interfaces": [],
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmSubscriptionFilter",
+                "description": "Subscription filter arguments for the Film type",
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "createdAt",
+                        "description": "Filter results for on the createdAt field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmCreatedAtSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "modifiedAt",
+                        "description": "Filter results for on the modifiedAt field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmModifiedAtSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "capacity",
+                        "description": "Filter results for on the capacity field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmCapacitySubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "id",
+                        "description": "Filter results for on the id field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmIdSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "userId",
+                        "description": "Filter results for on the userId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "FilmUserIdSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmCreatedAtSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "matches",
+                        "description": "A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notMatches",
+                        "description": "A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmModifiedAtSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "DateTime",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "DateTime",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "matches",
+                        "description": "A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notMatches",
+                        "description": "A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmCapacitySubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gt",
+                        "description": "Greater than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "gte",
+                        "description": "Greater than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lt",
+                        "description": "Less than.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "lte",
+                        "description": "Less than or equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "ne",
+                        "description": "Not equal to.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Int",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "between",
+                        "description": "A two element tuple describing a range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notBetween",
+                        "description": "A two element tuple describing an excluded range of values.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "Int",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "like",
+                        "description": "A pattern to match for likeness.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notLike",
+                        "description": "A pattern to match for likeness and exclude.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "matches",
+                        "description": "A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notMatches",
+                        "description": "A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "isNull",
+                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "Boolean",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmIdSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "FilmUserIdSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "ENUM",
+                "name": "FilmMutationEvent",
+                "description": null,
+                "fields": null,
+                "inputFields": null,
+                "interfaces": null,
+                "enumValues": [
+                    {
+                        "name": "createFilm",
+                        "description": "Subscribe to this event to be notified after every createFilm mutation.",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "updateFilm",
+                        "description": "Subscribe to this event to be notified after every updateFilm mutation.",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "deleteFilm",
+                        "description": "Subscribe to this event to be notified after every deleteFilm mutation.",
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    }
+                ],
+                "possibleTypes": null
+            },
+            {
+                "kind": "OBJECT",
+                "name": "FilmSubscriptionPayload",
+                "description": "A payload wrapper for mutation operations.",
+                "fields": [
+                    {
+                        "name": "mutation",
+                        "description": "The type of mutation operation that triggered this subscription.",
+                        "type": {
+                            "kind": "ENUM",
+                            "name": "FilmMutationEvent",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "value",
+                        "description": "The object that was just mutated.",
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "Film",
+                            "ofType": null
+                        },
+                        "args": [],
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
+                        "name": "edge",
+                        "description": null,
+                        "type": {
+                            "kind": "OBJECT",
+                            "name": "FilmEdge",
                             "ofType": null
                         },
                         "args": [],
@@ -18015,16 +20562,6 @@
                         "defaultValue": null
                     },
                     {
-                        "name": "remainingPhotos",
-                        "description": "Filter results for on the remainingPhotos field.",
-                        "type": {
-                            "kind": "INPUT_OBJECT",
-                            "name": "UserRemainingPhotosSubscriptionFilters",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
                         "name": "username",
                         "description": "Filter results for on the username field.",
                         "type": {
@@ -18083,6 +20620,16 @@
                             "ofType": null
                         },
                         "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": "Filter results for on the filmId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "UserFilmIdSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -18130,183 +20677,6 @@
                                 "name": "ID",
                                 "ofType": null
                             }
-                        },
-                        "defaultValue": null
-                    }
-                ],
-                "interfaces": null,
-                "enumValues": null,
-                "possibleTypes": null
-            },
-            {
-                "kind": "INPUT_OBJECT",
-                "name": "UserRemainingPhotosSubscriptionFilters",
-                "description": null,
-                "fields": null,
-                "inputFields": [
-                    {
-                        "name": "eq",
-                        "description": "Equal to. This takes a higher precedence than the other operators.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "gt",
-                        "description": "Greater than.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "gte",
-                        "description": "Greater than or equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lt",
-                        "description": "Less than.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "lte",
-                        "description": "Less than or equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "ne",
-                        "description": "Not equal to.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Int",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "between",
-                        "description": "A two element tuple describing a range of values.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notBetween",
-                        "description": "A two element tuple describing an excluded range of values.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "in",
-                        "description": "A list of values to include.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notIn",
-                        "description": "A list of values to exclude.",
-                        "type": {
-                            "kind": "LIST",
-                            "name": null,
-                            "ofType": {
-                                "kind": "SCALAR",
-                                "name": "Int",
-                                "ofType": null
-                            }
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "like",
-                        "description": "A pattern to match for likeness.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notLike",
-                        "description": "A pattern to match for likeness and exclude.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "matches",
-                        "description": "A regular expression to match on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "notMatches",
-                        "description": "A regular expression to reject on. Note that unlike 'like' this uses regular expression syntax instead of SQL like syntax.",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "String",
-                            "ofType": null
-                        },
-                        "defaultValue": null
-                    },
-                    {
-                        "name": "isNull",
-                        "description": "Filters for null values. This takes precedence after 'eq' but before all other fields",
-                        "type": {
-                            "kind": "SCALAR",
-                            "name": "Boolean",
-                            "ofType": null
                         },
                         "defaultValue": null
                     }
@@ -19250,6 +21620,55 @@
                 "possibleTypes": null
             },
             {
+                "kind": "INPUT_OBJECT",
+                "name": "UserFilmIdSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
                 "kind": "ENUM",
                 "name": "UserMutationEvent",
                 "description": null,
@@ -19413,6 +21832,16 @@
                         "type": {
                             "kind": "INPUT_OBJECT",
                             "name": "PhotoModifiedAtSubscriptionFilters",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "filmId",
+                        "description": "Filter results for on the filmId field.",
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "PhotoFilmIdSubscriptionFilters",
                             "ofType": null
                         },
                         "defaultValue": null
@@ -20712,6 +23141,55 @@
                             "kind": "SCALAR",
                             "name": "Boolean",
                             "ofType": null
+                        },
+                        "defaultValue": null
+                    }
+                ],
+                "interfaces": null,
+                "enumValues": null,
+                "possibleTypes": null
+            },
+            {
+                "kind": "INPUT_OBJECT",
+                "name": "PhotoFilmIdSubscriptionFilters",
+                "description": null,
+                "fields": null,
+                "inputFields": [
+                    {
+                        "name": "eq",
+                        "description": "Equal to. This takes a higher precedence than the other operators.",
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "ID",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "in",
+                        "description": "A list of values to include.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "notIn",
+                        "description": "A list of values to exclude.",
+                        "type": {
+                            "kind": "LIST",
+                            "name": null,
+                            "ofType": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            }
                         },
                         "defaultValue": null
                     }

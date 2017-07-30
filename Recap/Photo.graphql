@@ -2,7 +2,12 @@
 mutation CreatePhoto($input: CreatePhotoInput!) {
     createPhoto(input: $input) {
         changedPhoto {
-            ...completePhoto
+            film {
+                ...completeFilm
+            }
+            user {
+                ...completeUser
+            }
         }
     }
 }

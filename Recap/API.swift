@@ -2,19 +2,35 @@
 
 import Apollo
 
+public struct UpdateFilmInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(userId: GraphQLID? = nil, capacity: Int? = nil, id: GraphQLID, clientMutationId: String? = nil) {
+    graphQLMap = ["userId": userId, "capacity": capacity, "id": id, "clientMutationId": clientMutationId]
+  }
+}
+
 public struct CreatePhotoInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, smallThumbnailUrl: String? = nil, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
-    graphQLMap = ["largeThumbnailURL": largeThumbnailUrl, "expectedDeliveryDate": expectedDeliveryDate, "imageURL": imageUrl, "mediumThumbnailURL": mediumThumbnailUrl, "smallThumbnailURL": smallThumbnailUrl, "user": user, "userId": userId, "clientMutationId": clientMutationId]
+  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, smallThumbnailUrl: String? = nil, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
+    graphQLMap = ["largeThumbnailURL": largeThumbnailUrl, "expectedDeliveryDate": expectedDeliveryDate, "imageURL": imageUrl, "mediumThumbnailURL": mediumThumbnailUrl, "film": film, "filmId": filmId, "smallThumbnailURL": smallThumbnailUrl, "user": user, "userId": userId, "clientMutationId": clientMutationId]
+  }
+}
+
+public struct CreateFilmInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(user: CreateUserInput? = nil, userId: GraphQLID? = nil, capacity: Int, clientMutationId: GraphQLID? = nil) {
+    graphQLMap = ["user": user, "userId": userId, "capacity": capacity, "clientMutationId": clientMutationId]
   }
 }
 
 public struct CreateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(remainingPhotos: Int, username: String, address: CreateAddressInput? = nil, addressId: GraphQLID? = nil, password: String, clientMutationId: GraphQLID? = nil) {
-    graphQLMap = ["remainingPhotos": remainingPhotos, "username": username, "address": address, "addressId": addressId, "password": password, "clientMutationId": clientMutationId]
+  public init(username: String, address: CreateAddressInput? = nil, addressId: GraphQLID? = nil, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, password: String, clientMutationId: GraphQLID? = nil) {
+    graphQLMap = ["username": username, "address": address, "addressId": addressId, "film": film, "filmId": filmId, "password": password, "clientMutationId": clientMutationId]
   }
 }
 
@@ -45,8 +61,83 @@ public struct UpdateAddressInput: GraphQLMapConvertible {
 public struct UpdateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, remainingPhotos: Int? = nil, username: String? = nil, addressId: GraphQLID? = nil, password: String? = nil, clientMutationId: String? = nil) {
-    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "username": username, "addressId": addressId, "password": password, "clientMutationId": clientMutationId]
+  public init(id: GraphQLID, username: String? = nil, addressId: GraphQLID? = nil, filmId: GraphQLID? = nil, password: String? = nil, clientMutationId: String? = nil) {
+    graphQLMap = ["id": id, "username": username, "addressId": addressId, "filmId": filmId, "password": password, "clientMutationId": clientMutationId]
+  }
+}
+
+public final class BuyFilmMutation: GraphQLMutation {
+  public static let operationDefinition =
+    "mutation BuyFilm($input: UpdateFilmInput!) {" +
+    "  updateFilm(input: $input) {" +
+    "    __typename" +
+    "    viewer {" +
+    "      __typename" +
+    "      user {" +
+    "        __typename" +
+    "        ...completeUser" +
+    "      }" +
+    "    }" +
+    "  }" +
+    "}"
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+
+  public let input: UpdateFilmInput
+
+  public init(input: UpdateFilmInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    /// Update objects of type Film.
+    public let updateFilm: UpdateFilm?
+
+    public init(reader: GraphQLResultReader) throws {
+      updateFilm = try reader.optionalValue(for: Field(responseName: "updateFilm", arguments: ["input": reader.variables["input"]]))
+    }
+
+    public struct UpdateFilm: GraphQLMappable {
+      public let __typename: String
+      /// A view port into your application.
+      public let viewer: Viewer?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        viewer = try reader.optionalValue(for: Field(responseName: "viewer"))
+      }
+
+      public struct Viewer: GraphQLMappable {
+        public let __typename: String
+        /// Returns the currently logged in user and is also the entry point for queries that leverage RELATION scoped permissions.
+        public let user: User?
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+          user = try reader.optionalValue(for: Field(responseName: "user"))
+        }
+
+        public struct User: GraphQLMappable {
+          public let __typename: String
+
+          public let fragments: Fragments
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+
+            let completeUser = try CompleteUser(reader: reader)
+            fragments = Fragments(completeUser: completeUser)
+          }
+
+          public struct Fragments {
+            public let completeUser: CompleteUser
+          }
+        }
+      }
+    }
   }
 }
 
@@ -57,11 +148,18 @@ public final class CreatePhotoMutation: GraphQLMutation {
     "    __typename" +
     "    changedPhoto {" +
     "      __typename" +
-    "      ...completePhoto" +
+    "      film {" +
+    "        __typename" +
+    "        ...completeFilm" +
+    "      }" +
+    "      user {" +
+    "        __typename" +
+    "        ...completeUser" +
+    "      }" +
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteFilm.fragmentDefinition).appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let input: CreatePhotoInput
 
@@ -93,18 +191,51 @@ public final class CreatePhotoMutation: GraphQLMutation {
 
       public struct ChangedPhoto: GraphQLMappable {
         public let __typename: String
-
-        public let fragments: Fragments
+        /// The reverse field of 'photos' in M:1 connection
+        /// with type 'Photo'.
+        public let film: Film?
+        /// The reverse field of 'photos' in M:1 connection
+        /// with type 'Photo'.
+        public let user: User?
 
         public init(reader: GraphQLResultReader) throws {
           __typename = try reader.value(for: Field(responseName: "__typename"))
-
-          let completePhoto = try CompletePhoto(reader: reader)
-          fragments = Fragments(completePhoto: completePhoto)
+          film = try reader.optionalValue(for: Field(responseName: "film"))
+          user = try reader.optionalValue(for: Field(responseName: "user"))
         }
 
-        public struct Fragments {
-          public let completePhoto: CompletePhoto
+        public struct Film: GraphQLMappable {
+          public let __typename: String
+
+          public let fragments: Fragments
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+
+            let completeFilm = try CompleteFilm(reader: reader)
+            fragments = Fragments(completeFilm: completeFilm)
+          }
+
+          public struct Fragments {
+            public let completeFilm: CompleteFilm
+          }
+        }
+
+        public struct User: GraphQLMappable {
+          public let __typename: String
+
+          public let fragments: Fragments
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+
+            let completeUser = try CompleteUser(reader: reader)
+            fragments = Fragments(completeUser: completeUser)
+          }
+
+          public struct Fragments {
+            public let completeUser: CompleteUser
+          }
         }
       }
     }
@@ -123,7 +254,7 @@ public final class SignupUserMutation: GraphQLMutation {
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let user: CreateUserInput
 
@@ -190,7 +321,7 @@ public final class LoginUserMutation: GraphQLMutation {
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let input: LoginUserInput
 
@@ -259,7 +390,7 @@ public final class UpdateAddressMutation: GraphQLMutation {
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let input: UpdateAddressInput
 
@@ -341,7 +472,7 @@ public final class UpdateUserMutation: GraphQLMutation {
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let input: UpdateUserInput
 
@@ -386,6 +517,137 @@ public final class UpdateUserMutation: GraphQLMutation {
         public struct Fragments {
           public let completeUser: CompleteUser
         }
+      }
+    }
+  }
+}
+
+public struct CompleteFilm: GraphQLNamedFragment {
+  public static let fragmentDefinition =
+    "fragment completeFilm on Film {" +
+    "  __typename" +
+    "  id" +
+    "  capacity" +
+    "  photos {" +
+    "    __typename" +
+    "    aggregations {" +
+    "      __typename" +
+    "      count" +
+    "    }" +
+    "  }" +
+    "  user {" +
+    "    __typename" +
+    "    ...completeUser" +
+    "  }" +
+    "}"
+
+  public static let possibleTypes = ["Film"]
+
+  public let __typename: String
+  /// A globally unique ID.
+  public let id: GraphQLID
+  /// the amount of photos allowed to take
+  public let capacity: Int
+  public let photos: Photo?
+  public let user: User?
+
+  public init(reader: GraphQLResultReader) throws {
+    __typename = try reader.value(for: Field(responseName: "__typename"))
+    id = try reader.value(for: Field(responseName: "id"))
+    capacity = try reader.value(for: Field(responseName: "capacity"))
+    photos = try reader.optionalValue(for: Field(responseName: "photos"))
+    user = try reader.optionalValue(for: Field(responseName: "user"))
+  }
+
+  public struct Photo: GraphQLMappable {
+    public let __typename: String
+    /// Aggregation operators for the Photo type.
+    public let aggregations: Aggregation?
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+      aggregations = try reader.optionalValue(for: Field(responseName: "aggregations"))
+    }
+
+    public struct Aggregation: GraphQLMappable {
+      public let __typename: String
+      /// Returns the number of objects in the connection.
+      public let count: Int?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        count = try reader.optionalValue(for: Field(responseName: "count"))
+      }
+    }
+  }
+
+  public struct User: GraphQLMappable {
+    public let __typename: String
+
+    public let fragments: Fragments
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+
+      let completeUser = try CompleteUser(reader: reader)
+      fragments = Fragments(completeUser: completeUser)
+    }
+
+    public struct Fragments {
+      public let completeUser: CompleteUser
+    }
+  }
+}
+
+public struct PhotosCount: GraphQLNamedFragment {
+  public static let fragmentDefinition =
+    "fragment photosCount on Film {" +
+    "  __typename" +
+    "  id" +
+    "  capacity" +
+    "  photos {" +
+    "    __typename" +
+    "    aggregations {" +
+    "      __typename" +
+    "      count" +
+    "    }" +
+    "  }" +
+    "}"
+
+  public static let possibleTypes = ["Film"]
+
+  public let __typename: String
+  /// A globally unique ID.
+  public let id: GraphQLID
+  /// the amount of photos allowed to take
+  public let capacity: Int
+  public let photos: Photo?
+
+  public init(reader: GraphQLResultReader) throws {
+    __typename = try reader.value(for: Field(responseName: "__typename"))
+    id = try reader.value(for: Field(responseName: "id"))
+    capacity = try reader.value(for: Field(responseName: "capacity"))
+    photos = try reader.optionalValue(for: Field(responseName: "photos"))
+  }
+
+  public struct Photo: GraphQLMappable {
+    public let __typename: String
+    /// Aggregation operators for the Photo type.
+    public let aggregations: Aggregation?
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+      aggregations = try reader.optionalValue(for: Field(responseName: "aggregations"))
+    }
+
+    public struct Aggregation: GraphQLMappable {
+      public let __typename: String
+      /// Returns the number of objects in the connection.
+      public let count: Int?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        count = try reader.optionalValue(for: Field(responseName: "count"))
       }
     }
   }
@@ -440,7 +702,10 @@ public struct CompleteUser: GraphQLNamedFragment {
     "    __typename" +
     "    ...completeAddress" +
     "  }" +
-    "  remainingPhotos" +
+    "  film {" +
+    "    __typename" +
+    "    ...photosCount" +
+    "  }" +
     "  photos {" +
     "    __typename" +
     "    edges {" +
@@ -461,8 +726,9 @@ public struct CompleteUser: GraphQLNamedFragment {
   /// The user's username.
   public let username: String
   public let address: Address?
-  /// The number of photos the User has left.
-  public let remainingPhotos: Int
+  /// The reverse field of 'user' in M:1 connection
+  /// with type 'undefined'.
+  public let film: Film?
   /// A collection of Photos the user has sent.
   public let photos: Photo?
 
@@ -471,7 +737,7 @@ public struct CompleteUser: GraphQLNamedFragment {
     id = try reader.value(for: Field(responseName: "id"))
     username = try reader.value(for: Field(responseName: "username"))
     address = try reader.optionalValue(for: Field(responseName: "address"))
-    remainingPhotos = try reader.value(for: Field(responseName: "remainingPhotos"))
+    film = try reader.optionalValue(for: Field(responseName: "film"))
     photos = try reader.optionalValue(for: Field(responseName: "photos"))
   }
 
@@ -489,6 +755,23 @@ public struct CompleteUser: GraphQLNamedFragment {
 
     public struct Fragments {
       public let completeAddress: CompleteAddress
+    }
+  }
+
+  public struct Film: GraphQLMappable {
+    public let __typename: String
+
+    public let fragments: Fragments
+
+    public init(reader: GraphQLResultReader) throws {
+      __typename = try reader.value(for: Field(responseName: "__typename"))
+
+      let photosCount = try PhotosCount(reader: reader)
+      fragments = Fragments(photosCount: photosCount)
+    }
+
+    public struct Fragments {
+      public let photosCount: PhotosCount
     }
   }
 

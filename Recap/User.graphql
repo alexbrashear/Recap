@@ -41,7 +41,9 @@ fragment completeUser on User {
     address {
         ...completeAddress
     }
-    remainingPhotos
+    film {
+        ...photosCount
+    }
     photos {
         edges {
             node {

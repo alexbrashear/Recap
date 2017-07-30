@@ -1,0 +1,32 @@
+mutation BuyFilm($input: UpdateFilmInput!) {
+    updateFilm(input: $input) {
+        viewer {
+            user {
+                ...completeUser
+            }
+        }
+    }
+}
+
+fragment completeFilm on Film {
+    id
+    capacity
+    photos {
+        aggregations {
+            count
+        }
+    }
+    user {
+        ...completeUser
+    }
+}
+
+fragment photosCount on Film {
+    id
+    capacity
+    photos {
+        aggregations {
+            count
+        }
+    }
+}
