@@ -1,9 +1,7 @@
-mutation BuyFilm($input: UpdateFilmInput!) {
-    updateFilm(input: $input) {
-        viewer {
-            user {
-                ...completeUser
-            }
+mutation BuyFilm($input: CreateFilmInput!) {
+    createFilm(input: $input) {
+        changedFilm {
+            ...completeFilm
         }
     }
 }

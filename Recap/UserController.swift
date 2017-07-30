@@ -132,10 +132,10 @@ extension UserController {
     
     func buyFilm(capacity: Int, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
-        let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
-        let mut = UpdateUserMutation(input: input)
+        let input = CreateFilmInput(userId: user.id, capacity: user.remainingPhotos + capacity)
+        let mut = BuyFilmMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let completeUser = result?.data?.updateUser?.changedUser?.fragments.completeUser,
+            guard let completeUser = result?.data?.createFilm?.changedFilm?.fragments.completeFilm.user?.fragments.completeUser,
                 let user = User(completeUser: completeUser),
                 error == nil
             else {

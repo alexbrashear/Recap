@@ -2,22 +2,6 @@
 
 import Apollo
 
-public struct UpdateFilmInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  public init(userId: GraphQLID? = nil, capacity: Int? = nil, id: GraphQLID, clientMutationId: String? = nil) {
-    graphQLMap = ["userId": userId, "capacity": capacity, "id": id, "clientMutationId": clientMutationId]
-  }
-}
-
-public struct CreatePhotoInput: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, smallThumbnailUrl: String? = nil, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
-    graphQLMap = ["largeThumbnailURL": largeThumbnailUrl, "expectedDeliveryDate": expectedDeliveryDate, "imageURL": imageUrl, "mediumThumbnailURL": mediumThumbnailUrl, "film": film, "filmId": filmId, "smallThumbnailURL": smallThumbnailUrl, "user": user, "userId": userId, "clientMutationId": clientMutationId]
-  }
-}
-
 public struct CreateFilmInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -39,6 +23,14 @@ public struct CreateAddressInput: GraphQLMapConvertible {
 
   public init(user: CreateUserInput? = nil, userId: GraphQLID? = nil, city: String, secondaryLine: String? = nil, name: String, primaryLine: String, zipCode: String, state: String, clientMutationId: GraphQLID? = nil) {
     graphQLMap = ["user": user, "userId": userId, "city": city, "secondaryLine": secondaryLine, "name": name, "primaryLine": primaryLine, "zipCode": zipCode, "state": state, "clientMutationId": clientMutationId]
+  }
+}
+
+public struct CreatePhotoInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, smallThumbnailUrl: String? = nil, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
+    graphQLMap = ["largeThumbnailURL": largeThumbnailUrl, "expectedDeliveryDate": expectedDeliveryDate, "imageURL": imageUrl, "mediumThumbnailURL": mediumThumbnailUrl, "film": film, "filmId": filmId, "smallThumbnailURL": smallThumbnailUrl, "user": user, "userId": userId, "clientMutationId": clientMutationId]
   }
 }
 
@@ -68,23 +60,20 @@ public struct UpdateUserInput: GraphQLMapConvertible {
 
 public final class BuyFilmMutation: GraphQLMutation {
   public static let operationDefinition =
-    "mutation BuyFilm($input: UpdateFilmInput!) {" +
-    "  updateFilm(input: $input) {" +
+    "mutation BuyFilm($input: CreateFilmInput!) {" +
+    "  createFilm(input: $input) {" +
     "    __typename" +
-    "    viewer {" +
+    "    changedFilm {" +
     "      __typename" +
-    "      user {" +
-    "        __typename" +
-    "        ...completeUser" +
-    "      }" +
+    "      ...completeFilm" +
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+  public static let queryDocument = operationDefinition.appending(CompleteFilm.fragmentDefinition).appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
-  public let input: UpdateFilmInput
+  public let input: CreateFilmInput
 
-  public init(input: UpdateFilmInput) {
+  public init(input: CreateFilmInput) {
     self.input = input
   }
 
@@ -93,48 +82,37 @@ public final class BuyFilmMutation: GraphQLMutation {
   }
 
   public struct Data: GraphQLMappable {
-    /// Update objects of type Film.
-    public let updateFilm: UpdateFilm?
+    /// Create objects of type Film.
+    public let createFilm: CreateFilm?
 
     public init(reader: GraphQLResultReader) throws {
-      updateFilm = try reader.optionalValue(for: Field(responseName: "updateFilm", arguments: ["input": reader.variables["input"]]))
+      createFilm = try reader.optionalValue(for: Field(responseName: "createFilm", arguments: ["input": reader.variables["input"]]))
     }
 
-    public struct UpdateFilm: GraphQLMappable {
+    public struct CreateFilm: GraphQLMappable {
       public let __typename: String
-      /// A view port into your application.
-      public let viewer: Viewer?
+      /// The mutated Film.
+      public let changedFilm: ChangedFilm?
 
       public init(reader: GraphQLResultReader) throws {
         __typename = try reader.value(for: Field(responseName: "__typename"))
-        viewer = try reader.optionalValue(for: Field(responseName: "viewer"))
+        changedFilm = try reader.optionalValue(for: Field(responseName: "changedFilm"))
       }
 
-      public struct Viewer: GraphQLMappable {
+      public struct ChangedFilm: GraphQLMappable {
         public let __typename: String
-        /// Returns the currently logged in user and is also the entry point for queries that leverage RELATION scoped permissions.
-        public let user: User?
+
+        public let fragments: Fragments
 
         public init(reader: GraphQLResultReader) throws {
           __typename = try reader.value(for: Field(responseName: "__typename"))
-          user = try reader.optionalValue(for: Field(responseName: "user"))
+
+          let completeFilm = try CompleteFilm(reader: reader)
+          fragments = Fragments(completeFilm: completeFilm)
         }
 
-        public struct User: GraphQLMappable {
-          public let __typename: String
-
-          public let fragments: Fragments
-
-          public init(reader: GraphQLResultReader) throws {
-            __typename = try reader.value(for: Field(responseName: "__typename"))
-
-            let completeUser = try CompleteUser(reader: reader)
-            fragments = Fragments(completeUser: completeUser)
-          }
-
-          public struct Fragments {
-            public let completeUser: CompleteUser
-          }
+        public struct Fragments {
+          public let completeFilm: CompleteFilm
         }
       }
     }
