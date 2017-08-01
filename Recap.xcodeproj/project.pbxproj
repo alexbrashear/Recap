@@ -12,6 +12,9 @@
 		7EC37E0C7861A5BD4E105569 /* Pods_Recap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5DDE820945FAE41102A623 /* Pods_Recap.framework */; };
 		C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */; };
 		C30972501F2D26AC0040A72E /* Film.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C309724F1F2D26AC0040A72E /* Film.graphql */; };
+		C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972511F2E85300040A72E /* SentPhotosController.swift */; };
+		C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972531F2E867A0040A72E /* SentPhotosLayout.swift */; };
+		C30972581F30192D0040A72E /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972571F30192D0040A72E /* PhotoItem.swift */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
@@ -55,10 +58,6 @@
 		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
 		C3A841CB1F25593D009E43BE /* ApolloWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */; };
-		C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */; };
-		C3ADF1741ED3C5FF00BB8EFD /* SinglePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1721ED3C5FE00BB8EFD /* SinglePhotoCell.xib */; };
-		C3ADF1761ED3CBB800BB8EFD /* FilmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ADF1751ED3CBB800BB8EFD /* FilmViewController.swift */; };
-		C3ADF1781ED3CFEA00BB8EFD /* Film.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3ADF1771ED3CFEA00BB8EFD /* Film.storyboard */; };
 		C3AE4C281EDFC1A80019ED8C /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */; };
 		C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */; };
 		C3AE4C2C1EDFC22D0019ED8C /* PurchaseFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AE4C2B1EDFC22D0019ED8C /* PurchaseFlow.swift */; };
@@ -113,6 +112,9 @@
 		86480A54151BC1AE48383D52 /* Pods-Recap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recap/Pods-Recap.debug.xcconfig"; sourceTree = "<group>"; };
 		C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		C309724F1F2D26AC0040A72E /* Film.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Film.graphql; sourceTree = "<group>"; };
+		C30972511F2E85300040A72E /* SentPhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosController.swift; sourceTree = "<group>"; };
+		C30972531F2E867A0040A72E /* SentPhotosLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosLayout.swift; sourceTree = "<group>"; };
+		C30972571F30192D0040A72E /* PhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
@@ -160,10 +162,6 @@
 		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
 		C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloWrapper.swift; sourceTree = "<group>"; };
-		C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCell.swift; sourceTree = "<group>"; };
-		C3ADF1721ED3C5FE00BB8EFD /* SinglePhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePhotoCell.xib; sourceTree = "<group>"; };
-		C3ADF1751ED3CBB800BB8EFD /* FilmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilmViewController.swift; sourceTree = "<group>"; };
-		C3ADF1771ED3CFEA00BB8EFD /* Film.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Film.storyboard; sourceTree = "<group>"; };
 		C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
 		C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		C3AE4C2B1EDFC22D0019ED8C /* PurchaseFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseFlow.swift; sourceTree = "<group>"; };
@@ -269,7 +267,9 @@
 			children = (
 				C38A88F61EE7C73600445692 /* EmptyFilmList.xib */,
 				C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */,
-				C3ADF1791ED3D0A600BB8EFD /* Photos */,
+				C30972511F2E85300040A72E /* SentPhotosController.swift */,
+				C30972531F2E867A0040A72E /* SentPhotosLayout.swift */,
+				C30972571F30192D0040A72E /* PhotoItem.swift */,
 			);
 			name = "Sent Photos";
 			sourceTree = "<group>";
@@ -377,17 +377,6 @@
 				C3456FBF1EB55A0B00876528 /* Photo taken */,
 			);
 			name = Camera;
-			sourceTree = "<group>";
-		};
-		C3ADF1791ED3D0A600BB8EFD /* Photos */ = {
-			isa = PBXGroup;
-			children = (
-				C3ADF1711ED3C5FE00BB8EFD /* SinglePhotoCell.swift */,
-				C3ADF1721ED3C5FE00BB8EFD /* SinglePhotoCell.xib */,
-				C3ADF1751ED3CBB800BB8EFD /* FilmViewController.swift */,
-				C3ADF1771ED3CFEA00BB8EFD /* Film.storyboard */,
-			);
-			name = Photos;
 			sourceTree = "<group>";
 		};
 		C3AE4C261EDFC18C0019ED8C /* Purchase */ = {
@@ -644,14 +633,12 @@
 				C30972501F2D26AC0040A72E /* Film.graphql in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
 				C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */,
-				C3ADF1741ED3C5FF00BB8EFD /* SinglePhotoCell.xib in Resources */,
 				C3C347641EA9A5770008E62E /* TextInputItem.xib in Resources */,
 				C3C3474E1EA7119E0008E62E /* Welcome.storyboard in Resources */,
 				C3AE4C281EDFC1A80019ED8C /* Purchase.storyboard in Resources */,
 				C313398B1EAD9E960080A168 /* CameraOverlayView.xib in Resources */,
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */,
-				C3ADF1781ED3CFEA00BB8EFD /* Film.storyboard in Resources */,
 				C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,6 +781,7 @@
 				C3AE4C301EE1166F0019ED8C /* PurchaseViewModel.swift in Sources */,
 				C3CE0E351E7592E2008000B1 /* Configuration.swift in Sources */,
 				C31E62B41F2873550084443A /* Thumbnails.swift in Sources */,
+				C30972581F30192D0040A72E /* PhotoItem.swift in Sources */,
 				C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */,
 				C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */,
 				C3C347521EA83AD50008E62E /* OnboardingFlow.swift in Sources */,
@@ -803,6 +791,7 @@
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,
 				C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */,
+				C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
 				C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */,
 				C33BD1021ECE96B300132B7D /* SentPhotosFlow.swift in Sources */,
@@ -827,10 +816,10 @@
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
 				C3E60EF81F11B4FD0068A28E /* API.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
-				C3ADF1761ED3CBB800BB8EFD /* FilmViewController.swift in Sources */,
 				C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */,
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,
 				C39028581EC95B0700D8E257 /* SettingsFlow.swift in Sources */,
+				C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */,
 				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
@@ -842,7 +831,6 @@
 				C3A841CB1F25593D009E43BE /* ApolloWrapper.swift in Sources */,
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */,
-				C3ADF1731ED3C5FF00BB8EFD /* SinglePhotoCell.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,

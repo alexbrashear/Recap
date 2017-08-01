@@ -10,16 +10,11 @@ import UIKit
 
 extension RootFlowCoordinator {
     func pushSentPhotosController(onto nc: UINavigationController) {
-//        guard let vc = R.storyboard.usedFilmList.usedFilmListController() else { return }
-//        configureUsedFilmListController(vc)
-//        configureUsedFilmNavBar(nc: nc)
-//        nc.pushViewController(vc, animated: true)
-//        nc.setNavigationBarHidden(false, animated: false)
-//        
-//        vc.viewModel = UsedFilmListViewModel(rowTapHandler: { [weak self, weak nc] film in
-//            guard let nc = nc else { return }
-//            self?.pushFilmController(onto: nc, film: film)
-//        })
+        let vc = SentPhotosController()
+        vc.title = "Sent Recaps"
+        configureUsedFilmNavBar(nc: nc)
+        nc.pushViewController(vc, animated: true)
+        nc.setNavigationBarHidden(false, animated: true)
     }
     
     private func configureUsedFilmNavBar(nc: UINavigationController) {
@@ -29,23 +24,4 @@ extension RootFlowCoordinator {
                                                 NSFontAttributeName: UIFont.openSansSemiBoldFont(ofSize: 20)]
         
     }
-    
-//    private func configureUsedFilmListController(_ vc: UsedFilmListController) {
-//        vc.title = "History"
-//        filmController.allFilm { [weak vc] result in
-//            switch result {
-//            case let .success(filmArr):
-//                vc?.filmSnapshot = filmArr
-//            case .error:
-//                vc?.filmSnapshot = []
-//            }
-//        }
-//    }
-    
-//    private func pushFilmController(onto nc: UINavigationController, film: Film) {
-//        guard let vc = R.storyboard.film.filmViewController() else { return }
-//        vc.photos = film.photos
-////        vc.title = film.dateOfPurchase.filmPurchaseDateString
-//        nc.pushViewController(vc, animated: true)
-//    }
 }
