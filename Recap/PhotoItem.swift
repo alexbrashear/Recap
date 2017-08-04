@@ -10,20 +10,34 @@ import UIKit
 import Reusable
 
 class PhotoItem: UICollectionViewCell, Reusable {
-    var imageView = UIImageView()
+    
+    private var imageView = UIImageView()
+    var imageProvider: ImageProvider?
+    
+    var photo: Photo? {
+        didSet {
+            guard let photo = photo else { return }
+            imageProvider?.fetchImage(forUrl: photo.thumbnails.small) { [weak self] result in
+                switch result {
+                case let .success(image):
+                    self?.imageView.image = image
+                case .error:
+                    break
+                }
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.isUserInteractionEnabled = false
         contentView.addSubview(imageView)
-        imageView.backgroundColor = .red
+        imageView.constrainToSuperview()
+        imageView.backgroundColor = .rcpBlueyGrey
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.constrainToSuperview()
-    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

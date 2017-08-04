@@ -19,6 +19,8 @@ class RootFlowCoordinator {
     /// helper type for sending photos
     let postcardSender = PostcardSender()
     
+    let imageProvider = ImageProvider()
+    
     let userController: UserController
     
     init(userController: UserController) {

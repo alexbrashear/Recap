@@ -13,6 +13,14 @@ class SentPhotosController: UIViewController, UICollectionViewDelegate, UICollec
     
     var gridCollectionView: UICollectionView!
     var gridLayout: SentPhotosLayout!
+    
+    var photos: [Photo]? {
+        didSet {
+            gridCollectionView.reloadData()
+        }
+    }
+    
+    var imageProvider: ImageProvider?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +35,9 @@ class SentPhotosController: UIViewController, UICollectionViewDelegate, UICollec
         gridCollectionView.translatesAutoresizingMaskIntoConstraints = false
         gridCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 1).isActive = true
         gridCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -1).isActive = true
-        gridCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        gridCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 1).isActive = true
         gridCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        gridCollectionView.alwaysBounceVertical = true
 
         // Register cell classes
         gridCollectionView.register(cellType: PhotoItem.self)
@@ -45,12 +54,16 @@ class SentPhotosController: UIViewController, UICollectionViewDelegate, UICollec
 
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return photos?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard indexPath.row < (photos?.count ?? 0), let photo = photos?[indexPath.row] else {
+            return UICollectionViewCell()
+        }
         let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoItem
-    
+        cell.imageProvider = imageProvider
+        cell.photo = photo
         return cell
     }
 
