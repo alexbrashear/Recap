@@ -29,7 +29,7 @@ public struct CreateAddressInput: GraphQLMapConvertible {
 public struct CreatePhotoInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, smallThumbnailUrl: String? = nil, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
+  public init(largeThumbnailUrl: String, expectedDeliveryDate: String, imageUrl: String, mediumThumbnailUrl: String, film: CreateFilmInput? = nil, filmId: GraphQLID? = nil, smallThumbnailUrl: String, user: CreateUserInput? = nil, userId: GraphQLID? = nil, clientMutationId: GraphQLID? = nil) {
     graphQLMap = ["largeThumbnailURL": largeThumbnailUrl, "expectedDeliveryDate": expectedDeliveryDate, "imageURL": imageUrl, "mediumThumbnailURL": mediumThumbnailUrl, "film": film, "filmId": filmId, "smallThumbnailURL": smallThumbnailUrl, "user": user, "userId": userId, "clientMutationId": clientMutationId]
   }
 }
@@ -213,6 +213,100 @@ public final class CreatePhotoMutation: GraphQLMutation {
 
           public struct Fragments {
             public let completeUser: CompleteUser
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class UserPhotosQuery: GraphQLQuery {
+  public static let operationDefinition =
+    "query UserPhotos {" +
+    "  viewer {" +
+    "    __typename" +
+    "    user {" +
+    "      __typename" +
+    "      photos {" +
+    "        __typename" +
+    "        edges {" +
+    "          __typename" +
+    "          node {" +
+    "            __typename" +
+    "            ...completePhoto" +
+    "          }" +
+    "        }" +
+    "      }" +
+    "    }" +
+    "  }" +
+    "}"
+  public static let queryDocument = operationDefinition.appending(CompletePhoto.fragmentDefinition)
+  public init() {
+  }
+
+  public struct Data: GraphQLMappable {
+    public let viewer: Viewer?
+
+    public init(reader: GraphQLResultReader) throws {
+      viewer = try reader.optionalValue(for: Field(responseName: "viewer"))
+    }
+
+    public struct Viewer: GraphQLMappable {
+      public let __typename: String
+      /// Returns the currently logged in user and is also the entry point for queries that leverage RELATION scoped permissions.
+      public let user: User?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        user = try reader.optionalValue(for: Field(responseName: "user"))
+      }
+
+      public struct User: GraphQLMappable {
+        public let __typename: String
+        /// A collection of Photos the user has sent.
+        public let photos: Photo?
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+          photos = try reader.optionalValue(for: Field(responseName: "photos"))
+        }
+
+        public struct Photo: GraphQLMappable {
+          public let __typename: String
+          /// The set of edges in this page.
+          public let edges: [Edge?]?
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+            edges = try reader.optionalList(for: Field(responseName: "edges"))
+          }
+
+          public struct Edge: GraphQLMappable {
+            public let __typename: String
+            /// The node value for the edge.
+            public let node: Node
+
+            public init(reader: GraphQLResultReader) throws {
+              __typename = try reader.value(for: Field(responseName: "__typename"))
+              node = try reader.value(for: Field(responseName: "node"))
+            }
+
+            public struct Node: GraphQLMappable {
+              public let __typename: String
+
+              public let fragments: Fragments
+
+              public init(reader: GraphQLResultReader) throws {
+                __typename = try reader.value(for: Field(responseName: "__typename"))
+
+                let completePhoto = try CompletePhoto(reader: reader)
+                fragments = Fragments(completePhoto: completePhoto)
+              }
+
+              public struct Fragments {
+                public let completePhoto: CompletePhoto
+              }
+            }
           }
         }
       }
@@ -638,8 +732,8 @@ public struct CompletePhoto: GraphQLNamedFragment {
     "  id" +
     "  smallThumbnailURL" +
     "  mediumThumbnailURL" +
-    "  largeThumbnailURL" +
     "  imageURL" +
+    "  largeThumbnailURL" +
     "  createdAt" +
     "  expectedDeliveryDate" +
     "}"
@@ -649,10 +743,10 @@ public struct CompletePhoto: GraphQLNamedFragment {
   public let __typename: String
   /// A globally unique ID.
   public let id: GraphQLID
-  public let smallThumbnailUrl: String?
+  public let smallThumbnailUrl: String
   public let mediumThumbnailUrl: String
-  public let largeThumbnailUrl: String
   public let imageUrl: String
+  public let largeThumbnailUrl: String
   /// When paired with the Node interface, this is an automatically managed
   /// timestamp that is set when an object is first created.
   public let createdAt: String
@@ -661,10 +755,10 @@ public struct CompletePhoto: GraphQLNamedFragment {
   public init(reader: GraphQLResultReader) throws {
     __typename = try reader.value(for: Field(responseName: "__typename"))
     id = try reader.value(for: Field(responseName: "id"))
-    smallThumbnailUrl = try reader.optionalValue(for: Field(responseName: "smallThumbnailURL"))
+    smallThumbnailUrl = try reader.value(for: Field(responseName: "smallThumbnailURL"))
     mediumThumbnailUrl = try reader.value(for: Field(responseName: "mediumThumbnailURL"))
-    largeThumbnailUrl = try reader.value(for: Field(responseName: "largeThumbnailURL"))
     imageUrl = try reader.value(for: Field(responseName: "imageURL"))
+    largeThumbnailUrl = try reader.value(for: Field(responseName: "largeThumbnailURL"))
     createdAt = try reader.value(for: Field(responseName: "createdAt"))
     expectedDeliveryDate = try reader.value(for: Field(responseName: "expectedDeliveryDate"))
   }

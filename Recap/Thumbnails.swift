@@ -12,4 +12,10 @@ struct Thumbnails {
     let small: URL
     let medium: URL
     let large: URL
+    
+    init(small: URL, medium: URL, large: URL) {
+        self.small = small
+        self.medium = medium
+        self.large = large
+    }
 }

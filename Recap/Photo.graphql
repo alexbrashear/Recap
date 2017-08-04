@@ -12,12 +12,27 @@ mutation CreatePhoto($input: CreatePhotoInput!) {
     }
 }
 
+query UserPhotos {
+    viewer {
+        user {
+            photos {
+                edges {
+                    node {
+                        ...completePhoto
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 fragment completePhoto on Photo {
     id
     smallThumbnailURL
     mediumThumbnailURL
-    largeThumbnailURL
-    imageURL
+    imageURL    largeThumbnailURL
+
     createdAt
     expectedDeliveryDate
 }

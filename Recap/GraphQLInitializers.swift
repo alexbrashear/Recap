@@ -24,3 +24,14 @@ extension User {
         self.init(id: completeUser.id, filmId: film.id, username: completeUser.username, address: address, remainingPhotos: remainingPhotos)
     }
 }
+
+extension Photo {
+    init?(completePhoto: CompletePhoto) {
+        guard let imageURL = URL(string: completePhoto.imageUrl),
+            let small = URL(string: completePhoto.smallThumbnailUrl),
+            let medium = URL(string: completePhoto.mediumThumbnailUrl),
+            let large = URL(string: completePhoto.largeThumbnailUrl) else { return nil }
+        let thumbnails = Thumbnails(small: small, medium: medium, large: large)
+        self.init(imageURL: imageURL, expectedDeliveryDate: completePhoto.expectedDeliveryDate, thumbnails: thumbnails)
+    }
+}

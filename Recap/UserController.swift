@@ -11,6 +11,7 @@ import Apollo
 import KeychainAccess
 
 typealias UserCallback = (Result<User, UserError>) -> ()
+typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 
 class UserController {
     
@@ -143,6 +144,21 @@ extension UserController {
             }
             self?.user = user
             callback(.success(user))
+        }
+    }
+    
+    func getFilm(callback: @escaping PhotosCallback) {
+        graphql.client.fetch(query: UserPhotosQuery()) { result, error in
+            guard let edges = result?.data?.viewer?.user?.photos?.edges, error == nil else {
+                callback(.error(.unknownFailure)); return
+            }
+            var photos = [Photo]()
+            for edge in edges {
+                guard let completePhoto = edge?.node.fragments.completePhoto,
+                    let photo = Photo(completePhoto: completePhoto) else { continue }
+                photos.append(photo)
+            }
+            callback(.success(photos))
         }
     }
 }

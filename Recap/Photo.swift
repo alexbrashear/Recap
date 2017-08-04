@@ -13,4 +13,10 @@ struct Photo {
     let imageURL: URL
     let expectedDeliveryDate: String
     let thumbnails: Thumbnails
+    
+    init(imageURL: URL, expectedDeliveryDate: String, thumbnails: Thumbnails) {
+        self.imageURL = imageURL
+        self.expectedDeliveryDate = expectedDeliveryDate
+        self.thumbnails = thumbnails
+    }
 }
