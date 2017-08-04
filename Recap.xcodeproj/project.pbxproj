@@ -540,7 +540,6 @@
 			buildPhases = (
 				DC8C45A50436D9812C0214C5 /* [CP] Check Pods Manifest.lock */,
 				C3CE0E2A1E6E6605008000B1 /* R.Swift */,
-				C3E60EF41F11A8110068A28E /* Generate Apollo GraphQL API */,
 				C35308331E3D163600E2BD8A /* Sources */,
 				C35308341E3D163600E2BD8A /* Frameworks */,
 				C35308351E3D163600E2BD8A /* Resources */,
@@ -729,20 +728,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
-		};
-		C3E60EF41F11A8110068A28E /* Generate Apollo GraphQL API */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Generate Apollo GraphQL API";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-codegen.sh generate $(find . -name '*.graphql') --schema schema.json --output API.swift";
 		};
 		CCE6006289710B34B6E1B954 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
