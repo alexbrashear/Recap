@@ -15,6 +15,7 @@
 		C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972511F2E85300040A72E /* SentPhotosController.swift */; };
 		C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972531F2E867A0040A72E /* SentPhotosLayout.swift */; };
 		C30972581F30192D0040A72E /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972571F30192D0040A72E /* PhotoItem.swift */; };
+		C309725A1F342A4B0040A72E /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972591F342A4B0040A72E /* ImageProvider.swift */; };
 		C31279C31E3EF09900F52C31 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31279C21E3EF09900F52C31 /* Address.swift */; };
 		C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C313397D1EABAA780080A168 /* Disclaimer.storyboard */; };
 		C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C313397F1EABAAED0080A168 /* DisclaimerController.swift */; };
@@ -115,6 +116,7 @@
 		C30972511F2E85300040A72E /* SentPhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosController.swift; sourceTree = "<group>"; };
 		C30972531F2E867A0040A72E /* SentPhotosLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosLayout.swift; sourceTree = "<group>"; };
 		C30972571F30192D0040A72E /* PhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
+		C30972591F342A4B0040A72E /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		C31279C21E3EF09900F52C31 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		C313397D1EABAA780080A168 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		C313397F1EABAAED0080A168 /* DisclaimerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclaimerController.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				C330B6361E46A17100928284 /* Result.swift */,
 				C396E7B91E5109ED009C4696 /* NetworkClient.swift */,
 				C37F67A01F0AC247005FF8EC /* FilterProvider.swift */,
+				C30972591F342A4B0040A72E /* ImageProvider.swift */,
 				C3CE0E311E726EB7008000B1 /* Extensions */,
 			);
 			name = Utilities;
@@ -804,6 +807,7 @@
 				C31E62B21F28730B0084443A /* Photo.swift in Sources */,
 				C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */,
 				C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */,
+				C309725A1F342A4B0040A72E /* ImageProvider.swift in Sources */,
 				C353083B1E3D163600E2BD8A /* AppDelegate.swift in Sources */,
 				C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */,
 				C31339801EABAAED0080A168 /* DisclaimerController.swift in Sources */,
