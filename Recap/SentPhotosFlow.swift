@@ -13,7 +13,7 @@ extension RootFlowCoordinator {
         let vc = SentPhotosController()
         vc.title = "Sent Recaps"
         configureUsedFilmNavBar(nc: nc)
-        configureSentPhotosController(vc: vc)
+        configureSentPhotosController(vc: vc, nc: nc)
         nc.pushViewController(vc, animated: true)
         nc.setNavigationBarHidden(false, animated: true)
     }
@@ -26,7 +26,7 @@ extension RootFlowCoordinator {
         
     }
     
-    private func configureSentPhotosController(vc: SentPhotosController) {
+    private func configureSentPhotosController(vc: SentPhotosController, nc: UINavigationController) {
         vc.imageProvider = imageProvider
         userController.getFilm { result in
             switch result {
@@ -35,6 +35,12 @@ extension RootFlowCoordinator {
             case let .error(photoError):
                 vc.present(photoError.alert, animated: true, completion: nil)
             }
+        }
+        
+        vc.didTapPhoto = { [weak self, weak nc] photo in
+            guard let imageProvider = self?.imageProvider else { return }
+            let vc = SinglePhotoController(imageProvider: imageProvider, photo: photo)
+            nc?.pushViewController(vc, animated: true)
         }
     }
 }

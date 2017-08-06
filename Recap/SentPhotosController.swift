@@ -13,6 +13,7 @@ class SentPhotosController: UIViewController, UICollectionViewDelegate, UICollec
     
     var gridCollectionView: UICollectionView!
     var gridLayout: SentPhotosLayout!
+    var didTapPhoto: ((Photo) -> Void)?
     
     var photos: [Photo]? {
         didSet {
@@ -71,5 +72,7 @@ class SentPhotosController: UIViewController, UICollectionViewDelegate, UICollec
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        guard indexPath.row < (photos?.count ?? 0), let photo = photos?[indexPath.row] else { return }
+        didTapPhoto?(photo)
     }
 }
