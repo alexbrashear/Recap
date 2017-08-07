@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private let databaseController = DatabaseController.sharedInstance
     private let persistanceManager = PersistanceManager()
     
     private var rootFlowCoordinator: RootFlowCoordinator?

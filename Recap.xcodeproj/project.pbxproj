@@ -32,7 +32,6 @@
 		C31E62B21F28730B0084443A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E62B11F28730B0084443A /* Photo.swift */; };
 		C31E62B41F2873550084443A /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E62B31F2873550084443A /* Thumbnails.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
-		C330B6391E46B51300928284 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6381E46B51300928284 /* DatabaseController.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
 		C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */; };
 		C3346F0A1E7ED50100A136B5 /* String+DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3346F091E7ED50100A136B5 /* String+DateFormatting.swift */; };
@@ -136,7 +135,6 @@
 		C31E62B11F28730B0084443A /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		C31E62B31F2873550084443A /* Thumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		C330B6381E46B51300928284 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
 		C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
 		C3346F091E7ED50100A136B5 /* String+DateFormatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DateFormatting.swift"; sourceTree = "<group>"; };
@@ -338,7 +336,6 @@
 			children = (
 				C3CE0E271E6E6273008000B1 /* App */,
 				C3AD56841E4C37CA00C348F0 /* Camera */,
-				C330B6381E46B51300928284 /* DatabaseController.swift */,
 				C3E7C2681EFF31E8001E45FC /* GraphQL */,
 				C39028541EC4178700D8E257 /* HUD */,
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
@@ -829,7 +826,6 @@
 				C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */,
 				C39028581EC95B0700D8E257 /* SettingsFlow.swift in Sources */,
 				C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */,
-				C330B6391E46B51300928284 /* DatabaseController.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
 				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C31339841EAC53B20080A168 /* User.swift in Sources */,
