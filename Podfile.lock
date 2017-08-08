@@ -3,6 +3,24 @@ PODS:
   - AWSCore (2.5.0)
   - AWSS3 (2.5.0):
     - AWSCore (= 2.5.0)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FacebookCore (0.2.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.15)
+  - FacebookLogin (0.2.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.2)
+    - FBSDKCoreKit (~> 4.15)
+    - FBSDKLoginKit (~> 4.15)
+  - FBSDKCoreKit (4.24.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.24.0):
+    - FBSDKCoreKit
   - IQKeyboardManagerSwift (4.0.8)
   - KeychainAccess (3.0.2)
   - OpenSans (1.0.3)
@@ -19,6 +37,8 @@ PODS:
 DEPENDENCIES:
   - Apollo
   - AWSS3
+  - FacebookCore
+  - FacebookLogin
   - IQKeyboardManagerSwift
   - KeychainAccess
   - OpenSans (from `https://github.com/CocoaPods-Fonts/OpenSans.git`, commit `0be3f18`)
@@ -40,6 +60,11 @@ SPEC CHECKSUMS:
   Apollo: 124ddbbca48acca75fd5f9ec5045454cb410bb31
   AWSCore: e9839d27ceaa2db75934a9c418630ce63c23e347
   AWSS3: 3678dd99006ff77c825fb857fc7cbaca0db848c6
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
+  FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   OpenSans: 33078846463eae780aa5f82986b51cce085f970d
@@ -48,6 +73,6 @@ SPEC CHECKSUMS:
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Reusable: 5362d10271ca8316b104698a21e90498f47e8339
 
-PODFILE CHECKSUM: f9af20099e309f9f4be9c9d6a1243ff339ec3af3
+PODFILE CHECKSUM: 5fc5185b669ddd265a34f13d0f0815186ed8e9cd
 
 COCOAPODS: 1.2.0
