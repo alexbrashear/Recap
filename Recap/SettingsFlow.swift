@@ -18,6 +18,10 @@ extension RootFlowCoordinator {
                 vc?.address = self?.userController.user?.address
             }
         }
+        
+        vc.connectSocial = { [weak self] in
+            self?.userController.loginWithSocial()
+        }
     }
     
     private func configureSettingsNavigationController(nc: UINavigationController, vc: UIViewController) {

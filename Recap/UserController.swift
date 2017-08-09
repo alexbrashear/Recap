@@ -8,7 +8,8 @@
 
 import UIKit
 import Apollo
-import KeychainAccess
+import FacebookCore
+import FacebookLogin
 
 typealias UserCallback = (Result<User, UserError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
@@ -86,7 +87,42 @@ class UserController {
             self?.userChangedHandler(user: user, password: password, token: token)
             callback(.success(user))
         }
-        
+    }
+    
+    func loginWithSocial() {
+        if let token = AccessToken.current?.authenticationToken {
+            linkSocialAccount(socialToken: token)
+            return
+        }
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile, .userFriends ]) { [weak self] loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                self?.linkSocialAccount(socialToken: accessToken.authenticationToken)
+            }
+        }
+    }
+    
+    func linkSocialAccount(socialToken: String) {
+        let input = LoginUserWithAuth0SocialInput(accessToken: socialToken, connection: .facebook)
+        let mut = LoginUserWithSocialMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let data = result?.data?.loginUserWithAuth0Social,
+                let token = data.token,
+                let completeUser = data.changedEdge?.node.fragments.completeUser,
+                let user = User(completeUser: completeUser)
+                else {
+                    print("errpr")
+                    return
+            }
+            
+            self?.user = user
+            self?.setToken(newToken: token)
+        }
     }
 }
 

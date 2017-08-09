@@ -19,13 +19,15 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
     
     var changeAddress: (() -> Void)?
     
+    var connectSocial: (() -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -48,6 +50,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
         case .support:
             cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
             cell.textLabel?.text = "Send Feedback"
+        case .facebook:
+            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
+            cell.textLabel?.text = "Login with facebook"
         }
         
         return cell
@@ -70,6 +75,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
             } else {
                 self.showSendMailErrorAlert()
             }
+        case .facebook:
+            connectSocial?()
         }
     }
     

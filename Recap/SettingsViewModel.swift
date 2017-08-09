@@ -11,11 +11,13 @@ import Foundation
 enum SettingsSection: Int {
     case address
     case support
+    case facebook
     
     var title: String {
         switch self {
         case .address: return "Address"
         case .support: return "Support"
+        case .facebook: return ""
         }
     }
 }

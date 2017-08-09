@@ -58,6 +58,77 @@ public struct UpdateUserInput: GraphQLMapConvertible {
   }
 }
 
+public struct LoginUserWithAuth0SocialInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(accessToken: String, connection: ConnectionType, clientMutationId: String? = nil) {
+    graphQLMap = ["access_token": accessToken, "connection": connection, "clientMutationId": clientMutationId]
+  }
+}
+
+/// Values for the ConnectionType enum
+public enum ConnectionType: String {
+  case ad = "ad"
+  case adfs = "adfs"
+  case amazon = "amazon"
+  case dropbox = "dropbox"
+  case bitbucket = "bitbucket"
+  case aol = "aol"
+  case auth0Adldap = "auth0_adldap"
+  case auth0Oidc = "auth0_oidc"
+  case auth0 = "auth0"
+  case baidu = "baidu"
+  case bitly = "bitly"
+  case box = "box"
+  case custom = "custom"
+  case dwolla = "dwolla"
+  case email = "email"
+  case evernoteSandbox = "evernote_sandbox"
+  case evernote = "evernote"
+  case exact = "exact"
+  case facebook = "facebook"
+  case fitbit = "fitbit"
+  case flickr = "flickr"
+  case github = "github"
+  case googleApps = "google_apps"
+  case googleOauth2 = "google_oauth2"
+  case guardian = "guardian"
+  case instagram = "instagram"
+  case ip = "ip"
+  case linkedin = "linkedin"
+  case miicard = "miicard"
+  case oauth1 = "oauth1"
+  case oauth2 = "oauth2"
+  case office365 = "office365"
+  case paypal = "paypal"
+  case pingfederate = "pingfederate"
+  case planningcenter = "planningcenter"
+  case renren = "renren"
+  case salesforceCommunity = "salesforce_community"
+  case salesforceSandbox = "salesforce_sandbox"
+  case salesforce = "salesforce"
+  case samlp = "samlp"
+  case sharepoint = "sharepoint"
+  case shopify = "shopify"
+  case sms = "sms"
+  case soundcloud = "soundcloud"
+  case thecitySandbox = "thecity_sandbox"
+  case thecity = "thecity"
+  case thirtysevensignals = "thirtysevensignals"
+  case twitter = "twitter"
+  case untappd = "untappd"
+  case vkontakte = "vkontakte"
+  case waad = "waad"
+  case weibo = "weibo"
+  case windowslive = "windowslive"
+  case wordpress = "wordpress"
+  case yahoo = "yahoo"
+  case yammer = "yammer"
+  case yandex = "yandex"
+}
+
+extension ConnectionType: JSONDecodable, JSONEncodable {}
+
 public final class BuyFilmMutation: GraphQLMutation {
   public static let operationDefinition =
     "mutation BuyFilm($input: CreateFilmInput!) {" +
@@ -588,6 +659,91 @@ public final class UpdateUserMutation: GraphQLMutation {
 
         public struct Fragments {
           public let completeUser: CompleteUser
+        }
+      }
+    }
+  }
+}
+
+public final class LoginUserWithSocialMutation: GraphQLMutation {
+  public static let operationDefinition =
+    "mutation LoginUserWithSocial($input: LoginUserWithAuth0SocialInput!) {" +
+    "  loginUserWithAuth0Social(input: $input) {" +
+    "    __typename" +
+    "    changedEdge {" +
+    "      __typename" +
+    "      node {" +
+    "        __typename" +
+    "        ...completeUser" +
+    "      }" +
+    "    }" +
+    "    access_token" +
+    "    token" +
+    "  }" +
+    "}"
+  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(PhotosCount.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
+
+  public let input: LoginUserWithAuth0SocialInput
+
+  public init(input: LoginUserWithAuth0SocialInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    /// The input object type used to log in a user with Auth0 Social
+    public let loginUserWithAuth0Social: LoginUserWithAuth0Social?
+
+    public init(reader: GraphQLResultReader) throws {
+      loginUserWithAuth0Social = try reader.optionalValue(for: Field(responseName: "loginUserWithAuth0Social", arguments: ["input": reader.variables["input"]]))
+    }
+
+    public struct LoginUserWithAuth0Social: GraphQLMappable {
+      public let __typename: String
+      /// An edge containing the mutated User. Use this to update your client side cache.
+      public let changedEdge: ChangedEdge?
+      /// The access token of the logged in user issued
+      /// from the social authentication connection.
+      public let accessToken: String?
+      /// The id token of the logged in user issued from the
+      /// social authentication connection.
+      public let token: String?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        changedEdge = try reader.optionalValue(for: Field(responseName: "changedEdge"))
+        accessToken = try reader.optionalValue(for: Field(responseName: "access_token"))
+        token = try reader.optionalValue(for: Field(responseName: "token"))
+      }
+
+      public struct ChangedEdge: GraphQLMappable {
+        public let __typename: String
+        /// The node value for the edge.
+        public let node: Node
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+          node = try reader.value(for: Field(responseName: "node"))
+        }
+
+        public struct Node: GraphQLMappable {
+          public let __typename: String
+
+          public let fragments: Fragments
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+
+            let completeUser = try CompleteUser(reader: reader)
+            fragments = Fragments(completeUser: completeUser)
+          }
+
+          public struct Fragments {
+            public let completeUser: CompleteUser
+          }
         }
       }
     }
