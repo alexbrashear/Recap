@@ -12,6 +12,7 @@ import FacebookCore
 import FacebookLogin
 
 typealias UserCallback = (Result<User, UserError>) -> ()
+typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 
 class UserController {
@@ -89,39 +90,21 @@ class UserController {
         }
     }
     
-    func loginWithSocial() {
-        if let token = AccessToken.current?.authenticationToken {
-            linkSocialAccount(socialToken: token)
+    func loginWithSocial(callback: @escaping SocialLoginCallback) {
+        guard AccessToken.current == nil else {
+            callback(.success())
             return
         }
         let loginManager = LoginManager()
-        loginManager.logIn([ .publicProfile, .userFriends ]) { [weak self] loginResult in
+        loginManager.logIn([ .publicProfile, .userFriends ]) { loginResult in
             switch loginResult {
-            case .failed(let error):
-                print(error)
+            case .failed:
+                callback(.error(.failed))
             case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                self?.linkSocialAccount(socialToken: accessToken.authenticationToken)
+                callback(.error(.userCancelledLogin))
+            case .success:
+                callback(.success())
             }
-        }
-    }
-    
-    func linkSocialAccount(socialToken: String) {
-        let input = LoginUserWithAuth0SocialInput(accessToken: socialToken, connection: .facebook)
-        let mut = LoginUserWithSocialMutation(input: input)
-        graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let data = result?.data?.loginUserWithAuth0Social,
-                let token = data.token,
-                let completeUser = data.changedEdge?.node.fragments.completeUser,
-                let user = User(completeUser: completeUser)
-                else {
-                    print("errpr")
-                    return
-            }
-            
-            self?.user = user
-            self?.setToken(newToken: token)
         }
     }
 }
@@ -199,7 +182,7 @@ extension UserController {
     }
 }
 
-enum UserError: Error {
+enum UserError: AlertableError {
     case loginFailed
     case signupFailed
     case updateAddressFailed
@@ -213,8 +196,22 @@ enum UserError: Error {
     var localizedDescription: String {
         return "test"
     }
+}
+
+enum SocialError: AlertableError {
+    case userCancelledLogin
+    case failed
     
-    var alert: UIAlertController {
-        return UIAlertController.okAlert(title: localizedTitle, message: localizedDescription)
+    var localizedTitle: String {
+        return "We couldn't link your Facebook"
+    }
+    
+    var localizedDescription: String {
+        switch self {
+        case .userCancelledLogin:
+            return "It looks like your facebook login attempt was canceled before it completed, please try again or contact help@recap-app.com"
+        case .failed:
+            return "We had trouble connecting your facebook account, please try again or contact help@recap-app.com"
+        }
     }
 }

@@ -20,7 +20,9 @@ extension RootFlowCoordinator {
         }
         
         vc.connectSocial = { [weak self] in
-            self?.userController.loginWithSocial()
+            self?.userController.loginWithSocial { _ in
+                
+            }
         }
     }
     
