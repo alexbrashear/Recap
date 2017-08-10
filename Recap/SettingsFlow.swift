@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import FacebookCore
 
 extension RootFlowCoordinator {
     private func configureSettingsViewController(vc: SettingsViewController, nc: UINavigationController) {
@@ -19,9 +20,18 @@ extension RootFlowCoordinator {
             }
         }
         
-        vc.connectSocial = { [weak self] in
-            self?.userController.loginWithSocial { _ in
-                
+        vc.isLoggedInToFacebook = AccessToken.current != nil
+        
+        vc.connectSocial = { [weak self, weak vc] in
+            HUD.show(.progress)
+            self?.userController.loginWithSocial { result in
+                HUD.hide()
+                switch result {
+                case .success:
+                    vc?.isLoggedInToFacebook = true
+                case let .error(socialError):
+                    vc?.present(socialError.alert, animated: true, completion: nil)
+                }
             }
         }
     }
