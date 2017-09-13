@@ -20,10 +20,15 @@ extension RootFlowCoordinator {
     ///
     /// - Parameter vc: the view controller to configure
     private func configure(vc: CameraViewController, nc: UINavigationController) {
-        let sendPhoto: SendPhoto = { [weak self, weak vc] image in
-//            guard self?.filmController.canTakePhoto() ?? false else {
-//                return
-//            }
+        let sendPhoto: SendPhoto = { [weak self, weak vc, weak nc] image in
+            ////////////////////////////////////////////////////////
+            nc?.setNavigationBarHidden(false, animated: true)
+            let friendsListController = FriendsListController()
+            friendsListController.title = "Send To..."
+            nc?.pushViewController(friendsListController, animated: true)
+            return
+            ////////////////////////////////////////////////////////
+            
             guard let address = self?.userController.user?.address,
                 let userId = self?.userController.user?.id else { return }
             PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
