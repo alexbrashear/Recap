@@ -26,6 +26,7 @@ class RootFlowCoordinator {
     init(userController: UserController) {
         navigationController = UINavigationController()
         self.userController = userController
+        configureNavigationController(nc: navigationController)
     }
     
     /// the root view controller to be used only by the app delegate
