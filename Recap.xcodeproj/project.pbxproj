@@ -378,8 +378,7 @@
 			children = (
 				C35308511E3D163700E2BD8A /* Info.plist */,
 			);
-			name = RecapTests;
-			path = MeMailer5000Tests;
+			path = RecapTests;
 			sourceTree = "<group>";
 		};
 		C37F67A21F0DE9AC005FF8EC /* sign up / login */ = {
