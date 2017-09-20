@@ -12,6 +12,7 @@ target 'Recap' do
     pod 'KeychainAccess'
     pod 'FacebookLogin'
     pod 'FacebookCore'
+    pod 'Iconic', :git => 'https://github.com/dzenbot/Iconic.git', :tag => '1.3'
 end
 
 target 'RecapTests' do
