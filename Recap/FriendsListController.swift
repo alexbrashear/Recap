@@ -36,6 +36,7 @@ class FriendsListController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor).isActive = true
         
         tableView.register(cellType: FriendCell.self)
+        tableView.allowsMultipleSelection = true
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,8 +58,4 @@ extension FriendsListController: UITableViewDataSource {
     }
 }
 
-extension FriendsListController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
+extension FriendsListController: UITableViewDelegate {}

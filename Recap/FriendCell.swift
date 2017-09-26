@@ -8,12 +8,31 @@
 
 import UIKit
 import Reusable
+import Iconic
 
 class FriendCell: UITableViewCell, NibReusable {
 
+    @IBOutlet var icon: UIImageView!
+    @IBOutlet var name: UILabel!
+    
+    let unselectedIcon = FontAwesomeIcon._446Icon
+    let selectedIcon = FontAwesomeIcon.okSignIcon
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        name.font = UIFont.openSansFont(ofSize: 16)
+        selectionStyle = .none
+        loadIcon(selected: isSelected)
     }
-
+    
+    private func loadIcon(selected: Bool) {
+        let icon = selected ? selectedIcon : unselectedIcon
+        let image = icon.image(ofSize: CGSize(width: 20, height: 20), color: .rcpClearBlue)
+        self.icon.image = image
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: true)
+        loadIcon(selected: selected)
+    }
 }
