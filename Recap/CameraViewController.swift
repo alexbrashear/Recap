@@ -80,9 +80,7 @@ class CameraViewController: UIViewController {
     
     fileprivate func capturePhotoSettings(flashMode: AVCaptureFlashMode) -> AVCapturePhotoSettings {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecJPEG])
-        #if (!arch(x86_64))
-        settings.flashMode = stillImageOutput?.supportedFlashModes.contains(NSNumber(value: flashMode.rawValue)) ?? false ? flashMode : .off
-        #endif
+        settings.flashMode = stillImageOutput?.__supportedFlashModes.contains(NSNumber(value: flashMode.rawValue)) ?? false ? flashMode : .off
         return settings
     }
     
@@ -91,7 +89,6 @@ class CameraViewController: UIViewController {
     }
     
     fileprivate func loadCamera(atPosition position: AVCaptureDevicePosition) {
-        #if (!arch(x86_64))
         let camera = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: position)
         currentDevice = camera
         
@@ -128,13 +125,10 @@ class CameraViewController: UIViewController {
             captureView.layer.addSublayer(videoPreviewLayer!)
             session.startRunning()
         }
-        #endif
     }
     
     func takePhoto(withFlashMode flashMode: AVCaptureFlashMode) {
-        #if (!arch(x86_64))
         stillImageOutput?.capturePhoto(with: capturePhotoSettings(flashMode: flashMode), delegate: self)
-        #endif
     }
 
     func switchCamera() {
