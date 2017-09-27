@@ -35,6 +35,7 @@
 		C32652CE1F67892B0027B316 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32652CD1F67892B0027B316 /* FriendCell.swift */; };
 		C32652D01F6789660027B316 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32652CF1F6789660027B316 /* FriendCell.xib */; };
 		C32BCCDB1F3C157D0080CFA0 /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCCDA1F3C157D0080CFA0 /* AlertableError.swift */; };
+		C32BFCC41F7B462E00BF255F /* FriendsListBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */; };
 		C330B6371E46A17100928284 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B6361E46A17100928284 /* Result.swift */; };
 		C330B63B1E46B82800928284 /* AddressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330B63A1E46B82800928284 /* AddressError.swift */; };
 		C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */; };
@@ -142,6 +143,7 @@
 		C32652CD1F67892B0027B316 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		C32652CF1F6789660027B316 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		C32BCCDA1F3C157D0080CFA0 /* AlertableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertableError.swift; sourceTree = "<group>"; };
+		C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListBottomBar.swift; sourceTree = "<group>"; };
 		C330B6361E46A17100928284 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C330B63A1E46B82800928284 /* AddressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressError.swift; sourceTree = "<group>"; };
 		C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Formatting.swift"; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				C32652CB1F677DD10027B316 /* FriendsListController.swift */,
+				C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */,
 				C32652CD1F67892B0027B316 /* FriendCell.swift */,
 				C32652CF1F6789660027B316 /* FriendCell.xib */,
 			);
@@ -839,6 +842,7 @@
 				C3C347561EA83D800008E62E /* WelcomeItem.swift in Sources */,
 				C3346F0A1E7ED50100A136B5 /* String+DateFormatting.swift in Sources */,
 				C31339891EAD9CE10080A168 /* CameraOverlayView.swift in Sources */,
+				C32BFCC41F7B462E00BF255F /* FriendsListBottomBar.swift in Sources */,
 				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
