@@ -15,6 +15,16 @@ class FriendCell: UITableViewCell, NibReusable {
     @IBOutlet var icon: UIImageView!
     @IBOutlet var name: UILabel!
     
+    struct ViewModel {
+        let name: String
+    }
+    
+    var viewModel: ViewModel? {
+        didSet {
+            name.text = viewModel?.name
+        }
+    }
+    
     let unselectedIcon = FontAwesomeIcon._446Icon
     let selectedIcon = FontAwesomeIcon.okSignIcon
     
