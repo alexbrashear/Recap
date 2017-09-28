@@ -53,10 +53,16 @@ class FriendsListController: UIViewController {
     }
     
     func bottomBarNeedsUpdate() {
-        guard let selectedIndexPaths = tableView.indexPathsForSelectedRows else {
+        guard !selected.isEmpty else {
             return animateBottomBarToHeight(height: 0)
         }
         
+        var text = ""
+        _ = selected.map {
+            text = "\(text) \($0),"
+        }
+        let truncated = text.substring(to: text.index(before: text.endIndex))
+        bottomBar.setText(truncated)
         animateBottomBarToHeight(height: 60)
     }
     
@@ -89,10 +95,13 @@ extension FriendsListController: UITableViewDataSource {
 
 extension FriendsListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selected.insert(data[indexPath.row], at: 0)
         bottomBarNeedsUpdate()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let index = selected.index(of: data[indexPath.row]) else { return }
+        selected.remove(at: index)
         bottomBarNeedsUpdate()
     }
 }

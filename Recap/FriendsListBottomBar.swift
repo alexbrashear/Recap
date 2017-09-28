@@ -19,7 +19,6 @@ class FriendsListBottomBar: UIView {
         addSubview(names)
         addSubview(icon)
         
-        names.text = "This is a test"
         names.font = UIFont.openSansSemiBoldFont(ofSize: 16)
         names.textColor = .white
         
@@ -42,5 +41,9 @@ class FriendsListBottomBar: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setText(_ text: String) {
+        names.text = text
     }
 }
