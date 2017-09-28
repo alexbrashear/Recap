@@ -52,4 +52,8 @@ extension UIColor {
     class var rcpBlueyGrey: UIColor {
         return UIColor(red: 149.0 / 255.0, green: 160.0 / 255.0, blue: 176.0 / 255.0, alpha: 1.0)
     }
+    
+    @nonobjc class var rcpPaleGold: UIColor {
+        return UIColor(red: 251.0 / 255.0, green: 206.0 / 255.0, blue: 114.0 / 255.0, alpha: 1.0)
+    }
 }

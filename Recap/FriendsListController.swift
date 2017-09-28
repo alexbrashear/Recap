@@ -10,6 +10,7 @@ import UIKit
 
 class FriendsListController: UIViewController {
     
+    var topBar = FriendsListTopBar(frame: .zero)
     var tableView: UITableView!
     var bottomBar = FriendsListBottomBar(frame: .zero)
     var bottomBarHeight: NSLayoutConstraint?
@@ -23,15 +24,26 @@ class FriendsListController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // constraining a view to the view's topanchor will no longer extend under the
+        // navigation bar
+        edgesForExtendedLayout = []
+        
         view.backgroundColor = .white
         tableView = UITableView(frame: .zero)
         tableView.backgroundColor = .white
         
+        view.addSubview(topBar)
         view.addSubview(tableView)
         view.addSubview(bottomBar)
         
+        topBar.translatesAutoresizingMaskIntoConstraints = false
+        topBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        topBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
