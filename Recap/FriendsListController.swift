@@ -8,19 +8,28 @@
 
 import UIKit
 
+protocol FriendsListViewModelProtocol: class {
+    var topBarText: String { get }
+    var bottomBarText: String { get }
+    var shouldShowBottomBar: Bool { get }
+    
+    var numberOfSections: Int { get }
+    func numberOfRows(in section: Int) -> Int
+    func titleForRow(at indexPath: IndexPath) -> String
+    
+    var canSelect: Bool { get }
+    func didSelect(indexPath: IndexPath)
+    func didDeselect(indexPath: IndexPath)
+}
+
 class FriendsListController: UIViewController {
+    
+    var viewModel: FriendsListViewModelProtocol!
     
     var topBar = FriendsListTopBar(frame: .zero)
     var tableView: UITableView!
     var bottomBar = FriendsListBottomBar(frame: .zero)
     var bottomBarHeight: NSLayoutConstraint?
-    
-    var data: [String] = ["alex", "dave","mo","ben","david","blake","caro",
-                          "sam","will","teddy","tim","fabrizio","geranio","ballard",
-                          "max","steph","juan","jungles","renato","johnny","will",
-                          "renyao","dave kim","nana","pap","dan","doug","mom"]
-    
-    var selected = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +37,8 @@ class FriendsListController: UIViewController {
         // navigation bar
         edgesForExtendedLayout = []
         
+        // Setting the background color explicitly solved an issue
+        // with jumpy transitions
         view.backgroundColor = .white
         tableView = UITableView(frame: .zero)
         tableView.backgroundColor = .white
@@ -41,6 +52,7 @@ class FriendsListController: UIViewController {
         topBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         topBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        topBar.setText(viewModel.topBarText)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
@@ -65,16 +77,11 @@ class FriendsListController: UIViewController {
     }
     
     func bottomBarNeedsUpdate() {
-        guard !selected.isEmpty else {
+        guard viewModel.shouldShowBottomBar else {
             return animateBottomBarToHeight(height: 0)
         }
-        
-        var text = ""
-        _ = selected.map {
-            text = "\(text) \($0),"
-        }
-        let truncated = text.substring(to: text.index(before: text.endIndex))
-        bottomBar.setText(truncated)
+
+        bottomBar.setText(viewModel.bottomBarText)
         animateBottomBarToHeight(height: 60)
     }
     
@@ -90,30 +97,36 @@ class FriendsListController: UIViewController {
 
 extension FriendsListController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return viewModel.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath) as FriendCell
-        let name = data[indexPath.row]
+        let name = viewModel.titleForRow(at: indexPath)
         cell.viewModel = FriendCell.ViewModel(name: name)
         return cell
     }
 }
 
 extension FriendsListController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard viewModel.canSelect else { return nil }
+        return indexPath
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selected.insert(data[indexPath.row], at: 0)
+        viewModel.didSelect(indexPath: indexPath)
+        topBar.setText(viewModel.topBarText)
         bottomBarNeedsUpdate()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        guard let index = selected.index(of: data[indexPath.row]) else { return }
-        selected.remove(at: index)
+        viewModel.didDeselect(indexPath: indexPath)
+        topBar.setText(viewModel.topBarText)
         bottomBarNeedsUpdate()
     }
 }

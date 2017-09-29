@@ -25,6 +25,7 @@ extension RootFlowCoordinator {
             nc?.setNavigationBarHidden(false, animated: true)
             let friendsListController = FriendsListController()
             friendsListController.title = "Send To..."
+            friendsListController.viewModel = FriendsListViewModel()
             nc?.pushViewController(friendsListController, animated: true)
             return
             ////////////////////////////////////////////////////////
