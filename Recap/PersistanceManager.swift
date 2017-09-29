@@ -61,4 +61,10 @@ class PersistanceManager {
     init() {
         self.keychain = Keychain(service: "com.recap.credentials")
     }
+    
+    func __clearCredentials() {
+        user = nil
+        password = nil
+        token = nil
+    }
 }
