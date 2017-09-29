@@ -21,14 +21,9 @@ extension RootFlowCoordinator {
     /// - Parameter vc: the view controller to configure
     private func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc, weak nc] image in
-            ////////////////////////////////////////////////////////
-            nc?.setNavigationBarHidden(false, animated: true)
-            let friendsListController = FriendsListController()
-            friendsListController.title = "Send To..."
-            friendsListController.viewModel = FriendsListViewModel()
-            nc?.pushViewController(friendsListController, animated: true)
+            guard let nc = nc else { return }
+            self?.pushFriendsListController(onto: nc)
             return
-            ////////////////////////////////////////////////////////
             
             guard let address = self?.userController.user?.address,
                 let userId = self?.userController.user?.id else { return }
@@ -84,5 +79,21 @@ extension RootFlowCoordinator {
         guard let user = userController.user else { fatalError() }
         let vm = CameraViewModel(initialCount: user.remainingPhotos, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
         vc.viewModel = vm
+    }
+}
+
+// MARK: - FriendsListController
+
+extension RootFlowCoordinator {
+    func pushFriendsListController(onto nc: UINavigationController) {
+        nc.setNavigationBarHidden(false, animated: true)
+        let friendsListController = FriendsListController()
+        configure(friendsListController)
+        nc.pushViewController(friendsListController, animated: true)
+    }
+    
+    private func configure(_ vc: FriendsListController) {
+        vc.title = "Send To..."
+        vc.viewModel = FriendsListViewModel()
     }
 }
