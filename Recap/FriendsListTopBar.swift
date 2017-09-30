@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendsListTopBar: UIView {
+class FriendsListTopBar: UIControl {
     var label = UILabel(frame: .zero)
     
     override init(frame: CGRect) {

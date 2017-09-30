@@ -10,6 +10,8 @@ import UIKit
 
 protocol FriendsListViewModelProtocol: class {
     var topBarText: String { get }
+    var topBarTapHandler: () -> Void { get }
+    
     var bottomBarText: String { get }
     var shouldShowBottomBar: Bool { get }
     
@@ -53,6 +55,7 @@ class FriendsListController: UIViewController {
         topBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         topBar.heightAnchor.constraint(equalToConstant: 40).isActive = true
         topBar.setText(viewModel.topBarText)
+        topBar.addTarget(self, action: #selector(didTapTopBar), for: .touchUpInside)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: topBar.bottomAnchor).isActive = true
@@ -74,6 +77,10 @@ class FriendsListController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @objc func didTapTopBar() {
+        viewModel.topBarTapHandler()
     }
     
     func bottomBarNeedsUpdate() {

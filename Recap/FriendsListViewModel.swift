@@ -17,8 +17,11 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
                           "sam","will","teddy","tim","fabrizio","geranio","ballard",
                           "max","steph","juan","jungles","renato","johnny","will",
                           "renyao","dave kim","nana","pap","dan","doug","mom"]
+    
+    var topBarTapHandler: () -> Void
 
-    init() {
+    init(topBarTapHandler: @escaping () -> Void) {
+        self.topBarTapHandler = topBarTapHandler
     }
     
     var shouldShowBottomBar: Bool {
