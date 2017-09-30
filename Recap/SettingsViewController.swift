@@ -9,29 +9,41 @@
 import UIKit
 import MessageUI
 
+protocol SettingsViewModelProtocol {
+    var numberOfSections: Int { get }
+    func numberOfRows(in section: Int) -> Int
+    func title(for section: Int) -> String
+    func styleForRow(at indexPath: IndexPath) -> UITableViewCellStyle
+    func titleForRow(at indexPath: IndexPath) -> String
+    func subtitleForRow(at indexPath: IndexPath) -> String?
+    
+    func didSelectRow(at indexPath: IndexPath)
+}
+
 class SettingsViewController: UIViewController {
     
     fileprivate var tableView: UITableView!
+    var viewModel: SettingsViewModelProtocol!
     
-    var address: Address? {
-        didSet {
-            guard tableView != nil else { return }
-            tableView.reloadData()
-        }
-    }
+//    var address: Address? {
+//        didSet {
+//            guard tableView != nil else { return }
+//            tableView.reloadData()
+//        }
+//    }
+//    
+//    var isLoggedInToFacebook: Bool = false {
+//        didSet {
+//            guard tableView != nil else { return }
+//            if oldValue != isLoggedInToFacebook {
+//                tableView.reloadData()
+//            }
+//        }
+//    }
     
-    var isLoggedInToFacebook: Bool = false {
-        didSet {
-            guard tableView != nil else { return }
-            if oldValue != isLoggedInToFacebook {
-                tableView.reloadData()
-            }
-        }
-    }
-    
-    var changeAddress: (() -> Void)?
-    
-    var connectSocial: (() -> Void)?
+//    var changeAddress: (() -> Void)?
+//
+//    var connectSocial: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,34 +66,38 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return viewModel.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return SettingsSection(rawValue: section)?.title
+        return viewModel.title(for: section)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel.numberOfRows(in: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return UITableViewCell() }
+        let style = viewModel.styleForRow(at: indexPath)
+        let identifier = style == .subtitle ? "subtitle" : "default"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier) ?? UITableViewCell(style: style, reuseIdentifier: identifier)
         
-        let cell: UITableViewCell
-        switch section {
-        case .address:
-            cell = tableView.dequeueReusableCell(withIdentifier: "address") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "address")
-            cell.textLabel?.text = address?.name
-            cell.detailTextLabel?.text = "\(address?.line1 ?? "") \(address?.line2 ?? "")"
-        case .support:
-            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
-            cell.textLabel?.text = "Send Feedback"
-        case .facebook:
-            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
-            let str = isLoggedInToFacebook ? "facebook: Logged in" : "facebook: not logged in"
-            cell.textLabel?.text = str
-        }
+        cell.textLabel?.text = viewModel.titleForRow(at: indexPath)
+        cell.detailTextLabel?.text = viewModel.subtitleForRow(at: indexPath)
+        
+//        switch section {
+//        case .address:
+//            cell = tableView.dequeueReusableCell(withIdentifier: "address") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "address")
+//            cell.textLabel?.text = address?.name
+//            cell.detailTextLabel?.text = "\(address?.line1 ?? "") \(address?.line2 ?? "")"
+//        case .support:
+//            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
+//            cell.textLabel?.text = "Send Feedback"
+//        case .facebook:
+//            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
+//            let str = isLoggedInToFacebook ? "facebook: Logged in" : "facebook: not logged in"
+//            cell.textLabel?.text = str
+//        }
         
         return cell
     }
@@ -92,24 +108,25 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
-        switch section {
-        case .address:
-            changeAddress?()
-        case .support:
-            let vc = MFMailComposeViewController()
-            vc.mailComposeDelegate = self
-            vc.setToRecipients(["help@recap-app.com"])
-            vc.setSubject("I've got feedback!")
-            vc.setMessageBody("", isHTML: false)
-            if MFMailComposeViewController.canSendMail() {
-                self.present(vc, animated: true, completion: nil)
-            } else {
-                self.showSendMailErrorAlert()
-            }
-        case .facebook:
-            connectSocial?()
-        }
+        viewModel.didSelectRow(at: indexPath)
+//        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
+//        switch section {
+//        case .address:
+//            changeAddress?()
+//        case .support:
+//            let vc = MFMailComposeViewController()
+//            vc.mailComposeDelegate = self
+//            vc.setToRecipients(["help@recap-app.com"])
+//            vc.setSubject("I've got feedback!")
+//            vc.setMessageBody("", isHTML: false)
+//            if MFMailComposeViewController.canSendMail() {
+//                self.present(vc, animated: true, completion: nil)
+//            } else {
+//                self.showSendMailErrorAlert()
+//            }
+//        case .facebook:
+//            connectSocial?()
+//        }
     }
 }
 
