@@ -52,6 +52,57 @@ class InputAddressView: UIView, NibLoadable {
         zip.constrainToSuperview()
     }
     
+    func goToNextResponder() {
+        if name.isFirstResponder {
+            address.becomeFirstResponder()
+        } else if address.isFirstResponder {
+            apt.becomeFirstResponder()
+        } else if apt.isFirstResponder {
+            city.becomeFirstResponder()
+        } else if city.isFirstResponder {
+            state.becomeFirstResponder()
+        } else if state.isFirstResponder {
+            zip.becomeFirstResponder()
+        }
+    }
+    
+    func goToPreviousResponder() {
+        if zip.isFirstResponder {
+            state.becomeFirstResponder()
+        } else if address.isFirstResponder {
+            name.becomeFirstResponder()
+        } else if apt.isFirstResponder {
+            address.becomeFirstResponder()
+        } else if city.isFirstResponder {
+            apt.becomeFirstResponder()
+        } else if state.isFirstResponder {
+            city.becomeFirstResponder()
+        }
+    }
+    
+    func setKeyboardToolbar(toolbar: UIToolbar) {
+        name.setKeyboardToolbar(toolbar: toolbar)
+        address.setKeyboardToolbar(toolbar: toolbar)
+        apt.setKeyboardToolbar(toolbar: toolbar)
+        city.setKeyboardToolbar(toolbar: toolbar)
+        state.setKeyboardToolbar(toolbar: toolbar)
+        zip.setKeyboardToolbar(toolbar: toolbar)
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        super.resignFirstResponder()
+        return name.resignFirstResponder()
+            || address.resignFirstResponder()
+            || apt.resignFirstResponder()
+            || city.resignFirstResponder()
+            || state.resignFirstResponder()
+            || zip.resignFirstResponder()
+    }
+    
+    var bottomPosition: CGFloat {
+        return zipContainer.frame.maxY
+    }
+    
     func getAddress() -> Address {
         let name = self.name.value
         let addressLine1 = self.address.value

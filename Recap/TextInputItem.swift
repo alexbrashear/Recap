@@ -22,6 +22,24 @@ class TextInputItem: UIView, NibLoadable {
         item.font = UIFont.openSansBoldFont(ofSize: 12.0)
         item.textColor = .clearBlue
     }
+    
+    func setKeyboardToolbar(toolbar: UIToolbar) {
+        input.inputAccessoryView = toolbar
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        super.resignFirstResponder()
+        return input.resignFirstResponder()
+    }
+    
+    override var isFirstResponder: Bool {
+        return input.isFirstResponder
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        super.becomeFirstResponder()
+        return input.becomeFirstResponder()
+    }
 
     struct ViewModel {
         let item: String

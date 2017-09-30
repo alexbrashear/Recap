@@ -10,8 +10,9 @@ import Foundation
 
 class EnterAddressViewModel: EnterAddressViewModelProtocol {
     var nextAction: NextAction
+    var backAction: () -> Void
     
-    init(nextAction: @escaping NextAction) {
+    init(backAction: @escaping () -> Void, nextAction: @escaping NextAction) {
         self.nextAction = nextAction
     }
 }
