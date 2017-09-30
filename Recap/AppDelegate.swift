@@ -8,7 +8,6 @@
 
 import UIKit
 import AWSS3
-import IQKeyboardManagerSwift
 import Apollo
 import FacebookCore
 import FacebookLogin
@@ -42,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootFlowCoordinator?.rootViewController
         rootFlowCoordinator?.load()
         window?.makeKeyAndVisible()
-        
-        setupMovingKeyboard()
         return true
     }
 
@@ -62,10 +59,5 @@ extension AppDelegate {
         let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: AWSCredentials.identityPoolId)
         let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider: credentialProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-    }
-    
-    func setupMovingKeyboard() {
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 75
     }
 }
