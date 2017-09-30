@@ -68,6 +68,10 @@ class CameraOverlayView: UIView, NibLoadable {
                 self.viewModel?.countAction()
             }
             
+            count.on(.touchUpInside) { [unowned self] _ in
+                self.viewModel?.countAction()
+            }
+            
             updateCount(to: viewModel?.initialCount ?? 0)
         }
     }
