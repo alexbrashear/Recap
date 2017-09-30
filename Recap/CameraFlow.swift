@@ -65,8 +65,9 @@ extension RootFlowCoordinator {
         }
         
         let showSettings: () -> Void = { [weak self, weak vc] in
-            guard let vc = vc else  { return }
-            self?.presentSettingsViewController(from: vc)
+            guard let userController = self?.userController, let addressProvider = self?.addressProvider, let vc = vc else { return }
+            let settingsFlow = SettingsFlowCoordinator(userController: userController, addressProvider: addressProvider)
+            settingsFlow.presentSettingsViewController(from: vc)
         }
         
         let countAction: CountAction = { [weak self, weak vc] in
