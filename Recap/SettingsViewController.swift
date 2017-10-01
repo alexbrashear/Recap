@@ -24,18 +24,7 @@ class SettingsViewController: UIViewController {
     
     fileprivate var tableView: UITableView!
     var viewModel: SettingsViewModelProtocol!
-//    
-//    var isLoggedInToFacebook: Bool = false {
-//        didSet {
-//            guard tableView != nil else { return }
-//            if oldValue != isLoggedInToFacebook {
-//                tableView.reloadData()
-//            }
-//        }
-//    }
-    
-//    var connectSocial: (() -> Void)?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Settings"
@@ -79,20 +68,6 @@ extension SettingsViewController: UITableViewDataSource {
         
         cell.textLabel?.text = viewModel.titleForRow(at: indexPath)
         cell.detailTextLabel?.text = viewModel.subtitleForRow(at: indexPath)
-        
-//        switch section {
-//        case .address:
-//            cell = tableView.dequeueReusableCell(withIdentifier: "address") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "address")
-//            cell.textLabel?.text = address?.name
-//            cell.detailTextLabel?.text = "\(address?.line1 ?? "") \(address?.line2 ?? "")"
-//        case .support:
-//            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
-//            cell.textLabel?.text = "Send Feedback"
-//        case .facebook:
-//            cell = tableView.dequeueReusableCell(withIdentifier: "default") ?? UITableViewCell(style: .default, reuseIdentifier: "default")
-//            let str = isLoggedInToFacebook ? "facebook: Logged in" : "facebook: not logged in"
-//            cell.textLabel?.text = str
-//        }
         
         return cell
     }

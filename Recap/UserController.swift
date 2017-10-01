@@ -30,6 +30,10 @@ class UserController {
         }
     }
     
+    var isLoggedIntoFacebook: Bool {
+        return AccessToken.current != nil
+    }
+    
     init(graphql: ApolloWrapper, persistanceManager: PersistanceManager) {
         self.graphql = graphql
         self.store = persistanceManager

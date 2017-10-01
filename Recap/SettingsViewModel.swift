@@ -54,10 +54,12 @@ class SettingsViewModel: SettingsViewModelProtocol {
     
     let userController: UserController
     let enterAddress: () -> Void
+    let connectFacebook: () -> Void
     
-    init(userController: UserController, enterAddress: @escaping () -> Void) {
+    init(userController: UserController, enterAddress: @escaping () -> Void, connectFacebook: @escaping () -> Void) {
         self.userController = userController
         self.enterAddress = enterAddress
+        self.connectFacebook = connectFacebook
     }
     
     var numberOfSections: Int {
@@ -101,7 +103,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .sendFeedback:
             return "Send Feedback"
         case .logInToFacebook:
-            return "NO"
+            return userController.isLoggedIntoFacebook ? "facebook: Logged in" : "facebook: not logged in"
         }
     }
     
@@ -124,7 +126,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .sendFeedback:
             return
         case .logInToFacebook:
-            return
+            connectFacebook()
         }
     }
 }

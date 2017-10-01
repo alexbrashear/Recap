@@ -45,22 +45,19 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
             self?.pushEnterAddressController(onto: nc)
         }
         
-        vc.viewModel = SettingsViewModel(userController: userController, enterAddress: enterAddress)
+        let connectFacebook: () -> Void = { [weak self, weak vc] in
+            HUD.show(.progress)
+            self?.userController.loginWithSocial { result in
+                HUD.hide()
+                switch result {
+                case .success: break
+                case let .error(socialError):
+                    vc?.present(socialError.alert, animated: true, completion: nil)
+                }
+            }
+        }
         
-        //        vc.isLoggedInToFacebook = AccessToken.current != nil
-        //
-        //        vc.connectSocial = { [weak self, weak vc] in
-        //            HUD.show(.progress)
-        //            self?.userController.loginWithSocial { result in
-        //                HUD.hide()
-        //                switch result {
-        //                case .success:
-        //                    vc?.isLoggedInToFacebook = true
-        //                case let .error(socialError):
-        //                    vc?.present(socialError.alert, animated: true, completion: nil)
-        //                }
-        //            }
-        //        }
+        vc.viewModel = SettingsViewModel(userController: userController, enterAddress: enterAddress, connectFacebook: connectFacebook)
     }
     
     // MARK: - Enter Address Controller
