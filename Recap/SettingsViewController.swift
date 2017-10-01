@@ -24,13 +24,6 @@ class SettingsViewController: UIViewController {
     
     fileprivate var tableView: UITableView!
     var viewModel: SettingsViewModelProtocol!
-    
-//    var address: Address? {
-//        didSet {
-//            guard tableView != nil else { return }
-//            tableView.reloadData()
-//        }
-//    }
 //    
 //    var isLoggedInToFacebook: Bool = false {
 //        didSet {
@@ -41,8 +34,6 @@ class SettingsViewController: UIViewController {
 //        }
 //    }
     
-//    var changeAddress: (() -> Void)?
-//
 //    var connectSocial: (() -> Void)?
     
     override func viewDidLoad() {
@@ -59,6 +50,10 @@ class SettingsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(forName: UserNotification.addressChanged, object: nil, queue: .main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
 }
 

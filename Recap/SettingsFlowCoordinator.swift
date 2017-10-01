@@ -40,14 +40,12 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
         vc.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop) { [weak vc] _ in
             vc?.dismiss(animated: true, completion: nil)
         }
-        vc.viewModel = SettingsViewModel()
-        //        vc.address = userController.user?.address
-        //        vc.changeAddress = { [weak self, weak nc, weak vc] in
-        //            guard let nc = nc else { return }
-        //            self?.pushEnterAddressController(onto: nc) {
-        //                vc?.address = self?.userController.user?.address
-        //            }
-        //        }
+        let enterAddress: () -> Void = { [weak self, weak nc] in
+            guard let nc = nc else { return }
+            self?.pushEnterAddressController(onto: nc)
+        }
+        
+        vc.viewModel = SettingsViewModel(userController: userController, enterAddress: enterAddress)
         
         //        vc.isLoggedInToFacebook = AccessToken.current != nil
         //
@@ -67,7 +65,7 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
     
     // MARK: - Enter Address Controller
     
-    private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController, onSuccess: (() -> Void)?) {
+    private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
         let nextAction: NextAction = { [weak self, weak vc, weak nc] newAddress in
             HUD.show(.progress)
             self?.addressProvider.verify(address: newAddress) { [weak self] (verifiedAddress, error) in
@@ -78,21 +76,22 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
                 self?.userController.updateAddress(newAddress: verifiedAddress) { result in
                     HUD.hide()
                     guard let nc = nc else { return }
-                    onSuccess?()
                     nc.popViewController(animated: true)
                 }
             }
         }
         let backAction: () -> Void = { [weak nc] in
             nc?.popViewController(animated: true)
+            nc?.setNavigationBarHidden(false, animated: true)
         }
         
         vc.viewModel = EnterAddressViewModel(backAction: backAction, nextAction: nextAction)
     }
     
-    private func pushEnterAddressController(onto nc: UINavigationController, onSuccess: (() -> Void)?) {
+    private func pushEnterAddressController(onto nc: UINavigationController) {
         guard let vc = R.storyboard.enterAddress.enterAddressController() else { return }
-        configureEnterAddressController(vc, nc: nc, onSuccess: onSuccess)
+        configureEnterAddressController(vc, nc: nc)
+        nc.setNavigationBarHidden(true, animated: true)
         nc.pushViewController(vc, animated: true)
     }
 }

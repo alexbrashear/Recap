@@ -15,6 +15,10 @@ typealias UserCallback = (Result<User, UserError>) -> ()
 typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 
+struct UserNotification {
+    static let addressChanged = Notification.Name("addressChanged")
+}
+
 class UserController {
     
     fileprivate var graphql: ApolloWrapper
@@ -124,6 +128,7 @@ extension UserController {
                 callback(.error(UserError.updateAddressFailed)); return;
             }
             self?.user = user
+            NotificationCenter.default.post(name: UserNotification.addressChanged, object: nil)
             callback(.success(user))
         }
     }

@@ -52,8 +52,12 @@ enum SettingsRow {
 
 class SettingsViewModel: SettingsViewModelProtocol {
     
-    init() {
-        
+    let userController: UserController
+    let enterAddress: () -> Void
+    
+    init(userController: UserController, enterAddress: @escaping () -> Void) {
+        self.userController = userController
+        self.enterAddress = enterAddress
     }
     
     var numberOfSections: Int {
@@ -91,7 +95,9 @@ class SettingsViewModel: SettingsViewModelProtocol {
     private func titleForRow(row: SettingsRow) -> String {
         switch row {
         case .address:
-            return "Test"
+            let name = userController.user?.address.name
+            assert(name != nil)
+            return name ?? ""
         case .sendFeedback:
             return "Send Feedback"
         case .logInToFacebook:
@@ -102,13 +108,23 @@ class SettingsViewModel: SettingsViewModelProtocol {
     private func subtitleForRow(row: SettingsRow) -> String? {
         switch row {
         case .address:
-            return "TestTest"
+            guard let address = userController.user?.address else { return "" }
+            return "\(address.line1) \(address.line2)"
         case .logInToFacebook, .sendFeedback:
             return nil
         }
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        return
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
+        let row = section.rows[indexPath.row]
+        switch row {
+        case .address:
+            enterAddress()
+        case .sendFeedback:
+            return
+        case .logInToFacebook:
+            return
+        }
     }
 }
