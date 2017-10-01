@@ -79,38 +79,5 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         viewModel.didSelectRow(at: indexPath)
-//        guard let section = SettingsSection(rawValue: indexPath.section) else { return }
-//        switch section {
-//        case .address:
-//            changeAddress?()
-//        case .support:
-//            let vc = MFMailComposeViewController()
-//            vc.mailComposeDelegate = self
-//            vc.setToRecipients(["help@recap-app.com"])
-//            vc.setSubject("I've got feedback!")
-//            vc.setMessageBody("", isHTML: false)
-//            if MFMailComposeViewController.canSendMail() {
-//                self.present(vc, animated: true, completion: nil)
-//            } else {
-//                self.showSendMailErrorAlert()
-//            }
-//        case .facebook:
-//            connectSocial?()
-//        }
-    }
-}
-
-// MARK: - MFMailComposeViewControllerDelegate
-
-extension SettingsViewController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func showSendMailErrorAlert() {
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Access Mail", message: "Unfortunately we could not access your mail client but we saved help@recap-app.com to your clipboard, shoot us an email! Thanks!", preferredStyle: .alert)
-        sendMailErrorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        UIPasteboard.general.string = "help@recap-app.com"
-        present(sendMailErrorAlert, animated: true, completion: nil)
     }
 }

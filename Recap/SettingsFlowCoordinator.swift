@@ -8,7 +8,7 @@
 
 import UIKit
 import PKHUD
-import FacebookCore
+import MessageUI
 
 class SettingsFlowCoordinator: BaseFlowCoordinator {
     
@@ -45,6 +45,11 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
             self?.pushEnterAddressController(onto: nc)
         }
         
+        let feedbackAction: () -> Void = { [weak self, weak vc] in
+            guard let vc = vc else { return }
+            self?.presentMailComposeViewController(from: vc)
+        }
+        
         let connectFacebook: () -> Void = { [weak self, weak vc] in
             HUD.show(.progress)
             self?.userController.loginWithSocial { result in
@@ -57,7 +62,7 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
             }
         }
         
-        vc.viewModel = SettingsViewModel(userController: userController, enterAddress: enterAddress, connectFacebook: connectFacebook)
+        vc.viewModel = SettingsViewModel(userController: userController, enterAddress: enterAddress, feedbackAction: feedbackAction, connectFacebook: connectFacebook)
     }
     
     // MARK: - Enter Address Controller
@@ -90,5 +95,36 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
         configureEnterAddressController(vc, nc: nc)
         nc.setNavigationBarHidden(true, animated: true)
         nc.pushViewController(vc, animated: true)
+    }
+}
+
+extension SettingsFlowCoordinator: MFMailComposeViewControllerDelegate {
+    fileprivate func presentMailComposeViewController(from vc: UIViewController) {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposeVC = MFMailComposeViewController()
+            configure(vc: mailComposeVC)
+            vc.present(mailComposeVC, animated: true, completion: nil)
+        } else {
+            let alert = createSendMailErrorAlert()
+            vc.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func configure(vc: MFMailComposeViewController) {
+        vc.mailComposeDelegate = self
+        vc.setToRecipients(["help@recap-app.com"])
+        vc.setSubject("I've got feedback!")
+        vc.setMessageBody("", isHTML: false)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func createSendMailErrorAlert() -> UIAlertController {
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Access Mail", message: "Unfortunately we could not access your mail client but we saved help@recap-app.com to your clipboard, shoot us an email! Thanks!", preferredStyle: .alert)
+        sendMailErrorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        UIPasteboard.general.string = "help@recap-app.com"
+        return sendMailErrorAlert
     }
 }

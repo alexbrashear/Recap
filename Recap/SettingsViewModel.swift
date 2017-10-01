@@ -54,11 +54,13 @@ class SettingsViewModel: SettingsViewModelProtocol {
     
     let userController: UserController
     let enterAddress: () -> Void
+    let feedbackAction: () -> Void
     let connectFacebook: () -> Void
     
-    init(userController: UserController, enterAddress: @escaping () -> Void, connectFacebook: @escaping () -> Void) {
+    init(userController: UserController, enterAddress: @escaping () -> Void, feedbackAction: @escaping () -> Void, connectFacebook: @escaping () -> Void) {
         self.userController = userController
         self.enterAddress = enterAddress
+        self.feedbackAction = feedbackAction
         self.connectFacebook = connectFacebook
     }
     
@@ -124,7 +126,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .address:
             enterAddress()
         case .sendFeedback:
-            return
+            feedbackAction()
         case .logInToFacebook:
             connectFacebook()
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseFlowCoordinator {
+class BaseFlowCoordinator: NSObject {
     func configureNavigationController(nc: UINavigationController) {
         nc.navigationBar.barTintColor = .rcpAzure
         nc.navigationBar.tintColor = .white
