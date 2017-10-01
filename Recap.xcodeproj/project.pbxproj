@@ -92,7 +92,6 @@
 		C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */; };
 		C3C7C28D1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */; };
 		C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */; };
-		C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3CAC4811EBFA592007CECF3 /* Settings.storyboard */; };
 		C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */; };
 		C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */; };
 		C3CE0E2C1E6E6730008000B1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CE0E2B1E6E6730008000B1 /* R.generated.swift */; };
@@ -208,7 +207,6 @@
 		C3C7C28A1EAB98340071F433 /* EnterAddressViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterAddressViewModel.swift; sourceTree = "<group>"; };
 		C3C7C28C1EAB9BDD0071F433 /* UIAlertController+CommonAlerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+CommonAlerts.swift"; sourceTree = "<group>"; };
 		C3CAC4791EBE1FAB007CECF3 /* PositiveAlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositiveAlertViewModel.swift; sourceTree = "<group>"; };
-		C3CAC4811EBFA592007CECF3 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C3CE0E281E6E628F008000B1 /* RootFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlowCoordinator.swift; sourceTree = "<group>"; };
 		C3CE0E2B1E6E6730008000B1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -508,7 +506,6 @@
 		C3CAC4801EBFA571007CECF3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				C3CAC4811EBFA592007CECF3 /* Settings.storyboard */,
 				C3CAC4831EBFA5C5007CECF3 /* SettingsViewController.swift */,
 				C39028551EC9570900D8E257 /* SettingsViewModel.swift */,
 			);
@@ -676,7 +673,6 @@
 				C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C31E62AE1F26D5EC0084443A /* Photo.graphql in Resources */,
-				C3CAC4821EBFA592007CECF3 /* Settings.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3E60EF61F11B45B0068A28E /* schema.json in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,

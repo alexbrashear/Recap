@@ -27,7 +27,7 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
     }
     
     func presentSettingsViewController(from presentingViewController: UIViewController) {
-        guard let vc = R.storyboard.settings.settingsViewController() else { fatalError() }
+        let vc = SettingsViewController()
         vc.setAssociatedObject(self, forKey: &key, policy: .retain)
 
         let nc = UINavigationController(rootViewController: vc)
@@ -66,6 +66,11 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
     // MARK: - Enter Address Controller
     
     private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController) {
+        let backAction: (() -> Void)? = { [weak nc] in
+            nc?.popViewController(animated: true)
+            nc?.setNavigationBarHidden(false, animated: true)
+        }
+        
         let nextAction: NextAction = { [weak self, weak vc, weak nc] newAddress in
             HUD.show(.progress)
             self?.addressProvider.verify(address: newAddress) { [weak self] (verifiedAddress, error) in
@@ -75,17 +80,12 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
                 }
                 self?.userController.updateAddress(newAddress: verifiedAddress) { result in
                     HUD.hide()
-                    guard let nc = nc else { return }
-                    nc.popViewController(animated: true)
+                    backAction?()
                 }
             }
         }
-        let backAction: () -> Void = { [weak nc] in
-            nc?.popViewController(animated: true)
-            nc?.setNavigationBarHidden(false, animated: true)
-        }
         
-        vc.viewModel = EnterAddressViewModel(backAction: backAction, nextAction: nextAction)
+        vc.viewModel = EnterAddressViewModel(backAction: backAction!, nextAction: nextAction)
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController) {
