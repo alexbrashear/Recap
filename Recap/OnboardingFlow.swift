@@ -31,7 +31,7 @@ extension RootFlowCoordinator {
     // MARK: - Enter Address Controller
     
     private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController, email: String, password: String) {
-        let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] address in
+        let nextAction: NextAction = { [weak self, weak vc, weak nc] address in
             HUD.show(.progress)
             self?.addressProvider.verify(address: address) { [weak self] (address, error) in
                 guard let address = address, error == nil else {
@@ -51,7 +51,11 @@ extension RootFlowCoordinator {
                 
             }
         }
-        vc.viewModel = vm
+        
+        let backAction: () -> Void = { [weak nc] in
+            nc?.popViewController(animated: true)
+        }
+        vc.viewModel = EnterAddressViewModel(backAction: backAction, nextAction: nextAction)
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController, email: String, password: String) {

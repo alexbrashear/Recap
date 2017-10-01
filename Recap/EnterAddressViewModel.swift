@@ -14,5 +14,6 @@ class EnterAddressViewModel: EnterAddressViewModelProtocol {
     
     init(backAction: @escaping () -> Void, nextAction: @escaping NextAction) {
         self.nextAction = nextAction
+        self.backAction = backAction
     }
 }

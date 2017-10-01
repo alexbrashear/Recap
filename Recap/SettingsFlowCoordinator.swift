@@ -68,7 +68,7 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
     // MARK: - Enter Address Controller
     
     private func configureEnterAddressController(_ vc: EnterAddressController, nc: UINavigationController, onSuccess: (() -> Void)?) {
-        let vm = EnterAddressViewModel { [weak self, weak vc, weak nc] newAddress in
+        let nextAction: NextAction = { [weak self, weak vc, weak nc] newAddress in
             HUD.show(.progress)
             self?.addressProvider.verify(address: newAddress) { [weak self] (verifiedAddress, error) in
                 guard let verifiedAddress = verifiedAddress, error == nil else {
@@ -83,7 +83,11 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
                 }
             }
         }
-        vc.viewModel = vm
+        let backAction: () -> Void = { [weak nc] in
+            nc?.popViewController(animated: true)
+        }
+        
+        vc.viewModel = EnterAddressViewModel(backAction: backAction, nextAction: nextAction)
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController, onSuccess: (() -> Void)?) {

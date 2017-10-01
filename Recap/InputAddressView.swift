@@ -54,29 +54,29 @@ class InputAddressView: UIView, NibLoadable {
     
     func goToNextResponder() {
         if name.isFirstResponder {
-            address.becomeFirstResponder()
+            _ = address.becomeFirstResponder()
         } else if address.isFirstResponder {
-            apt.becomeFirstResponder()
+            _ = apt.becomeFirstResponder()
         } else if apt.isFirstResponder {
-            city.becomeFirstResponder()
+            _ = city.becomeFirstResponder()
         } else if city.isFirstResponder {
-            state.becomeFirstResponder()
+            _ = state.becomeFirstResponder()
         } else if state.isFirstResponder {
-            zip.becomeFirstResponder()
+            _ = zip.becomeFirstResponder()
         }
     }
     
     func goToPreviousResponder() {
         if zip.isFirstResponder {
-            state.becomeFirstResponder()
+            _ = state.becomeFirstResponder()
         } else if address.isFirstResponder {
-            name.becomeFirstResponder()
+            _ = name.becomeFirstResponder()
         } else if apt.isFirstResponder {
-            address.becomeFirstResponder()
+            _ = address.becomeFirstResponder()
         } else if city.isFirstResponder {
-            apt.becomeFirstResponder()
+            _ = apt.becomeFirstResponder()
         } else if state.isFirstResponder {
-            city.becomeFirstResponder()
+            _ = city.becomeFirstResponder()
         }
     }
     
