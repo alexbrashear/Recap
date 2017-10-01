@@ -98,7 +98,7 @@ extension RootFlowCoordinator {
     
     private func configure(_ vc: FriendsListController) {
         vc.title = "Send To..."
-        vc.viewModel = FriendsListViewModel(topBarTapHandler: { [weak self, weak vc] in
+        vc.viewModel = FriendsListViewModel(userController: userController, topBarTapHandler: { [weak self, weak vc] in
             guard let userController = self?.userController, let vc = vc else { return }
             let purchaseFlow = PurchaseFlowCoordinator(userController: userController)
             purchaseFlow.presentPurchaseController(from: vc, completion: {_ in})

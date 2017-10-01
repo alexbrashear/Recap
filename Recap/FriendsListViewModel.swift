@@ -11,7 +11,6 @@ import Foundation
 class FriendsListViewModel: FriendsListViewModelProtocol {
     
     private var selected = [String]()
-    private var recapsRemaining = 5
     
     var data: [String] = ["alex", "dave","mo","ben","david","blake","caro",
                           "sam","will","teddy","tim","fabrizio","geranio","ballard",
@@ -19,8 +18,11 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
                           "renyao","dave kim","nana","pap","dan","doug","mom"]
     
     var topBarTapHandler: () -> Void
+    
+    let userController: UserController
 
-    init(topBarTapHandler: @escaping () -> Void) {
+    init(userController: UserController, topBarTapHandler: @escaping () -> Void) {
+        self.userController = userController
         self.topBarTapHandler = topBarTapHandler
     }
     
@@ -38,7 +40,8 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     }
     
     var topBarText: String {
-        let remaining = recapsRemaining - selected.count
+        guard let remainingPhotos = userController.user?.remainingPhotos else { return "Error retrieving your photos" }
+        let remaining = remainingPhotos - selected.count
         if remaining == 0 {
             return "0 RECAPS LEFT - TAP TO GET MORE"
         } else if remaining == 1 {
@@ -65,6 +68,7 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     // mark - UITableViewDelegate
     
     var canSelect: Bool {
+        guard let recapsRemaining = userController.user?.remainingPhotos else { return false }
         return selected.count < recapsRemaining
     }
     
