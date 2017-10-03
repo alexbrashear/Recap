@@ -21,6 +21,8 @@ class RootFlowCoordinator {
     
     let imageProvider = ImageProvider()
     
+    let friendsListProvider = FriendsListProvider()
+    
     let userController: UserController
     
     init(userController: UserController) {

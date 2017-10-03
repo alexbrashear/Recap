@@ -34,6 +34,7 @@
 		C32652CC1F677DD10027B316 /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32652CB1F677DD10027B316 /* FriendsListController.swift */; };
 		C32652CE1F67892B0027B316 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32652CD1F67892B0027B316 /* FriendCell.swift */; };
 		C32652D01F6789660027B316 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32652CF1F6789660027B316 /* FriendCell.xib */; };
+		C3268BF11F83278F00F93C21 /* FriendsListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3268BF01F83278F00F93C21 /* FriendsListProvider.swift */; };
 		C32BCCDB1F3C157D0080CFA0 /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BCCDA1F3C157D0080CFA0 /* AlertableError.swift */; };
 		C32BFCC41F7B462E00BF255F /* FriendsListBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */; };
 		C32BFCC61F7CA93900BF255F /* FriendsListTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32BFCC51F7CA93900BF255F /* FriendsListTopBar.swift */; };
@@ -145,6 +146,7 @@
 		C32652CB1F677DD10027B316 /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		C32652CD1F67892B0027B316 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		C32652CF1F6789660027B316 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
+		C3268BF01F83278F00F93C21 /* FriendsListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListProvider.swift; sourceTree = "<group>"; };
 		C32BCCDA1F3C157D0080CFA0 /* AlertableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertableError.swift; sourceTree = "<group>"; };
 		C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListBottomBar.swift; sourceTree = "<group>"; };
 		C32BFCC51F7CA93900BF255F /* FriendsListTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListTopBar.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				C32652CB1F677DD10027B316 /* FriendsListController.swift */,
+				C3268BF01F83278F00F93C21 /* FriendsListProvider.swift */,
 				C32BFCC71F7CAB3700BF255F /* FriendsListViewModel.swift */,
 				C32BFCC51F7CA93900BF255F /* FriendsListTopBar.swift */,
 				C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */,
@@ -879,6 +882,7 @@
 				C32BFCC61F7CA93900BF255F /* FriendsListTopBar.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
+				C3268BF11F83278F00F93C21 /* FriendsListProvider.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 				C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */,
 				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
