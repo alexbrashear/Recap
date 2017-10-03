@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import Iconic
 
 extension RootFlowCoordinator {
     func pushCameraViewController(onto nc: UINavigationController) {
@@ -98,10 +99,32 @@ extension RootFlowCoordinator {
     
     private func configure(_ vc: FriendsListController) {
         vc.title = "Send To..."
-        vc.viewModel = FriendsListViewModel(userController: userController, topBarTapHandler: { [weak self, weak vc] in
+        let button = UIButton()
+        let image = FontAwesomeIcon._529Icon.image(ofSize: CGSize(width: 25, height: 25), color: .white)
+        button.setImage(image, for: .normal)
+        button.on(.touchUpInside) { [weak self, weak vc] _ in
+            guard let vc = vc else { return }
+            self?.presentEnterAddressController(from: vc)
+        }
+        let barbutton = UIBarButtonItem(customView: button)
+        vc.navigationItem.rightBarButtonItem = barbutton
+        vc.viewModel = FriendsListViewModel(friendsListProvider: friendsListProvider, userController: userController, topBarTapHandler: { [weak self, weak vc] in
             guard let userController = self?.userController, let vc = vc else { return }
             let purchaseFlow = PurchaseFlowCoordinator(userController: userController)
             purchaseFlow.presentPurchaseController(from: vc, completion: {_ in})
         })
+    }
+    
+    private func presentEnterAddressController(from presentingViewController: UIViewController) {
+        guard let vc = R.storyboard.enterAddress.enterAddressController() else { return }
+        configure(vc: vc)
+        presentingViewController.present(vc, animated: true, completion: nil)
+    }
+    
+    private func configure(vc: EnterAddressController) {
+        let vm = EnterAddressNewFriendViewModel(friendsListProvider: friendsListProvider, backAction: { [weak vc] in
+            vc?.dismiss(animated: true, completion: nil)
+        })
+        vc.viewModel = vm
     }
 }

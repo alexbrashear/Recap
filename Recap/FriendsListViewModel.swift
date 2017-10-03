@@ -10,20 +10,34 @@ import Foundation
 
 class FriendsListViewModel: FriendsListViewModelProtocol {
     
-    private var selected = [String]()
+    private var selected = [Friend]()
     
-    var data: [String] = ["alex", "dave","mo","ben","david","blake","caro",
-                          "sam","will","teddy","tim","fabrizio","geranio","ballard",
-                          "max","steph","juan","jungles","renato","johnny","will",
-                          "renyao","dave kim","nana","pap","dan","doug","mom"]
-    
+    private var friendsSnapshot = [[Friend]]()
+
     var topBarTapHandler: () -> Void
     
+    let friendsListProvider: FriendsListProvider
     let userController: UserController
 
-    init(userController: UserController, topBarTapHandler: @escaping () -> Void) {
+    init(friendsListProvider: FriendsListProvider, userController: UserController, topBarTapHandler: @escaping () -> Void) {
+        self.friendsListProvider = friendsListProvider
         self.userController = userController
         self.topBarTapHandler = topBarTapHandler
+        self.refreshFriendSnapshot()
+    }
+    
+    func refreshFriendSnapshot() {
+        var newFriends = [[Friend]]()
+        if !friendsListProvider.addedFriends.isEmpty {
+            newFriends.append(friendsListProvider.addedFriends)
+        }
+        if !friendsListProvider.recents.isEmpty {
+            newFriends.append(friendsListProvider.recents)
+        }
+        if !friendsListProvider.facebookFriends.isEmpty {
+            newFriends.append(friendsListProvider.facebookFriends)
+        }
+        friendsSnapshot = newFriends
     }
     
     var shouldShowBottomBar: Bool {
@@ -54,15 +68,17 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     // mark - UITableViewDataSource
     
     var numberOfSections: Int {
-        return 1
+        return friendsSnapshot.count
     }
     
     func numberOfRows(in section: Int) -> Int {
-        return data.count
+        return friendsSnapshot[section].count
     }
     
     func titleForRow(at indexPath: IndexPath) -> String {
-        return data[indexPath.row]
+        let group = friendsSnapshot[indexPath.section]
+        let friend = group[indexPath.row]
+        return friend.name
     }
     
     // mark - UITableViewDelegate
@@ -73,11 +89,15 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     }
     
     func didSelect(indexPath: IndexPath) {
-        selected.insert(data[indexPath.row], at: 0)
+        let group = friendsSnapshot[indexPath.section]
+        let friend = group[indexPath.row]
+        selected.insert(friend, at: 0)
     }
     
     func didDeselect(indexPath: IndexPath) {
-        guard let index = selected.index(of: data[indexPath.row]) else { return }
+        let group = friendsSnapshot[indexPath.section]
+        let friend = group[indexPath.row]
+        guard let index = selected.index(of: friend) else { return }
         selected.remove(at: index)
     }
 }

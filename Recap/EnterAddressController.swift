@@ -11,6 +11,9 @@ import UIKit
 typealias NextAction = (_ address: Address) -> Void
 
 protocol EnterAddressViewModelProtocol: class {
+    var heading: NSAttributedString { get }
+    var subheading: NSAttributedString { get }
+    var buttonText: NSAttributedString { get }
     var backAction: () -> Void { get }
     var nextAction: NextAction { get }
 }
@@ -62,6 +65,7 @@ class EnterAddressController: UIViewController {
         
         heading.font = UIFont.openSansSemiBoldFont(ofSize: 20)
         subHeading.font = UIFont.openSansSemiBoldFont(ofSize: 16)
+        nextButton.setAttributedTitle(viewModel?.buttonText, for: .normal)
         
         tap = UITapGestureRecognizer(target: self, action: .dismissKeyboard)
         inputAddressView.setKeyboardToolbar(toolbar: keyboardToolbar())

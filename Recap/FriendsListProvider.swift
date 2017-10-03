@@ -34,14 +34,12 @@ class Friend: NSObject, NSCoding {
 }
 
 class FriendsListProvider {
-    private var addedFriends: [Friend]
+    var addedFriends: [Friend]
+    var recents: [Friend]
+    var facebookFriends: [Friend]
     
     enum Keys: String {
         case addedFriends
-    }
-    
-    var friends: [[Friend]] {
-        return [addedFriends]
     }
     
     init() {
@@ -50,6 +48,9 @@ class FriendsListProvider {
         } else {
             self.addedFriends = []
         }
+        
+        self.recents = []
+        self.facebookFriends = []
     }
     
     func addFriend(_ friend: Friend) {

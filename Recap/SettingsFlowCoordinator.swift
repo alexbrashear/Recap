@@ -87,7 +87,7 @@ class SettingsFlowCoordinator: BaseFlowCoordinator {
             }
         }
         
-        vc.viewModel = EnterAddressViewModel(backAction: backAction!, nextAction: nextAction)
+        vc.viewModel = EnterAddressSignupViewModel(backAction: backAction!, nextAction: nextAction)
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController) {

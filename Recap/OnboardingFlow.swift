@@ -55,7 +55,7 @@ extension RootFlowCoordinator {
         let backAction: () -> Void = { [weak nc] in
             nc?.popViewController(animated: true)
         }
-        vc.viewModel = EnterAddressViewModel(backAction: backAction, nextAction: nextAction)
+        vc.viewModel = EnterAddressSignupViewModel(backAction: backAction, nextAction: nextAction)
     }
     
     private func pushEnterAddressController(onto nc: UINavigationController, email: String, password: String) {
