@@ -16,6 +16,7 @@ protocol FriendsListViewModelProtocol: class {
     var shouldShowBottomBar: Bool { get }
     
     var numberOfSections: Int { get }
+    func titleForHeader(in section: Int) -> String?
     func numberOfRows(in section: Int) -> Int
     func titleForRow(at indexPath: IndexPath) -> String
     
@@ -107,8 +108,21 @@ extension FriendsListController: UITableViewDataSource {
         return viewModel.numberOfSections
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.titleForHeader(in: section)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows(in: section)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = UIColor.rcpBlueyGrey
+        header.backgroundView?.backgroundColor = .white
+        header.textLabel?.font = UIFont.openSansBoldFont(ofSize: 12)
+        guard let frame = header.textLabel?.frame else { return }
+        header.textLabel?.frame = CGRect(x: frame.minX + 5, y: frame.minY, width: frame.width, height: frame.height)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

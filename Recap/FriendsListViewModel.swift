@@ -12,7 +12,12 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     
     private var selected = [Friend]()
     
-    private var friendsSnapshot = [[Friend]]()
+    private var friendsSnapshot = [Section]()
+    
+    struct Section {
+        let friends: [Friend]
+        let title: String?
+    }
 
     var topBarTapHandler: () -> Void
     
@@ -27,15 +32,21 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     }
     
     func refreshFriendSnapshot() {
-        var newFriends = [[Friend]]()
+        var newFriends = [Section]()
+        if let username = userController.user?.address.name {
+            newFriends.append(Section(friends: [Friend(name: "\(username) (me)")], title: nil))
+        }
         if !friendsListProvider.addedFriends.isEmpty {
-            newFriends.append(friendsListProvider.addedFriends)
+            let addedFriends = Section(friends: friendsListProvider.addedFriends, title: "ADDED")
+            newFriends.append(addedFriends)
         }
         if !friendsListProvider.recents.isEmpty {
-            newFriends.append(friendsListProvider.recents)
+            let recents = Section(friends: friendsListProvider.addedFriends, title: "RECENTS")
+            newFriends.append(recents)
         }
         if !friendsListProvider.facebookFriends.isEmpty {
-            newFriends.append(friendsListProvider.facebookFriends)
+            let facebook = Section(friends: friendsListProvider.facebookFriends, title: "FACEBOOK")
+            newFriends.append(facebook)
         }
         friendsSnapshot = newFriends
     }
@@ -48,7 +59,7 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
         guard shouldShowBottomBar else { return "" }
         var text = ""
         _ = selected.map {
-            text = "\(text) \($0),"
+            text = "\(text) \($0.name),"
         }
         return text.substring(to: text.index(before: text.endIndex))
     }
@@ -71,12 +82,16 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
         return friendsSnapshot.count
     }
     
+    func titleForHeader(in section: Int) -> String? {
+        return friendsSnapshot[section].title
+    }
+    
     func numberOfRows(in section: Int) -> Int {
-        return friendsSnapshot[section].count
+        return friendsSnapshot[section].friends.count
     }
     
     func titleForRow(at indexPath: IndexPath) -> String {
-        let group = friendsSnapshot[indexPath.section]
+        let group = friendsSnapshot[indexPath.section].friends
         let friend = group[indexPath.row]
         return friend.name
     }
@@ -89,13 +104,13 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     }
     
     func didSelect(indexPath: IndexPath) {
-        let group = friendsSnapshot[indexPath.section]
+        let group = friendsSnapshot[indexPath.section].friends
         let friend = group[indexPath.row]
         selected.insert(friend, at: 0)
     }
     
     func didDeselect(indexPath: IndexPath) {
-        let group = friendsSnapshot[indexPath.section]
+        let group = friendsSnapshot[indexPath.section].friends
         let friend = group[indexPath.row]
         guard let index = selected.index(of: friend) else { return }
         selected.remove(at: index)
