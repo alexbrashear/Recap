@@ -12,6 +12,7 @@ target 'Recap' do
     pod 'FacebookLogin'
     pod 'FacebookCore'
     pod 'Iconic', :git => 'https://github.com/dzenbot/Iconic.git', :tag => '1.3'
+    pod 'BraintreeDropIn'
 end
 
 target 'RecapTests' do
