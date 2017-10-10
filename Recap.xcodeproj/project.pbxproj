@@ -62,6 +62,7 @@
 		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
 		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
 		C38A43BA1F8BC66B00A6E2FA /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */; };
+		C38A43BE1F8D0DAC00A6E2FA /* UIColor+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */; };
 		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
@@ -179,6 +180,7 @@
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsController.swift; sourceTree = "<group>"; };
+		C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Images.swift"; sourceTree = "<group>"; };
 		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 		C3CE0E311E726EB7008000B1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */,
 				C3CE0E321E726EE7008000B1 /* UIBarButtonItem+Closures.swift */,
 				C3346F071E7ED4AA00A136B5 /* Date+Formatting.swift */,
 				C3C347691EAAFCF50008E62E /* UIButton+Closures.swift */,
@@ -882,6 +885,7 @@
 				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
 				C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
+				C38A43BE1F8D0DAC00A6E2FA /* UIColor+Images.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
 				C32BFCC61F7CA93900BF255F /* FriendsListTopBar.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
