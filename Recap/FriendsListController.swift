@@ -78,6 +78,10 @@ class FriendsListController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(forName: FriendNotification.facebookUpdated, object: nil, queue: .main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
     }
     
     @objc func didTapTopBar() {

@@ -106,6 +106,7 @@
 		C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DB8C461E419D550076B7A3 /* AddressParser.swift */; };
 		C3E60EF61F11B45B0068A28E /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E60EF51F11B45B0068A28E /* schema.json */; };
 		C3E60EF81F11B4FD0068A28E /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E60EF71F11B4FD0068A28E /* API.swift */; };
+		C3F1D8A91F8D385100983BBD /* FriendParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1D8A81F8D385100983BBD /* FriendParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		C3DB8C461E419D550076B7A3 /* AddressParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressParser.swift; sourceTree = "<group>"; };
 		C3E60EF51F11B45B0068A28E /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		C3E60EF71F11B4FD0068A28E /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		C3F1D8A81F8D385100983BBD /* FriendParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendParser.swift; sourceTree = "<group>"; };
 		EC5DDE820945FAE41102A623 /* Pods_Recap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDCD6FD234A482CFF7BC8C6F /* Pods-RecapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecapTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RecapTests/Pods-RecapTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +310,7 @@
 			children = (
 				C32652CB1F677DD10027B316 /* FriendsListController.swift */,
 				C3268BF01F83278F00F93C21 /* FriendsListProvider.swift */,
+				C3F1D8A81F8D385100983BBD /* FriendParser.swift */,
 				C32BFCC71F7CAB3700BF255F /* FriendsListViewModel.swift */,
 				C32BFCC51F7CA93900BF255F /* FriendsListTopBar.swift */,
 				C32BFCC31F7B462E00BF255F /* FriendsListBottomBar.swift */,
@@ -850,6 +853,7 @@
 				C330B6371E46A17100928284 /* Result.swift in Sources */,
 				C3C347601EA865490008E62E /* EnterAddressController.swift in Sources */,
 				C3AE4C2C1EDFC22D0019ED8C /* PurchaseFlowCoordinator.swift in Sources */,
+				C3F1D8A91F8D385100983BBD /* FriendParser.swift in Sources */,
 				C3AE4C2E1EDFC5EC0019ED8C /* CameraFlow.swift in Sources */,
 				C31E62B21F28730B0084443A /* Photo.swift in Sources */,
 				C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */,

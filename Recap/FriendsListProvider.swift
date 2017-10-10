@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import FBSDKCoreKit
+import FacebookCore
+import FacebookLogin
 
 class Friend: NSObject, NSCoding {
     var name: String
@@ -33,6 +36,10 @@ class Friend: NSObject, NSCoding {
     }
 }
 
+struct FriendNotification {
+    static let facebookUpdated = Notification.Name("facebookUpdated")
+}
+
 class FriendsListProvider {
     var addedFriends: [Friend]
     var recents: [Friend]
@@ -41,6 +48,8 @@ class FriendsListProvider {
     enum Keys: String {
         case addedFriends
     }
+    
+    private let parser = FriendParser()
     
     init() {
         if let data = UserDefaults.standard.object(forKey: Keys.addedFriends.rawValue) as? Data {
@@ -51,6 +60,8 @@ class FriendsListProvider {
         
         self.recents = []
         self.facebookFriends = []
+        
+        fetchFacebookFriends()
     }
     
     func addFriend(_ friend: Friend) {
@@ -58,5 +69,20 @@ class FriendsListProvider {
         
         let data = NSKeyedArchiver.archivedData(withRootObject: addedFriends)
         UserDefaults.standard.set(data, forKey: Keys.addedFriends.rawValue)
+    }
+    
+    func fetchFacebookFriends() {
+        guard let userId = AccessToken.current?.userId else { return }
+        let request = FBSDKGraphRequest(graphPath: "/\(userId)/friends", parameters: [:], httpMethod: "GET")
+        _ = request?.start(completionHandler: { [weak self] connection, result, error in
+            guard let data = result as? [String: Any] else { return }
+            if let friends = self?.parser.parse(data: data) {
+                self?.facebookFriends = friends
+                
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: FriendNotification.facebookUpdated, object: nil, userInfo: nil)
+                }
+            }
+        })
     }
 }
