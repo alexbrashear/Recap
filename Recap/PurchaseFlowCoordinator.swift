@@ -8,6 +8,8 @@
 
 import UIKit
 import PKHUD
+import Braintree
+import BraintreeDropIn
 
 typealias PurchaseCompletion = (_ purchaseCompleted: Bool) -> Void
 
@@ -16,9 +18,11 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
     private var key = "PurhcaseFlowCoordinator"
     
     let userController: UserController
+    let paymentsController: PaymentsController
     
-    init(userController: UserController) {
+    init(userController: UserController, paymentsController: PaymentsController) {
         self.userController = userController
+        self.paymentsController = paymentsController
     }
     
     func presentPurchaseController(from presentingViewController: UIViewController, completion: @escaping PurchaseCompletion) {
@@ -39,15 +43,23 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
         
         let buyFilm: BuyFilmAction = { [weak self, weak vc] capacity in
             HUD.show(.progress)
-            self?.userController.buyFilm(capacity: capacity) { result in
-                HUD.hide()
-                switch result {
-                case let .success:
-                    vc?.dismiss(animated: true, completion: { completion(true) })
-                case let .error(userError):
-                    vc?.present(userError.alert, animated: true, completion: nil)
+            self?.paymentsController.paymentsDropInController { dropInController in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    guard let dropInController = dropInController else { return }
+                    vc?.present(dropInController, animated: true, completion: nil)
                 }
             }
+//            HUD.show(.progress)
+//            self?.userController.buyFilm(capacity: capacity) { result in
+//                HUD.hide()
+//                switch result {
+//                case let .success:
+//                    vc?.dismiss(animated: true, completion: { completion(true) })
+//                case let .error(userError):
+//                    vc?.present(userError.alert, animated: true, completion: nil)
+//                }
+//            }
         }
         
         let vm = PurchaseViewModel(buyFilm: buyFilm)

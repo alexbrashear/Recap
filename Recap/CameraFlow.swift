@@ -72,10 +72,10 @@ extension RootFlowCoordinator {
         }
         
         let countAction: CountAction = { [weak self, weak vc] in
-            guard let userController = self?.userController, let vc = vc else { return }
-            let purchaseFlow = PurchaseFlowCoordinator(userController: userController)
-            purchaseFlow.presentPurchaseController(from: vc) { [weak vc] success in
-                if success, let remainingPhotos = userController.user?.remainingPhotos {
+            guard let strongSelf = self, let vc = vc else { return }
+            let purchaseFlow = PurchaseFlowCoordinator(userController: strongSelf.userController, paymentsController: strongSelf.paymentsController)
+            purchaseFlow.presentPurchaseController(from: vc) { [weak vc, weak self] success in
+                if success, let remainingPhotos = self?.userController.user?.remainingPhotos {
                     vc?.overlay.updateCount(to: remainingPhotos)
                 }
             }
@@ -109,8 +109,8 @@ extension RootFlowCoordinator {
         let barbutton = UIBarButtonItem(customView: button)
         vc.navigationItem.rightBarButtonItem = barbutton
         vc.viewModel = FriendsListViewModel(friendsListProvider: friendsListProvider, userController: userController, topBarTapHandler: { [weak self, weak vc] in
-            guard let userController = self?.userController, let vc = vc else { return }
-            let purchaseFlow = PurchaseFlowCoordinator(userController: userController)
+            guard let strongSelf = self, let vc = vc else { return }
+            let purchaseFlow = PurchaseFlowCoordinator(userController: strongSelf.userController, paymentsController: strongSelf.paymentsController)
             purchaseFlow.presentPurchaseController(from: vc, completion: {_ in})
         })
     }

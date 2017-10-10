@@ -24,10 +24,12 @@ class RootFlowCoordinator {
     let friendsListProvider = FriendsListProvider()
     
     let userController: UserController
+    let paymentsController: PaymentsController
     
-    init(userController: UserController) {
+    init(userController: UserController, paymentsController: PaymentsController) {
         navigationController = UINavigationController()
         self.userController = userController
+        self.paymentsController = paymentsController
         configureNavigationController(nc: navigationController)
     }
     
