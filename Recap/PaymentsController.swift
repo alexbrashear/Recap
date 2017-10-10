@@ -105,7 +105,7 @@ class PaymentsController {
     
     private func fetchClientToken(completion: @escaping PaymentsClientTokenCompletion) {
         // TODO: Switch this URL to your own authenticated API
-        let clientTokenURL = NSURL(string: "\(__debugHost)client_token")!
+        let clientTokenURL = NSURL(string: "\(hostname)client_token")!
         let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
         clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
         if let customerId = self.customerId {
@@ -127,7 +127,7 @@ class PaymentsController {
     }
     
     private func postNonceToServer(paymentMethodNonce: String, numberOfPacks: Int, completion: @escaping PaymentsPostNonceCompletion) {
-        let paymentURL = URL(string: "\(__debugHost)checkouts")!
+        let paymentURL = URL(string: "\(hostname)checkouts")!
         var request = URLRequest(url: paymentURL)
         request.httpBody = "payment_method_nonce=\(paymentMethodNonce)&number_of_packs=\(numberOfPacks)".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
@@ -145,7 +145,7 @@ class PaymentsController {
     
     private func createCustomer(paymentMethodNonce: String, completion: @escaping PaymentsCreateCustomerCompletion) {
         guard customerId == nil else { return completion() }
-        let paymentURL = URL(string: "\(__debugHost)customer/new")!
+        let paymentURL = URL(string: "\(hostname)customer/new")!
         var request = URLRequest(url: paymentURL)
         request.httpBody = "payment_method_nonce=\(paymentMethodNonce)".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
