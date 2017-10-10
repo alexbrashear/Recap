@@ -15,6 +15,7 @@ class PersistanceManager {
         case user
         case password
         case token
+        case customerId
     }
     
     private let keychain: Keychain
@@ -55,6 +56,16 @@ class PersistanceManager {
         
         set {
             keychain[Keys.token.rawValue] = newValue
+        }
+    }
+    
+    var customerId: String? {
+        get {
+            return keychain[Keys.customerId.rawValue]
+        }
+        
+        set {
+            keychain[Keys.customerId.rawValue] = newValue
         }
     }
     
