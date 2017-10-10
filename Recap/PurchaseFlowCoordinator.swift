@@ -42,14 +42,6 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
         vc.title = "Add Film"
         
         let buyFilm: BuyFilmAction = { [weak self, weak vc] capacity in
-            HUD.show(.progress)
-            self?.paymentsController.paymentsDropInController { dropInController in
-                DispatchQueue.main.async {
-                    HUD.hide()
-                    guard let dropInController = dropInController else { return }
-                    vc?.present(dropInController, animated: true, completion: nil)
-                }
-            }
 //            HUD.show(.progress)
 //            self?.userController.buyFilm(capacity: capacity) { result in
 //                HUD.hide()
@@ -62,7 +54,18 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
 //            }
         }
         
-        let vm = PurchaseViewModel(buyFilm: buyFilm)
+        let paymentInformation = { [weak self, weak vc] in
+            HUD.show(.progress)
+            self?.paymentsController.paymentsDropInController { dropInController in
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    guard let dropInController = dropInController else { return }
+                    vc?.present(dropInController, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        let vm = PurchaseViewModel(buyFilm: buyFilm, paymentInformation: paymentInformation)
         vc.viewModel = vm
     }
 }

@@ -62,6 +62,7 @@
 		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
 		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
 		C38A43BA1F8BC66B00A6E2FA /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */; };
+		C38A43BC1F8C7E4600A6E2FA /* PaymentIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43BB1F8C7E4600A6E2FA /* PaymentIconView.swift */; };
 		C38A43BE1F8D0DAC00A6E2FA /* UIColor+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */; };
 		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
@@ -180,6 +181,7 @@
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsController.swift; sourceTree = "<group>"; };
+		C38A43BB1F8C7E4600A6E2FA /* PaymentIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIconView.swift; sourceTree = "<group>"; };
 		C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Images.swift"; sourceTree = "<group>"; };
 		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			children = (
 				C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */,
 				C3AE4C291EDFC1F00019ED8C /* PurchaseViewController.swift */,
+				C38A43BB1F8C7E4600A6E2FA /* PaymentIconView.swift */,
 				C3AE4C2F1EE1166F0019ED8C /* PurchaseViewModel.swift */,
 			);
 			name = Purchase;
@@ -865,6 +868,7 @@
 				C31339821EAC47AD0080A168 /* OnboardingCoordinator.swift in Sources */,
 				C3C7C28B1EAB98340071F433 /* EnterAddressViewModel.swift in Sources */,
 				C3DB8C441E4057820076B7A3 /* AddressProvider.swift in Sources */,
+				C38A43BC1F8C7E4600A6E2FA /* PaymentIconView.swift in Sources */,
 				C3E60EF81F11B4FD0068A28E /* API.swift in Sources */,
 				C31339861EAC56720080A168 /* UserController.swift in Sources */,
 				C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */,

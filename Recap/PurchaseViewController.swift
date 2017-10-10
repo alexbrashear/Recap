@@ -9,15 +9,16 @@
 import UIKit
 
 typealias BuyFilmAction = (_ capacity: Int) -> Void
+typealias PaymentInformationAction = () -> Void
 
 protocol PurchaseViewModelProtocol: class {
     var buyFilm: BuyFilmAction { get }
+    var paymentInformation: PaymentInformationAction { get }
 }
 
 class PurchaseViewController: UIViewController {
 
     @IBOutlet private var message: UILabel!
-    @IBOutlet private var disclaimer: UILabel!
     @IBOutlet private var productDescription: UILabel!
     @IBOutlet private var decrement: UIButton!
     @IBOutlet private var increment: UIButton!
@@ -25,6 +26,10 @@ class PurchaseViewController: UIViewController {
     @IBOutlet private var individualPrice: UILabel!
     @IBOutlet private var totalPrice: UILabel!
     @IBOutlet private var buyFilm: UIButton!
+    @IBOutlet private var paymentInformation: UIButton!
+    @IBOutlet private var paymentIcon: UIView!
+    
+    var customPaymentIcon: UIView?
     
     var viewModel: PurchaseViewModelProtocol?
     
@@ -40,7 +45,6 @@ class PurchaseViewController: UIViewController {
         message.text = "Get photos of your everyday adventures - all for less than a burrito 🌯."
         
         message.font = UIFont.openSansFont(ofSize: 16)
-        disclaimer.font = UIFont.openSansFont(ofSize: 10)
         productDescription.font = UIFont.openSansSemiBoldFont(ofSize: 16)
         individualPrice.font = UIFont.openSansBoldFont(ofSize: 12)
         totalPrice.font = UIFont.openSansFont(ofSize: 20)
@@ -58,8 +62,38 @@ class PurchaseViewController: UIViewController {
             self.syncSetCurrentFilmCount(increment: false)
         }
         
-        increment.isHidden = true
-        decrement.isHidden = true
+        paymentInformation.on(.touchUpInside) { [unowned self] _ in
+            self.viewModel?.paymentInformation()
+        }
+        
+        NotificationCenter.default.addObserver(forName: PaymentsNotification.methodSelected, object: nil, queue: .main) { [weak self] notification in
+            guard let iconView = notification.userInfo?[PaymentsNotification.paymentIconKey] as? UIView,
+                  let description = notification.userInfo?[PaymentsNotification.paymentDescriptionKey] as? String else { return }
+            self?.customPaymentIcon = PaymentIconView(icon: iconView, description: description)
+            self?.didReceivePaymentIcon()
+        }
+        
+        setBuyFilmEnabled(false)
+    }
+    
+    private func didReceivePaymentIcon() {
+        customPaymentIcon?.removeFromSuperview()
+        
+        if let customIcon = customPaymentIcon {
+            paymentIcon.isHidden = false
+            paymentIcon.addSubview(customIcon)
+            customIcon.constrainToSuperview()
+            setBuyFilmEnabled(true)
+        } else {
+            paymentIcon.isHidden = true
+            setBuyFilmEnabled(false)
+        }
+    }
+    
+    private func setBuyFilmEnabled(_ enabled: Bool) {
+        buyFilm.isEnabled = enabled
+        let color = enabled ? UIColor.butterscotch : UIColor.rcpBlueyGrey
+        buyFilm.setBackgroundImage(color.singlePixelImage(), for: .normal)
     }
     
     func syncSetCurrentFilmCount(increment: Bool) {

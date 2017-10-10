@@ -20,11 +20,20 @@ typealias PaymentsDropInController = (BTDropInController?) -> Void
 
 typealias PaymentsCreateCustomerCompletion = () -> Void
 
+struct PaymentsNotification {
+    static let methodSelected = Notification.Name("methodSelected")
+    
+    static let paymentIconKey = "paymentIcon"
+    static let paymentDescriptionKey = "paymentDescription"
+}
+
 class PaymentsController {
     
     var customerId: String? {
         return persistanceManager.customerId
     }
+    
+    var paymentIcon: UIView?
     
     private var persistanceManager: PersistanceManager
     
@@ -55,9 +64,14 @@ class PaymentsController {
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
-                if customerId == nil, let nonce = result.paymentMethod?.nonce {
+                self?.paymentIcon = result.paymentIcon
+                if self?.customerId == nil, let nonce = result.paymentMethod?.nonce {
                     self?.createCustomer(paymentMethodNonce: nonce) { _ in }
                 }
+                NotificationCenter.default.post(name: PaymentsNotification.methodSelected,
+                                                object: nil,
+                                                userInfo: [PaymentsNotification.paymentIconKey: result.paymentIcon,
+                                                           PaymentsNotification.paymentDescriptionKey: result.paymentDescription])
             }
             controller.dismiss(animated: true, completion: nil)
         }

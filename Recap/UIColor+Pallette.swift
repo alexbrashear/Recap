@@ -33,6 +33,10 @@ extension UIColor {
         return UIColor(red: 251.0 / 255.0, green: 196.0 / 255.0, blue: 76.0 / 255.0, alpha: 1.0)
     }
     
+    class var butterscotchDisabled: UIColor {
+        return UIColor(red: 251.0 / 255.0, green: 196.0 / 255.0, blue: 76.0 / 255.0, alpha: 0.1)
+    }
+    
     class var gray51: UIColor {
         return UIColor(red: 51.0 / 255.0, green: 51.0 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
     }
