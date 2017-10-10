@@ -29,7 +29,7 @@ class PurchaseViewController: UIViewController {
     var viewModel: PurchaseViewModelProtocol?
     
     private var currentFilmCount: Int = 1
-    private var filmPrice: Int = 0
+    private var filmPrice: Int = 8
     private let capacity = 10
     
     override func viewDidLoad() {
