@@ -61,6 +61,7 @@
 		C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A01F0AC247005FF8EC /* FilterProvider.swift */; };
 		C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37F67A31F0DE9D3005FF8EC /* Login.storyboard */; };
 		C37F67A61F0DEFDD005FF8EC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */; };
+		C38A43BA1F8BC66B00A6E2FA /* PaymentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */; };
 		C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */ = {isa = PBXBuildFile; fileRef = C38A88F61EE7C73600445692 /* EmptyFilmList.xib */; };
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
@@ -177,6 +178,7 @@
 		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsController.swift; sourceTree = "<group>"; };
 		C38A88F61EE7C73600445692 /* EmptyFilmList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyFilmList.xib; sourceTree = "<group>"; };
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			children = (
 				C31339831EAC53B20080A168 /* User.swift */,
 				C31339851EAC56720080A168 /* UserController.swift */,
+				C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */,
 				C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */,
 				C31E62AF1F286A260084443A /* PhotoError.swift */,
 			);
@@ -829,6 +832,7 @@
 				C3CAC4841EBFA5C5007CECF3 /* SettingsViewController.swift in Sources */,
 				C32652CE1F67892B0027B316 /* FriendCell.swift in Sources */,
 				C3346F081E7ED4AA00A136B5 /* Date+Formatting.swift in Sources */,
+				C38A43BA1F8BC66B00A6E2FA /* PaymentsController.swift in Sources */,
 				C3C3474B1EA711280008E62E /* WelcomeViewController.swift in Sources */,
 				C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */,
 				C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */,
