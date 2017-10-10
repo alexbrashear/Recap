@@ -41,17 +41,17 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
         
         vc.title = "Add Film"
         
-        let buyFilm: BuyFilmAction = { [weak self, weak vc] capacity in
-//            HUD.show(.progress)
-//            self?.userController.buyFilm(capacity: capacity) { result in
-//                HUD.hide()
-//                switch result {
-//                case let .success:
-//                    vc?.dismiss(animated: true, completion: { completion(true) })
-//                case let .error(userError):
-//                    vc?.present(userError.alert, animated: true, completion: nil)
-//                }
-//            }
+        let buyFilm: BuyFilmAction = { [weak self, weak vc] packs, capacity in
+            HUD.show(.progress)
+            self?.paymentsController.buyFilm(packs: packs, capacity: capacity) { result in
+                HUD.hide()
+                switch result {
+                case let .success:
+                    vc?.dismiss(animated: true, completion: { completion(true) })
+                case let .error(err):
+                    print(err)
+                }
+            }
         }
         
         let paymentInformation = { [weak self, weak vc] in

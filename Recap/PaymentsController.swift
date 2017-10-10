@@ -20,6 +20,9 @@ typealias PaymentsDropInController = (BTDropInController?) -> Void
 
 typealias PaymentsCreateCustomerCompletion = () -> Void
 
+typealias PaymentsBuyFilmResult = Result<Void, PaymentsError>
+typealias PaymentsBuyFilmCompletion = (PaymentsBuyFilmResult) -> Void
+
 struct PaymentsNotification {
     static let methodSelected = Notification.Name("methodSelected")
     
@@ -36,14 +39,20 @@ class PaymentsController {
     var paymentIcon: UIView?
     
     private var persistanceManager: PersistanceManager
+    private var userController: UserController
+    private var mostRecentNonce: String?
     
     private let hostname = "https://recap-messaging.herokuapp.com/"
     private let __debugHost = "http://localhost:3000/"
     
-    init(persistanceManager: PersistanceManager) {
+    init(persistanceManager: PersistanceManager, userController: UserController) {
         self.persistanceManager = persistanceManager
+        self.userController = userController
     }
     
+    /// Creates a drop in controller for braintree payments
+    ///
+    /// - Parameter completion: completion handler to with controller
     func paymentsDropInController(completion: @escaping PaymentsDropInController) {
         fetchClientToken { [weak self] result in
             switch result {
@@ -55,7 +64,22 @@ class PaymentsController {
         }
     }
     
-    func createPaymentsDropIn(clientToken: String, completion: @escaping PaymentsDropInController) {
+    func buyFilm(packs: Int, capacity: Int, completion: @escaping PaymentsBuyFilmCompletion) {
+        guard packs > 0, let nonce = mostRecentNonce else { return completion(.error(.unknownFailure)) }
+        postNonceToServer(paymentMethodNonce: nonce, numberOfPacks: packs) { [weak self] result in
+            let film = packs * capacity
+            self?.userController.buyFilm(capacity: film) { result in
+                switch result {
+                case .success(let user):
+                    completion(.success())
+                case .error(let err):
+                    completion(.error(.unknownFailure))
+                }
+            }
+        }
+    }
+    
+    private func createPaymentsDropIn(clientToken: String, completion: @escaping PaymentsDropInController) {
         let request =  BTDropInRequest()
         let dropIn = BTDropInController(authorization: clientToken, request: request)
         { [weak self] (controller, result, error) in
@@ -64,6 +88,7 @@ class PaymentsController {
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
+                self?.mostRecentNonce = result.paymentMethod?.nonce
                 self?.paymentIcon = result.paymentIcon
                 if self?.customerId == nil, let nonce = result.paymentMethod?.nonce {
                     self?.createCustomer(paymentMethodNonce: nonce) { _ in }
@@ -101,7 +126,7 @@ class PaymentsController {
         }.resume()
     }
     
-    func postNonceToServer(paymentMethodNonce: String, numberOfPacks: Int, completion: @escaping PaymentsPostNonceCompletion) {
+    private func postNonceToServer(paymentMethodNonce: String, numberOfPacks: Int, completion: @escaping PaymentsPostNonceCompletion) {
         let paymentURL = URL(string: "\(__debugHost)checkouts")!
         var request = URLRequest(url: paymentURL)
         request.httpBody = "payment_method_nonce=\(paymentMethodNonce)&number_of_packs=\(numberOfPacks)".data(using: String.Encoding.utf8)
@@ -118,7 +143,7 @@ class PaymentsController {
         }.resume()
     }
     
-    func createCustomer(paymentMethodNonce: String, completion: @escaping PaymentsCreateCustomerCompletion) {
+    private func createCustomer(paymentMethodNonce: String, completion: @escaping PaymentsCreateCustomerCompletion) {
         guard customerId == nil else { return completion() }
         let paymentURL = URL(string: "\(__debugHost)customer/new")!
         var request = URLRequest(url: paymentURL)

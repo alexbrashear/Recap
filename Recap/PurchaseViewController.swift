@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias BuyFilmAction = (_ capacity: Int) -> Void
+typealias BuyFilmAction = (_ packs: Int, _ capacity: Int) -> Void
 typealias PaymentInformationAction = () -> Void
 
 protocol PurchaseViewModelProtocol: class {
@@ -52,7 +52,7 @@ class PurchaseViewController: UIViewController {
         
         buyFilm.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 20)
         buyFilm.on(.touchUpInside) { [unowned self] _ in
-            self.viewModel?.buyFilm(self.capacity)
+            self.viewModel?.buyFilm(self.currentFilmCount, self.capacity)
         }
         
         increment.on(.touchUpInside) { [unowned self] _ in

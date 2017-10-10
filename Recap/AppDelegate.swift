@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userController.loadUser()
         }
         
-        let paymentsController = PaymentsController(persistanceManager: persistanceManager)
+        let paymentsController = PaymentsController(persistanceManager: persistanceManager, userController: userController)
         
         rootFlowCoordinator = RootFlowCoordinator(userController: userController, paymentsController: paymentsController)
         
