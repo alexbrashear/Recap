@@ -80,8 +80,7 @@ class UserController {
         ///
         
         let createAddressInput = CreateAddressInput(city: address.city, secondaryLine: address.line2, name: address.name, primaryLine: address.line1, zipCode: address.zip, state: address.state)
-        let createFilmInput = CreateFilmInput(capacity: 2)
-        let createUserInput = CreateUserInput(username: email, address: createAddressInput, film: createFilmInput, password: password)
+        let createUserInput = CreateUserInput(remainingPhotos: 2, username: email, address: createAddressInput, password: password)
         let mut = SignupUserMutation(user: createUserInput)
         
         graphql.client.perform(mutation: mut, queue: .main) { [weak self] result, error in
@@ -139,16 +138,10 @@ extension UserController {
     
     func usePhoto(photo: Photo, callback: @escaping UserCallback) {
         guard let user = self.user else { callback(.error(.unknownFailure)); return }
-        let input = CreatePhotoInput(largeThumbnailUrl: photo.thumbnails.large.absoluteString,
-                                     expectedDeliveryDate: photo.expectedDeliveryDate,
-                                     imageUrl: photo.imageURL.absoluteString,
-                                     mediumThumbnailUrl: photo.thumbnails.medium.absoluteString,
-                                     filmId: user.filmId,
-                                     smallThumbnailUrl: photo.thumbnails.small.absoluteString,
-                                     userId: user.id)
+        let input = CreatePhotoInput(imageUrl: photo.imageURL.absoluteString, senderId: user.id)
         let mut = CreatePhotoMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let completeUser = result?.data?.createPhoto?.changedPhoto?.user?.fragments.completeUser,
+            guard let completeUser = result?.data?.createPhoto?.changedPhoto?.sender?.fragments.completeUser,
                 let user = User(completeUser: completeUser),
                 error == nil
                 else {
@@ -161,10 +154,10 @@ extension UserController {
     
     func buyFilm(capacity: Int, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
-        let input = CreateFilmInput(userId: user.id, capacity: user.remainingPhotos + capacity)
-        let mut = BuyFilmMutation(input: input)
+        let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
+        let mut = UpdateUserMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let completeUser = result?.data?.createFilm?.changedFilm?.fragments.completeFilm.user?.fragments.completeUser,
+            guard let completeUser = result?.data?.updateUser?.changedUser?.fragments.completeUser,
                 let user = User(completeUser: completeUser),
                 error == nil
             else {

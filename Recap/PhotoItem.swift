@@ -17,14 +17,14 @@ class PhotoItem: UICollectionViewCell, Reusable {
     var photo: Photo? {
         didSet {
             guard let photo = photo else { return }
-            imageProvider?.fetchImage(forUrl: photo.thumbnails.small) { [weak self] result in
-                switch result {
-                case let .success(image):
-                    self?.imageView.image = image
-                case .error:
-                    break
-                }
-            }
+//            imageProvider?.fetchImage(forUrl: photo.thumbnails.small) { [weak self] result in
+//                switch result {
+//                case let .success(image):
+//                    self?.imageView.image = image
+//                case .error:
+//                    break
+//                }
+//            }
         }
     }
     

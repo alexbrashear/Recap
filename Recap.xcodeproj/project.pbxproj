@@ -11,7 +11,6 @@
 		33542493721BBDDE8F2031C6 /* Pods_MeMailer5000Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB62A14EA431F1C163BA632 /* Pods_MeMailer5000Tests.framework */; };
 		7EC37E0C7861A5BD4E105569 /* Pods_Recap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5DDE820945FAE41102A623 /* Pods_Recap.framework */; };
 		C309724E1F2C0A1B0040A72E /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */; };
-		C30972501F2D26AC0040A72E /* Film.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C309724F1F2D26AC0040A72E /* Film.graphql */; };
 		C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972511F2E85300040A72E /* SentPhotosController.swift */; };
 		C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972531F2E867A0040A72E /* SentPhotosLayout.swift */; };
 		C30972581F30192D0040A72E /* PhotoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30972571F30192D0040A72E /* PhotoItem.swift */; };
@@ -30,7 +29,6 @@
 		C31E62AE1F26D5EC0084443A /* Photo.graphql in Resources */ = {isa = PBXBuildFile; fileRef = C31E62AD1F26D5EC0084443A /* Photo.graphql */; };
 		C31E62B01F286A260084443A /* PhotoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E62AF1F286A260084443A /* PhotoError.swift */; };
 		C31E62B21F28730B0084443A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E62B11F28730B0084443A /* Photo.swift */; };
-		C31E62B41F2873550084443A /* Thumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31E62B31F2873550084443A /* Thumbnails.swift */; };
 		C32652CC1F677DD10027B316 /* FriendsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32652CB1F677DD10027B316 /* FriendsListController.swift */; };
 		C32652CE1F67892B0027B316 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32652CD1F67892B0027B316 /* FriendCell.swift */; };
 		C32652D01F6789660027B316 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C32652CF1F6789660027B316 /* FriendCell.xib */; };
@@ -71,7 +69,6 @@
 		C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PostcardSender.swift */; };
 		C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B91E5109ED009C4696 /* NetworkClient.swift */; };
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
-		C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BD1E5B901A009C4696 /* Postcard.swift */; };
 		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
 		C3A841CB1F25593D009E43BE /* ApolloWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */; };
 		C3AE4C281EDFC1A80019ED8C /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */; };
@@ -127,7 +124,6 @@
 		7E8D7D0C1E4A334099968D53 /* Pods_RecapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86480A54151BC1AE48383D52 /* Pods-Recap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recap/Pods-Recap.debug.xcconfig"; sourceTree = "<group>"; };
 		C309724D1F2C0A1B0040A72E /* PersistanceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
-		C309724F1F2D26AC0040A72E /* Film.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Film.graphql; sourceTree = "<group>"; };
 		C30972511F2E85300040A72E /* SentPhotosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosController.swift; sourceTree = "<group>"; };
 		C30972531F2E867A0040A72E /* SentPhotosLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentPhotosLayout.swift; sourceTree = "<group>"; };
 		C30972571F30192D0040A72E /* PhotoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoItem.swift; sourceTree = "<group>"; };
@@ -146,7 +142,6 @@
 		C31E62AD1F26D5EC0084443A /* Photo.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Photo.graphql; sourceTree = "<group>"; };
 		C31E62AF1F286A260084443A /* PhotoError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoError.swift; sourceTree = "<group>"; };
 		C31E62B11F28730B0084443A /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		C31E62B31F2873550084443A /* Thumbnails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnails.swift; sourceTree = "<group>"; };
 		C32652CB1F677DD10027B316 /* FriendsListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListController.swift; sourceTree = "<group>"; };
 		C32652CD1F67892B0027B316 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		C32652CF1F6789660027B316 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
@@ -191,7 +186,6 @@
 		C396E7B71E5107B7009C4696 /* PostcardSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardSender.swift; sourceTree = "<group>"; };
 		C396E7B91E5109ED009C4696 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
-		C396E7BD1E5B901A009C4696 /* Postcard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postcard.swift; sourceTree = "<group>"; };
 		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
 		C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloWrapper.swift; sourceTree = "<group>"; };
 		C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
@@ -560,10 +554,8 @@
 			isa = PBXGroup;
 			children = (
 				C31E62B11F28730B0084443A /* Photo.swift */,
-				C31E62B31F2873550084443A /* Thumbnails.swift */,
 				C31279C21E3EF09900F52C31 /* Address.swift */,
 				C330B63A1E46B82800928284 /* AddressError.swift */,
-				C396E7BD1E5B901A009C4696 /* Postcard.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -581,7 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				C37C2E3E1F117F74002DFE7D /* User.graphql */,
-				C309724F1F2D26AC0040A72E /* Film.graphql */,
 				C31E62AD1F26D5EC0084443A /* Photo.graphql */,
 				C3E60EF51F11B45B0068A28E /* schema.json */,
 				C3E60EF71F11B4FD0068A28E /* API.swift */,
@@ -691,7 +682,6 @@
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3E60EF61F11B45B0068A28E /* schema.json in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
-				C30972501F2D26AC0040A72E /* Film.graphql in Resources */,
 				C32652D01F6789660027B316 /* FriendCell.xib in Resources */,
 				C35308421E3D163600E2BD8A /* Assets.xcassets in Resources */,
 				C38A88F71EE7C73600445692 /* EmptyFilmList.xib in Resources */,
@@ -829,7 +819,6 @@
 			files = (
 				C3AE4C301EE1166F0019ED8C /* PurchaseViewModel.swift in Sources */,
 				C3CE0E351E7592E2008000B1 /* Configuration.swift in Sources */,
-				C31E62B41F2873550084443A /* Thumbnails.swift in Sources */,
 				C30972581F30192D0040A72E /* PhotoItem.swift in Sources */,
 				C3C3476A1EAAFCF50008E62E /* UIButton+Closures.swift in Sources */,
 				C3C347661EA9A99D0008E62E /* InputAddressView.swift in Sources */,
@@ -881,7 +870,6 @@
 				C30972541F2E867A0040A72E /* SentPhotosLayout.swift in Sources */,
 				C32BFCC81F7CAB3700BF255F /* FriendsListViewModel.swift in Sources */,
 				C3C347501EA7124B0008E62E /* UIColor+Pallette.swift in Sources */,
-				C396E7BE1E5B901A009C4696 /* Postcard.swift in Sources */,
 				C31339841EAC53B20080A168 /* User.swift in Sources */,
 				C3DB8C471E419D550076B7A3 /* AddressParser.swift in Sources */,
 				C3C347541EA83BD10008E62E /* WelcomeViewModel.swift in Sources */,

@@ -35,27 +35,13 @@ mutation UpdateUser($input: UpdateUserInput!) {
     }
 }
 
-mutation LoginUserWithSocial($input: LoginUserWithAuth0SocialInput!) {
-    loginUserWithAuth0Social(input: $input) {
-        changedEdge {
-            node {
-                ...completeUser
-            }
-        }
-        access_token
-        token
-    }
-}
-
 fragment completeUser on User {
     id
     username
     address {
         ...completeAddress
     }
-    film {
-        ...photosCount
-    }
+    remainingPhotos
     photos {
         edges {
             node {
