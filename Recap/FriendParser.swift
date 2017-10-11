@@ -32,6 +32,6 @@ class FriendParser {
               let id = data[Key.id.rawValue] as? String else {
                 return nil
         }
-        return Friend(name: name)
+        return Friend(name: name, facebookId: id)
     }
 }

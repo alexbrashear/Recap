@@ -37,8 +37,8 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     
     func refreshFriendSnapshot() {
         var newFriends = [Section]()
-        if let username = userController.user?.address.name {
-            newFriends.append(Section(friends: [Friend(name: "\(username) (me)")], title: nil))
+        if let address = userController.user?.address {
+            newFriends.append(Section(friends: [Friend(name: "\(address.name) (me)", address: address)], title: nil))
         }
         if !friendsListProvider.addedFriends.isEmpty {
             let addedFriends = Section(friends: friendsListProvider.addedFriends, title: "ADDED")

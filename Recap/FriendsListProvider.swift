@@ -13,17 +13,29 @@ import FacebookLogin
 
 class Friend: NSObject, NSCoding {
     var name: String
+    var facebookId: String?
+    var address: Address?
     
-    init(name: String) {
+    var isFacebook: Bool {
+        return facebookId != nil
+    }
+    
+    init(name: String, facebookId: String? = nil, address: Address? = nil) {
         self.name = name
+        self.facebookId = facebookId
+        self.address = address
     }
     
     enum Keys: String {
         case name
+        case facebookId
+        case address
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: Keys.name.rawValue)
+        aCoder.encode(facebookId, forKey: Keys.facebookId.rawValue)
+        aCoder.encode(address, forKey: Keys.address.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -31,8 +43,10 @@ class Friend: NSObject, NSCoding {
             assertionFailure("unable to decode Friend")
             return nil
         }
+        let facebookId = aDecoder.decodeObject(forKey: Keys.facebookId.rawValue) as? String
+        let address = aDecoder.decodeObject(forKey: Keys.address.rawValue) as? Address
         
-        self.init(name: name)
+        self.init(name: name, facebookId: facebookId, address: address)
     }
 }
 
