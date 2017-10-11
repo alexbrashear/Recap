@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias SendHandler = ([Friend]) -> Void
+
 class FriendsListViewModel: FriendsListViewModelProtocol {
     
     private var selected = [Friend]()
@@ -20,14 +22,16 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
     }
 
     var topBarTapHandler: () -> Void
+    private var sendHandler: SendHandler
     
     let friendsListProvider: FriendsListProvider
     let userController: UserController
 
-    init(friendsListProvider: FriendsListProvider, userController: UserController, topBarTapHandler: @escaping () -> Void) {
+    init(friendsListProvider: FriendsListProvider, userController: UserController, topBarTapHandler: @escaping () -> Void, sendHandler: @escaping SendHandler) {
         self.friendsListProvider = friendsListProvider
         self.userController = userController
         self.topBarTapHandler = topBarTapHandler
+        self.sendHandler = sendHandler
         self.refreshFriendSnapshot()
     }
     
@@ -114,5 +118,9 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
         let friend = group[indexPath.row]
         guard let index = selected.index(of: friend) else { return }
         selected.remove(at: index)
+    }
+    
+    func didSend() {
+        sendHandler(selected)
     }
 }

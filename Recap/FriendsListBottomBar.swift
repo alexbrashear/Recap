@@ -11,7 +11,7 @@ import UIKit
 class FriendsListBottomBar: UIView {
     
     private var names = UILabel()
-    private var icon = UIImageView()
+    private var icon = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,7 +29,6 @@ class FriendsListBottomBar: UIView {
         addConstraint(NSLayoutConstraint(item: names, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 10))
         addConstraint(NSLayoutConstraint(item: names, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
         
-        icon.image = UIImage(named: "iconSend")
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.heightAnchor.constraint(equalToConstant: 40).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -37,6 +36,10 @@ class FriendsListBottomBar: UIView {
         addConstraint(NSLayoutConstraint(item: icon, attribute: .centerY, relatedBy: .equal, toItem: names, attribute: .centerY, multiplier: 1.0, constant: 0))
         addConstraint(NSLayoutConstraint(item: icon, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: -10))
         addConstraint(NSLayoutConstraint(item: names, attribute: .trailing, relatedBy: .equal, toItem: icon, attribute: .leading, multiplier: 1.0, constant: -10))
+        
+        let imageView = UIImageView(image: UIImage(named: "iconSend"))
+        icon.addSubview(imageView)
+        imageView.constrainToSuperview()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,5 +48,11 @@ class FriendsListBottomBar: UIView {
     
     func setText(_ text: String) {
         names.text = text
+    }
+    
+    func setAction(_ action: @escaping () -> Void) {
+        icon.on(.touchUpInside) { _ in
+            action()
+        }
     }
 }

@@ -66,7 +66,7 @@
 		C38A88F91EE7C8C200445692 /* EmptyFilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */; };
 		C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028551EC9570900D8E257 /* SettingsViewModel.swift */; };
 		C39028581EC95B0700D8E257 /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028571EC95B0700D8E257 /* SettingsFlowCoordinator.swift */; };
-		C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PostcardSender.swift */; };
+		C396E7B81E5107B7009C4696 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PhotoManager.swift */; };
 		C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B91E5109ED009C4696 /* NetworkClient.swift */; };
 		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
 		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
@@ -183,7 +183,7 @@
 		C38A88F81EE7C8C200445692 /* EmptyFilmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFilmList.swift; sourceTree = "<group>"; };
 		C39028551EC9570900D8E257 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C39028571EC95B0700D8E257 /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
-		C396E7B71E5107B7009C4696 /* PostcardSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardSender.swift; sourceTree = "<group>"; };
+		C396E7B71E5107B7009C4696 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		C396E7B91E5109ED009C4696 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
 		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 				C35308431E3D163600E2BD8A /* LaunchScreen.storyboard */,
 				C3DB8C401E4046C00076B7A3 /* models */,
 				C3CAC47F1EBEAA50007CECF3 /* Parsers */,
-				C396E7B71E5107B7009C4696 /* PostcardSender.swift */,
+				C396E7B71E5107B7009C4696 /* PhotoManager.swift */,
 				C3DB8C451E40578C0076B7A3 /* Providers */,
 				C3AE4C261EDFC18C0019ED8C /* Purchase */,
 				C3CAC47E1EBEAA26007CECF3 /* Resources */,
@@ -878,7 +878,7 @@
 				C31E62B01F286A260084443A /* PhotoError.swift in Sources */,
 				C39028561EC9570900D8E257 /* SettingsViewModel.swift in Sources */,
 				C3A841CB1F25593D009E43BE /* ApolloWrapper.swift in Sources */,
-				C396E7B81E5107B7009C4696 /* PostcardSender.swift in Sources */,
+				C396E7B81E5107B7009C4696 /* PhotoManager.swift in Sources */,
 				C37F67A11F0AC247005FF8EC /* FilterProvider.swift in Sources */,
 				C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */,
 				C38A43BE1F8D0DAC00A6E2FA /* UIColor+Images.swift in Sources */,

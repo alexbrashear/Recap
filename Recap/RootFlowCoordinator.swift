@@ -17,7 +17,7 @@ class RootFlowCoordinator {
     /// the coordinator to handle onboarding
     let onboardingCoordinator = OnboardingCoordinator()
     /// helper type for sending photos
-    let postcardSender = PostcardSender()
+    let photoManager: PhotoManager
     
     let imageProvider = ImageProvider()
     
@@ -26,10 +26,11 @@ class RootFlowCoordinator {
     let userController: UserController
     let paymentsController: PaymentsController
     
-    init(userController: UserController, paymentsController: PaymentsController) {
+    init(userController: UserController, paymentsController: PaymentsController, photoManager: PhotoManager) {
         navigationController = UINavigationController()
         self.userController = userController
         self.paymentsController = paymentsController
+        self.photoManager = photoManager
         configureNavigationController(nc: navigationController)
     }
     

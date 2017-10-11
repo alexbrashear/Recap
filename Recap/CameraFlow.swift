@@ -23,43 +23,9 @@ extension RootFlowCoordinator {
     private func configure(vc: CameraViewController, nc: UINavigationController) {
         let sendPhoto: SendPhoto = { [weak self, weak vc, weak nc] image in
             guard let nc = nc else { return }
-            self?.pushFriendsListController(onto: nc)
-            return
-            
-            guard let address = self?.userController.user?.address,
-                let userId = self?.userController.user?.id else { return }
-            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
-            PKHUD.sharedHUD.show()
-            self?.postcardSender.send(image: image, to: address) { result in
-                let (photo, error) = result
-                DispatchQueue.main.async {
-                    switch (photo, error) {
-                    case let (_, .some(error)):
-                        PKHUD.sharedHUD.hide()
-                        let alert = UIAlertController.okAlert(title: error.localizedTitle, message: error.localizedDescription)
-                        vc?.present(alert, animated: true, completion: nil)
-                    case (.none, .none):
-                        PKHUD.sharedHUD.hide()
-                        let alert = UIAlertController.okAlert(title: "Sorry we couldn't send your recap", message: "Please try again or save the pic with the button in the bottom left.")
-                        vc?.present(alert, animated: true, completion: nil)
-                    case let (.some(photo), .none):
-                        self?.userController.usePhoto(photo: photo) { result in
-                            PKHUD.sharedHUD.hide()
-                            switch result {
-                            case let .success(user):
-                                vc?.returnToCamera()
-                                vc?.overlay.updateCount(to: user.remainingPhotos)
-                                PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
-                                PKHUD.sharedHUD.show()
-                                PKHUD.sharedHUD.hide(afterDelay: 3.0)
-                            case let .error(userError):
-                                vc?.present(userError.alert, animated: true, completion: nil)
-                            }
-                        }
-                    }
-                }
-            }
+            self?.pushFriendsListController(onto: nc, withImage: image)
         }
+        
         let sentPostcardsTapHandler: SentPostcardsTapHandler = { [weak self, weak nc] _ in
             guard let nc = nc else { return }
             self?.pushSentPhotosController(onto: nc)
@@ -90,14 +56,20 @@ extension RootFlowCoordinator {
 // MARK: - FriendsListController
 
 extension RootFlowCoordinator {
-    func pushFriendsListController(onto nc: UINavigationController) {
+    func pushFriendsListController(onto nc: UINavigationController, withImage image: UIImage) {
         nc.setNavigationBarHidden(false, animated: true)
         let friendsListController = FriendsListController()
-        configure(friendsListController)
+        let returnToCamera = { [weak nc] in
+            nc?.popViewController(animated: true)
+            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSend
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 3.0)
+        }
+        configure(friendsListController, image: image, returnToCamera: returnToCamera)
         nc.pushViewController(friendsListController, animated: true)
     }
     
-    private func configure(_ vc: FriendsListController) {
+    private func configure(_ vc: FriendsListController, image: UIImage, returnToCamera: (() -> Void)?) {
         vc.title = "Send To..."
         let button = UIButton()
         let image = FontAwesomeIcon._529Icon.image(ofSize: CGSize(width: 25, height: 25), color: .white)
@@ -108,11 +80,27 @@ extension RootFlowCoordinator {
         }
         let barbutton = UIBarButtonItem(customView: button)
         vc.navigationItem.rightBarButtonItem = barbutton
+        
+        let sendAction: SendHandler = { [weak self, weak image, weak vc] friends in
+            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.uploading
+            PKHUD.sharedHUD.show()
+            guard let image = image else { return }
+            self?.photoManager.sendImage(image: image, to: friends) { result in
+                PKHUD.sharedHUD.hide()
+                switch result {
+                case .error(let err):
+                    vc?.present(err.alert, animated: true, completion: nil)
+                case .success:
+                    returnToCamera?()
+                }
+            }
+        }
+        
         vc.viewModel = FriendsListViewModel(friendsListProvider: friendsListProvider, userController: userController, topBarTapHandler: { [weak self, weak vc] in
             guard let strongSelf = self, let vc = vc else { return }
             let purchaseFlow = PurchaseFlowCoordinator(userController: strongSelf.userController, paymentsController: strongSelf.paymentsController)
             purchaseFlow.presentPurchaseController(from: vc, completion: {_ in})
-        })
+        }, sendHandler: sendAction)
     }
     
     private func presentEnterAddressController(from presentingViewController: UIViewController) {

@@ -35,8 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let paymentsController = PaymentsController(persistanceManager: persistanceManager, userController: userController)
+        let photoManager = PhotoManager(imageUploader: ImageUploader(), userController: userController)
         
-        rootFlowCoordinator = RootFlowCoordinator(userController: userController, paymentsController: paymentsController)
+        rootFlowCoordinator = RootFlowCoordinator(userController: userController, paymentsController: paymentsController, photoManager: photoManager)
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .white

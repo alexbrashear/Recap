@@ -76,6 +76,10 @@ class CameraViewController: UIViewController {
         
         self.pinchGesture = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         overlay.addGestureRecognizer(self.pinchGesture)
+        
+        NotificationCenter.default.addObserver(forName: PhotoNotifications.successfulSend, object: nil, queue: .main) { [weak self] _ in
+            self?.returnToCamera()
+        }
     }
     
     fileprivate func capturePhotoSettings(flashMode: AVCaptureFlashMode) -> AVCapturePhotoSettings {
@@ -160,7 +164,7 @@ class CameraViewController: UIViewController {
     }
     
     
-    func returnToCamera() {
+    fileprivate func returnToCamera() {
         self.photoTakenView?.removeFromSuperview()
     }
 }

@@ -11,7 +11,6 @@ import UIKit
 protocol FriendsListViewModelProtocol: class {
     var topBarText: String { get }
     var topBarTapHandler: () -> Void { get }
-    
     var bottomBarText: String { get }
     var shouldShowBottomBar: Bool { get }
     
@@ -23,6 +22,7 @@ protocol FriendsListViewModelProtocol: class {
     var canSelect: Bool { get }
     func didSelect(indexPath: IndexPath)
     func didDeselect(indexPath: IndexPath)
+    func didSend()
 }
 
 class FriendsListController: UIViewController {
@@ -81,6 +81,10 @@ class FriendsListController: UIViewController {
         
         NotificationCenter.default.addObserver(forName: FriendNotification.facebookUpdated, object: nil, queue: .main) { [weak self] _ in
             self?.tableView.reloadData()
+        }
+        
+        bottomBar.setAction { [weak self] in
+            self?.viewModel.didSend()
         }
     }
     

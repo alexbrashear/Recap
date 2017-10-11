@@ -13,11 +13,10 @@ enum PhotoError: Error {
     case noFilmError
     case unableToSaveImageLocally
     case uploadToS3Failure
-    case parsingFailure
-    case dateParsingFailure
+    case uploadToScapholdFailure
     
     var localizedTitle: String {
-        return "Error"
+        return "Slight hiccup"
     }
     
     var localizedDescription: String {
@@ -29,11 +28,9 @@ enum PhotoError: Error {
         case .unableToSaveImageLocally:
             return "Unable to save image locally"
         case .uploadToS3Failure:
-            return "There was an issue uploading the image to the server"
-        case .parsingFailure:
-            return "the postcard was sent but there was an error retrieving metadata about the card"
-        case .dateParsingFailure:
-            return "there was an error acquiring the timestamp for this postcard"
+            return "We ran into a problem uploading your photo. Check your internet connection and try again!"
+        case .uploadToScapholdFailure:
+            return "We ran into a problem sending your photo. Check your internet connection and try again!"
         }
     }
     
