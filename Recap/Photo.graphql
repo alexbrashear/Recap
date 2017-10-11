@@ -27,5 +27,12 @@ query UserPhotos {
 fragment completePhoto on Photo {
     id
     imageURL
+    recipients {
+        edges {
+            node {
+                ...completeAddress
+            }
+        }
+    }
     createdAt
 }

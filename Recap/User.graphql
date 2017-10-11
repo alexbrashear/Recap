@@ -35,6 +35,20 @@ mutation UpdateUser($input: UpdateUserInput!) {
     }
 }
 
+query FacebookUsers($input: UserWhereArgs) {
+    viewer {
+        allUsers(where: $input) {
+            edges {
+                node {
+                    address {
+                        ...completeAddress
+                    }
+                }
+            }
+        }
+    }
+}
+
 fragment completeUser on User {
     id
     username
