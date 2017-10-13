@@ -86,12 +86,14 @@ extension RootFlowCoordinator {
             PKHUD.sharedHUD.show()
             guard let image = image else { return }
             self?.photoManager.sendImage(image: image, to: friends) { result in
-                PKHUD.sharedHUD.hide()
-                switch result {
-                case .error(let err):
-                    vc?.present(err.alert, animated: true, completion: nil)
-                case .success:
-                    returnToCamera?()
+                DispatchQueue.main.async {
+                    PKHUD.sharedHUD.hide()
+                    switch result {
+                    case .error(let err):
+                        vc?.present(err.alert, animated: true, completion: nil)
+                    case .success:
+                        returnToCamera?()
+                    }
                 }
             }
         }

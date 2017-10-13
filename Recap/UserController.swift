@@ -12,11 +12,13 @@ import FacebookCore
 import FacebookLogin
 
 typealias UserCallback = (Result<User, UserError>) -> ()
+typealias PhotoIDCallback = (Result<String, PhotoError>) -> Void
 typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
+typealias PhotoErrorOnlyCallback = (Result<Void, PhotoError>) -> Void
 
 struct UserNotification {
-    static let addressChanged = Notification.Name("addressChanged")
+    static let userDidUpdate = Notification.Name("userDidUpdate")
 }
 
 class UserController {
@@ -103,12 +105,26 @@ class UserController {
             return
         }
         let loginManager = LoginManager()
-        loginManager.logIn([ .publicProfile, .userFriends ]) { loginResult in
+        loginManager.logIn([ .publicProfile, .userFriends ]) { [weak self] loginResult in
             switch loginResult {
             case .failed:
                 callback(.error(.failed))
             case .cancelled:
                 callback(.error(.userCancelledLogin))
+            case let .success(_, _, token):
+                guard let id = token.userId else { return callback(.error(.failedToLinkAccount)) }
+                self?.storeFacebookID(id: id, callback: callback)
+            }
+        }
+    }
+    
+    private func storeFacebookID(id: String, callback: @escaping SocialLoginCallback) {
+        guard let user = self.user else { return }
+        let input = UpdateUserInput(id: user.id, facebookId: id)
+        updateUser(input: input) { result in
+            switch result {
+            case .error:
+                callback(.error(.failedToLinkAccount))
             case .success:
                 callback(.success())
             }
@@ -119,9 +135,15 @@ class UserController {
 // MARK: - Mutations
 
 extension UserController {
+    func usePhotos(numPhotos: Int, callback: @escaping UserCallback) {
+        guard let user = self.user else { return }
+        let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos - numPhotos)
+        updateUser(input: input, callback: callback)
+    }
+    
     func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
-        let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state, clientMutationId: nil)
+        let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state)
         let mut = UpdateAddressMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
             guard let updatedUser = result?.data?.updateAddress?.changedAddress?.user?.fragments.completeUser,
@@ -131,40 +153,64 @@ extension UserController {
                 callback(.error(UserError.updateAddressFailed)); return;
             }
             self?.user = user
-            NotificationCenter.default.post(name: UserNotification.addressChanged, object: nil)
+            NotificationCenter.default.post(name: UserNotification.userDidUpdate, object: nil)
             callback(.success(user))
         }
     }
     
-    func usePhoto(photo: Photo, callback: @escaping UserCallback) {
+    typealias AddressesResult = Result<[Address], UserError>
+    typealias AddressesCompletion = (AddressesResult) -> Void
+    
+    func fetchFacebookAddresses(IDs: [String], completion: @escaping AddressesCompletion) {
+        guard !IDs.isEmpty else { return completion(.success([])) }
+        let input = UserWhereArgs(facebookId: UserFacebookIdWhereArgs(in: IDs))
+        let query = FacebookUsersQuery(input: input)
+        graphql.client.fetch(query: query) { result, error in
+            guard let edges = result?.data?.viewer?.allUsers?.edges, error == nil else {
+                return completion(.error(.unknownFailure))
+            }
+            var addresses = [Address]()
+            for edge in edges {
+                guard let completeAddress = edge?.node.address?.fragments.completeAddress else { continue }
+                addresses.append(Address(completeAddress: completeAddress))
+            }
+            guard !addresses.isEmpty else { return completion(.error(.unknownFailure)) }
+            completion(.success(addresses))
+        }
+    }
+    
+    func createPhoto(photo: Photo, callback: @escaping PhotoIDCallback) {
         guard let user = self.user else { callback(.error(.unknownFailure)); return }
-        let input = CreatePhotoInput(imageUrl: photo.imageURL.absoluteString, senderId: user.id)
-        let mut = CreatePhotoMutation(input: input)
-        graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let completeUser = result?.data?.createPhoto?.changedPhoto?.sender?.fragments.completeUser,
-                let user = User(completeUser: completeUser),
-                error == nil
-                else {
+        let input = CreatePhotoInput(senderId: user.id, imageUrl: photo.imageURL.absoluteString)
+        graphql.client.perform(mutation: CreatePhotoMutation(input: input)) { [weak self] result, error in
+            guard let photoId = result?.data?.createPhoto?.changedPhoto?.id, error == nil else {
                     callback(.error(.unknownFailure)); return
             }
-            self?.user = user
-            callback(.success(user))
+            callback(.success(photoId))
+        }
+    }
+    
+    func createPhotoConnection(photoId: GraphQLID, addressId: GraphQLID, callback: @escaping PhotoErrorOnlyCallback) {
+        let input = AddToPhotoAddressMapConnectionInput(addressId: addressId, photoId: photoId)
+        let mut = CreatePhotoAddressConnectionMutation(input: input)
+        graphql.client.perform(mutation: mut) { result, error in
+            guard let _ = result?.data?.addToPhotoAddressMapConnection?.changedPhotoAddressMap?.photo?.id, error == nil else {
+                return callback(.error(.unknownFailure))
+            }
+            callback(.success())
         }
     }
     
     func buyFilm(capacity: Int, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
         let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
-        let mut = UpdateUserMutation(input: input)
-        graphql.client.perform(mutation: mut) { [weak self] result, error in
-            guard let completeUser = result?.data?.updateUser?.changedUser?.fragments.completeUser,
-                let user = User(completeUser: completeUser),
-                error == nil
-            else {
-                callback(.error(.buyFilmFailed)); return
+        updateUser(input: input) { result in
+            switch result {
+            case .error:
+                callback(.error(.buyFilmFailed))
+            case .success:
+                callback(result)
             }
-            self?.user = user
-            callback(.success(user))
         }
     }
     
@@ -180,6 +226,25 @@ extension UserController {
                 photos.append(photo)
             }
             callback(.success(photos))
+        }
+    }
+}
+
+// MARK: - Helpers
+
+extension UserController {
+    fileprivate func updateUser(input: UpdateUserInput, callback: @escaping UserCallback) {
+        let mut = UpdateUserMutation(input: input)
+        graphql.client.perform(mutation: mut) { [weak self] result, error in
+            guard let completeUser = result?.data?.updateUser?.changedUser?.fragments.completeUser,
+                let user = User(completeUser: completeUser),
+                error == nil
+                else {
+                    callback(.error(.unknownFailure)); return
+            }
+            self?.user = user
+            NotificationCenter.default.post(name: UserNotification.userDidUpdate, object: nil)
+            callback(.success(user))
         }
     }
 }
@@ -202,6 +267,7 @@ enum UserError: AlertableError {
 
 enum SocialError: AlertableError {
     case userCancelledLogin
+    case failedToLinkAccount
     case failed
     
     var localizedTitle: String {
@@ -214,6 +280,8 @@ enum SocialError: AlertableError {
             return "It looks like your facebook login attempt was canceled before it completed, please try again or contact help@recap-app.com"
         case .failed:
             return "We had trouble connecting your facebook account, please try again or contact help@recap-app.com"
+        case .failedToLinkAccount:
+            return "You successfully logged in to Facebook but we had trouble linking your account. Though you will appear in your friends queues, they will be unable to send to you. Please contact help@recap-app.com so we can resolve this!"
         }
     }
 }

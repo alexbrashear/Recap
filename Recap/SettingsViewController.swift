@@ -40,7 +40,7 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(forName: UserNotification.addressChanged, object: nil, queue: .main) { [weak self] _ in
+        NotificationCenter.default.addObserver(forName: UserNotification.userDidUpdate, object: nil, queue: .main) { [weak self] _ in
             self?.tableView.reloadData()
         }
     }

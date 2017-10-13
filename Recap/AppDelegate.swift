@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let paymentsController = PaymentsController(persistanceManager: persistanceManager, userController: userController)
-        let photoManager = PhotoManager(imageUploader: ImageUploader(), userController: userController)
+        let photoSender = PhotoSender(userController: userController)
+        let photoManager = PhotoManager(imageUploader: ImageUploader(), userController: userController, photoSender: photoSender)
         
         rootFlowCoordinator = RootFlowCoordinator(userController: userController, paymentsController: paymentsController, photoManager: photoManager)
         
