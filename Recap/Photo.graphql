@@ -2,8 +2,16 @@
 mutation CreatePhoto($input: CreatePhotoInput!) {
     createPhoto(input: $input) {
         changedPhoto {
-            sender {
-                ...completeUser
+            id
+        }
+    }
+}
+
+mutation CreatePhotoAddressConnection($input: AddToPhotoAddressMapConnectionInput!) {
+    addToPhotoAddressMapConnection(input: $input) {
+        changedPhotoAddressMap {
+            photo {
+                id
             }
         }
     }

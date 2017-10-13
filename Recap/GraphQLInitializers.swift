@@ -24,7 +24,13 @@ extension User {
 
 extension Photo {
     init?(completePhoto: CompletePhoto) {
-        guard let imageURL = URL(string: completePhoto.imageUrl) else { return nil }
-        self.init(imageURL: imageURL)
+        guard let imageURL = URL(string: completePhoto.imageUrl),
+            let edges = completePhoto.recipients?.edges else { return nil }
+        var recipients = [Address]()
+        for edge in edges {
+            guard let completeAddress = edge?.node.fragments.completeAddress else { continue }
+            recipients.append(Address(completeAddress: completeAddress))
+        }
+        self.init(id: completePhoto.id, imageURL: imageURL, recipients: recipients)
     }
 }

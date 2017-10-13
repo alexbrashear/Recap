@@ -26,6 +26,14 @@ public struct CreateAddressInput: GraphQLMapConvertible {
   }
 }
 
+public struct AddToPhotoAddressMapConnectionInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(addressId: GraphQLID, photoId: GraphQLID, clientMutationId: String? = nil) {
+    graphQLMap = ["addressId": addressId, "photoId": photoId, "clientMutationId": clientMutationId]
+  }
+}
+
 public struct LoginUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -420,14 +428,10 @@ public final class CreatePhotoMutation: GraphQLMutation {
     "    __typename" +
     "    changedPhoto {" +
     "      __typename" +
-    "      sender {" +
-    "        __typename" +
-    "        ...completeUser" +
-    "      }" +
+    "      id" +
     "    }" +
     "  }" +
     "}"
-  public static let queryDocument = operationDefinition.appending(CompleteUser.fragmentDefinition).appending(CompleteAddress.fragmentDefinition).appending(CompletePhoto.fragmentDefinition)
 
   public let input: CreatePhotoInput
 
@@ -459,27 +463,81 @@ public final class CreatePhotoMutation: GraphQLMutation {
 
       public struct ChangedPhoto: GraphQLMappable {
         public let __typename: String
-        public let sender: Sender?
+        /// A globally unique ID.
+        public let id: GraphQLID
 
         public init(reader: GraphQLResultReader) throws {
           __typename = try reader.value(for: Field(responseName: "__typename"))
-          sender = try reader.optionalValue(for: Field(responseName: "sender"))
+          id = try reader.value(for: Field(responseName: "id"))
+        }
+      }
+    }
+  }
+}
+
+public final class CreatePhotoAddressConnectionMutation: GraphQLMutation {
+  public static let operationDefinition =
+    "mutation CreatePhotoAddressConnection($input: AddToPhotoAddressMapConnectionInput!) {" +
+    "  addToPhotoAddressMapConnection(input: $input) {" +
+    "    __typename" +
+    "    changedPhotoAddressMap {" +
+    "      __typename" +
+    "      photo {" +
+    "        __typename" +
+    "        id" +
+    "      }" +
+    "    }" +
+    "  }" +
+    "}"
+
+  public let input: AddToPhotoAddressMapConnectionInput
+
+  public init(input: AddToPhotoAddressMapConnectionInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    /// Adds a connection between an object of type
+    /// 'Address' and an object of type Photo. You can edit
+    /// the 'PhotoAddressMap' bridge type to add/remove custom fields for this connection.
+    /// 
+    public let addToPhotoAddressMapConnection: AddToPhotoAddressMapConnection?
+
+    public init(reader: GraphQLResultReader) throws {
+      addToPhotoAddressMapConnection = try reader.optionalValue(for: Field(responseName: "addToPhotoAddressMapConnection", arguments: ["input": reader.variables["input"]]))
+    }
+
+    public struct AddToPhotoAddressMapConnection: GraphQLMappable {
+      public let __typename: String
+      /// The mutated PhotoAddressMap.
+      public let changedPhotoAddressMap: ChangedPhotoAddressMap?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        changedPhotoAddressMap = try reader.optionalValue(for: Field(responseName: "changedPhotoAddressMap"))
+      }
+
+      public struct ChangedPhotoAddressMap: GraphQLMappable {
+        public let __typename: String
+        public let photo: Photo?
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+          photo = try reader.optionalValue(for: Field(responseName: "photo"))
         }
 
-        public struct Sender: GraphQLMappable {
+        public struct Photo: GraphQLMappable {
           public let __typename: String
-
-          public let fragments: Fragments
+          /// A globally unique ID.
+          public let id: GraphQLID
 
           public init(reader: GraphQLResultReader) throws {
             __typename = try reader.value(for: Field(responseName: "__typename"))
-
-            let completeUser = try CompleteUser(reader: reader)
-            fragments = Fragments(completeUser: completeUser)
-          }
-
-          public struct Fragments {
-            public let completeUser: CompleteUser
+            id = try reader.value(for: Field(responseName: "id"))
           }
         }
       }

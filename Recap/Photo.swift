@@ -9,10 +9,15 @@
 import UIKit
 
 struct Photo {
+    var id: String?
     /// the image url that we upload to s3 - not lob
     let imageURL: URL
+    /// the intended recipients of the photo
+    let recipients: [Address]
     
-    init(imageURL: URL) {
+    init(id: String? = nil, imageURL: URL, recipients: [Address]) {
+        self.id = id
         self.imageURL = imageURL
+        self.recipients = recipients
     }
 }
