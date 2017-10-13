@@ -68,7 +68,7 @@
 		C39028581EC95B0700D8E257 /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39028571EC95B0700D8E257 /* SettingsFlowCoordinator.swift */; };
 		C396E7B81E5107B7009C4696 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B71E5107B7009C4696 /* PhotoManager.swift */; };
 		C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7B91E5109ED009C4696 /* NetworkClient.swift */; };
-		C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */; };
+		C396E7BC1E5567F5009C4696 /* PhotoSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = C396E7BB1E5567F5009C4696 /* PhotoSender.swift */; };
 		C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */; };
 		C3A841CB1F25593D009E43BE /* ApolloWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */; };
 		C3AE4C281EDFC1A80019ED8C /* Purchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */; };
@@ -185,7 +185,7 @@
 		C39028571EC95B0700D8E257 /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
 		C396E7B71E5107B7009C4696 /* PhotoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		C396E7B91E5109ED009C4696 /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostcardProvider.swift; sourceTree = "<group>"; };
+		C396E7BB1E5567F5009C4696 /* PhotoSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSender.swift; sourceTree = "<group>"; };
 		C3A841C81F25102C009E43BE /* GraphQLInitializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQLInitializers.swift; sourceTree = "<group>"; };
 		C3A841CA1F25593D009E43BE /* ApolloWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloWrapper.swift; sourceTree = "<group>"; };
 		C3AE4C271EDFC1A80019ED8C /* Purchase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Purchase.storyboard; sourceTree = "<group>"; };
@@ -564,7 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				C3DB8C431E4057820076B7A3 /* AddressProvider.swift */,
-				C396E7BB1E5567F5009C4696 /* PostcardProvider.swift */,
+				C396E7BB1E5567F5009C4696 /* PhotoSender.swift */,
 			);
 			name = Providers;
 			sourceTree = "<group>";
@@ -889,7 +889,7 @@
 				C3268BF11F83278F00F93C21 /* FriendsListProvider.swift in Sources */,
 				C31279C31E3EF09900F52C31 /* Address.swift in Sources */,
 				C3A841C91F25102C009E43BE /* GraphQLInitializers.swift in Sources */,
-				C396E7BC1E5567F5009C4696 /* PostcardProvider.swift in Sources */,
+				C396E7BC1E5567F5009C4696 /* PhotoSender.swift in Sources */,
 				C3CE0E2E1E6E6B00008000B1 /* CameraViewModel.swift in Sources */,
 				C3C347621EA9A5660008E62E /* TextInputItem.swift in Sources */,
 			);
