@@ -72,8 +72,8 @@ extension RootFlowCoordinator {
     private func configure(_ vc: FriendsListController, image: UIImage, returnToCamera: (() -> Void)?) {
         vc.title = "Send To..."
         let button = UIButton()
-        let image = FontAwesomeIcon._529Icon.image(ofSize: CGSize(width: 25, height: 25), color: .white)
-        button.setImage(image, for: .normal)
+        let buttonImage = FontAwesomeIcon._529Icon.image(ofSize: CGSize(width: 25, height: 25), color: .white)
+        button.setImage(buttonImage, for: .normal)
         button.on(.touchUpInside) { [weak self, weak vc] _ in
             guard let vc = vc else { return }
             self?.presentEnterAddressController(from: vc)
