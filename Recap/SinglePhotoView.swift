@@ -15,14 +15,17 @@ class SinglePhotoView: UIView, NibLoadable {
     var photo: Photo? {
         didSet {
             guard let photo = photo else { return }
-//            imageProvider?.fetchImage(forUrl: photo.thumbnails.medium) { [weak self] result in
-//                switch result {
-//                case let .success(image):
-//                    self?.imageView.image = image
-//                case .error:
-//                    break
-//                }
-//            }
+            imageProvider?.fetchImage(forUrl: photo.imageURL) { [weak self] result in
+                switch result {
+                case let .success(image):
+                    self?.imageView.image = image
+                case .error:
+                    break
+                }
+            }
+            
+            deliveryCountdown.text = ""
+            sentTo.text = photo.displayableRecipients
         }
     }
     
@@ -39,5 +42,19 @@ class SinglePhotoView: UIView, NibLoadable {
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
+    }
+}
+
+fileprivate extension Photo {
+    var displayableRecipients: String {
+        var str = ""
+        for each in recipients {
+            if str == "" {
+                str = each.name
+            } else {
+                str = "\(str), \(each.name)"
+            }
+        }
+        return str
     }
 }
