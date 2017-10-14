@@ -37,7 +37,7 @@ class SinglePhotoView: UIView, NibLoadable {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
     }
     
