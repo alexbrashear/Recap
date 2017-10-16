@@ -17,17 +17,12 @@ typealias TakePhoto = (_ flashMode: AVCaptureFlashMode) -> Void
 typealias CountAction = () -> Void
 
 protocol CameraOverlayViewModelProtocol: class {
-    var rotateCamera: RotateCamera { get }
-    
-    var takePhoto: TakePhoto { get }
-    
+    var rotateCamera: RotateCamera? { get set }
+    var takePhoto: TakePhoto? { get set }
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
-    
     var showSettings: () -> Void { get }
-    
-    var initialCount: Int { get }
-    
     var countAction: CountAction { get }
+    var count: Int { get }
 }
 
 class CameraOverlayView: UIView, NibLoadable {
@@ -49,11 +44,11 @@ class CameraOverlayView: UIView, NibLoadable {
             }
             
             rotateCamera.on(.touchUpInside) { [unowned self] _ in
-                self.viewModel?.rotateCamera()
+                self.viewModel?.rotateCamera?()
             }
             
             takePhoto.on(.touchUpInside) { [unowned self] _ in
-                self.viewModel?.takePhoto(self.flashMode)
+                self.viewModel?.takePhoto?(self.flashMode)
             }
             
             flash.on(.touchUpInside) { [unowned self] _ in
@@ -72,11 +67,13 @@ class CameraOverlayView: UIView, NibLoadable {
                 self.viewModel?.countAction()
             }
             
-            updateCount(to: viewModel?.initialCount ?? 0)
+            updateCount()
         }
     }
     
-    func updateCount(to newCount: Int) {
+    private func updateCount() {
+        guard let viewModel = viewModel else { return }
+        let newCount = viewModel.count
         count.setTitle("\(newCount)", for: .normal)
         refill.isHidden = newCount > 0
         takePhoto.isEnabled = newCount > 0
@@ -101,6 +98,10 @@ class CameraOverlayView: UIView, NibLoadable {
         
         refill.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 12)
         refill.setTitleColor(.rcpGoldenYellow, for: .normal)
+        
+        NotificationCenter.default.addObserver(forName: UserNotification.userDidUpdate, object: nil, queue: .main) { [weak self] _ in
+            self?.updateCount()
+        }
     }
 }
 

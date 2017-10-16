@@ -12,17 +12,15 @@ typealias SendPhoto = (_ image: UIImage) -> Void
 typealias SentPostcardsTapHandler = () -> Void
 
 class CameraViewModel: CameraViewModelProtocol {
-    var showSettings: () -> Void
     var sentPostcardsTapHandler: SentPostcardsTapHandler
     var sendPhoto: SendPhoto
-    var initialCount: Int
-    var countAction: CountAction
+    var overlayViewModel: CameraOverlayViewModelProtocol
     
-    init(initialCount: Int, sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, showSettings: @escaping () -> Void, countAction: @escaping CountAction) {
-        self.initialCount = initialCount
+    
+    init(userController: UserController, sendPhoto: @escaping SendPhoto, sentPostcardsTapHandler: @escaping SentPostcardsTapHandler, showSettings: @escaping () -> Void, countAction: @escaping CountAction) {
         self.sentPostcardsTapHandler = sentPostcardsTapHandler
-        self.showSettings = showSettings
         self.sendPhoto = sendPhoto
-        self.countAction = countAction
+        
+        self.overlayViewModel = CameraOverlayViewModel(userController: userController, showSettings: showSettings, sentPostcardsTapHandler: sentPostcardsTapHandler, sendPhoto: sendPhoto, countAction: countAction)
     }
 }

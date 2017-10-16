@@ -13,13 +13,9 @@ import PKHUD
 protocol CameraViewModelProtocol {    
     var sentPostcardsTapHandler: SentPostcardsTapHandler { get }
     
-    var showSettings: () -> Void { get }
-    
     var sendPhoto: SendPhoto { get }
     
-    var initialCount: Int { get }
-    
-    var countAction: CountAction { get }
+    var overlayViewModel: CameraOverlayViewModelProtocol { get }
 }
 
 class CameraViewController: UIViewController {
@@ -59,20 +55,11 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let viewModel = viewModel else { fatalError() }
-        let rotateCamera: RotateCamera = { [weak self] in self?.switchCamera() }
-        let takePhoto: TakePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
-        let vm = CameraOverlayViewModel(initialCount: viewModel.initialCount,
-                                        takePhoto: takePhoto,
-                                        showSettings: viewModel.showSettings,
-                                        sentPostcardsTapHandler: viewModel.sentPostcardsTapHandler,
-                                        rotateCamera: rotateCamera,
-                                        sendPhoto: { image in
-                                            viewModel.sendPhoto(image)
-                                        },
-                                        countAction: viewModel.countAction)
+        viewModel.overlayViewModel.rotateCamera = { [weak self] in self?.switchCamera() }
+        viewModel.overlayViewModel.takePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
         view.addSubview(overlay)
         overlay.constrainToSuperview()
-        overlay.viewModel = vm
+        overlay.viewModel = viewModel.overlayViewModel
         
         self.pinchGesture = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
         overlay.addGestureRecognizer(self.pinchGesture)

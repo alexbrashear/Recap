@@ -21,7 +21,7 @@ extension RootFlowCoordinator {
     ///
     /// - Parameter vc: the view controller to configure
     private func configure(vc: CameraViewController, nc: UINavigationController) {
-        let sendPhoto: SendPhoto = { [weak self, weak vc, weak nc] image in
+        let sendPhoto: SendPhoto = { [weak self, weak nc] image in
             guard let nc = nc else { return }
             self?.pushFriendsListController(onto: nc, withImage: image)
         }
@@ -40,15 +40,10 @@ extension RootFlowCoordinator {
         let countAction: CountAction = { [weak self, weak vc] in
             guard let strongSelf = self, let vc = vc else { return }
             let purchaseFlow = PurchaseFlowCoordinator(userController: strongSelf.userController, paymentsController: strongSelf.paymentsController)
-            purchaseFlow.presentPurchaseController(from: vc) { [weak vc, weak self] success in
-                if success, let remainingPhotos = self?.userController.user?.remainingPhotos {
-                    vc?.overlay.updateCount(to: remainingPhotos)
-                }
-            }
+            purchaseFlow.presentPurchaseController(from: vc, completion: {_ in })
         }
         
-        guard let user = userController.user else { fatalError() }
-        let vm = CameraViewModel(initialCount: user.remainingPhotos, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
+        let vm = CameraViewModel(userController: userController, sendPhoto: sendPhoto, sentPostcardsTapHandler: sentPostcardsTapHandler, showSettings: showSettings, countAction: countAction)
         vc.viewModel = vm
     }
 }
