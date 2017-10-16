@@ -26,6 +26,7 @@ class SinglePhotoView: UIView, NibLoadable {
             
             deliveryCountdown.text = ""
             sentTo.text = photo.displayableRecipients
+            sentDate.text = photo.displayDateSent
         }
     }
     
@@ -33,6 +34,7 @@ class SinglePhotoView: UIView, NibLoadable {
     @IBOutlet var sentTo: UILabel!
     @IBOutlet var deliveryCountdown: UILabel!
     @IBOutlet var save: UIButton!
+    @IBOutlet var sentDate: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

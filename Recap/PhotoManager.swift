@@ -65,7 +65,7 @@ class PhotoManager {
             switch result {
             case .error:
                 completion(.error(.unknownFailure))
-            case let .success(photoId):
+            case let .success(photoId, date):
                 var mutablePhoto = photo
                 mutablePhoto.id = photoId
                 self?.userController.usePhotos(numPhotos: photo.recipients.count, callback: {_ in})

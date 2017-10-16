@@ -429,6 +429,7 @@ public final class CreatePhotoMutation: GraphQLMutation {
     "    changedPhoto {" +
     "      __typename" +
     "      id" +
+    "      createdAt" +
     "    }" +
     "  }" +
     "}"
@@ -465,10 +466,14 @@ public final class CreatePhotoMutation: GraphQLMutation {
         public let __typename: String
         /// A globally unique ID.
         public let id: GraphQLID
+        /// When paired with the Node interface, this is an automatically managed
+        /// timestamp that is set when an object is first created.
+        public let createdAt: String
 
         public init(reader: GraphQLResultReader) throws {
           __typename = try reader.value(for: Field(responseName: "__typename"))
           id = try reader.value(for: Field(responseName: "id"))
+          createdAt = try reader.value(for: Field(responseName: "createdAt"))
         }
       }
     }

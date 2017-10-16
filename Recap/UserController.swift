@@ -12,7 +12,7 @@ import FacebookCore
 import FacebookLogin
 
 typealias UserCallback = (Result<User, UserError>) -> ()
-typealias PhotoIDCallback = (Result<String, PhotoError>) -> Void
+typealias PhotoIDDateCallback = (Result<(String, String), PhotoError>) -> Void
 typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 typealias PhotoErrorOnlyCallback = (Result<Void, PhotoError>) -> Void
@@ -179,14 +179,15 @@ extension UserController {
         }
     }
     
-    func createPhoto(photo: Photo, callback: @escaping PhotoIDCallback) {
+    func createPhoto(photo: Photo, callback: @escaping PhotoIDDateCallback) {
         guard let user = self.user else { callback(.error(.unknownFailure)); return }
         let input = CreatePhotoInput(senderId: user.id, imageUrl: photo.imageURL.absoluteString)
-        graphql.client.perform(mutation: CreatePhotoMutation(input: input)) { [weak self] result, error in
-            guard let photoId = result?.data?.createPhoto?.changedPhoto?.id, error == nil else {
+        graphql.client.perform(mutation: CreatePhotoMutation(input: input)) { result, error in
+            guard let changedPhoto = result?.data?.createPhoto?.changedPhoto, error == nil else {
                     callback(.error(.unknownFailure)); return
             }
-            callback(.success(photoId))
+            let tuple = (changedPhoto.id, changedPhoto.createdAt)
+            callback(.success(tuple))
         }
     }
     

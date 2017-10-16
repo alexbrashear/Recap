@@ -14,10 +14,13 @@ struct Photo {
     let imageURL: URL
     /// the intended recipients of the photo
     let recipients: [Address]
+    /// the displayable date the photo was created
+    let displayDateSent: String?
     
-    init(id: String? = nil, imageURL: URL, recipients: [Address]) {
+    init(id: String? = nil, imageURL: URL, recipients: [Address], displayDateSent: String? = nil) {
         self.id = id
         self.imageURL = imageURL
         self.recipients = recipients
+        self.displayDateSent = displayDateSent
     }
 }

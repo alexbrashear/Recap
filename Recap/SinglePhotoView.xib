@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SinglePhotoView" customModule="Recap" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cgu-XW-bk5">
@@ -48,7 +48,7 @@
                     <rect key="frame" x="15" y="20" width="345" height="22"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery in 5 days" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88o-rs-zYS">
-                            <rect key="frame" x="0.0" y="0.0" width="98" height="22"/>
+                            <rect key="frame" x="0.0" y="0.0" width="94.5" height="22"/>
                             <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -81,6 +81,7 @@
                 <outlet property="deliveryCountdown" destination="88o-rs-zYS" id="Vft-xi-p8I"/>
                 <outlet property="imageView" destination="Cgu-XW-bk5" id="4L6-GV-CUC"/>
                 <outlet property="save" destination="Sid-mn-0nw" id="0zM-71-I7q"/>
+                <outlet property="sentDate" destination="rn5-5T-mff" id="1xl-Hi-rTP"/>
                 <outlet property="sentTo" destination="AWT-gt-Yey" id="h4y-9q-nGp"/>
             </connections>
             <point key="canvasLocation" x="-246.5" y="53.5"/>
