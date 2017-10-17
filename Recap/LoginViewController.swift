@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class LoginViewController: UIViewController {
     
@@ -19,6 +20,17 @@ class LoginViewController: UIViewController {
     @IBOutlet private var passwordLabel: UILabel!
     @IBOutlet private var logIn: UIButton!
     @IBOutlet private var goToSignUp: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 75
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
