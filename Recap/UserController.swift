@@ -19,6 +19,7 @@ typealias PhotoErrorOnlyCallback = (Result<Void, PhotoError>) -> Void
 
 struct UserNotification {
     static let userDidUpdate = Notification.Name("userDidUpdate")
+    static let userConnectedFacebook = Notification.Name("userConnectedFacebook")
 }
 
 class UserController {
@@ -126,6 +127,7 @@ class UserController {
             case .error:
                 callback(.error(.failedToLinkAccount))
             case .success:
+//                NotificationCenter.default.post(UserNotification.userConnectedFacebook)
                 callback(.success())
             }
         }
