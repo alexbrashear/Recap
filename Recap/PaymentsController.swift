@@ -89,6 +89,12 @@ class PaymentsController {
                 print("CANCELLED")
             } else if let result = result {
                 self?.mostRecentNonce = result.paymentMethod?.nonce
+                var description: String
+                if let venmoResult = result.paymentMethod as? BTVenmoAccountNonce {
+                    description = venmoResult.username ?? ""
+                } else {
+                    description = result.paymentDescription
+                }
                 self?.paymentIcon = result.paymentIcon
                 if self?.customerId == nil, let nonce = result.paymentMethod?.nonce {
                     self?.createCustomer(paymentMethodNonce: nonce) { _ in }
@@ -96,7 +102,7 @@ class PaymentsController {
                 NotificationCenter.default.post(name: PaymentsNotification.methodSelected,
                                                 object: nil,
                                                 userInfo: [PaymentsNotification.paymentIconKey: result.paymentIcon,
-                                                           PaymentsNotification.paymentDescriptionKey: result.paymentDescription])
+                                                           PaymentsNotification.paymentDescriptionKey: description])
             }
             controller.dismiss(animated: true, completion: nil)
         }
@@ -129,7 +135,7 @@ class PaymentsController {
     private func postNonceToServer(paymentMethodNonce: String, numberOfPacks: Int, completion: @escaping PaymentsPostNonceCompletion) {
         let paymentURL = URL(string: "\(hostname)checkouts")!
         var request = URLRequest(url: paymentURL)
-        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)&number_of_packs=\(numberOfPacks)".data(using: String.Encoding.utf8)
+        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)&number_of_packs=\(numberOfPacks)&device_data=\(PPDataCollector.collectPayPalDeviceData())".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in

@@ -12,9 +12,16 @@ PODS:
   - Braintree/Card (4.9.3):
     - Braintree/Core
   - Braintree/Core (4.9.3)
+  - Braintree/PayPalDataCollector (4.9.3):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.9.3)
   - Braintree/UnionPay (4.9.3):
     - Braintree/Card
     - Braintree/Core
+  - Braintree/Venmo (4.9.3):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
   - BraintreeDropIn (5.2.2):
     - BraintreeDropIn/DropIn (= 5.2.2)
   - BraintreeDropIn/DropIn (5.2.2):
@@ -52,6 +59,7 @@ PODS:
 DEPENDENCIES:
   - Apollo
   - AWSS3
+  - Braintree/Venmo
   - BraintreeDropIn
   - FacebookCore
   - FacebookLogin
@@ -105,6 +113,6 @@ SPEC CHECKSUMS:
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Reusable: 5362d10271ca8316b104698a21e90498f47e8339
 
-PODFILE CHECKSUM: b28703933f316dbe9ebbf08a51cf29de120ecca2
+PODFILE CHECKSUM: aba7c7d32e59786a0f603e340896bf37c40581e8
 
 COCOAPODS: 1.2.0

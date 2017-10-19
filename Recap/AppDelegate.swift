@@ -12,6 +12,7 @@ import Apollo
 import FacebookCore
 import FacebookLogin
 import Iconic
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,11 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var rootFlowCoordinator: RootFlowCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+
+        BTAppSwitch.setReturnURLScheme("\(Bundle.main.bundleIdentifier!).payments")
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         FontAwesomeIcon.register()
         setupAWS()
-        
+
         let token = persistanceManager.token
         let userController = UserController(graphql: ApolloWrapper(token: token), persistanceManager: persistanceManager)
         if token != nil {
@@ -53,8 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        SDKApplicationDelegate.shared.application(app, open: url, options: options)
-        return true
+        if url.scheme?.localizedCaseInsensitiveCompare("\(Bundle.main.bundleIdentifier!).payments") == .orderedSame {
+            return BTAppSwitch.handleOpen(url, options: options)
+        } else {
+            return SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        }
     }
 }
 
