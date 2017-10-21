@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import SafariServices
 
 enum SettingsSection: Int {
     case address
     case support
     case facebook
+    case legal
     
     var title: String {
         switch self {
         case .address: return "Address"
         case .support: return "Support"
         case .facebook: return ""
+        case .legal: return "Legal"
         }
     }
     
@@ -26,25 +29,30 @@ enum SettingsSection: Int {
         case .address:
             return [.address]
         case .support:
-            return [.sendFeedback]
+            return [.sendFeedback, .faqs]
         case .facebook:
             return [.logInToFacebook]
+        case .legal:
+            return [.termsOfService, .privacyPolicy]
         }
     }
     
-    static let count = 3
+    static let count = 4
 }
 
 enum SettingsRow {
     case address
+    case faqs
     case sendFeedback
     case logInToFacebook
+    case termsOfService
+    case privacyPolicy
     
     var cellStyle: UITableViewCellStyle {
         switch self {
         case .address:
             return .subtitle
-        case .sendFeedback, .logInToFacebook:
+        case .sendFeedback, .logInToFacebook, .faqs, .termsOfService, .privacyPolicy:
             return .default
         }
     }
@@ -104,8 +112,14 @@ class SettingsViewModel: SettingsViewModelProtocol {
             return name ?? ""
         case .sendFeedback:
             return "Send Feedback"
+        case .faqs:
+            return "FAQs"
         case .logInToFacebook:
             return userController.isLoggedIntoFacebook ? "facebook: Logged in" : "facebook: not logged in"
+        case .privacyPolicy:
+            return "Privacy Policy"
+        case .termsOfService:
+            return "Terms of Service"
         }
     }
     
@@ -114,12 +128,12 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .address:
             guard let address = userController.user?.address else { return "" }
             return "\(address.line1) \(address.line2)"
-        case .logInToFacebook, .sendFeedback:
+        case .logInToFacebook, .sendFeedback, .faqs, .privacyPolicy, .termsOfService:
             return nil
         }
     }
     
-    func didSelectRow(at indexPath: IndexPath) {
+    func didSelectRow(at indexPath: IndexPath, vc: SettingsViewController) {
         guard let section = SettingsSection(rawValue: indexPath.section) else { return }
         let row = section.rows[indexPath.row]
         switch row {
@@ -127,6 +141,18 @@ class SettingsViewModel: SettingsViewModelProtocol {
             enterAddress()
         case .sendFeedback:
             feedbackAction()
+        case .faqs:
+            let svc = SFSafariViewController(url: StaticURLs.faqs, entersReaderIfAvailable: true)
+            svc.delegate = vc
+            vc.present(svc, animated: true, completion: nil)
+        case .privacyPolicy:
+            let svc = SFSafariViewController(url: StaticURLs.privacyPolicy, entersReaderIfAvailable: true)
+            svc.delegate = vc
+            vc.present(svc, animated: true, completion: nil)
+        case .termsOfService:
+            let svc = SFSafariViewController(url: StaticURLs.termsOfService, entersReaderIfAvailable: true)
+            svc.delegate = vc
+            vc.present(svc, animated: true, completion: nil)
         case .logInToFacebook:
             connectFacebook()
         }

@@ -82,8 +82,7 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func termsOfServiceTapped(_ sender: Any) {
-        guard let url = URL(string: "http://www.recap-app.com/termsconditions.html") else { return }
-        let svc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+        let svc = SFSafariViewController(url: StaticURLs.termsOfService, entersReaderIfAvailable: true)
         svc.delegate = self
         present(svc, animated: true, completion: nil)
     }

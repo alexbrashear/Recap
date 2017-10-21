@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SafariServices
 
 protocol SettingsViewModelProtocol {
     var numberOfSections: Int { get }
@@ -17,7 +18,7 @@ protocol SettingsViewModelProtocol {
     func titleForRow(at indexPath: IndexPath) -> String
     func subtitleForRow(at indexPath: IndexPath) -> String?
     
-    func didSelectRow(at indexPath: IndexPath)
+    func didSelectRow(at indexPath: IndexPath, vc: SettingsViewController)
 }
 
 class SettingsViewController: UIViewController {
@@ -78,6 +79,12 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        viewModel.didSelectRow(at: indexPath)
+        viewModel.didSelectRow(at: indexPath, vc: self)
+    }
+}
+
+extension SettingsViewController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
