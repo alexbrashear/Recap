@@ -127,7 +127,7 @@ class UserController {
             case .error:
                 callback(.error(.failedToLinkAccount))
             case .success:
-//                NotificationCenter.default.post(UserNotification.userConnectedFacebook)
+                NotificationCenter.default.post(name: UserNotification.userConnectedFacebook, object: nil)
                 callback(.success())
             }
         }

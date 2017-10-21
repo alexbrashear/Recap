@@ -77,7 +77,7 @@ class FriendsListProvider {
         
         fetchFacebookFriends()
         
-        NotificationCenter.default.addObserver(forName: UserNotification.userConnectedFacebook, object: nil, queue: .current) { [weak self] _ in
+        NotificationCenter.default.addObserver(forName: UserNotification.userConnectedFacebook, object: nil, queue: .main) { [weak self] _ in
             self?.fetchFacebookFriends()
         }
     }
