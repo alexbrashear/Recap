@@ -11,6 +11,8 @@ import UIKit
 protocol AlertableError: Error {
     var localizedTitle: String { get }
     
+    var localizedDescription: String { get }
+    
     var alert: UIAlertController { get }
 }
 

@@ -260,11 +260,33 @@ enum UserError: AlertableError {
     case unknownFailure
     
     var localizedTitle: String {
-        return "test"
+        switch self {
+        case .loginFailed:
+            return "Login Failed"
+        case .signupFailed:
+            return "Sign up Failed"
+        case .updateAddressFailed:
+            return "Where's that?"
+        case .buyFilmFailed:
+            return "Purchase Failed"
+        case .unknownFailure:
+            return "Something went wrong"
+        }
     }
     
     var localizedDescription: String {
-        return "test"
+        switch self {
+        case .loginFailed:
+            return "Did ya spell it right? Are you connected to the internet? Try again or get help from help@recap-app.com"
+        case .signupFailed:
+            return "Did ya spell it right? Are you connected to the internet? Try again or get help from help@recap-app.com"
+        case .updateAddressFailed:
+            return "We can't verify that address. Make sure you're on the internet and it's spelt right."
+        case .buyFilmFailed:
+            return "Please try again or contact us at help@recap-app.com"
+        case .unknownFailure:
+            return "and we don't know what! Please send us an email at help@recap-app.com with details."
+        }
     }
 }
 
