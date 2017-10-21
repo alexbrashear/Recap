@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SafariServices
 
 class SignUpViewController: UIViewController {
     @IBOutlet var header: UILabel!
@@ -20,6 +21,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet var passwordLabel: UILabel!
     @IBOutlet var submit: UIButton!
     @IBOutlet var goToLogin: UIButton!
+    @IBOutlet var termsOfServiceLabel: UILabel!
+    @IBOutlet var termsOfService: UIButton!
     
     var submitHandler: ((_ email: String, _ password: String) -> Void)?
     var goToLoginHandler: (() -> Void)?
@@ -64,6 +67,12 @@ class SignUpViewController: UIViewController {
         
         goToLogin.titleLabel?.font = UIFont.openSansBoldFont(ofSize: 12)
         goToLogin.titleLabel?.textColor = .white
+        
+        termsOfServiceLabel.font = UIFont.openSansSemiBoldFont(ofSize: 12)
+        termsOfServiceLabel.textColor = .white
+        
+        termsOfService.titleLabel?.font = UIFont.openSansSemiBoldFont(ofSize: 12)
+        termsOfService.titleLabel?.textColor = UIColor.rcpGoldenYellow
     }
     
     @IBAction func submitTapped(_ sender: Any) {
@@ -72,7 +81,20 @@ class SignUpViewController: UIViewController {
         submitHandler?(email, password)
     }
     
+    @IBAction func termsOfServiceTapped(_ sender: Any) {
+        guard let url = URL(string: "http://www.recap-app.com/termsconditions.html") else { return }
+        let svc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+        svc.delegate = self
+        present(svc, animated: true, completion: nil)
+    }
+    
     @IBAction func goToLoginTapped(_ sender: UIButton) {
         goToLoginHandler?()
+    }
+}
+
+extension SignUpViewController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

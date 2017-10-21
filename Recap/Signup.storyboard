@@ -152,11 +152,30 @@
                                     <constraint firstItem="Z5C-69-1Y9" firstAttribute="height" secondItem="uYJ-TM-b0W" secondAttribute="height" multiplier="0.075" constant="38.5625" id="x1g-y7-lq6"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ai2-0i-deH" userLabel="Terms of Service">
+                                <rect key="frame" x="71.5" y="572" width="232.5" height="50.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up you agree to our" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPM-89-92P">
+                                        <rect key="frame" x="0.0" y="0.0" width="232.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l32-Dg-aJi">
+                                        <rect key="frame" x="0.0" y="20.5" width="232.5" height="30"/>
+                                        <state key="normal" title="Terms of Service"/>
+                                        <connections>
+                                            <action selector="termsOfServiceTapped:" destination="ngl-hY-26Q" eventType="touchUpInside" id="HEU-zA-ixG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="trailingMargin" multiplier="0.07" id="0NK-5a-c1L"/>
                             <constraint firstItem="Fvt-L8-mek" firstAttribute="top" secondItem="Wnm-C9-hSZ" secondAttribute="bottom" constant="-20" id="6zz-Yr-YDl"/>
+                            <constraint firstItem="igA-5l-mgf" firstAttribute="top" secondItem="ai2-0i-deH" secondAttribute="bottom" constant="44.5" id="D2c-8I-i3U"/>
                             <constraint firstItem="feo-5U-hkF" firstAttribute="top" secondItem="OHC-qb-ws8" secondAttribute="bottom" constant="12" id="HBw-ws-f2w"/>
                             <constraint firstItem="uYJ-TM-b0W" firstAttribute="top" secondItem="xrv-db-SJs" secondAttribute="bottom" constant="40" id="P5u-L9-JLG"/>
                             <constraint firstItem="uYJ-TM-b0W" firstAttribute="leading" secondItem="xrv-db-SJs" secondAttribute="leading" id="TBe-x1-9w2"/>
@@ -168,6 +187,7 @@
                             <constraint firstItem="igA-5l-mgf" firstAttribute="top" secondItem="Fvt-L8-mek" secondAttribute="bottom" id="f6T-En-0mW"/>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="top" secondItem="feo-5U-hkF" secondAttribute="bottom" constant="40" id="gOm-TG-dOA"/>
                             <constraint firstItem="uYJ-TM-b0W" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="osW-Fd-iSQ"/>
+                            <constraint firstItem="ai2-0i-deH" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="xAn-Dk-T4H"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Fvt-L8-mek" secondAttribute="trailing" constant="-16" id="xWz-8c-jjQ"/>
                         </constraints>
                     </view>
@@ -181,6 +201,8 @@
                         <outlet property="signupContainer" destination="xrv-db-SJs" id="Aua-9j-x9Y"/>
                         <outlet property="subHeader" destination="feo-5U-hkF" id="ITy-Y7-mkn"/>
                         <outlet property="submit" destination="Z5C-69-1Y9" id="GHb-mk-fsh"/>
+                        <outlet property="termsOfService" destination="l32-Dg-aJi" id="ZAl-bF-nJg"/>
+                        <outlet property="termsOfServiceLabel" destination="kPM-89-92P" id="wNh-kG-b7e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xq3-JE-kMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
