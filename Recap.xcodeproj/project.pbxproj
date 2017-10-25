@@ -53,6 +53,8 @@
 		C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */; };
 		C36A27F41EB454CA008AA900 /* PhotoTakenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */; };
 		C36DB12A1F9AFB8E00F42B27 /* StaticURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB1291F9AFB8E00F42B27 /* StaticURLs.swift */; };
+		C36DB12C1F9C09D600F42B27 /* ConnectFacebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36DB12B1F9C09D600F42B27 /* ConnectFacebook.storyboard */; };
+		C36DB12E1F9C09ED00F42B27 /* ConnectFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB12D1F9C09ED00F42B27 /* ConnectFacebookViewController.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
 		C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37C2E381F116D66002DFE7D /* Signup.storyboard */; };
 		C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */; };
@@ -171,6 +173,8 @@
 		C36A27EF1EB43E6B008AA900 /* PhotoTakenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenView.swift; sourceTree = "<group>"; };
 		C36A27F31EB454CA008AA900 /* PhotoTakenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakenViewModel.swift; sourceTree = "<group>"; };
 		C36DB1291F9AFB8E00F42B27 /* StaticURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticURLs.swift; sourceTree = "<group>"; };
+		C36DB12B1F9C09D600F42B27 /* ConnectFacebook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectFacebook.storyboard; sourceTree = "<group>"; };
+		C36DB12D1F9C09ED00F42B27 /* ConnectFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFacebookViewController.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
 		C37C2E381F116D66002DFE7D /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +405,15 @@
 			path = RecapTests;
 			sourceTree = "<group>";
 		};
+		C36DB12F1FA02C9500F42B27 /* facebook */ = {
+			isa = PBXGroup;
+			children = (
+				C36DB12B1F9C09D600F42B27 /* ConnectFacebook.storyboard */,
+				C36DB12D1F9C09ED00F42B27 /* ConnectFacebookViewController.swift */,
+			);
+			name = facebook;
+			sourceTree = "<group>";
+		};
 		C37F67A21F0DE9AC005FF8EC /* sign up / login */ = {
 			isa = PBXGroup;
 			children = (
@@ -448,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				C37F67A21F0DE9AC005FF8EC /* sign up / login */,
+				C36DB12F1FA02C9500F42B27 /* facebook */,
 				C313397C1EABAA530080A168 /* Disclaimer */,
 				C3C3475C1EA860950008E62E /* Enter Address */,
 				C3C3475B1EA85B420008E62E /* Welcome */,
@@ -694,6 +708,7 @@
 				C313398B1EAD9E960080A168 /* CameraOverlayView.xib in Resources */,
 				C35308401E3D163600E2BD8A /* Camera.storyboard in Resources */,
 				C313397E1EABAA780080A168 /* Disclaimer.storyboard in Resources */,
+				C36DB12C1F9C09D600F42B27 /* ConnectFacebook.storyboard in Resources */,
 				C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */,
 				C30972651F36C6390040A72E /* SinglePhotoView.xib in Resources */,
 			);
@@ -850,6 +865,7 @@
 				C3AE4C2E1EDFC5EC0019ED8C /* CameraFlow.swift in Sources */,
 				C31E62B21F28730B0084443A /* Photo.swift in Sources */,
 				C3AE4C2A1EDFC1F00019ED8C /* PurchaseViewController.swift in Sources */,
+				C36DB12E1F9C09ED00F42B27 /* ConnectFacebookViewController.swift in Sources */,
 				C3CAC47A1EBE1FAB007CECF3 /* PositiveAlertViewModel.swift in Sources */,
 				C309725A1F342A4B0040A72E /* ImageProvider.swift in Sources */,
 				C32BFCCA1F7FE34700BF255F /* BaseFlowCoordinator.swift in Sources */,

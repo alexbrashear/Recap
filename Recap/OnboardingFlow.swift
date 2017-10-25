@@ -43,7 +43,7 @@ extension RootFlowCoordinator {
                     switch result {
                     case .success:
                         guard let nc = nc else { return }
-                        self?.pushDisclaimerController(onto: nc)
+                        self?.pushConnectFacebookController(onto: nc)
                     case let .error(userError):
                         vc?.present(userError.alert, animated: true, completion: nil)
                     }
@@ -133,5 +133,34 @@ extension RootFlowCoordinator {
             }
         }
         nc.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Connect to facebook
+    
+    func pushConnectFacebookController(onto nc: UINavigationController) {
+        guard let vc = R.storyboard.connectFacebook.connectFacebookViewController() else { return }
+        configure(vc, nc: nc)
+        nc.pushViewController(vc, animated: true)
+    }
+    
+    func configure(_ vc: ConnectFacebookViewController, nc: UINavigationController) {
+        vc.connectFacebook = { [weak self, weak vc, weak nc] in
+//            HUD.show(.progress)
+            self?.userController.loginWithSocial(callback: { result in
+                HUD.hide()
+                switch result {
+                case let .error(err):
+                    vc?.present(err.alert, animated: true, completion: nil)
+                case .success:
+                    guard let nc = nc else { return }
+                    self?.pushDisclaimerController(onto: nc)
+                }
+            })
+        }
+        
+        vc.doLater = { [weak self, weak nc] in
+            guard let nc = nc else { return }
+            self?.pushDisclaimerController(onto: nc)
+        }
     }
 }

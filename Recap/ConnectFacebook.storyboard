@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Connect Facebook View Controller-->
+        <scene sceneID="Dg9-ZH-062">
+            <objects>
+                <viewController storyboardIdentifier="ConnectFacebookViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="isu-6j-gZG" customClass="ConnectFacebookViewController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LH5-GL-EUv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="7Ro-g6-nwA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq2-eW-1IM">
+                                <rect key="frame" x="47" y="597" width="281" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="PYG-xG-M0h"/>
+                                    <constraint firstAttribute="height" constant="40" id="hd0-Os-E9u"/>
+                                </constraints>
+                                <state key="normal" title="Do this later">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to connect to facebook? Send to all your friends - no addresses needed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-hR-fwy">
+                                <rect key="frame" x="47" y="110" width="281" height="61"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amc-qd-lRR" userLabel="Facebook Button">
+                                <rect key="frame" x="47" y="205" width="281" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="1DB-mm-Ivd"/>
+                                    <constraint firstAttribute="height" constant="40" id="KeU-j6-Jp7"/>
+                                </constraints>
+                                <state key="normal" title="Connect Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NOW-rC-9aq" firstAttribute="top" secondItem="7Ro-g6-nwA" secondAttribute="top" constant="20" id="19x-rT-eez"/>
+                            <constraint firstItem="cp1-hR-fwy" firstAttribute="width" secondItem="Sq2-eW-1IM" secondAttribute="width" id="2fs-0P-ft5"/>
+                            <constraint firstItem="amc-qd-lRR" firstAttribute="top" secondItem="cp1-hR-fwy" secondAttribute="bottom" constant="34" id="3uY-k0-7U9"/>
+                            <constraint firstItem="cp1-hR-fwy" firstAttribute="top" secondItem="NOW-rC-9aq" secondAttribute="top" constant="90" id="8MY-lb-DRn"/>
+                            <constraint firstItem="NOW-rC-9aq" firstAttribute="bottom" secondItem="7Ro-g6-nwA" secondAttribute="bottom" id="IBP-Qt-cW9"/>
+                            <constraint firstItem="cp1-hR-fwy" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="Qrt-Ga-Fi3"/>
+                            <constraint firstItem="Sq2-eW-1IM" firstAttribute="width" secondItem="LH5-GL-EUv" secondAttribute="width" multiplier="0.75" id="XVD-NY-QAM"/>
+                            <constraint firstItem="Sq2-eW-1IM" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="h5q-84-mjv"/>
+                            <constraint firstItem="amc-qd-lRR" firstAttribute="width" secondItem="Sq2-eW-1IM" secondAttribute="width" id="hcw-WH-WoO"/>
+                            <constraint firstItem="7Ro-g6-nwA" firstAttribute="leading" secondItem="NOW-rC-9aq" secondAttribute="leading" id="nRM-fH-mb0"/>
+                            <constraint firstItem="amc-qd-lRR" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="oML-g8-9JH"/>
+                            <constraint firstItem="NOW-rC-9aq" firstAttribute="trailing" secondItem="7Ro-g6-nwA" secondAttribute="trailing" id="s4r-6Q-HDi"/>
+                            <constraint firstItem="NOW-rC-9aq" firstAttribute="bottom" secondItem="Sq2-eW-1IM" secondAttribute="bottom" constant="30" id="xtv-ky-WWD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NOW-rC-9aq"/>
+                    </view>
+                    <connections>
+                        <outlet property="doThisLater" destination="Sq2-eW-1IM" id="tND-fc-Cdm"/>
+                        <outlet property="facebookButton" destination="amc-qd-lRR" id="xth-pL-SF0"/>
+                        <outlet property="facebookCopy" destination="cp1-hR-fwy" id="syD-NV-V1o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASX-aW-OSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-287.19999999999999" y="-61.619190404797607"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="splashBackground" width="375" height="667"/>
+    </resources>
+</document>
