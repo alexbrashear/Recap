@@ -14,7 +14,7 @@ class InviteCodeController: ManagedKeyboardViewController {
     @IBOutlet private var submit: UIButton!
     @IBOutlet private var descriptionLabel: UILabel!
     
-    var submitAction: (() -> Void)?
+    var submitAction: ((_ code: String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,8 @@ class InviteCodeController: ManagedKeyboardViewController {
         descriptionLabel.font = UIFont.openSansFont(ofSize: 16)
         
         submit.on(.touchUpInside) { [weak self] _ in
-            self?.submitAction?()
+            guard let code = self?.inviteCodeField.text else { return }
+            self?.submitAction?(code)
         }
     }
 }

@@ -13,8 +13,8 @@ public struct CreatePhotoInput: GraphQLMapConvertible {
 public struct CreateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(remainingPhotos: Int, username: String, address: CreateAddressInput? = nil, addressId: GraphQLID? = nil, password: String, facebookId: String? = nil, clientMutationId: GraphQLID? = nil) {
-    graphQLMap = ["remainingPhotos": remainingPhotos, "username": username, "address": address, "addressId": addressId, "password": password, "facebookId": facebookId, "clientMutationId": clientMutationId]
+  public init(remainingPhotos: Int, inviteCode: String, username: String, address: CreateAddressInput? = nil, addressId: GraphQLID? = nil, password: String, facebookId: String? = nil, clientMutationId: GraphQLID? = nil) {
+    graphQLMap = ["remainingPhotos": remainingPhotos, "inviteCode": inviteCode, "username": username, "address": address, "addressId": addressId, "password": password, "facebookId": facebookId, "clientMutationId": clientMutationId]
   }
 }
 
@@ -53,8 +53,8 @@ public struct UpdateAddressInput: GraphQLMapConvertible {
 public struct UpdateUserInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, remainingPhotos: Int? = nil, username: String? = nil, addressId: GraphQLID? = nil, password: String? = nil, facebookId: String? = nil, clientMutationId: String? = nil) {
-    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "username": username, "addressId": addressId, "password": password, "facebookId": facebookId, "clientMutationId": clientMutationId]
+  public init(id: GraphQLID, remainingPhotos: Int? = nil, inviteCode: String? = nil, username: String? = nil, addressId: GraphQLID? = nil, password: String? = nil, facebookId: String? = nil, clientMutationId: String? = nil) {
+    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "inviteCode": inviteCode, "username": username, "addressId": addressId, "password": password, "facebookId": facebookId, "clientMutationId": clientMutationId]
   }
 }
 
@@ -62,8 +62,8 @@ public struct UpdateUserInput: GraphQLMapConvertible {
 public struct UserWhereArgs: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: UserIdWhereArgs? = nil, remainingPhotos: UserRemainingPhotosWhereArgs? = nil, username: UserUsernameWhereArgs? = nil, createdAt: UserCreatedAtWhereArgs? = nil, address: AddressWhereArgs? = nil, lastLogin: UserLastLoginWhereArgs? = nil, photos: PhotoWhereArgs? = nil, password: UserPasswordWhereArgs? = nil, modifiedAt: UserModifiedAtWhereArgs? = nil, roles: UserRolesWhereArgs? = nil, facebookId: UserFacebookIdWhereArgs? = nil, addressId: UserAddressIdWhereArgs? = nil, or: [UserWhereArgs?]? = nil, and: [UserWhereArgs?]? = nil) {
-    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "username": username, "createdAt": createdAt, "address": address, "lastLogin": lastLogin, "photos": photos, "password": password, "modifiedAt": modifiedAt, "roles": roles, "facebookId": facebookId, "addressId": addressId, "OR": or, "AND": and]
+  public init(id: UserIdWhereArgs? = nil, remainingPhotos: UserRemainingPhotosWhereArgs? = nil, inviteCode: UserInviteCodeWhereArgs? = nil, username: UserUsernameWhereArgs? = nil, createdAt: UserCreatedAtWhereArgs? = nil, address: AddressWhereArgs? = nil, lastLogin: UserLastLoginWhereArgs? = nil, photos: PhotoWhereArgs? = nil, password: UserPasswordWhereArgs? = nil, modifiedAt: UserModifiedAtWhereArgs? = nil, roles: UserRolesWhereArgs? = nil, facebookId: UserFacebookIdWhereArgs? = nil, addressId: UserAddressIdWhereArgs? = nil, or: [UserWhereArgs?]? = nil, and: [UserWhereArgs?]? = nil) {
+    graphQLMap = ["id": id, "remainingPhotos": remainingPhotos, "inviteCode": inviteCode, "username": username, "createdAt": createdAt, "address": address, "lastLogin": lastLogin, "photos": photos, "password": password, "modifiedAt": modifiedAt, "roles": roles, "facebookId": facebookId, "addressId": addressId, "OR": or, "AND": and]
   }
 }
 
@@ -79,6 +79,14 @@ public struct UserRemainingPhotosWhereArgs: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
   public init(eq: Int? = nil, ne: Int? = nil, gt: Int? = nil, gte: Int? = nil, lt: Int? = nil, lte: Int? = nil, between: [Int?]? = nil, notBetween: [Int?]? = nil, `in`: [Int?]? = nil, notIn: [Int?]? = nil, like: String? = nil, notLike: String? = nil, isNull: Bool? = nil) {
+    graphQLMap = ["eq": eq, "ne": ne, "gt": gt, "gte": gte, "lt": lt, "lte": lte, "between": between, "notBetween": notBetween, "in": `in`, "notIn": notIn, "like": like, "notLike": notLike, "isNull": isNull]
+  }
+}
+
+public struct UserInviteCodeWhereArgs: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(eq: String? = nil, ne: String? = nil, gt: String? = nil, gte: String? = nil, lt: String? = nil, lte: String? = nil, between: [String?]? = nil, notBetween: [String?]? = nil, `in`: [String?]? = nil, notIn: [String?]? = nil, like: String? = nil, notLike: String? = nil, isNull: Bool? = nil) {
     graphQLMap = ["eq": eq, "ne": ne, "gt": gt, "gte": gte, "lt": lt, "lte": lte, "between": between, "notBetween": notBetween, "in": `in`, "notIn": notIn, "like": like, "notLike": notLike, "isNull": isNull]
   }
 }
@@ -1026,6 +1034,87 @@ public final class FacebookUsersQuery: GraphQLQuery {
   }
 }
 
+public final class VerifyInviteCodeQuery: GraphQLQuery {
+  public static let operationDefinition =
+    "query VerifyInviteCode($input: UserWhereArgs) {" +
+    "  viewer {" +
+    "    __typename" +
+    "    allUsers(where: $input) {" +
+    "      __typename" +
+    "      edges {" +
+    "        __typename" +
+    "        node {" +
+    "          __typename" +
+    "          inviteCode" +
+    "        }" +
+    "      }" +
+    "    }" +
+    "  }" +
+    "}"
+
+  public let input: UserWhereArgs?
+
+  public init(input: UserWhereArgs? = nil) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    public let viewer: Viewer?
+
+    public init(reader: GraphQLResultReader) throws {
+      viewer = try reader.optionalValue(for: Field(responseName: "viewer"))
+    }
+
+    public struct Viewer: GraphQLMappable {
+      public let __typename: String
+      /// Sift through all objects of type 'User'.
+      public let allUsers: AllUser?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        allUsers = try reader.optionalValue(for: Field(responseName: "allUsers", arguments: ["where": reader.variables["input"]]))
+      }
+
+      public struct AllUser: GraphQLMappable {
+        public let __typename: String
+        /// The set of edges in this page.
+        public let edges: [Edge?]?
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+          edges = try reader.optionalList(for: Field(responseName: "edges"))
+        }
+
+        public struct Edge: GraphQLMappable {
+          public let __typename: String
+          /// The node value for the edge.
+          public let node: Node
+
+          public init(reader: GraphQLResultReader) throws {
+            __typename = try reader.value(for: Field(responseName: "__typename"))
+            node = try reader.value(for: Field(responseName: "node"))
+          }
+
+          public struct Node: GraphQLMappable {
+            public let __typename: String
+            /// This is the code that a user can use to invite friends to the app.
+            public let inviteCode: String
+
+            public init(reader: GraphQLResultReader) throws {
+              __typename = try reader.value(for: Field(responseName: "__typename"))
+              inviteCode = try reader.value(for: Field(responseName: "inviteCode"))
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public struct CompletePhoto: GraphQLNamedFragment {
   public static let fragmentDefinition =
     "fragment completePhoto on Photo {" +
@@ -1115,6 +1204,7 @@ public struct CompleteUser: GraphQLNamedFragment {
     "    ...completeAddress" +
     "  }" +
     "  remainingPhotos" +
+    "  inviteCode" +
     "  photos {" +
     "    __typename" +
     "    edges {" +
@@ -1139,6 +1229,8 @@ public struct CompleteUser: GraphQLNamedFragment {
   /// 
   /// Default value of 2 is set on the assumption that when a user creates an account we will want them to have two free photos.
   public let remainingPhotos: Int
+  /// This is the code that a user can use to invite friends to the app.
+  public let inviteCode: String
   /// The reverse field of 'sender' in 1:M connection
   /// with type 'undefined'.
   public let photos: Photo?
@@ -1149,6 +1241,7 @@ public struct CompleteUser: GraphQLNamedFragment {
     username = try reader.value(for: Field(responseName: "username"))
     address = try reader.optionalValue(for: Field(responseName: "address"))
     remainingPhotos = try reader.value(for: Field(responseName: "remainingPhotos"))
+    inviteCode = try reader.value(for: Field(responseName: "inviteCode"))
     photos = try reader.optionalValue(for: Field(responseName: "photos"))
   }
 

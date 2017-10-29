@@ -16,6 +16,7 @@ typealias PhotoIDDateCallback = (Result<(String, String), PhotoError>) -> Void
 typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 typealias PhotoErrorOnlyCallback = (Result<Void, PhotoError>) -> Void
+typealias VerifyInviteCodeCallback = (Result<Void, UserError>) -> Void
 
 struct UserNotification {
     static let userDidUpdate = Notification.Name("userDidUpdate")
@@ -83,7 +84,7 @@ class UserController {
         ///
         
         let createAddressInput = CreateAddressInput(city: address.city, secondaryLine: address.line2, name: address.name, primaryLine: address.line1, zipCode: address.zip, state: address.state)
-        let createUserInput = CreateUserInput(remainingPhotos: 2, username: email, address: createAddressInput, password: password)
+        let createUserInput = CreateUserInput(remainingPhotos: 2, inviteCode: String.randomString(length: 6), username: email, address: createAddressInput, password: password)
         let mut = SignupUserMutation(user: createUserInput)
         
         graphql.client.perform(mutation: mut, queue: .main) { [weak self] result, error in
@@ -130,6 +131,17 @@ class UserController {
                 NotificationCenter.default.post(name: UserNotification.userConnectedFacebook, object: nil)
                 callback(.success())
             }
+        }
+    }
+    
+    func verifyInviteCode(code: String, callback: @escaping VerifyInviteCodeCallback) {
+        let input = UserWhereArgs(inviteCode: UserInviteCodeWhereArgs(eq: code))
+        let query = VerifyInviteCodeQuery(input: input)
+        graphql.client.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
+            guard let edges = result?.data?.viewer?.allUsers?.edges, error == nil, edges.count >= 1 else {
+                return callback(.error(.invalidInviteCode))
+            }
+            callback(.success())
         }
     }
 }
@@ -258,6 +270,7 @@ enum UserError: AlertableError {
     case updateAddressFailed
     case buyFilmFailed
     case unknownFailure
+    case invalidInviteCode
     
     var localizedTitle: String {
         switch self {
@@ -271,6 +284,8 @@ enum UserError: AlertableError {
             return "Purchase Failed"
         case .unknownFailure:
             return "Something went wrong"
+        case .invalidInviteCode:
+            return "Invalid Invite Code"
         }
     }
     
@@ -286,6 +301,8 @@ enum UserError: AlertableError {
             return "Please try again or contact us at help@recap-app.com"
         case .unknownFailure:
             return "and we don't know what! Please send us an email at help@recap-app.com with details."
+        case .invalidInviteCode:
+            return "Check that you entered the right code and try again, or vist recap-app.com to get a new one."
         }
     }
 }
@@ -308,5 +325,23 @@ enum SocialError: AlertableError {
         case .failedToLinkAccount:
             return "You successfully logged in to Facebook but we had trouble linking your account. Though you will appear in your friends queues, they will be unable to send to you. Please contact help@recap-app.com so we can resolve this!"
         }
+    }
+}
+
+extension String {
+    static func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
     }
 }

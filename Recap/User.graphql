@@ -49,6 +49,18 @@ query FacebookUsers($input: UserWhereArgs) {
     }
 }
 
+query VerifyInviteCode($input: UserWhereArgs) {
+    viewer {
+        allUsers(where: $input) {
+            edges {
+                node {
+                    inviteCode
+                }
+            }
+        }
+    }
+}
+
 fragment completeUser on User {
     id
     username
@@ -56,6 +68,7 @@ fragment completeUser on User {
         ...completeAddress
     }
     remainingPhotos
+    inviteCode
     photos {
         edges {
             node {
