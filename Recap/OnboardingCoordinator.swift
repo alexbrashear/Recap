@@ -18,11 +18,14 @@ class OnboardingCoordinator {
     
     enum OnboardingKind {
         case welcomeFlow
+        case inviteCode
         
         var key: String {
             switch self {
             case .welcomeFlow:
                 return "hasShownWelcomeFlow"
+            case .inviteCode:
+                return "hasShownInviteCode"
             }
         }
     }

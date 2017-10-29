@@ -55,6 +55,9 @@
 		C36DB12A1F9AFB8E00F42B27 /* StaticURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB1291F9AFB8E00F42B27 /* StaticURLs.swift */; };
 		C36DB12C1F9C09D600F42B27 /* ConnectFacebook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36DB12B1F9C09D600F42B27 /* ConnectFacebook.storyboard */; };
 		C36DB12E1F9C09ED00F42B27 /* ConnectFacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB12D1F9C09ED00F42B27 /* ConnectFacebookViewController.swift */; };
+		C36DB1371FA5A21A00F42B27 /* InviteCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C36DB1361FA5A21A00F42B27 /* InviteCode.storyboard */; };
+		C36DB1391FA5A22A00F42B27 /* InviteCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB1381FA5A22A00F42B27 /* InviteCodeController.swift */; };
+		C36DB13B1FA6514100F42B27 /* ManagedKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DB13A1FA6514100F42B27 /* ManagedKeyboardViewController.swift */; };
 		C36EA09C1EB68FD100D37113 /* SimpleImageLabelAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */; };
 		C37C2E391F116D66002DFE7D /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37C2E381F116D66002DFE7D /* Signup.storyboard */; };
 		C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */; };
@@ -175,6 +178,9 @@
 		C36DB1291F9AFB8E00F42B27 /* StaticURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticURLs.swift; sourceTree = "<group>"; };
 		C36DB12B1F9C09D600F42B27 /* ConnectFacebook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConnectFacebook.storyboard; sourceTree = "<group>"; };
 		C36DB12D1F9C09ED00F42B27 /* ConnectFacebookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectFacebookViewController.swift; sourceTree = "<group>"; };
+		C36DB1361FA5A21A00F42B27 /* InviteCode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InviteCode.storyboard; sourceTree = "<group>"; };
+		C36DB1381FA5A22A00F42B27 /* InviteCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCodeController.swift; sourceTree = "<group>"; };
+		C36DB13A1FA6514100F42B27 /* ManagedKeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedKeyboardViewController.swift; sourceTree = "<group>"; };
 		C36EA09B1EB68FD100D37113 /* SimpleImageLabelAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleImageLabelAlert.swift; sourceTree = "<group>"; };
 		C37C2E381F116D66002DFE7D /* Signup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		C37C2E3A1F1172A8002DFE7D /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -414,6 +420,15 @@
 			name = facebook;
 			sourceTree = "<group>";
 		};
+		C36DB1351FA5A20000F42B27 /* Invite Code */ = {
+			isa = PBXGroup;
+			children = (
+				C36DB1361FA5A21A00F42B27 /* InviteCode.storyboard */,
+				C36DB1381FA5A22A00F42B27 /* InviteCodeController.swift */,
+			);
+			name = "Invite Code";
+			sourceTree = "<group>";
+		};
 		C37F67A21F0DE9AC005FF8EC /* sign up / login */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +475,7 @@
 		C3C347481EA710ED0008E62E /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				C36DB1351FA5A20000F42B27 /* Invite Code */,
 				C37F67A21F0DE9AC005FF8EC /* sign up / login */,
 				C36DB12F1FA02C9500F42B27 /* facebook */,
 				C313397C1EABAA530080A168 /* Disclaimer */,
@@ -505,6 +521,7 @@
 				C396E7B91E5109ED009C4696 /* NetworkClient.swift */,
 				C37F67A01F0AC247005FF8EC /* FilterProvider.swift */,
 				C30972591F342A4B0040A72E /* ImageProvider.swift */,
+				C36DB13A1FA6514100F42B27 /* ManagedKeyboardViewController.swift */,
 				C3CE0E311E726EB7008000B1 /* Extensions */,
 			);
 			name = Utilities;
@@ -696,6 +713,7 @@
 				C37F67A41F0DE9D3005FF8EC /* Login.storyboard in Resources */,
 				C35308451E3D163600E2BD8A /* LaunchScreen.storyboard in Resources */,
 				C31E62AE1F26D5EC0084443A /* Photo.graphql in Resources */,
+				C36DB1371FA5A21A00F42B27 /* InviteCode.storyboard in Resources */,
 				C3C347581EA83D930008E62E /* WelcomeItem.xib in Resources */,
 				C3E60EF61F11B45B0068A28E /* schema.json in Resources */,
 				C3C3475E1EA861190008E62E /* EnterAddress.storyboard in Resources */,
@@ -854,6 +872,7 @@
 				C30972521F2E85300040A72E /* SentPhotosController.swift in Sources */,
 				C353083D1E3D163600E2BD8A /* CameraViewController.swift in Sources */,
 				C36A27EE1EB2E7E0008AA900 /* CameraOverlayViewModel.swift in Sources */,
+				C36DB1391FA5A22A00F42B27 /* InviteCodeController.swift in Sources */,
 				C33BD1021ECE96B300132B7D /* SentPhotosFlow.swift in Sources */,
 				C330B63B1E46B82800928284 /* AddressError.swift in Sources */,
 				C37C2E3B1F1172A8002DFE7D /* SignUpViewController.swift in Sources */,
@@ -904,6 +923,7 @@
 				C38A43BE1F8D0DAC00A6E2FA /* UIColor+Images.swift in Sources */,
 				C36A27F01EB43E6B008AA900 /* PhotoTakenView.swift in Sources */,
 				C32BFCC61F7CA93900BF255F /* FriendsListTopBar.swift in Sources */,
+				C36DB13B1FA6514100F42B27 /* ManagedKeyboardViewController.swift in Sources */,
 				C396E7BA1E5109ED009C4696 /* NetworkClient.swift in Sources */,
 				C3CE0E291E6E628F008000B1 /* RootFlowCoordinator.swift in Sources */,
 				C3268BF11F83278F00F93C21 /* FriendsListProvider.swift in Sources */,

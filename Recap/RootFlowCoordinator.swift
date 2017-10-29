@@ -41,7 +41,9 @@ class RootFlowCoordinator {
     
     /// loads the initial view controller
     func load() {
-        if onboardingCoordinator.shouldShow(onboarding: .welcomeFlow) {
+        if onboardingCoordinator.shouldShow(onboarding: .inviteCode) {
+            pushInviteCodeController(onto: navigationController)
+        } else if onboardingCoordinator.shouldShow(onboarding: .welcomeFlow) {
             pushWelomeController(onto: navigationController)
         } else if userController.user != nil {
             pushCameraViewController(onto: navigationController)

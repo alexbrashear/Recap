@@ -12,6 +12,22 @@ import Apollo
 
 extension RootFlowCoordinator {
     
+    // MARK: - Invite Code
+    
+    func pushInviteCodeController(onto nc: UINavigationController) {
+        guard let vc = R.storyboard.inviteCode.inviteCodeController() else { return }
+        configure(vc, nc: nc)
+        nc.pushViewController(vc, animated: true)
+    }
+    
+    func configure(_ vc: InviteCodeController, nc: UINavigationController) {
+        nc.setNavigationBarHidden(true, animated: false)
+        vc.submitAction = { [weak self, weak nc] in
+            guard let nc = nc else { return }
+            self?.pushWelomeController(onto: nc)
+        }
+    }
+    
     // MARK: - Welcome Controller
     
     func configureWelcomeController(_ vc: WelcomeViewController, nc: UINavigationController) {
@@ -145,7 +161,8 @@ extension RootFlowCoordinator {
     
     func configure(_ vc: ConnectFacebookViewController, nc: UINavigationController) {
         vc.connectFacebook = { [weak self, weak vc, weak nc] in
-//            HUD.show(.progress)
+            // This line is causing the HUD to show on the facebook controller not sure why
+            // HUD.show(.progress)
             self?.userController.loginWithSocial(callback: { result in
                 HUD.hide()
                 switch result {
