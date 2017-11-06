@@ -8,18 +8,21 @@
 
 import UIKit
 
+typealias UpdateToolbars = () -> Void
+
 protocol FriendsListViewModelProtocol: class {
     var topBarText: String { get }
     var topBarTapHandler: () -> Void { get }
     var bottomBarText: String { get }
     var shouldShowBottomBar: Bool { get }
     
+    func cellType(for indexPath: IndexPath) -> FriendsListController.CellType
     var numberOfSections: Int { get }
     func titleForHeader(in section: Int) -> String?
     func numberOfRows(in section: Int) -> Int
     func titleForRow(at indexPath: IndexPath) -> String
     
-    var canSelect: Bool { get }
+    func canSelect(indexPath: IndexPath) -> Bool
     func didSelect(indexPath: IndexPath)
     func didDeselect(indexPath: IndexPath)
     func didSend()
@@ -28,6 +31,11 @@ protocol FriendsListViewModelProtocol: class {
 class FriendsListController: UIViewController {
     
     var viewModel: FriendsListViewModelProtocol!
+    
+    enum CellType {
+        case friend
+        case link
+    }
     
     var topBar = FriendsListTopBar(frame: .zero)
     var tableView: UITableView!
@@ -74,6 +82,7 @@ class FriendsListController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor).isActive = true
         
         tableView.register(cellType: FriendCell.self)
+        tableView.register(cellType: LinkCell.self)
         tableView.allowsMultipleSelection = true
         
         tableView.delegate = self
@@ -134,28 +143,44 @@ extension FriendsListController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath) as FriendCell
-        let name = viewModel.titleForRow(at: indexPath)
-        cell.viewModel = FriendCell.ViewModel(name: name)
-        return cell
+        switch viewModel.cellType(for: indexPath) {
+        case .friend:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as FriendCell
+            let name = viewModel.titleForRow(at: indexPath)
+            cell.viewModel = FriendCell.ViewModel(name: name)
+            return cell
+        case .link:
+            let cell = tableView.dequeueReusableCell(for: indexPath) as LinkCell
+            let title = viewModel.titleForRow(at: indexPath)
+            cell.viewModel = LinkCell.ViewModel(title: title)
+            return cell
+        }
     }
 }
 
 extension FriendsListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        guard viewModel.canSelect else { return nil }
+        guard viewModel.canSelect(indexPath: indexPath) else { return nil }
         return indexPath
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelect(indexPath: indexPath)
-        topBar.setText(viewModel.topBarText)
-        bottomBarNeedsUpdate()
+        processSelection(tableView: tableView, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         viewModel.didDeselect(indexPath: indexPath)
-        topBar.setText(viewModel.topBarText)
-        bottomBarNeedsUpdate()
+        processSelection(tableView: tableView, indexPath: indexPath)
+    }
+    
+    private func processSelection(tableView: UITableView, indexPath: IndexPath) {
+        switch viewModel.cellType(for: indexPath) {
+        case .friend:
+            topBar.setText(viewModel.topBarText)
+            bottomBarNeedsUpdate()
+        case .link:
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }

@@ -93,11 +93,17 @@ extension RootFlowCoordinator {
             }
         }
         
+        let showSettings: () -> Void = { [weak self, weak vc] in
+            guard let userController = self?.userController, let addressProvider = self?.addressProvider, let vc = vc else { return }
+            let settingsFlow = SettingsFlowCoordinator(userController: userController, addressProvider: addressProvider)
+            settingsFlow.presentSettingsViewController(from: vc)
+        }
+        
         vc.viewModel = FriendsListViewModel(friendsListProvider: friendsListProvider, userController: userController, topBarTapHandler: { [weak self, weak vc] in
             guard let strongSelf = self, let vc = vc else { return }
             let purchaseFlow = PurchaseFlowCoordinator(userController: strongSelf.userController, paymentsController: strongSelf.paymentsController)
             purchaseFlow.presentPurchaseController(from: vc, completion: {_ in})
-        }, sendHandler: sendAction)
+            }, sendHandler: sendAction, facebookHandler: showSettings)
     }
     
     private func presentEnterAddressController(from presentingViewController: UIViewController) {
