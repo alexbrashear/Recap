@@ -302,7 +302,7 @@ enum UserError: AlertableError {
         case .unknownFailure:
             return "and we don't know what! Please send us an email at help@recap-app.com with details."
         case .invalidInviteCode:
-            return "Check that you entered the right code and try again, or vist recap-app.com to get a new one."
+            return "Check that you entered the right code and try again, or vist recap-app.com to learn more."
         }
     }
 }
