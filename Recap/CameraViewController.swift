@@ -58,7 +58,7 @@ class CameraViewController: UIViewController {
         viewModel.overlayViewModel.rotateCamera = { [weak self] in self?.switchCamera() }
         viewModel.overlayViewModel.takePhoto = { [weak self] flashMode in self?.takePhoto(withFlashMode: flashMode) }
         view.addSubview(overlay)
-        overlay.constrainToSuperview()
+        constrainOverlay()
         overlay.viewModel = viewModel.overlayViewModel
         
         self.pinchGesture = UIPinchGestureRecognizer(target: self, action:#selector(pinch(_:)))
@@ -154,6 +154,18 @@ class CameraViewController: UIViewController {
     fileprivate func returnToCamera() {
         self.photoTakenView?.removeFromSuperview()
     }
+    
+    private func constrainOverlay() {
+        if #available(iOS 11, *) {
+            overlay.translatesAutoresizingMaskIntoConstraints = false
+            overlay.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            overlay.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            overlay.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            overlay.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        } else {
+            overlay.constrainToSuperview()
+        }
+    }
 }
 
 // MARK: - AVCapturePhotoCaptureDelegate
@@ -179,13 +191,25 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         // create and overlay photo taken view
         let photoTakenView = PhotoTakenView(frame: .zero, image: filteredImage)
         view.addSubview(photoTakenView)
-        photoTakenView.constrainToSuperview()
+        constrainPhotoTakenView(photoTakenView: photoTakenView)
         photoTakenView.viewModel = PhotoTakenViewModel(
             sendPhoto: { [weak self] image in self?.viewModel?.sendPhoto(image)},
             deletePhotoAction: { [weak self] in self?.deletePhoto() },
             savePhotoAction: { [weak self] image in self?.savePhoto(image: image)}
         )
         self.photoTakenView = photoTakenView
+    }
+    
+    private func constrainPhotoTakenView(photoTakenView: UIView) {
+        if #available(iOS 11, *) {
+            photoTakenView.translatesAutoresizingMaskIntoConstraints = false
+            photoTakenView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            photoTakenView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+            photoTakenView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+            photoTakenView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        } else {
+            photoTakenView.constrainToSuperview()
+        }
     }
 }
 
