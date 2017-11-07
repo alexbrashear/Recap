@@ -8,6 +8,7 @@
 
 import UIKit
 import Reusable
+import PKHUD
 
 class SinglePhotoController: UIViewController {
     
@@ -38,5 +39,26 @@ class SinglePhotoController: UIViewController {
         
         singlePhotoView.imageProvider = imageProvider
         singlePhotoView.photo = photo
+        singlePhotoView.savePhoto = { [weak self] image in
+            self?.savePhoto(image: image)
+        }
+    }
+    
+    func savePhoto(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image.fixOrientation(), self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        PKHUD.sharedHUD.contentView = UIView()
+        PKHUD.sharedHUD.show()
+    }
+    
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            PKHUD.sharedHUD.hide()
+            let alert = UIAlertController.okAlert(title: "Sorry we couldn't save your photo", message: "Check your settings to make sure you've given Recap access to your photo library.")
+            present(alert, animated: true, completion: nil)
+        } else {
+            PKHUD.sharedHUD.contentView = SimpleImageLabelAlert.successfulSave
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 3.0)
+        }
     }
 }

@@ -30,6 +30,8 @@ class SinglePhotoView: UIView, NibLoadable {
         }
     }
     
+    var savePhoto: ((UIImage) -> Void)?
+    
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var sentTo: UILabel!
     @IBOutlet var deliveryCountdown: UILabel!
@@ -44,6 +46,8 @@ class SinglePhotoView: UIView, NibLoadable {
     }
     
     @IBAction func saveTapped(_ sender: UIButton) {
+        guard let image = imageView.image else { return }
+        savePhoto?(image)
     }
 }
 
