@@ -32,14 +32,14 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to connect to facebook? Send to all your friends - no addresses needed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-hR-fwy">
-                                <rect key="frame" x="47" y="110" width="281" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send to all your friends - no addresses needed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-hR-fwy">
+                                <rect key="frame" x="47" y="131" width="281" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amc-qd-lRR" userLabel="Facebook Button">
-                                <rect key="frame" x="47" y="205" width="281" height="40"/>
+                                <rect key="frame" x="47" y="537" width="281" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="1DB-mm-Ivd"/>
                                     <constraint firstAttribute="height" constant="40" id="KeU-j6-Jp7"/>
@@ -48,15 +48,24 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to connect Facebook?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SE-rt-LxS" userLabel="heading">
+                                <rect key="frame" x="47" y="100" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7SE-rt-LxS" firstAttribute="width" secondItem="cp1-hR-fwy" secondAttribute="width" id="0tz-8K-T8l"/>
                             <constraint firstAttribute="top" secondItem="7Ro-g6-nwA" secondAttribute="top" id="19x-rT-eez"/>
+                            <constraint firstItem="7SE-rt-LxS" firstAttribute="top" secondItem="NOW-rC-9aq" secondAttribute="top" constant="80" id="1MW-TQ-cca"/>
                             <constraint firstItem="cp1-hR-fwy" firstAttribute="width" secondItem="Sq2-eW-1IM" secondAttribute="width" id="2fs-0P-ft5"/>
-                            <constraint firstItem="amc-qd-lRR" firstAttribute="top" secondItem="cp1-hR-fwy" secondAttribute="bottom" constant="34" id="3uY-k0-7U9"/>
-                            <constraint firstItem="cp1-hR-fwy" firstAttribute="top" secondItem="NOW-rC-9aq" secondAttribute="top" constant="90" id="8MY-lb-DRn"/>
+                            <constraint firstItem="cp1-hR-fwy" firstAttribute="top" secondItem="7SE-rt-LxS" secondAttribute="bottom" constant="10" id="E1K-x1-UDi"/>
+                            <constraint firstItem="7SE-rt-LxS" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="Gb7-xJ-z3M"/>
                             <constraint firstAttribute="bottom" secondItem="7Ro-g6-nwA" secondAttribute="bottom" id="IBP-Qt-cW9"/>
                             <constraint firstItem="cp1-hR-fwy" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="Qrt-Ga-Fi3"/>
+                            <constraint firstItem="Sq2-eW-1IM" firstAttribute="top" secondItem="amc-qd-lRR" secondAttribute="bottom" constant="20" id="X1t-KO-Kpc"/>
                             <constraint firstItem="Sq2-eW-1IM" firstAttribute="width" secondItem="LH5-GL-EUv" secondAttribute="width" multiplier="0.75" id="XVD-NY-QAM"/>
                             <constraint firstItem="Sq2-eW-1IM" firstAttribute="centerX" secondItem="NOW-rC-9aq" secondAttribute="centerX" id="h5q-84-mjv"/>
                             <constraint firstItem="amc-qd-lRR" firstAttribute="width" secondItem="Sq2-eW-1IM" secondAttribute="width" id="hcw-WH-WoO"/>
@@ -71,6 +80,7 @@
                         <outlet property="doThisLater" destination="Sq2-eW-1IM" id="tND-fc-Cdm"/>
                         <outlet property="facebookButton" destination="amc-qd-lRR" id="xth-pL-SF0"/>
                         <outlet property="facebookCopy" destination="cp1-hR-fwy" id="syD-NV-V1o"/>
+                        <outlet property="heading" destination="7SE-rt-LxS" id="Ezm-Ca-KgM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASX-aW-OSo" userLabel="First Responder" sceneMemberID="firstResponder"/>

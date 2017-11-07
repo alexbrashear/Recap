@@ -60,4 +60,9 @@ extension UIColor {
     @nonobjc class var rcpPaleGold: UIColor {
         return UIColor(red: 251.0 / 255.0, green: 206.0 / 255.0, blue: 114.0 / 255.0, alpha: 1.0)
     }
+    
+    /// The background color for facebook elements
+    class var facebookBackground: UIColor {
+        return UIColor(red: 58.0 / 255.0, green: 89.0 / 255.0, blue: 152.0 / 255.0, alpha: 1.0)
+    }
 }

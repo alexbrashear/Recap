@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class ConnectFacebookViewController: UIViewController {
     
+    @IBOutlet private var heading: UILabel!
     @IBOutlet private var facebookCopy: UILabel!
     @IBOutlet private var facebookButton: UIButton!
     @IBOutlet private var doThisLater: UIButton!
@@ -22,9 +23,12 @@ class ConnectFacebookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        facebookCopy.font = UIFont.openSansFont(ofSize: 20)
+        heading.font = UIFont.openSansSemiBoldFont(ofSize: 25)
         
-        facebookButton.backgroundColor = .rcpGoldenYellow
+        facebookCopy.font = UIFont.openSansSemiBoldFont(ofSize: 16)
+        facebookCopy.textColor = .rcpGoldenYellow
+        
+        facebookButton.backgroundColor = .facebookBackground
         facebookButton.clipsToBounds = true
         facebookButton.layer.cornerRadius = 5
         facebookButton.titleLabel?.font = UIFont.openSansSemiBoldFont(ofSize: 20)
