@@ -78,7 +78,20 @@ class SignUpViewController: UIViewController {
     @IBAction func submitTapped(_ sender: Any) {
         guard let email = emailField.text,
             let password = passwordField.text else { return }
+        guard isValidEmail(email) else { return presentEmailAlert() }
         submitHandler?(email, password)
+    }
+    
+    private func presentEmailAlert() {
+        let alert = UIAlertController.okAlert(title: "Invalid Email", message: "Please enter a valid email address")
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func isValidEmail(_ testStr: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
     
     @IBAction func termsOfServiceTapped(_ sender: Any) {
