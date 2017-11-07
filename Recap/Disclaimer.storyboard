@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,10 +24,6 @@
         <scene sceneID="NJP-M5-Ii4">
             <objects>
                 <viewController storyboardIdentifier="DisclaimerController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="62v-ZL-ZAQ" customClass="DisclaimerController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ueg-eL-tCX"/>
-                        <viewControllerLayoutGuide type="bottom" id="o6X-iF-fgl"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hAd-V0-eNS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,13 +32,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One last thing..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TP-zG-hQU" userLabel="Heading">
-                                <rect key="frame" x="81" y="188.5" width="212.5" height="38.5"/>
+                                <rect key="frame" x="88.5" y="194" width="197.5" height="33"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1K-Yo-ywj" userLabel="Body">
-                                <rect key="frame" x="46.5" y="234" width="281" height="196.5"/>
+                                <rect key="frame" x="46.5" y="234" width="281" height="168"/>
                                 <string key="text">Your Recaps will come in the mail bare (AKA not in an envelope). 
 
 This means your Recaps will be visible to your local post person and roommates.
@@ -52,7 +49,7 @@ So please keep it clean (no nudity, drugs, illegal street fighting, etc.).</stri
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXd-cA-fWc" userLabel="Next Button">
-                                <rect key="frame" x="50.5" y="558.5" width="274" height="50"/>
+                                <rect key="frame" x="50.5" y="550.5" width="274" height="50"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                 <state key="normal" title="Cool, I'll keep it PG">
@@ -62,20 +59,21 @@ So please keep it clean (no nudity, drugs, illegal street fighting, etc.).</stri
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o6X-iF-fgl" firstAttribute="top" secondItem="i2k-uy-thH" secondAttribute="bottom" id="1mp-j3-Dlw"/>
+                            <constraint firstAttribute="bottom" secondItem="i2k-uy-thH" secondAttribute="bottom" id="1mp-j3-Dlw"/>
                             <constraint firstItem="eXd-cA-fWc" firstAttribute="width" secondItem="hAd-V0-eNS" secondAttribute="width" multiplier="0.73" id="73H-5p-dXG"/>
-                            <constraint firstItem="h1K-Yo-ywj" firstAttribute="centerX" secondItem="hAd-V0-eNS" secondAttribute="centerX" id="FzK-7n-uSv"/>
-                            <constraint firstItem="eXd-cA-fWc" firstAttribute="bottom" secondItem="o6X-iF-fgl" secondAttribute="top" multiplier="0.9" constant="8" symbolic="YES" id="MDW-s7-LKV"/>
-                            <constraint firstItem="i2k-uy-thH" firstAttribute="leading" secondItem="hAd-V0-eNS" secondAttribute="leadingMargin" constant="-16" id="QBf-JL-Mtm"/>
+                            <constraint firstItem="h1K-Yo-ywj" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="FzK-7n-uSv"/>
+                            <constraint firstItem="eXd-cA-fWc" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.9" constant="8" symbolic="YES" id="MDW-s7-LKV"/>
+                            <constraint firstItem="i2k-uy-thH" firstAttribute="leading" secondItem="hAd-V0-eNS" secondAttribute="leading" id="QBf-JL-Mtm"/>
                             <constraint firstItem="eXd-cA-fWc" firstAttribute="height" secondItem="hAd-V0-eNS" secondAttribute="height" multiplier="0.075" id="QQo-2l-nR4"/>
-                            <constraint firstItem="eXd-cA-fWc" firstAttribute="centerX" secondItem="hAd-V0-eNS" secondAttribute="centerX" id="S4q-pR-Cdd"/>
+                            <constraint firstItem="eXd-cA-fWc" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="S4q-pR-Cdd"/>
                             <constraint firstItem="h1K-Yo-ywj" firstAttribute="leading" secondItem="hAd-V0-eNS" secondAttribute="trailingMargin" multiplier="0.13" id="UO7-pR-WTI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i2k-uy-thH" secondAttribute="trailing" constant="-16" id="bJd-gq-QhP"/>
+                            <constraint firstAttribute="trailing" secondItem="i2k-uy-thH" secondAttribute="trailing" id="bJd-gq-QhP"/>
                             <constraint firstItem="h1K-Yo-ywj" firstAttribute="top" secondItem="7TP-zG-hQU" secondAttribute="bottom" constant="7" id="dxP-ll-Pzu"/>
-                            <constraint firstItem="i2k-uy-thH" firstAttribute="top" secondItem="Ueg-eL-tCX" secondAttribute="bottom" constant="-20" id="eO0-0h-9kw"/>
-                            <constraint firstItem="7TP-zG-hQU" firstAttribute="centerX" secondItem="hAd-V0-eNS" secondAttribute="centerX" id="ent-Dd-dOw"/>
-                            <constraint firstItem="7TP-zG-hQU" firstAttribute="bottom" secondItem="o6X-iF-fgl" secondAttribute="top" multiplier="0.34" id="k5e-ux-uOJ"/>
+                            <constraint firstItem="i2k-uy-thH" firstAttribute="top" secondItem="hAd-V0-eNS" secondAttribute="top" id="eO0-0h-9kw"/>
+                            <constraint firstItem="7TP-zG-hQU" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="ent-Dd-dOw"/>
+                            <constraint firstItem="7TP-zG-hQU" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.34" id="k5e-ux-uOJ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="D8g-V4-0Fp"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>

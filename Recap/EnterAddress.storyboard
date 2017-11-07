@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,10 +23,6 @@
         <scene sceneID="0dJ-SN-wYN">
             <objects>
                 <viewController storyboardIdentifier="EnterAddressController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="M8w-Uy-KLl" customClass="EnterAddressController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nDz-bD-HRX"/>
-                        <viewControllerLayoutGuide type="bottom" id="rgS-49-6pS"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2iJ-XK-xnu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,29 +31,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eL-Jo-OTD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where do you live?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGc-3W-2lz">
-                                        <rect key="frame" x="75.5" y="35" width="171" height="23.5"/>
+                                        <rect key="frame" x="75" y="35" width="171" height="23.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send your Recaps here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6J-wB-ba3">
-                                        <rect key="frame" x="58.5" y="68.5" width="204" height="19"/>
+                                        <rect key="frame" x="59" y="68.5" width="204" height="19"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15z-np-LJg">
-                                        <rect key="frame" x="38.5" y="119" width="244" height="290"/>
+                                        <rect key="frame" x="38.5" y="119" width="244" height="279"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="w0U-px-ags"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-w6-9go">
-                                        <rect key="frame" x="38" y="439" width="244" height="43.5"/>
+                                        <rect key="frame" x="38" y="428" width="244" height="42"/>
                                         <color key="backgroundColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
                                         <state key="normal" title="Next">
@@ -95,19 +92,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="alW-vC-adP" firstAttribute="centerX" secondItem="2iJ-XK-xnu" secondAttribute="centerX" id="3WU-54-MaF"/>
-                            <constraint firstAttribute="trailing" secondItem="8eL-Jo-OTD" secondAttribute="trailing" id="45I-5o-sUu"/>
-                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="height" secondItem="2iJ-XK-xnu" secondAttribute="height" id="6Aj-Io-dDu"/>
-                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="centerX" secondItem="2iJ-XK-xnu" secondAttribute="centerX" id="KR7-qf-fXz"/>
-                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="centerY" secondItem="2iJ-XK-xnu" secondAttribute="centerY" id="R8t-3Z-Tb9"/>
-                            <constraint firstItem="alW-vC-adP" firstAttribute="height" secondItem="2iJ-XK-xnu" secondAttribute="height" id="RQ8-rA-ozA"/>
-                            <constraint firstItem="15z-np-LJg" firstAttribute="leading" secondItem="2iJ-XK-xnu" secondAttribute="trailing" multiplier="0.12" id="TPK-su-nag"/>
-                            <constraint firstItem="alW-vC-adP" firstAttribute="width" secondItem="2iJ-XK-xnu" secondAttribute="width" id="cM0-8o-wpt"/>
-                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="width" secondItem="2iJ-XK-xnu" secondAttribute="width" id="dvl-sv-MpQ"/>
-                            <constraint firstItem="15z-np-LJg" firstAttribute="centerX" secondItem="2iJ-XK-xnu" secondAttribute="centerX" id="lFb-bj-myH"/>
-                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="leading" secondItem="2iJ-XK-xnu" secondAttribute="leading" id="uJ9-98-Alk"/>
-                            <constraint firstItem="alW-vC-adP" firstAttribute="centerY" secondItem="2iJ-XK-xnu" secondAttribute="centerY" id="wLm-Z9-6wc"/>
+                            <constraint firstItem="qsB-iB-aEl" firstAttribute="trailing" secondItem="8eL-Jo-OTD" secondAttribute="trailing" id="45I-5o-sUu"/>
+                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="height" secondItem="qsB-iB-aEl" secondAttribute="height" id="6Aj-Io-dDu"/>
+                            <constraint firstAttribute="trailing" secondItem="alW-vC-adP" secondAttribute="trailing" id="9mA-rt-0gp"/>
+                            <constraint firstAttribute="bottom" secondItem="alW-vC-adP" secondAttribute="bottom" id="FmD-XJ-8kz"/>
+                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="centerX" secondItem="qsB-iB-aEl" secondAttribute="centerX" id="KR7-qf-fXz"/>
+                            <constraint firstItem="alW-vC-adP" firstAttribute="leading" secondItem="2iJ-XK-xnu" secondAttribute="leading" id="MTs-Ka-YQZ"/>
+                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="centerY" secondItem="qsB-iB-aEl" secondAttribute="centerY" id="R8t-3Z-Tb9"/>
+                            <constraint firstItem="15z-np-LJg" firstAttribute="leading" secondItem="qsB-iB-aEl" secondAttribute="trailing" multiplier="0.12" id="TPK-su-nag"/>
+                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="width" secondItem="qsB-iB-aEl" secondAttribute="width" id="dvl-sv-MpQ"/>
+                            <constraint firstItem="15z-np-LJg" firstAttribute="centerX" secondItem="qsB-iB-aEl" secondAttribute="centerX" id="lFb-bj-myH"/>
+                            <constraint firstAttribute="top" secondItem="alW-vC-adP" secondAttribute="top" id="snd-3J-Wab"/>
+                            <constraint firstItem="8eL-Jo-OTD" firstAttribute="leading" secondItem="qsB-iB-aEl" secondAttribute="leading" id="uJ9-98-Alk"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="qsB-iB-aEl"/>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>

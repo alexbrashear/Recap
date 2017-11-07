@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -84,16 +84,16 @@
                         <constraints>
                             <constraint firstItem="jMZ-z0-0n8" firstAttribute="top" secondItem="6z3-LE-KWt" secondAttribute="bottom" multiplier="0.2" id="0Zq-uU-e4r"/>
                             <constraint firstItem="Wnl-DR-sP1" firstAttribute="centerX" secondItem="6z3-LE-KWt" secondAttribute="centerX" id="7TN-qM-5FW"/>
-                            <constraint firstItem="6z3-LE-KWt" firstAttribute="trailing" secondItem="STn-1p-hs6" secondAttribute="trailing" id="8FB-OG-WnR"/>
+                            <constraint firstAttribute="trailing" secondItem="STn-1p-hs6" secondAttribute="trailing" id="8FB-OG-WnR"/>
                             <constraint firstItem="qD9-R4-6XN" firstAttribute="centerX" secondItem="6z3-LE-KWt" secondAttribute="centerX" id="DCk-oq-j92"/>
                             <constraint firstItem="jMZ-z0-0n8" firstAttribute="centerX" secondItem="6z3-LE-KWt" secondAttribute="centerX" id="GeH-Q6-151"/>
                             <constraint firstItem="qD9-R4-6XN" firstAttribute="top" secondItem="gYC-VK-pbS" secondAttribute="bottom" constant="20" id="KPa-A8-wI4"/>
-                            <constraint firstItem="6z3-LE-KWt" firstAttribute="top" secondItem="STn-1p-hs6" secondAttribute="top" constant="20" id="PPN-oh-DfV"/>
+                            <constraint firstAttribute="top" secondItem="STn-1p-hs6" secondAttribute="top" id="PPN-oh-DfV"/>
                             <constraint firstItem="Wnl-DR-sP1" firstAttribute="top" secondItem="jMZ-z0-0n8" secondAttribute="bottom" constant="37" id="RMA-dD-QMi"/>
                             <constraint firstItem="qD9-R4-6XN" firstAttribute="width" secondItem="gYC-VK-pbS" secondAttribute="width" id="WCM-ch-Tkd"/>
-                            <constraint firstItem="6z3-LE-KWt" firstAttribute="bottom" secondItem="STn-1p-hs6" secondAttribute="bottom" id="gKA-ib-WEU"/>
+                            <constraint firstAttribute="bottom" secondItem="STn-1p-hs6" secondAttribute="bottom" id="gKA-ib-WEU"/>
                             <constraint firstItem="gYC-VK-pbS" firstAttribute="top" secondItem="Wnl-DR-sP1" secondAttribute="bottom" constant="45" id="gQo-y7-ImY"/>
-                            <constraint firstItem="STn-1p-hs6" firstAttribute="leading" secondItem="6z3-LE-KWt" secondAttribute="leading" id="gc4-iK-iCg"/>
+                            <constraint firstItem="STn-1p-hs6" firstAttribute="leading" secondItem="LmN-dt-5qK" secondAttribute="leading" id="gc4-iK-iCg"/>
                             <constraint firstItem="gYC-VK-pbS" firstAttribute="centerX" secondItem="6z3-LE-KWt" secondAttribute="centerX" id="maE-Di-mET"/>
                             <constraint firstItem="gYC-VK-pbS" firstAttribute="width" secondItem="Wnl-DR-sP1" secondAttribute="width" id="o7A-ZR-YgP"/>
                         </constraints>

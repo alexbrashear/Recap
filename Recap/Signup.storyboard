@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,10 +27,6 @@
         <scene sceneID="mHw-qe-K0X">
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ngl-hY-26Q" customClass="SignUpViewController" customModule="Recap" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wnm-C9-hSZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="igA-5l-mgf"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Krc-5k-N3O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,22 +171,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="trailingMargin" multiplier="0.07" id="0NK-5a-c1L"/>
-                            <constraint firstItem="Fvt-L8-mek" firstAttribute="top" secondItem="Wnm-C9-hSZ" secondAttribute="bottom" constant="-20" id="6zz-Yr-YDl"/>
-                            <constraint firstItem="igA-5l-mgf" firstAttribute="top" secondItem="ai2-0i-deH" secondAttribute="bottom" constant="44.5" id="D2c-8I-i3U"/>
+                            <constraint firstItem="Fvt-L8-mek" firstAttribute="top" secondItem="Krc-5k-N3O" secondAttribute="top" id="6zz-Yr-YDl"/>
+                            <constraint firstItem="XU9-Ns-PQX" firstAttribute="bottom" secondItem="ai2-0i-deH" secondAttribute="bottom" constant="44.5" id="D2c-8I-i3U"/>
                             <constraint firstItem="feo-5U-hkF" firstAttribute="top" secondItem="OHC-qb-ws8" secondAttribute="bottom" constant="12" id="HBw-ws-f2w"/>
                             <constraint firstItem="uYJ-TM-b0W" firstAttribute="top" secondItem="xrv-db-SJs" secondAttribute="bottom" constant="40" id="P5u-L9-JLG"/>
                             <constraint firstItem="uYJ-TM-b0W" firstAttribute="leading" secondItem="xrv-db-SJs" secondAttribute="leading" id="TBe-x1-9w2"/>
-                            <constraint firstItem="OHC-qb-ws8" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="UcG-Y8-CP3"/>
-                            <constraint firstItem="OHC-qb-ws8" firstAttribute="top" secondItem="Wnm-C9-hSZ" secondAttribute="bottom" constant="53" id="XJH-jn-vjN"/>
-                            <constraint firstItem="feo-5U-hkF" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="ZNu-Wu-lYy"/>
-                            <constraint firstItem="Fvt-L8-mek" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="leadingMargin" constant="-16" id="ZlM-ky-IAY"/>
-                            <constraint firstItem="xrv-db-SJs" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="aha-Ma-vI7"/>
-                            <constraint firstItem="igA-5l-mgf" firstAttribute="top" secondItem="Fvt-L8-mek" secondAttribute="bottom" id="f6T-En-0mW"/>
+                            <constraint firstItem="OHC-qb-ws8" firstAttribute="centerX" secondItem="XU9-Ns-PQX" secondAttribute="centerX" id="UcG-Y8-CP3"/>
+                            <constraint firstItem="OHC-qb-ws8" firstAttribute="top" secondItem="XU9-Ns-PQX" secondAttribute="top" constant="53" id="XJH-jn-vjN"/>
+                            <constraint firstItem="feo-5U-hkF" firstAttribute="centerX" secondItem="XU9-Ns-PQX" secondAttribute="centerX" id="ZNu-Wu-lYy"/>
+                            <constraint firstItem="Fvt-L8-mek" firstAttribute="leading" secondItem="Krc-5k-N3O" secondAttribute="leading" id="ZlM-ky-IAY"/>
+                            <constraint firstItem="xrv-db-SJs" firstAttribute="centerX" secondItem="XU9-Ns-PQX" secondAttribute="centerX" id="aha-Ma-vI7"/>
+                            <constraint firstAttribute="bottom" secondItem="Fvt-L8-mek" secondAttribute="bottom" id="f6T-En-0mW"/>
                             <constraint firstItem="xrv-db-SJs" firstAttribute="top" secondItem="feo-5U-hkF" secondAttribute="bottom" constant="40" id="gOm-TG-dOA"/>
-                            <constraint firstItem="uYJ-TM-b0W" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="osW-Fd-iSQ"/>
-                            <constraint firstItem="ai2-0i-deH" firstAttribute="centerX" secondItem="Krc-5k-N3O" secondAttribute="centerX" id="xAn-Dk-T4H"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Fvt-L8-mek" secondAttribute="trailing" constant="-16" id="xWz-8c-jjQ"/>
+                            <constraint firstItem="uYJ-TM-b0W" firstAttribute="centerX" secondItem="XU9-Ns-PQX" secondAttribute="centerX" id="osW-Fd-iSQ"/>
+                            <constraint firstItem="ai2-0i-deH" firstAttribute="centerX" secondItem="XU9-Ns-PQX" secondAttribute="centerX" id="xAn-Dk-T4H"/>
+                            <constraint firstAttribute="trailing" secondItem="Fvt-L8-mek" secondAttribute="trailing" id="xWz-8c-jjQ"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="XU9-Ns-PQX"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="I9X-IL-iol" id="blA-IZ-9S9"/>
