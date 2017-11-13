@@ -48,7 +48,19 @@ class CameraViewController: UIViewController {
         configureCameraView()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+            configureCameraView()
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     override var prefersStatusBarHidden : Bool {
+        if #available(iOS 11, *) {
+            return false
+        }
         return true
     }
     
@@ -76,7 +88,12 @@ class CameraViewController: UIViewController {
     }
     
     fileprivate func configureCameraView() {
-        videoPreviewLayer?.frame = captureView.frame
+        if #available(iOS 11.0, *) {
+            let insets = view.safeAreaInsets
+            videoPreviewLayer?.frame = CGRect(x: insets.left, y: 0, width: view.frame.width - insets.left - insets.right, height: view.frame.height - insets.top - insets.bottom)
+        } else {
+            videoPreviewLayer?.frame = captureView.frame
+        }
     }
     
     fileprivate func loadCamera(atPosition position: AVCaptureDevicePosition) {
