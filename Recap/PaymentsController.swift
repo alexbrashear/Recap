@@ -41,9 +41,16 @@ class PaymentsController {
     private var persistanceManager: PersistanceManager
     private var userController: UserController
     private var mostRecentNonce: String?
+    private var environment: Environment = .production
     
-    private let hostname = "https://recap-messaging.herokuapp.com/"
-    private let __debugHost = "http://localhost:3000/"
+    private var hostname: String {
+        switch environment {
+        case .production:
+            return "https://recap-messaging.herokuapp.com/"
+        case .debug, .test:
+            return "http://localhost:3000/"
+        }
+    }
     
     init(persistanceManager: PersistanceManager, userController: UserController) {
         self.persistanceManager = persistanceManager

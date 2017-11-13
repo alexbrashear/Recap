@@ -77,5 +77,6 @@ class PersistanceManager {
         user = nil
         password = nil
         token = nil
+        customerId = nil
     }
 }
