@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +14,8 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="GEO-qG-69h"/>
+                        <viewControllerLayoutGuide type="bottom" id="YQE-JY-RDE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -28,10 +27,10 @@
                         </subviews>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="ray-D4-7YJ" secondAttribute="bottom" id="Rc6-Zr-75Y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ray-D4-7YJ" secondAttribute="trailing" constant="-16" id="VgN-48-hG8"/>
-                            <constraint firstItem="ray-D4-7YJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="k1u-gc-lWv"/>
-                            <constraint firstItem="ray-D4-7YJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="k8i-RR-cFi"/>
+                            <constraint firstAttribute="bottom" secondItem="ray-D4-7YJ" secondAttribute="bottom" id="Rc6-Zr-75Y"/>
+                            <constraint firstAttribute="trailing" secondItem="ray-D4-7YJ" secondAttribute="trailing" id="VgN-48-hG8"/>
+                            <constraint firstItem="ray-D4-7YJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="k1u-gc-lWv"/>
+                            <constraint firstItem="ray-D4-7YJ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="k8i-RR-cFi"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
