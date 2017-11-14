@@ -115,7 +115,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .faqs:
             return "FAQs"
         case .logInToFacebook:
-            return userController.isLoggedIntoFacebook ? "facebook: Logged in" : "facebook: not logged in"
+            return userController.isLoggedIntoFacebook ? "facebook: Logged in" : "Log in to Facebook"
         case .privacyPolicy:
             return "Privacy Policy"
         case .termsOfService:

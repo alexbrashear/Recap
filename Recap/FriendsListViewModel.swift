@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FacebookCore
 
 typealias SendHandler = ([Friend]) -> Void
 
@@ -57,6 +58,9 @@ class FriendsListViewModel: FriendsListViewModelProtocol {
         }
         if !friendsListProvider.facebookFriends.isEmpty {
             let facebook = Section(cells: friendsListProvider.facebookFriends, title: "FACEBOOK", type: .friend)
+            newFriends.append(facebook)
+        } else if AccessToken.current != nil {
+            let facebook = Section(cells: [FriendsListLink(title: "NO FRIENDS TO DISPLAY", action: {})], title: "FACEBOOK", type: .link)
             newFriends.append(facebook)
         } else {
             let facebook = Section(cells: [FriendsListLink(title: "TAP TO CONNECT FACEBOOK", action: facebookHandler)], title: "FACEBOOK", type: .link)
