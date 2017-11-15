@@ -12,6 +12,7 @@ import SafariServices
 
 protocol SettingsViewModelProtocol {
     var numberOfSections: Int { get }
+    func actionStyleForRow(at indexPath: IndexPath) -> UITableViewRowActionStyle
     func numberOfRows(in section: Int) -> Int
     func title(for section: Int) -> String
     func styleForRow(at indexPath: IndexPath) -> UITableViewCellStyle
@@ -45,6 +46,10 @@ class SettingsViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    func presentAlert(_ alert: UIAlertController) {
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -69,6 +74,11 @@ extension SettingsViewController: UITableViewDataSource {
         
         cell.textLabel?.text = viewModel.titleForRow(at: indexPath)
         cell.detailTextLabel?.text = viewModel.subtitleForRow(at: indexPath)
+        
+        if viewModel.actionStyleForRow(at: indexPath) == .destructive {
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .red
+        }
         
         return cell
     }

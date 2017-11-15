@@ -14,6 +14,7 @@ enum SettingsSection: Int {
     case support
     case facebook
     case legal
+    case forgetCreditCard
     
     var title: String {
         switch self {
@@ -21,6 +22,7 @@ enum SettingsSection: Int {
         case .support: return "Support"
         case .facebook: return ""
         case .legal: return "Legal"
+        case .forgetCreditCard: return ""
         }
     }
     
@@ -34,10 +36,12 @@ enum SettingsSection: Int {
             return [.logInToFacebook]
         case .legal:
             return [.termsOfService, .privacyPolicy]
+        case .forgetCreditCard:
+            return [.forgetCreditCard]
         }
     }
     
-    static let count = 4
+    static let count = 5
 }
 
 enum SettingsRow {
@@ -47,13 +51,23 @@ enum SettingsRow {
     case logInToFacebook
     case termsOfService
     case privacyPolicy
+    case forgetCreditCard
     
     var cellStyle: UITableViewCellStyle {
         switch self {
         case .address:
             return .subtitle
-        case .sendFeedback, .logInToFacebook, .faqs, .termsOfService, .privacyPolicy:
+        case .sendFeedback, .logInToFacebook, .faqs, .termsOfService, .privacyPolicy, .forgetCreditCard:
             return .default
+        }
+    }
+    
+    var actionStyle: UITableViewRowActionStyle {
+        switch self {
+        case .forgetCreditCard:
+            return .destructive
+        default:
+            return .normal
         }
     }
 }
@@ -86,22 +100,29 @@ class SettingsViewModel: SettingsViewModelProtocol {
         return settingsSection.title
     }
     
+    func actionStyleForRow(at indexPath: IndexPath) -> UITableViewRowActionStyle {
+        guard let row = row(at: indexPath) else { return .normal }
+        return row.actionStyle
+    }
+    
     func styleForRow(at indexPath: IndexPath) -> UITableViewCellStyle {
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return .default }
-        let row = section.rows[indexPath.row]
+        guard let row = row(at: indexPath) else { return .default }
         return row.cellStyle
     }
     
     func subtitleForRow(at indexPath: IndexPath) -> String? {
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return nil }
-        let row = section.rows[indexPath.row]
+        guard let row = row(at: indexPath) else { return nil }
         return subtitleForRow(row: row)
     }
     
     func titleForRow(at indexPath: IndexPath) -> String {
-        guard let section = SettingsSection(rawValue: indexPath.section) else { return "" }
-        let row = section.rows[indexPath.row]
+        guard let row = row(at: indexPath) else { return "" }
         return titleForRow(row: row)
+    }
+    
+    private func row(at indexPath: IndexPath) -> SettingsRow? {
+        guard let section = SettingsSection(rawValue: indexPath.section) else { return nil }
+        return section.rows[indexPath.row]
     }
     
     private func titleForRow(row: SettingsRow) -> String {
@@ -120,6 +141,8 @@ class SettingsViewModel: SettingsViewModelProtocol {
             return "Privacy Policy"
         case .termsOfService:
             return "Terms of Service"
+        case .forgetCreditCard:
+            return "Forget Credit Card"
         }
     }
     
@@ -128,7 +151,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .address:
             guard let address = userController.user?.address else { return "" }
             return "\(address.line1) \(address.line2)"
-        case .logInToFacebook, .sendFeedback, .faqs, .privacyPolicy, .termsOfService:
+        case .logInToFacebook, .sendFeedback, .faqs, .privacyPolicy, .termsOfService, .forgetCreditCard:
             return nil
         }
     }
@@ -155,6 +178,10 @@ class SettingsViewModel: SettingsViewModelProtocol {
             vc.present(svc, animated: true, completion: nil)
         case .logInToFacebook:
             connectFacebook()
+        case .forgetCreditCard:
+            userController.deletePaymentInformation()
+            let alert = UIAlertController.okAlert(title: "We deleted your payment information!", message: nil)
+            vc.presentAlert(alert)
         }
     }
 }

@@ -47,6 +47,10 @@ class UserController {
         user = store.user
     }
     
+    func deletePaymentInformation() {
+        store.customerId = nil
+    }
+    
     private func setPassword(newPassword: String) {
         store.password = newPassword
     }
