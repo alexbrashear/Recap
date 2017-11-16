@@ -157,7 +157,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .termsOfService:
             return "Terms of Service"
         case .forgetCreditCard:
-            return "Forget Credit Card"
+            return "Delete Payment Info"
         case .inviteCode:
             if let code = userController.user?.inviteCode {
                 return "Invite Code: \(code)"
