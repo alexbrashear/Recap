@@ -13,6 +13,7 @@ import SafariServices
 protocol SettingsViewModelProtocol {
     var numberOfSections: Int { get }
     func actionStyleForRow(at indexPath: IndexPath) -> UITableViewRowActionStyle
+    func selectionStyleForRow(at indexPath: IndexPath) -> UITableViewCellSelectionStyle
     func numberOfRows(in section: Int) -> Int
     func title(for section: Int) -> String
     func styleForRow(at indexPath: IndexPath) -> UITableViewCellStyle
@@ -79,6 +80,8 @@ extension SettingsViewController: UITableViewDataSource {
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.textColor = .red
         }
+        
+        cell.selectionStyle = viewModel.selectionStyleForRow(at: indexPath)
         
         return cell
     }

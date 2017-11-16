@@ -12,7 +12,7 @@ import SafariServices
 enum SettingsSection: Int {
     case address
     case support
-    case facebook
+    case user
     case legal
     case forgetCreditCard
     
@@ -20,7 +20,7 @@ enum SettingsSection: Int {
         switch self {
         case .address: return "Address"
         case .support: return "Support"
-        case .facebook: return ""
+        case .user: return ""
         case .legal: return "Legal"
         case .forgetCreditCard: return ""
         }
@@ -32,8 +32,8 @@ enum SettingsSection: Int {
             return [.address]
         case .support:
             return [.sendFeedback, .faqs]
-        case .facebook:
-            return [.logInToFacebook]
+        case .user:
+            return [.logInToFacebook, .inviteCode]
         case .legal:
             return [.termsOfService, .privacyPolicy]
         case .forgetCreditCard:
@@ -49,6 +49,7 @@ enum SettingsRow {
     case faqs
     case sendFeedback
     case logInToFacebook
+    case inviteCode
     case termsOfService
     case privacyPolicy
     case forgetCreditCard
@@ -57,7 +58,7 @@ enum SettingsRow {
         switch self {
         case .address:
             return .subtitle
-        case .sendFeedback, .logInToFacebook, .faqs, .termsOfService, .privacyPolicy, .forgetCreditCard:
+        default:
             return .default
         }
     }
@@ -68,6 +69,15 @@ enum SettingsRow {
             return .destructive
         default:
             return .normal
+        }
+    }
+    
+    var selectionStyle: UITableViewCellSelectionStyle {
+        switch self {
+        case .inviteCode:
+            return .none
+        default:
+            return .default
         }
     }
 }
@@ -110,6 +120,11 @@ class SettingsViewModel: SettingsViewModelProtocol {
         return row.cellStyle
     }
     
+    func selectionStyleForRow(at indexPath: IndexPath) -> UITableViewCellSelectionStyle {
+        guard let row = row(at: indexPath) else { return .default }
+        return row.selectionStyle
+    }
+    
     func subtitleForRow(at indexPath: IndexPath) -> String? {
         guard let row = row(at: indexPath) else { return nil }
         return subtitleForRow(row: row)
@@ -143,6 +158,12 @@ class SettingsViewModel: SettingsViewModelProtocol {
             return "Terms of Service"
         case .forgetCreditCard:
             return "Forget Credit Card"
+        case .inviteCode:
+            if let code = userController.user?.inviteCode {
+                return "Invite Code: \(code)"
+            } else {
+                return "Invite Code: Failed to load"
+            }
         }
     }
     
@@ -151,7 +172,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         case .address:
             guard let address = userController.user?.address else { return "" }
             return "\(address.line1) \(address.line2)"
-        case .logInToFacebook, .sendFeedback, .faqs, .privacyPolicy, .termsOfService, .forgetCreditCard:
+        default:
             return nil
         }
     }
@@ -182,6 +203,8 @@ class SettingsViewModel: SettingsViewModelProtocol {
             userController.deletePaymentInformation()
             let alert = UIAlertController.okAlert(title: "We deleted your payment information!", message: nil)
             vc.presentAlert(alert)
+        default:
+            return
         }
     }
 }
