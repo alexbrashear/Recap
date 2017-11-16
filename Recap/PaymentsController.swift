@@ -74,13 +74,18 @@ class PaymentsController {
     func buyFilm(packs: Int, capacity: Int, completion: @escaping PaymentsBuyFilmCompletion) {
         guard packs > 0, let nonce = mostRecentNonce else { return completion(.error(.unknownFailure)) }
         postNonceToServer(paymentMethodNonce: nonce, numberOfPacks: packs) { [weak self] result in
-            let film = packs * capacity
-            self?.userController.buyFilm(capacity: film) { result in
-                switch result {
-                case .success(let user):
-                    completion(.success())
-                case .error(let err):
-                    completion(.error(.unknownFailure))
+            switch result {
+            case let .error(err):
+                completion(.error(err))
+            case .success:
+                let film = packs * capacity
+                self?.userController.buyFilm(capacity: film) { result in
+                    switch result {
+                    case .success(let user):
+                        completion(.success())
+                    case .error(let err):
+                        completion(.error(.failedToAddFilmInDB))
+                    }
                 }
             }
         }
@@ -147,10 +152,14 @@ class PaymentsController {
         
         URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
             DispatchQueue.main.async {
-                if error != nil {
-                    completion(.error(.unknownFailure))
-                } else {
+                if let data = data, error == nil {
+                    // debugging help
+//                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+//                    print(json!)
                     completion(.success())
+                } else {
+                    print("Payment Error: \(error!)")
+                    completion(.error(.failedToPostNonce))
                 }
             }
         }.resume()
@@ -178,6 +187,30 @@ class PaymentsController {
     }
 }
 
-enum PaymentsError: Error {
+enum PaymentsError: AlertableError {
     case unknownFailure
+    case failedToPostNonce
+    case failedToAddFilmInDB
+    
+    var localizedTitle: String {
+        switch self {
+        case .unknownFailure:
+            return "Something went wrong"
+        case .failedToPostNonce:
+            return "We couldn't process your payment"
+        case .failedToAddFilmInDB:
+            return "Your payment went through but there was an error adding the film"
+        }
+    }
+    
+    var localizedDescription: String {
+        switch self {
+        case .unknownFailure:
+            return "We're really sorry for the trouble! Please try again or contact help@recap-app.com"
+        case .failedToPostNonce:
+            return "Something went wrong with your payment, please try again or contact help@recap-app.com"
+        case .failedToAddFilmInDB:
+            return "This is really embarrassing...please contact help@recap-app.com so we can fix this for you as fast as possible."
+        }
+    }
 }

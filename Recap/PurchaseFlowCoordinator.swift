@@ -46,10 +46,10 @@ class PurchaseFlowCoordinator: BaseFlowCoordinator {
             self?.paymentsController.buyFilm(packs: packs, capacity: capacity) { result in
                 HUD.hide()
                 switch result {
-                case let .success:
+                case .success:
                     vc?.dismiss(animated: true, completion: { completion(true) })
                 case let .error(err):
-                    print(err)
+                    vc?.present(err.alert, animated: true, completion: nil)
                 }
             }
         }
