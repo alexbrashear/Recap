@@ -75,7 +75,7 @@ enum SettingsRow {
     var selectionStyle: UITableViewCellSelectionStyle {
         switch self {
         case .inviteCode:
-            return .none
+            return .default
         default:
             return .default
         }
@@ -203,8 +203,12 @@ class SettingsViewModel: SettingsViewModelProtocol {
             userController.deletePaymentInformation()
             let alert = UIAlertController.okAlert(title: "We deleted your payment information!", message: nil)
             vc.presentAlert(alert)
-        default:
-            return
+        case .inviteCode:
+            if let code = userController.user?.inviteCode {
+                UIPasteboard.general.string = code
+                let alert = UIAlertController.okAlert(title: "We copied the invite code to your clipboard!", message: "Just paste anywhere!")
+                vc.presentAlert(alert)
+            }
         }
     }
 }
