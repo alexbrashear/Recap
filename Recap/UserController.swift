@@ -185,14 +185,16 @@ extension UserController {
         let query = FacebookUsersQuery(input: input)
         graphql.client.fetch(query: query) { result, error in
             guard let edges = result?.data?.viewer?.allUsers?.edges, error == nil else {
-                return completion(.error(.unknownFailure))
+                return completion(.error(.couldNotFetchFacebookAddresses))
             }
             var addresses = [Address]()
             for edge in edges {
                 guard let completeAddress = edge?.node.address?.fragments.completeAddress else { continue }
                 addresses.append(Address(completeAddress: completeAddress))
             }
-            guard !addresses.isEmpty else { return completion(.error(.unknownFailure)) }
+            // commenting this out for now because I think we will run into issues if someone leaves recap or
+            // facebook and we still have their ID.
+            // guard !addresses.isEmpty else { return completion(.error(.couldNotFetchFacebookAddresses)) }
             completion(.success(addresses))
         }
     }
@@ -275,6 +277,7 @@ enum UserError: AlertableError {
     case buyFilmFailed
     case unknownFailure
     case invalidInviteCode
+    case couldNotFetchFacebookAddresses
     
     var localizedTitle: String {
         switch self {
@@ -290,6 +293,8 @@ enum UserError: AlertableError {
             return "Something went wrong"
         case .invalidInviteCode:
             return "Invalid Invite Code"
+        case .couldNotFetchFacebookAddresses:
+            return "Where's that?"
         }
     }
     
@@ -307,6 +312,8 @@ enum UserError: AlertableError {
             return "and we don't know what! Please send us an email at help@recap-app.com with details."
         case .invalidInviteCode:
             return "Check that you entered the right code and try again, or vist recap-app.com to learn more."
+        case .couldNotFetchFacebookAddresses:
+            return "We ran into an issue getting your facebook friends address. Please check your internet connection and try again or send us an email at help@recap-app.com with details."
         }
     }
 }
