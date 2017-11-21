@@ -49,9 +49,10 @@ class PhotoTakenView: UIView {
         addSubview(save)
         
         imageView.constrainToSuperview()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.image = image
+        imageView.backgroundColor = .rcpDarkGrey
 
         
         send.translatesAutoresizingMaskIntoConstraints = false
