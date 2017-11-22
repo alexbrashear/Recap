@@ -90,7 +90,7 @@ class CameraViewController: UIViewController {
     fileprivate func configureCameraView() {
         if #available(iOS 11.0, *) {
             let insets = view.safeAreaInsets
-            videoPreviewLayer?.frame = CGRect(x: insets.left, y: 0, width: view.frame.width - insets.left - insets.right, height: view.frame.height - insets.top - insets.bottom)
+            videoPreviewLayer?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - insets.top - insets.bottom)
         } else {
             videoPreviewLayer?.frame = captureView.frame
         }
@@ -109,7 +109,8 @@ class CameraViewController: UIViewController {
             videoPreviewLayer?.removeFromSuperlayer()
             session = AVCaptureSession()
         }
-        
+        session.sessionPreset = AVCaptureSessionPresetHigh
+
         var input: AVCaptureDeviceInput!
         do {
             input = try AVCaptureDeviceInput(device: camera)
@@ -193,12 +194,18 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
             return assertionFailure("unable to unwrap photo buffer")
         }
         guard let imageData = AVCapturePhotoOutput.jpegPhotoDataRepresentation(forJPEGSampleBuffer: buffer, previewPhotoSampleBuffer: previewPhotoSampleBuffer),
-            let base = UIImage(data: imageData),
-            let ciImage = CIImage(image: base) else { return }
-        
+            var base = UIImage(data: imageData) else { return }
+        base = base.fixOrientation()
+
+        print(base.size)
+        print(base.imageOrientation.rawValue)
+        let new = base.crop(to: CGSize(width: 1080, height: 1620))
+        print(new.size)
+        print(new.imageOrientation.rawValue)
+        guard let ciImage = CIImage(image: new) else { return }
         // need to preserve original scale and orientation to initialize with later
-        let orientation = base.imageOrientation
-        let scale = base.scale
+        let orientation = new.imageOrientation
+        let scale = new.scale
         
         // apply filter and create CGImage
         let filteredCIImage = filterProvider.applyFilter(toImage: ciImage)
@@ -285,5 +292,60 @@ extension UIImage {
         } else {
             return self
         }
+    }
+}
+
+extension UIImage {
+    
+    func crop(to:CGSize) -> UIImage {
+        guard let cgimage = self.cgImage else { return self }
+        
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        
+        let contextSize: CGSize = contextImage.size
+        
+        //Set to square
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        let cropAspect: CGFloat = to.width / to.height
+        
+        var cropWidth: CGFloat = to.width
+        var cropHeight: CGFloat = to.height
+        
+        if to.width > to.height { //Landscape
+            cropWidth = contextSize.width
+            cropHeight = contextSize.width / cropAspect
+            posY = (contextSize.height - cropHeight) / 2
+        } else if to.width < to.height { //Portrait
+            cropHeight = contextSize.height
+            cropWidth = contextSize.height * cropAspect
+            posX = (contextSize.width - cropWidth) / 2
+        } else { //Square
+            if contextSize.width >= contextSize.height { //Square on landscape (or square)
+                cropHeight = contextSize.height
+                cropWidth = contextSize.height * cropAspect
+                posX = (contextSize.width - cropWidth) / 2
+            }else{ //Square on portrait
+                cropWidth = contextSize.width
+                cropHeight = contextSize.width / cropAspect
+                posY = (contextSize.height - cropHeight) / 2
+            }
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: 150, width: 1080, height: 1620)
+        print(rect)
+        // Create bitmap image from context using the rect
+        let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
+        
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        print(self.imageOrientation.rawValue)
+        let cropped: UIImage = UIImage(cgImage: imageRef, scale: self.scale, orientation: self.imageOrientation)
+        
+        UIGraphicsBeginImageContextWithOptions(to, true, self.scale)
+        cropped.draw(in: CGRect(x: 0, y: 0, width: to.width, height: to.height))
+        let resized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resized!
     }
 }
