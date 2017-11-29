@@ -27,8 +27,11 @@ class FriendsListBottomBar: UIView {
         names.translatesAutoresizingMaskIntoConstraints = false
         addConstraint(NSLayoutConstraint(item: names, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 20))
         addConstraint(NSLayoutConstraint(item: names, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 10))
-        addConstraint(NSLayoutConstraint(item: names, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
-        
+        if #available(iOS 11, *) {
+            addConstraint(NSLayoutConstraint(item: names, attribute: .bottom, relatedBy: .equal, toItem: safeAreaLayoutGuide, attribute: .bottom, multiplier: 1.0, constant: -10))
+        } else {
+            addConstraint(NSLayoutConstraint(item: names, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -10))
+        }
         icon.translatesAutoresizingMaskIntoConstraints = false
         icon.heightAnchor.constraint(equalToConstant: 40).isActive = true
         icon.widthAnchor.constraint(equalToConstant: 40).isActive = true

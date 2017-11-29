@@ -114,7 +114,11 @@ class FriendsListController: UIViewController {
         }
 
         bottomBar.setText(viewModel.bottomBarText)
-        animateBottomBarToHeight(height: 60)
+        var height: CGFloat = 60
+        if #available(iOS 11, *) {
+            height += view.safeAreaInsets.bottom
+        }
+        animateBottomBarToHeight(height: height)
     }
     
     func animateBottomBarToHeight(height: CGFloat) {
