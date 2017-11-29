@@ -26,6 +26,8 @@ protocol FriendsListViewModelProtocol: class {
     func didSelect(indexPath: IndexPath)
     func didDeselect(indexPath: IndexPath)
     func didSend()
+    
+    func refreshFriendSnapshot()
 }
 
 class FriendsListController: UIViewController {
@@ -89,6 +91,11 @@ class FriendsListController: UIViewController {
         tableView.dataSource = self
         
         NotificationCenter.default.addObserver(forName: FriendNotification.facebookUpdated, object: nil, queue: .main) { [weak self] _ in
+            self?.viewModel.refreshFriendSnapshot()
+            self?.tableView.reloadData()
+        }
+        NotificationCenter.default.addObserver(forName: FriendNotification.friendAdded, object: nil, queue: .main) { [weak self] _ in
+            self?.viewModel.refreshFriendSnapshot()
             self?.tableView.reloadData()
         }
         

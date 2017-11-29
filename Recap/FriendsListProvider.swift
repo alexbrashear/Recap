@@ -52,6 +52,7 @@ class Friend: NSObject, NSCoding {
 
 struct FriendNotification {
     static let facebookUpdated = Notification.Name("facebookUpdated")
+    static let friendAdded = Notification.Name("friendAdded")
 }
 
 class FriendsListProvider {
@@ -87,6 +88,7 @@ class FriendsListProvider {
         
         let data = NSKeyedArchiver.archivedData(withRootObject: addedFriends)
         UserDefaults.standard.set(data, forKey: Keys.addedFriends.rawValue)
+        NotificationCenter.default.post(name: FriendNotification.friendAdded, object: nil)
     }
     
     func fetchFacebookFriends() {
