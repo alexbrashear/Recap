@@ -31,19 +31,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recap" translatesAutoresizingMaskIntoConstraints="NO" id="zOF-Vp-GOY">
                                 <rect key="frame" x="138" y="92" width="99" height="28"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="2Ux-jV-spG">
-                                <rect key="frame" x="46.5" y="200" width="282" height="267"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2Ux-jV-spG">
+                                <rect key="frame" x="46.5" y="201" width="282" height="265"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-5a-rRO" userLabel="item">
-                                        <rect key="frame" x="0.0" y="0.0" width="282" height="33.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-5a-rRO" userLabel="item">
+                                        <rect key="frame" x="0.0" y="0.0" width="282" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="TMS-xb-EIh"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECi-cP-eqw" userLabel="item">
-                                        <rect key="frame" x="0.0" y="63.5" width="282" height="0.0"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECi-cP-eqw" userLabel="item 2">
+                                        <rect key="frame" x="0.0" y="105" width="282" height="55"/>
                                     </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73Y-38-Ie6" userLabel="item">
-                                        <rect key="frame" x="0.0" y="93.5" width="282" height="173.5"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73Y-38-Ie6" userLabel="item 3">
+                                        <rect key="frame" x="0.0" y="210" width="282" height="55"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="lBe-5a-rRO" firstAttribute="height" secondItem="ECi-cP-eqw" secondAttribute="height" id="57a-rY-Ywz"/>
+                                    <constraint firstItem="lBe-5a-rRO" firstAttribute="height" secondItem="73Y-38-Ie6" secondAttribute="height" id="wr3-k7-ZIl"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-Vy-o4J">
                                 <rect key="frame" x="46.5" y="550.5" width="282" height="50"/>
@@ -59,14 +66,15 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Jvq-3Y-xNF" secondAttribute="bottom" id="AaP-1c-KZV"/>
-                            <constraint firstItem="2Ux-jV-spG" firstAttribute="height" secondItem="b3O-yi-T1m" secondAttribute="height" multiplier="0.4" id="Axz-4W-l0k"/>
                             <constraint firstItem="zOF-Vp-GOY" firstAttribute="centerX" secondItem="cUQ-vQ-rwV" secondAttribute="centerX" id="Dn8-aF-4U1"/>
                             <constraint firstItem="2Ux-jV-spG" firstAttribute="centerY" secondItem="b3O-yi-T1m" secondAttribute="centerY" id="FiN-oI-9bb"/>
                             <constraint firstItem="Ta6-Vy-o4J" firstAttribute="width" secondItem="2Ux-jV-spG" secondAttribute="width" id="IFw-GK-q0s"/>
                             <constraint firstAttribute="trailing" secondItem="Jvq-3Y-xNF" secondAttribute="trailing" id="T8d-uf-xXy"/>
                             <constraint firstItem="Jvq-3Y-xNF" firstAttribute="leading" secondItem="b3O-yi-T1m" secondAttribute="leading" id="ZXI-jK-etr"/>
                             <constraint firstItem="2Ux-jV-spG" firstAttribute="leading" secondItem="b3O-yi-T1m" secondAttribute="trailingMargin" multiplier="0.13" id="aRk-jz-9PT"/>
+                            <constraint firstItem="2Ux-jV-spG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zOF-Vp-GOY" secondAttribute="bottom" constant="10" id="dOf-WM-IAC"/>
                             <constraint firstItem="zOF-Vp-GOY" firstAttribute="bottom" secondItem="cUQ-vQ-rwV" secondAttribute="bottom" multiplier="0.18" id="g6p-YC-xKz"/>
+                            <constraint firstItem="Ta6-Vy-o4J" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2Ux-jV-spG" secondAttribute="bottom" constant="10" id="gXg-jw-0fc"/>
                             <constraint firstItem="Jvq-3Y-xNF" firstAttribute="top" secondItem="b3O-yi-T1m" secondAttribute="top" id="kM1-1q-E0x"/>
                             <constraint firstItem="Ta6-Vy-o4J" firstAttribute="bottom" secondItem="cUQ-vQ-rwV" secondAttribute="bottom" multiplier="0.9" id="pEQ-KR-ck7"/>
                             <constraint firstItem="Ta6-Vy-o4J" firstAttribute="centerX" secondItem="cUQ-vQ-rwV" secondAttribute="centerX" id="tqN-sH-6Py"/>
