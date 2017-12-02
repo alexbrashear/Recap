@@ -37,7 +37,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1K-Yo-ywj" userLabel="Body">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="h1K-Yo-ywj" userLabel="Body">
                                 <rect key="frame" x="46.5" y="234" width="281" height="168"/>
                                 <string key="text">Your Recaps will come in the mail bare (AKA not in an envelope). 
 
@@ -62,16 +62,18 @@ So please keep it clean (no nudity, drugs, illegal street fighting, etc.).</stri
                             <constraint firstAttribute="bottom" secondItem="i2k-uy-thH" secondAttribute="bottom" id="1mp-j3-Dlw"/>
                             <constraint firstItem="eXd-cA-fWc" firstAttribute="width" secondItem="hAd-V0-eNS" secondAttribute="width" multiplier="0.73" id="73H-5p-dXG"/>
                             <constraint firstItem="h1K-Yo-ywj" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="FzK-7n-uSv"/>
-                            <constraint firstItem="eXd-cA-fWc" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.9" constant="8" symbolic="YES" id="MDW-s7-LKV"/>
+                            <constraint firstItem="eXd-cA-fWc" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.9" symbolic="YES" id="MDW-s7-LKV"/>
                             <constraint firstItem="i2k-uy-thH" firstAttribute="leading" secondItem="hAd-V0-eNS" secondAttribute="leading" id="QBf-JL-Mtm"/>
                             <constraint firstItem="eXd-cA-fWc" firstAttribute="height" secondItem="hAd-V0-eNS" secondAttribute="height" multiplier="0.075" id="QQo-2l-nR4"/>
                             <constraint firstItem="eXd-cA-fWc" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="S4q-pR-Cdd"/>
                             <constraint firstItem="h1K-Yo-ywj" firstAttribute="leading" secondItem="hAd-V0-eNS" secondAttribute="trailingMargin" multiplier="0.13" id="UO7-pR-WTI"/>
+                            <constraint firstItem="7TP-zG-hQU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="D8g-V4-0Fp" secondAttribute="top" constant="10" id="ZWw-Op-FaB"/>
                             <constraint firstAttribute="trailing" secondItem="i2k-uy-thH" secondAttribute="trailing" id="bJd-gq-QhP"/>
                             <constraint firstItem="h1K-Yo-ywj" firstAttribute="top" secondItem="7TP-zG-hQU" secondAttribute="bottom" constant="7" id="dxP-ll-Pzu"/>
                             <constraint firstItem="i2k-uy-thH" firstAttribute="top" secondItem="hAd-V0-eNS" secondAttribute="top" id="eO0-0h-9kw"/>
                             <constraint firstItem="7TP-zG-hQU" firstAttribute="centerX" secondItem="D8g-V4-0Fp" secondAttribute="centerX" id="ent-Dd-dOw"/>
-                            <constraint firstItem="7TP-zG-hQU" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.34" id="k5e-ux-uOJ"/>
+                            <constraint firstItem="7TP-zG-hQU" firstAttribute="bottom" secondItem="D8g-V4-0Fp" secondAttribute="bottom" multiplier="0.34" priority="250" id="k5e-ux-uOJ"/>
+                            <constraint firstItem="eXd-cA-fWc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="h1K-Yo-ywj" secondAttribute="bottom" constant="10" id="uSg-jD-Z7A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D8g-V4-0Fp"/>
                     </view>
