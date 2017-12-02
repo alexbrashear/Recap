@@ -34,13 +34,13 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where do you live?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGc-3W-2lz">
-                                        <rect key="frame" x="75" y="35" width="171" height="23.5"/>
+                                        <rect key="frame" x="75.5" y="35" width="171" height="23.5"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll send your Recaps here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6J-wB-ba3">
-                                        <rect key="frame" x="59" y="68.5" width="204" height="19"/>
+                                        <rect key="frame" x="58.5" y="68.5" width="204" height="19"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="16"/>
                                         <color key="textColor" red="0.98431372549999996" green="0.76862745099999996" blue="0.37647058820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -49,6 +49,7 @@
                                         <rect key="frame" x="38.5" y="119" width="244" height="279"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="279" id="sLR-bf-0hU"/>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="w0U-px-ags"/>
                                         </constraints>
                                     </view>
@@ -79,7 +80,7 @@
                                     <constraint firstAttribute="bottom" secondItem="p6j-w6-9go" secondAttribute="bottom" constant="10" id="RvA-EW-kU7"/>
                                     <constraint firstItem="p6j-w6-9go" firstAttribute="top" secondItem="15z-np-LJg" secondAttribute="bottom" priority="750" constant="30" id="S3x-ht-V3o"/>
                                     <constraint firstItem="p6j-w6-9go" firstAttribute="height" secondItem="8eL-Jo-OTD" secondAttribute="height" multiplier="0.075" id="SEb-h2-TYd"/>
-                                    <constraint firstItem="15z-np-LJg" firstAttribute="height" secondItem="8eL-Jo-OTD" secondAttribute="height" multiplier="0.55" constant="-22.400000000000034" id="YDi-6u-NgB"/>
+                                    <constraint firstItem="15z-np-LJg" firstAttribute="height" secondItem="8eL-Jo-OTD" secondAttribute="height" multiplier="0.55" priority="750" constant="-22.400000000000034" id="YDi-6u-NgB"/>
                                     <constraint firstItem="Q6J-wB-ba3" firstAttribute="top" secondItem="bGc-3W-2lz" secondAttribute="bottom" constant="10" id="YLL-Da-nWb"/>
                                     <constraint firstItem="NtG-M0-7s4" firstAttribute="leading" secondItem="8eL-Jo-OTD" secondAttribute="leading" constant="16" id="bOL-yF-gU6"/>
                                     <constraint firstItem="Q6J-wB-ba3" firstAttribute="centerX" secondItem="8eL-Jo-OTD" secondAttribute="centerX" id="fII-s3-xXn"/>
