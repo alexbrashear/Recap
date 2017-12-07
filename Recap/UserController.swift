@@ -303,7 +303,7 @@ enum UserError: AlertableError {
         case .loginFailed:
             return "Did ya spell it right? Are you connected to the internet? Try again or get help from help@recap-app.com"
         case .signupFailed:
-            return "Did ya spell it right? Are you connected to the internet? Try again or get help from help@recap-app.com"
+            return "Your address checks out but we were unable to sign you up. You may be using an email that is already linked to an account. Check your email and try again or get help from help@recap-app.com"
         case .updateAddressFailed:
             return "We can't verify that address. Make sure you're on the internet and it's spelt right."
         case .buyFilmFailed:
