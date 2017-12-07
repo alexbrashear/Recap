@@ -75,8 +75,7 @@ class PhotoSender {
         let data = metadata(forAddress: address, imageUrlString: imageURL.absoluteString)
         networkClient.POST(url: url, data: data) { json in
             guard let json = json  else { return completion(.error(.unknownFailure)) }
-            let expectedDeliveryString = json["expected_delivery_date"] as? String
-            guard let expectedDeliveryDate = expectedDeliveryString else { return completion(.error(.unknownFailure)) }
+            let _ = json["expected_delivery_date"] as? String
             completion(.success())
         }
     }

@@ -171,7 +171,7 @@ class SettingsViewModel: SettingsViewModelProtocol {
         switch row {
         case .address:
             guard let address = userController.user?.address else { return "" }
-            return "\(address.line1) \(address.line2)"
+            return "\(address.primaryLine) \(address.secondaryLine)"
         default:
             return nil
         }

@@ -14,9 +14,9 @@ class Address: NSObject, NSCoding {
     /// the name of the intended recipient at this address
     let name: String
     /// the address line 1
-    let line1: String
+    let primaryLine: String
     /// the address line 2
-    let line2: String
+    let secondaryLine: String
     /// the city of the address
     let city: String
     /// the state of the address
@@ -26,11 +26,11 @@ class Address: NSObject, NSCoding {
     /// the country of the address, defaults to "US"
     let country = "US"
     
-    init(id: String, name: String, line1: String, line2: String, city: String, state: String, zip: String) {
+    init(id: String, name: String, primaryLine: String, secondaryLine: String, city: String, state: String, zip: String) {
         self.id = id
         self.name = name
-        self.line1 = line1
-        self.line2 = line2
+        self.primaryLine = primaryLine
+        self.secondaryLine = secondaryLine
         self.city = city
         self.state = state
         self.zip = zip
@@ -39,37 +39,45 @@ class Address: NSObject, NSCoding {
     enum Keys: String {
         case id      = "id"
         case name    = "name"
+        case primaryLine   = "primary_line"
+        case secondaryLine   = "secondary_line"
+        case city = "city"
+        case state = "state"
+        case zipcode = "zip_code"
+        case country = "country"
+        // These are still here for the postcards API, address verification
+        // no longer uses these
         case line1   = "address_line1"
         case line2   = "address_line2"
-        case city    = "address_city"
-        case state   = "address_state"
-        case zip     = "address_zip"
-        case country = "address_country"
+        case addressCity    = "address_city"
+        case addressState   = "address_state"
+        case addressZip     = "address_zip"
+        case addressCountry = "address_country"
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
             let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,
-            let line1 = aDecoder.decodeObject(forKey: Keys.line1.rawValue) as? String,
-            let line2 = aDecoder.decodeObject(forKey: Keys.line2.rawValue) as? String,
+            let primaryLine = aDecoder.decodeObject(forKey: Keys.primaryLine.rawValue) as? String,
+            let secondaryLine = aDecoder.decodeObject(forKey: Keys.secondaryLine.rawValue) as? String,
             let city = aDecoder.decodeObject(forKey: Keys.city.rawValue) as? String,
             let state = aDecoder.decodeObject(forKey: Keys.state.rawValue) as? String,
-            let zip = aDecoder.decodeObject(forKey: Keys.zip.rawValue) as? String
+            let zip = aDecoder.decodeObject(forKey: Keys.zipcode.rawValue) as? String
             else {
                 assertionFailure("unable to decode Address")
                 return nil
         }
-        self.init(id: id, name: name, line1: line1, line2: line2, city: city, state: state, zip: zip)
+        self.init(id: id, name: name, primaryLine: primaryLine, secondaryLine: secondaryLine, city: city, state: state, zip: zip)
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: Keys.id.rawValue)
         aCoder.encode(name, forKey: Keys.name.rawValue)
-        aCoder.encode(line1, forKey: Keys.line1.rawValue)
-        aCoder.encode(line2, forKey: Keys.line2.rawValue)
+        aCoder.encode(primaryLine, forKey: Keys.primaryLine.rawValue)
+        aCoder.encode(secondaryLine, forKey: Keys.secondaryLine.rawValue)
         aCoder.encode(city, forKey: Keys.city.rawValue)
         aCoder.encode(state, forKey: Keys.state.rawValue)
-        aCoder.encode(zip, forKey: Keys.zip.rawValue)
+        aCoder.encode(zip, forKey: Keys.zipcode.rawValue)
     }
     
     /// Returns a string that can be used in the body of an http request
@@ -78,11 +86,11 @@ class Address: NSObject, NSCoding {
     /// - returns: the encoded string
     func bodyString(withParent parent: String) -> String {
         return "\(parent)[\(Address.Keys.name.rawValue)]=\(name)&" +
-               "\(parent)[\(Address.Keys.line1.rawValue)]=\(line1)&" +
-               "\(parent)[\(Address.Keys.line2.rawValue)]=\(line2)&" +
-               "\(parent)[\(Address.Keys.city.rawValue)]=\(city)&" +
-               "\(parent)[\(Address.Keys.state.rawValue)]=\(state)&" +
-               "\(parent)[\(Address.Keys.zip.rawValue)]=\(zip)&" +
-               "\(parent)[\(Address.Keys.country.rawValue)]=\(country)"
+               "\(parent)[\(Address.Keys.line1.rawValue)]=\(primaryLine)&" +
+               "\(parent)[\(Address.Keys.line2.rawValue)]=\(secondaryLine)&" +
+               "\(parent)[\(Address.Keys.addressCity.rawValue)]=\(city)&" +
+               "\(parent)[\(Address.Keys.addressState.rawValue)]=\(state)&" +
+               "\(parent)[\(Address.Keys.addressZip.rawValue)]=\(zip)&" +
+               "\(parent)[\(Address.Keys.addressCountry.rawValue)]=\(country)"
     }
 }

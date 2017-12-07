@@ -12,11 +12,11 @@ typealias AddressVerificationCompletion = (_ address: Address?, _ error: Address
 
 class AddressProvider {
     private let parser = AddressParser()
-    private let verifyURLString = "https://api.lob.com/v1/verify"
+    private let verifyURLString = "https://api.lob.com/v1/us_verifications"
     private let networkClient = NetworkClient()
     
     func verify(address: Address, completion: @escaping AddressVerificationCompletion) {
-        verify(name: address.name, line1: address.line1, line2: address.line2, city: address.city, state: address.state, zip: address.zip, completion: completion)
+        verify(name: address.name, line1: address.primaryLine, line2: address.secondaryLine, city: address.city, state: address.state, zip: address.zip, completion: completion)
     }
     
     func verify(name: String, line1: String, line2: String, city: String, state: String, zip: String, completion: @escaping AddressVerificationCompletion) {
@@ -32,6 +32,6 @@ class AddressProvider {
     }
     
     private func formatHTTPBody(withLine1 line1: String, line2: String, city: String, state: String, zip: String) -> Data? {
-        return "address_line1=\(line1)&address_line2=\(line2)&address_city=\(city)&address_state=\(state)&address_zip=r\(zip)".data(using: .utf8)
+        return "primary_line=\(line1)&secondary_line=\(line2)&city=\(city)&state=\(state)&zip_code=\(zip)".data(using: .utf8)
     }
 }

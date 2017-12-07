@@ -87,7 +87,7 @@ class UserController {
         /// TODO: CHEcK FOR VALID EMAIL
         ///
         
-        let createAddressInput = CreateAddressInput(city: address.city, secondaryLine: address.line2, name: address.name, primaryLine: address.line1, zipCode: address.zip, state: address.state)
+        let createAddressInput = CreateAddressInput(city: address.city, secondaryLine: address.secondaryLine, name: address.name, primaryLine: address.primaryLine, zipCode: address.zip, state: address.state)
         let createUserInput = CreateUserInput(remainingPhotos: 2, inviteCode: String.randomString(length: 6), username: email, address: createAddressInput, password: password)
         let mut = SignupUserMutation(user: createUserInput)
         
@@ -161,7 +161,7 @@ extension UserController {
     
     func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
-        let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.line2, name: newAddress.name, primaryLine: newAddress.line1, zipCode: newAddress.zip, state: newAddress.state)
+        let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.secondaryLine, name: newAddress.name, primaryLine: newAddress.primaryLine, zipCode: newAddress.zip, state: newAddress.state)
         let mut = UpdateAddressMutation(input: input)
         graphql.client.perform(mutation: mut) { [weak self] result, error in
             guard let updatedUser = result?.data?.updateAddress?.changedAddress?.user?.fragments.completeUser,

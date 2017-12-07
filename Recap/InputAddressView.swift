@@ -111,6 +111,6 @@ class InputAddressView: UIView, NibLoadable {
         let state = self.state.value
         let zip = self.zip.value
         
-        return Address(id: "", name: name, line1: addressLine1, line2: apt, city: city, state: state, zip: zip)
+        return Address(id: "", name: name, primaryLine: addressLine1, secondaryLine: apt, city: city, state: state, zip: zip)
     }
 }
