@@ -27,6 +27,14 @@ mutation UpdateAddress($input: UpdateAddressInput!) {
     }
 }
 
+mutation CreateAddress($input: CreateAddressInput!) {
+    createAddress(input: $input) {
+        changedAddress {
+            ...completeAddress
+        }
+    }
+}
+
 mutation UpdateUser($input: UpdateUserInput!) {
     updateUser(input: $input) {
         changedUser {

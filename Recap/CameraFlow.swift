@@ -113,9 +113,25 @@ extension RootFlowCoordinator {
     }
     
     private func configure(vc: EnterAddressController) {
-        let vm = EnterAddressNewFriendViewModel(friendsListProvider: friendsListProvider, backAction: { [weak vc] in
+        let backAction: () -> Void = { [weak vc] in
             vc?.dismiss(animated: true, completion: nil)
-        })
+        }
+        
+        let nextAction: NextAction = { [weak self, weak vc] address in
+            HUD.show(.progress)
+            self?.userController.createAddress(newAddress: address, callback: { result in
+                HUD.hide()
+                switch result {
+                case let .error(err):
+                    vc?.present(err.alert, animated: true, completion: nil)
+                case let .success(newAddress):
+                    self?.friendsListProvider.addFriend(Friend(name: address.name, address: newAddress))
+                    backAction()
+                }
+            })
+        }
+        
+        let vm = EnterAddressNewFriendViewModel(backAction: backAction, nextAction: nextAction)
         vc.viewModel = vm
     }
 }

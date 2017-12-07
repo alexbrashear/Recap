@@ -872,6 +872,67 @@ public final class UpdateAddressMutation: GraphQLMutation {
   }
 }
 
+public final class CreateAddressMutation: GraphQLMutation {
+  public static let operationDefinition =
+    "mutation CreateAddress($input: CreateAddressInput!) {" +
+    "  createAddress(input: $input) {" +
+    "    __typename" +
+    "    changedAddress {" +
+    "      __typename" +
+    "      ...completeAddress" +
+    "    }" +
+    "  }" +
+    "}"
+  public static let queryDocument = operationDefinition.appending(CompleteAddress.fragmentDefinition)
+
+  public let input: CreateAddressInput
+
+  public init(input: CreateAddressInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLMappable {
+    /// Create objects of type Address.
+    public let createAddress: CreateAddress?
+
+    public init(reader: GraphQLResultReader) throws {
+      createAddress = try reader.optionalValue(for: Field(responseName: "createAddress", arguments: ["input": reader.variables["input"]]))
+    }
+
+    public struct CreateAddress: GraphQLMappable {
+      public let __typename: String
+      /// The mutated Address.
+      public let changedAddress: ChangedAddress?
+
+      public init(reader: GraphQLResultReader) throws {
+        __typename = try reader.value(for: Field(responseName: "__typename"))
+        changedAddress = try reader.optionalValue(for: Field(responseName: "changedAddress"))
+      }
+
+      public struct ChangedAddress: GraphQLMappable {
+        public let __typename: String
+
+        public let fragments: Fragments
+
+        public init(reader: GraphQLResultReader) throws {
+          __typename = try reader.value(for: Field(responseName: "__typename"))
+
+          let completeAddress = try CompleteAddress(reader: reader)
+          fragments = Fragments(completeAddress: completeAddress)
+        }
+
+        public struct Fragments {
+          public let completeAddress: CompleteAddress
+        }
+      }
+    }
+  }
+}
+
 public final class UpdateUserMutation: GraphQLMutation {
   public static let operationDefinition =
     "mutation UpdateUser($input: UpdateUserInput!) {" +

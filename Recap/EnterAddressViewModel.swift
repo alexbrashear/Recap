@@ -37,11 +37,7 @@ class EnterAddressSignupViewModel: EnterAddressViewModel {
 }
 
 class EnterAddressNewFriendViewModel: EnterAddressViewModel {
-    init(friendsListProvider: FriendsListProvider, backAction: @escaping () -> Void) {
-        let weakBackAction: (() -> Void)? = backAction
-        super.init(headingText: "Add a friend", subheadingText: "We'll send their recaps here", buttonText: "Save", backAction: backAction, nextAction: { [weak friendsListProvider] address in
-            friendsListProvider?.addFriend(Friend(name: address.name, address: address))
-            weakBackAction?()
-        })
+    init(backAction: @escaping () -> Void, nextAction: @escaping NextAction) {
+        super.init(headingText: "Add a friend", subheadingText: "We'll send their recaps here", buttonText: "Save", backAction: backAction, nextAction: nextAction)
     }
 }

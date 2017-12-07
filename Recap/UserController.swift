@@ -17,6 +17,7 @@ typealias SocialLoginCallback = (Result<Void, SocialError>) -> ()
 typealias PhotosCallback = (Result<[Photo], PhotoError>) -> ()
 typealias PhotoErrorOnlyCallback = (Result<Void, PhotoError>) -> Void
 typealias VerifyInviteCodeCallback = (Result<Void, UserError>) -> Void
+typealias CreateAddressCallback = (Result<Address, UserError>) -> Void
 
 struct UserNotification {
     static let userDidUpdate = Notification.Name("userDidUpdate")
@@ -159,6 +160,20 @@ extension UserController {
         updateUser(input: input, callback: callback)
     }
     
+    func createAddress(newAddress: Address, callback: @escaping CreateAddressCallback) {
+        let input = CreateAddressInput(city: newAddress.city, secondaryLine: newAddress.secondaryLine, name: newAddress.name, primaryLine: newAddress.primaryLine, zipCode: newAddress.zip, state: newAddress.state)
+        let mut = CreateAddressMutation(input: input)
+        graphql.client.perform(mutation: mut) { result, error in
+            guard let completeAddress = result?.data?.createAddress?.changedAddress?.fragments.completeAddress,
+                error == nil
+            else {
+                callback(.error(.uploadAddressFailed)); return;
+            }
+            let address = Address(completeAddress: completeAddress)
+            callback(.success(address))
+        }
+    }
+    
     func updateAddress(newAddress: Address, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
         let input = UpdateAddressInput(id: user.address.id, userId: user.id, city: newAddress.city, secondaryLine: newAddress.secondaryLine, name: newAddress.name, primaryLine: newAddress.primaryLine, zipCode: newAddress.zip, state: newAddress.state)
@@ -278,6 +293,7 @@ enum UserError: AlertableError {
     case unknownFailure
     case invalidInviteCode
     case couldNotFetchFacebookAddresses
+    case uploadAddressFailed
     
     var localizedTitle: String {
         switch self {
@@ -295,6 +311,8 @@ enum UserError: AlertableError {
             return "Invalid Invite Code"
         case .couldNotFetchFacebookAddresses:
             return "Where's that?"
+        case .uploadAddressFailed:
+            return "Storing your address failed"
         }
     }
     
@@ -314,6 +332,8 @@ enum UserError: AlertableError {
             return "Check that you entered the right code and try again, or vist recap-app.com to learn more."
         case .couldNotFetchFacebookAddresses:
             return "We ran into an issue getting your facebook friends address. Please check your internet connection and try again or send us an email at help@recap-app.com with details."
+        case .uploadAddressFailed:
+            return "The address checks out but there was an issue storing it. Please check your internet connection and try again or send us an email at help@recap-app.com with details."
         }
     }
 }
