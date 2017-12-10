@@ -237,6 +237,19 @@ extension UserController {
         }
     }
     
+    func createCustomer(customerId: String, callback: @escaping UserCallback) {
+        guard let user = self.user else { return }
+        let input = UpdateUserInput(id: user.id, customerId: customerId)
+        updateUser(input: input) { result in
+            switch result {
+            case .error:
+                callback(.error(.createCustomerFailed))
+            case .success:
+                callback(result)
+            }
+        }
+    }
+    
     func buyFilm(capacity: Int, callback: @escaping UserCallback) {
         guard let user = self.user else { return }
         let input = UpdateUserInput(id: user.id, remainingPhotos: user.remainingPhotos + capacity)
@@ -294,6 +307,7 @@ enum UserError: AlertableError {
     case invalidInviteCode
     case couldNotFetchFacebookAddresses
     case uploadAddressFailed
+    case createCustomerFailed
     
     var localizedTitle: String {
         switch self {
@@ -313,6 +327,8 @@ enum UserError: AlertableError {
             return "Where's that?"
         case .uploadAddressFailed:
             return "Storing your address failed"
+        case .createCustomerFailed:
+            return "Something went wrong"
         }
     }
     
@@ -334,6 +350,8 @@ enum UserError: AlertableError {
             return "We ran into an issue getting your facebook friends address. Please check your internet connection and try again or send us an email at help@recap-app.com with details."
         case .uploadAddressFailed:
             return "The address checks out but there was an issue storing it. Please check your internet connection and try again or send us an email at help@recap-app.com with details."
+        case .createCustomerFailed:
+            return "Check that you have a good internet connection and please try again or contact us at help@recap-app.com"
         }
     }
 }
