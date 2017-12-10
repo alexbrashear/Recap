@@ -192,6 +192,7 @@
 		C37F67A01F0AC247005FF8EC /* FilterProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterProvider.swift; sourceTree = "<group>"; };
 		C37F67A31F0DE9D3005FF8EC /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C37F67A51F0DEFDD005FF8EC /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C3863D6C1FDD023D00B5FBE8 /* Recap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Recap.entitlements; sourceTree = "<group>"; };
 		C38A43B91F8BC66B00A6E2FA /* PaymentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsController.swift; sourceTree = "<group>"; };
 		C38A43BB1F8C7E4600A6E2FA /* PaymentIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentIconView.swift; sourceTree = "<group>"; };
 		C38A43BD1F8D0DAC00A6E2FA /* UIColor+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Images.swift"; sourceTree = "<group>"; };
@@ -388,6 +389,7 @@
 		C35308391E3D163600E2BD8A /* Recap */ = {
 			isa = PBXGroup;
 			children = (
+				C3863D6C1FDD023D00B5FBE8 /* Recap.entitlements */,
 				C3CE0E271E6E6273008000B1 /* App */,
 				C3AD56841E4C37CA00C348F0 /* Camera */,
 				C32652CA1F677D9E0027B316 /* Friends List */,
@@ -681,6 +683,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9GFQY5F3X4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
+						};
 					};
 					C353084A1E3D163700E2BD8A = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -761,7 +768,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6CD774A96B9730E1DEC687DF /* [CP] Embed Pods Frameworks */ = {
@@ -850,7 +857,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
