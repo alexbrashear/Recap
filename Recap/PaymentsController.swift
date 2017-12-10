@@ -48,7 +48,7 @@ class PaymentsController {
         case .production:
             return "https://recap-messaging.herokuapp.com/"
         case .debug, .test:
-            return "http://localhost:3000/"
+            return "https://recap-messaging-sandbox.herokuapp.com/"
         }
     }
     
