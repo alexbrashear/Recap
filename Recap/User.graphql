@@ -84,6 +84,7 @@ fragment completeUser on User {
             }
         }
     }
+    customerId
 }
 
 fragment completeAddress on Address {

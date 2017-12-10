@@ -15,13 +15,15 @@ class User: NSObject, NSCoding {
     let address: Address
     let remainingPhotos: Int
     let inviteCode: String
+    let customerId: String?
     
-    init(id: GraphQLID, username: String, address: Address, remainingPhotos: Int, inviteCode: String) {
+    init(id: GraphQLID, username: String, address: Address, remainingPhotos: Int, inviteCode: String, customerId: String?) {
         self.address = address
         self.username = username
         self.remainingPhotos = remainingPhotos
         self.id = id
         self.inviteCode = inviteCode
+        self.customerId = customerId
     }
     
     enum Keys: String {
@@ -30,6 +32,7 @@ class User: NSObject, NSCoding {
         case remainingPhotos = "remainingPhotos"
         case id = "id"
         case inviteCode = "inviteCode"
+        case customerId = "customerId"
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -42,8 +45,9 @@ class User: NSObject, NSCoding {
         }
         
         let remainingPhotos = aDecoder.decodeInteger(forKey: Keys.remainingPhotos.rawValue)
+        let customerId = aDecoder.decodeObject(forKey: Keys.customerId.rawValue) as? String
         
-        self.init(id: id, username: username, address: address, remainingPhotos: remainingPhotos, inviteCode: inviteCode)
+        self.init(id: id, username: username, address: address, remainingPhotos: remainingPhotos, inviteCode: inviteCode, customerId: customerId)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -52,5 +56,6 @@ class User: NSObject, NSCoding {
         aCoder.encode(address, forKey: Keys.address.rawValue)
         aCoder.encode(remainingPhotos, forKey: Keys.remainingPhotos.rawValue)
         aCoder.encode(inviteCode, forKey: Keys.inviteCode.rawValue)
+        aCoder.encode(customerId, forKey: Keys.customerId.rawValue)
     }
 }

@@ -18,7 +18,7 @@ extension User {
     convenience init?(completeUser: CompleteUser) {
         guard let completeAddress = completeUser.address?.fragments.completeAddress else { return nil }
         let address = Address(completeAddress: completeAddress)
-        self.init(id: completeUser.id, username: completeUser.username, address: address, remainingPhotos: completeUser.remainingPhotos, inviteCode: completeUser.inviteCode)
+        self.init(id: completeUser.id, username: completeUser.username, address: address, remainingPhotos: completeUser.remainingPhotos, inviteCode: completeUser.inviteCode, customerId: completeUser.customerId)
     }
 }
 
