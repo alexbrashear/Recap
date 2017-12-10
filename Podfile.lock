@@ -9,6 +9,8 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Braintree/Apple-Pay (4.9.3):
+    - Braintree/Core
   - Braintree/Card (4.9.3):
     - Braintree/Core
   - Braintree/Core (4.9.3)
@@ -59,6 +61,7 @@ PODS:
 DEPENDENCIES:
   - Apollo
   - AWSS3
+  - Braintree/Apple-Pay
   - Braintree/Venmo
   - BraintreeDropIn
   - FacebookCore
@@ -113,6 +116,6 @@ SPEC CHECKSUMS:
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
   Reusable: 5362d10271ca8316b104698a21e90498f47e8339
 
-PODFILE CHECKSUM: aba7c7d32e59786a0f603e340896bf37c40581e8
+PODFILE CHECKSUM: 9713bdcbcdf9642c54d181979854037e261e8ce2
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

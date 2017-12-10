@@ -14,6 +14,7 @@ target 'Recap' do
     pod 'Iconic', :git => 'https://github.com/dzenbot/Iconic.git', :tag => '1.3'
     pod 'BraintreeDropIn'
     pod 'Braintree/Venmo'
+    pod 'Braintree/Apple-Pay'
     pod 'IQKeyboardManagerSwift'
 end
 

@@ -10,6 +10,10 @@
 #endif
 #endif
 
+#import "BraintreeApplePay.h"
+#import "BTApplePayCardNonce.h"
+#import "BTApplePayClient.h"
+#import "BTConfiguration+ApplePay.h"
 #import "BraintreeCard.h"
 #import "BTCard.h"
 #import "BTCardClient.h"
