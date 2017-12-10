@@ -56,7 +56,7 @@ class PaymentsController {
     ///
     /// - Parameter completion: completion handler to with controller
     func paymentsDropInController(completion: @escaping PaymentsDropInController) {
-        if let customerId = userController.user?.customerId {
+        if let customerId = userController.user?.customerId, customerId != "" {
             processCustomer(customerId: customerId, completion: completion); return
         }
         
