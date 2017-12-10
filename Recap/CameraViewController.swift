@@ -203,7 +203,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         // apply filter and create CGImage
         let filteredCIImage = filterProvider.applyFilter(toImage: ciImage)
         let cgImage = context.createCGImage(filteredCIImage, from: filteredCIImage.extent)
-        let croppedImage = cgImage?.cropping(to: CGRect(x: 150, y: 0, width: 1620, height: 1080))
+        // Crop the image from a 9:16 (1080x1920) to the 4.25:6.25 (1080x1588.24) that Lob requires
+        let croppedImage = cgImage?.cropping(to: CGRect(x: 150, y: 0, width: 1589, height: 1080))
         let filteredImage = UIImage(cgImage: croppedImage!, scale: scale, orientation: cameraPosition == .front ? .leftMirrored : orientation)
         
         // create and overlay photo taken view
