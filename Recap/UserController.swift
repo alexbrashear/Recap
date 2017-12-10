@@ -49,7 +49,16 @@ class UserController {
     }
     
     func deletePaymentInformation() {
-        store.customerId = nil
+        guard let user = user else { return }
+        let input = UpdateUserInput(id: user.id, customerId: "")
+        updateUser(input: input) { result in
+            switch result {
+            case .success:
+                return
+            case .error:
+                return
+            }
+        }
     }
     
     private func setPassword(newPassword: String) {
