@@ -55,6 +55,24 @@ class Address: NSObject, NSCoding {
         case addressCountry = "address_country"
     }
     
+    var firstName: String {
+        let names = name.components(separatedBy: " ")
+        if !names.isEmpty {
+            return names[0]
+        } else {
+            return ""
+        }
+    }
+    
+    var lastName: String {
+        let names = name.components(separatedBy: " ")
+        if names.count >= 2 {
+            return names[names.count - 1]
+        } else {
+            return ""
+        }
+    }
+    
     required convenience init?(coder aDecoder: NSCoder) {
         guard let id = aDecoder.decodeObject(forKey: Keys.id.rawValue) as? String,
             let name = aDecoder.decodeObject(forKey: Keys.name.rawValue) as? String,

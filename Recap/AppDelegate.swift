@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userController.loadUser()
         }
         
-        let paymentsController = PaymentsController(persistanceManager: persistanceManager, userController: userController)
+        let paymentsController = PaymentsController(userController: userController)
         let photoSender = PhotoSender(userController: userController)
         let photoManager = PhotoManager(imageUploader: ImageUploader(), userController: userController, photoSender: photoSender)
         

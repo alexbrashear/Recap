@@ -18,7 +18,8 @@ typealias PaymentsPostNonceCompletion = (PaymentsPostNonceResult) -> Void
 
 typealias PaymentsDropInController = (BTDropInController?) -> Void
 
-typealias PaymentsCreateCustomerCompletion = () -> Void
+typealias PaymentsCreateCustomerResult = Result<String, PaymentsError>
+typealias PaymentsCreateCustomerCompletion = (PaymentsCreateCustomerResult) -> Void
 
 typealias PaymentsBuyFilmResult = Result<Void, PaymentsError>
 typealias PaymentsBuyFilmCompletion = (PaymentsBuyFilmResult) -> Void
@@ -32,13 +33,8 @@ struct PaymentsNotification {
 
 class PaymentsController {
     
-    var customerId: String? {
-        return persistanceManager.customerId
-    }
-    
     var paymentIcon: UIView?
     
-    private var persistanceManager: PersistanceManager
     private var userController: UserController
     private var mostRecentNonce: String?
     private var environment: Environment = .production
@@ -52,8 +48,7 @@ class PaymentsController {
         }
     }
     
-    init(persistanceManager: PersistanceManager, userController: UserController) {
-        self.persistanceManager = persistanceManager
+    init(userController: UserController) {
         self.userController = userController
     }
     
@@ -61,10 +56,21 @@ class PaymentsController {
     ///
     /// - Parameter completion: completion handler to with controller
     func paymentsDropInController(completion: @escaping PaymentsDropInController) {
-        fetchClientToken { [weak self] result in
+        if let customerId = userController.user?.customerId {
+            processCustomer(customerId: customerId, completion: completion); return
+        }
+        
+        createCustomer { [weak self] result in
             switch result {
-            case .success(let clientToken):
-                self?.createPaymentsDropIn(clientToken: clientToken, completion: completion)
+            case let .success(customerId):
+                self?.userController.createCustomer(customerId: customerId) { result in
+                    switch result {
+                    case let .success(user):
+                        self?.processCustomer(customerId: user.customerId!, completion: completion)
+                    case .error:
+                        completion(nil)
+                    }
+                }
             case .error:
                 completion(nil)
             }
@@ -81,9 +87,9 @@ class PaymentsController {
                 let film = packs * capacity
                 self?.userController.buyFilm(capacity: film) { result in
                     switch result {
-                    case .success(let user):
+                    case .success:
                         completion(.success())
-                    case .error(let err):
+                    case .error:
                         completion(.error(.failedToAddFilmInDB))
                     }
                 }
@@ -96,7 +102,7 @@ class PaymentsController {
         let dropIn = BTDropInController(authorization: clientToken, request: request)
         { [weak self] (controller, result, error) in
             if (error != nil) {
-                print("ERROR")
+                print(error!.localizedDescription)
             } else if (result?.isCancelled == true) {
                 print("CANCELLED")
             } else if let result = result {
@@ -108,9 +114,6 @@ class PaymentsController {
                     description = result.paymentDescription
                 }
                 self?.paymentIcon = result.paymentIcon
-                if self?.customerId == nil, let nonce = result.paymentMethod?.nonce {
-                    self?.createCustomer(paymentMethodNonce: nonce) { _ in }
-                }
                 NotificationCenter.default.post(name: PaymentsNotification.methodSelected,
                                                 object: nil,
                                                 userInfo: [PaymentsNotification.paymentIconKey: result.paymentIcon,
@@ -121,14 +124,23 @@ class PaymentsController {
         completion(dropIn)
     }
     
-    private func fetchClientToken(completion: @escaping PaymentsClientTokenCompletion) {
+    private func processCustomer(customerId: String, completion: @escaping PaymentsDropInController) {
+        fetchClientToken(customerId: customerId) { [weak self] result in
+            switch result {
+            case .success(let clientToken):
+                self?.createPaymentsDropIn(clientToken: clientToken, completion: completion)
+            case .error:
+                completion(nil)
+            }
+        }
+    }
+    
+    private func fetchClientToken(customerId: String, completion: @escaping PaymentsClientTokenCompletion) {
         // TODO: Switch this URL to your own authenticated API
         let clientTokenURL = NSURL(string: "\(hostname)client_token")!
         let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
         clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
-        if let customerId = self.customerId {
-            clientTokenRequest.httpBody = "customerId=\(customerId)".data(using: String.Encoding.utf8)
-        }
+        clientTokenRequest.httpBody = "customerId=\(customerId)".data(using: String.Encoding.utf8)
         clientTokenRequest.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
@@ -165,23 +177,28 @@ class PaymentsController {
         }.resume()
     }
     
-    private func createCustomer(paymentMethodNonce: String, completion: @escaping PaymentsCreateCustomerCompletion) {
-        guard customerId == nil else { return completion() }
-        let paymentURL = URL(string: "\(hostname)customer/new")!
+    private func createCustomer(completion: @escaping PaymentsCreateCustomerCompletion) {
+        guard let user = userController.user else { completion(.error(.createCustomerFailed)); return }
+        let paymentURL = URL(string: "\(hostname)customer/new-v2")!
         var request = URLRequest(url: paymentURL)
-        request.httpBody = "payment_method_nonce=\(paymentMethodNonce)".data(using: String.Encoding.utf8)
+        request.httpBody = "firstName=\(user.address.firstName)&lastName=\(user.address.lastName)&email=\(user.username)".data(using: String.Encoding.utf8)
         request.httpMethod = "POST"
         
-        URLSession.shared.dataTask(with: request) { [weak self] (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
             DispatchQueue.main.async {
-                guard let data = data, error == nil else {
-                    return completion()
+                guard let data = data,
+                    error == nil,
+                    let optionalJson = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                    let json = optionalJson
+                else {
+                    return completion(.error(.createCustomerFailed))
                 }
                 
-                if let customerId = String(data: data, encoding: String.Encoding.utf8) {
-                    self?.persistanceManager.customerId = customerId
+                if let customerId = json["result"] as? String {
+                    completion(.success(customerId))
+                } else {
+                    completion(.error(.createCustomerFailed))
                 }
-                completion()
             }
         }.resume()
     }
@@ -191,6 +208,7 @@ enum PaymentsError: AlertableError {
     case unknownFailure
     case failedToPostNonce
     case failedToAddFilmInDB
+    case createCustomerFailed
     
     var localizedTitle: String {
         switch self {
@@ -200,6 +218,8 @@ enum PaymentsError: AlertableError {
             return "We couldn't process your payment"
         case .failedToAddFilmInDB:
             return "Your payment went through but there was an error adding the film"
+        case .createCustomerFailed:
+            return "Something went wrong"
         }
     }
     
@@ -211,6 +231,8 @@ enum PaymentsError: AlertableError {
             return "Something went wrong with your payment, please try again or contact help@recap-app.com"
         case .failedToAddFilmInDB:
             return "This is really embarrassing...please contact help@recap-app.com so we can fix this for you as fast as possible."
+        case .createCustomerFailed:
+            return "Check that you have a good internet connection and are using the latest version of the app. Please try again or contact us at help@recap-app.com"
         }
     }
 }
