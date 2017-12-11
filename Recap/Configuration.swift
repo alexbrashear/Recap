@@ -9,14 +9,11 @@
 import Foundation
 
 enum Environment {
-    case test
     case debug
     case production
     
     var authorizationValue: String {
         switch self {
-        case .test:
-            return "test_0dc8d51e0acffcb1880e0f19c79b2f5b0cc"
         case .debug:
             return "test_3f5d20f0882cd26b96fbabe1a4161a5285f"
         case .production:

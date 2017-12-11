@@ -43,7 +43,7 @@ class PaymentsController {
         switch environment {
         case .production:
             return "https://recap-messaging.herokuapp.com/"
-        case .debug, .test:
+        case .debug:
             return "https://recap-messaging-sandbox.herokuapp.com/"
         }
     }
