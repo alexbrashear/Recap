@@ -33,7 +33,7 @@ enum SettingsSection: Int {
         case .support:
             return [.sendFeedback, .faqs]
         case .user:
-            return [.logInToFacebook, .inviteCode]
+            return [.logInToFacebook]
         case .legal:
             return [.termsOfService, .privacyPolicy]
         case .forgetCreditCard:
@@ -49,7 +49,6 @@ enum SettingsRow {
     case faqs
     case sendFeedback
     case logInToFacebook
-    case inviteCode
     case termsOfService
     case privacyPolicy
     case forgetCreditCard
@@ -73,12 +72,7 @@ enum SettingsRow {
     }
     
     var selectionStyle: UITableViewCellSelectionStyle {
-        switch self {
-        case .inviteCode:
-            return .default
-        default:
-            return .default
-        }
+        return .default
     }
 }
 
@@ -158,12 +152,6 @@ class SettingsViewModel: SettingsViewModelProtocol {
             return "Terms of Service"
         case .forgetCreditCard:
             return "Delete Payment Info"
-        case .inviteCode:
-            if let code = userController.user?.inviteCode {
-                return "Invite Code: \(code)"
-            } else {
-                return "Invite Code: Failed to load"
-            }
         }
     }
     
@@ -203,12 +191,6 @@ class SettingsViewModel: SettingsViewModelProtocol {
             userController.deletePaymentInformation()
             let alert = UIAlertController.okAlert(title: "We deleted your payment information!", message: nil)
             vc.presentAlert(alert)
-        case .inviteCode:
-            if let code = userController.user?.inviteCode {
-                UIPasteboard.general.string = code
-                let alert = UIAlertController.okAlert(title: "We copied the invite code to your clipboard!", message: "Just paste anywhere!")
-                vc.presentAlert(alert)
-            }
         }
     }
 }

@@ -12,32 +12,6 @@ import Apollo
 
 extension RootFlowCoordinator {
     
-    // MARK: - Invite Code
-    
-    func pushInviteCodeController(onto nc: UINavigationController) {
-        guard let vc = R.storyboard.inviteCode.inviteCodeController() else { return }
-        configure(vc, nc: nc)
-        nc.pushViewController(vc, animated: true)
-    }
-    
-    func configure(_ vc: InviteCodeController, nc: UINavigationController) {
-        nc.setNavigationBarHidden(true, animated: false)
-        vc.submitAction = { [weak self, weak vc, weak nc] code in
-            HUD.show(.progress)
-            self?.userController.verifyInviteCode(code: code) { result in
-                HUD.hide()
-                switch result {
-                case let .error(userError):
-                    vc?.present(userError.alert, animated: true, completion: nil)
-                case .success:
-                    self?.onboardingCoordinator.complete(onboarding: .inviteCode)
-                    guard let nc = nc else { return }
-                    self?.pushWelomeController(onto: nc)
-                }
-            }
-        }
-    }
-    
     // MARK: - Welcome Controller
     
     func configureWelcomeController(_ vc: WelcomeViewController, nc: UINavigationController) {
